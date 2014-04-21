@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3466077E-F00F-4C9B-A0E8-D326A92C2DF2}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Project</RootNamespace>
+    <AssemblyName>Project</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Speech" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsFormsIntegration">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Facereco.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Facereco.Designer.cs">
+      <DependentUpon>Facereco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Help.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Help.Designer.cs">
+      <DependentUpon>Help.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Scribblepad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Scribblepad.Designer.cs">
+      <DependentUpon>Scribblepad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="story.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form3.Designer.cs">
+      <DependentUpon>story.cs</DependentUpon>
+    </Compile>
+    <Compile Include="sim.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="sim.Designer.cs">
+      <DependentUpon>sim.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Facereco.resx">
+      <DependentUpon>Facereco.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Help.resx">
+      <DependentUpon>Help.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="sim.resx">
+      <DependentUpon>sim.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scribblepad.resx">
+      <DependentUpon>Scribblepad.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="story.resx">
+      <DependentUpon>story.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="voicerecognition.resx">
+      <DependentUpon>voicerecognition.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="voicerecognition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="voicerecognition.Designer.cs">
+      <DependentUpon>voicerecognition.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxWMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="SpeechLib">
+      <Guid>{C866CA3A-32F7-11D2-9602-00C04F8EE628}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>4</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\p1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\p2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\p3.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\p4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\p5.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\p6.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\p7.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\p8.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\p9.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\p10.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\p11.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\p12.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\p13.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\p14.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\p15.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\p16.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\p17.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\p18.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\p19.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\p20.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\scaredface.bmp" />
+    <None Include="Resources\sadface.bmp" />
+    <None Include="Resources\p201.bmp" />
+    <None Include="Resources\p191.bmp" />
+    <None Include="Resources\p181.bmp" />
+    <None Include="Resources\p171.bmp" />
+    <None Include="Resources\p161.bmp" />
+    <None Include="Resources\p151.bmp" />
+    <None Include="Resources\p141.bmp" />
+    <None Include="Resources\p131.bmp" />
+    <None Include="Resources\p121.bmp" />
+    <None Include="Resources\p111.bmp" />
+    <None Include="Resources\p101.bmp" />
+    <None Include="Resources\p91.bmp" />
+    <None Include="Resources\p81.bmp" />
+    <None Include="Resources\p71.bmp" />
+    <None Include="Resources\p61.bmp" />
+    <None Include="Resources\p51.bmp" />
+    <None Include="Resources\p41.png" />
+    <None Include="Resources\p31.bmp" />
+    <None Include="Resources\p21.png" />
+    <None Include="Resources\p11.png" />
+    <None Include="Resources\happyface2.bmp" />
+    <None Include="Resources\happyface.bmp" />
+    <None Include="Resources\confusedlook.bmp" />
+    <None Include="Resources\angryface2.bmp" />
+    <None Include="Resources\angryface.bmp" />
+    <None Include="Resources\THEEND.bmp" />
+    <None Include="Resources\thealienscamehome.bmp" />
+    <None Include="Resources\title.png" />
+    <None Include="Resources\goldiesitssecondchair.png" />
+    <None Include="Resources\goldiesitsonlastchar.png" />
+    <None Include="Resources\goldiesitsfirstchair.png" />
+    <None Include="Resources\goldierunsaway.png" />
+    <None Include="Resources\goldiefallsoff.png" />
+    <None Include="Resources\chairs found.png" />
+    <None Include="Resources\aliensfindporidge.png" />
+    <None Include="Resources\aliensfindbed.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
