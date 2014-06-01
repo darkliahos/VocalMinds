@@ -74,7 +74,7 @@
             this.BtnConfirm.TabIndex = 8;
             this.BtnConfirm.Text = "&Confirm";
             this.BtnConfirm.UseVisualStyleBackColor = false;
-            this.BtnConfirm.Click += new System.EventHandler(this.button1_Click);
+            this.BtnConfirm.Click += new System.EventHandler(this.BtnConfirmClick);
             // 
             // textBox1
             // 

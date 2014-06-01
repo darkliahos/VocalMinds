@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using NLog;
 using Project.Properties;
 using SpeechLib;
@@ -15,13 +17,18 @@ namespace Project
         int _therandomvalue;
         string _correctAnswer;
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+        private readonly List<FaceRecognition> _faceRecognitions;
         
 
         public Facerecognition()
         {
             InitializeComponent();
+            _faceRecognitions = new List<FaceRecognition>();
+            PopulateFaceRecognition();
             FirstTimeInitialiser();
         }
+
+
 
         private void HypoEvent(int streamNumber, object streamPosition, ISpeechRecoResult result)
         {
@@ -86,68 +93,48 @@ namespace Project
             return _userResponse;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void BtnConfirmClick(object sender, EventArgs e)
         {                
             ReadFromTextBox();
             if (_userResponse == _correctAnswer)
             {
 
-                MessageBox.Show(_correctAnswer);
                 MessageBox.Show(Resources.WellDone);
                 FirstTimeInitialiser();
             }
             else
             {
-                MessageBox.Show(_correctAnswer);
                 MessageBox.Show(Resources.Wrong);
             }
         }
 
-        public string Picturechecker()
+        private void PopulateFaceRecognition()
         {
-            //TODO: Refactor into a dictionary
-            if (_therandomvalue == 1)
-            {
-                FaceBox.Image = Resources.angryface;
-                _correctAnswer = "Angry";
-            }
+            _faceRecognitions.Add(new FaceRecognition(1, "Angry", Resources.angryface));
+            _faceRecognitions.Add(new FaceRecognition(2, "Angry", Resources.angryface2));
+            _faceRecognitions.Add(new FaceRecognition(3, "Confused", Resources.confusedlook));
+            _faceRecognitions.Add(new FaceRecognition(4, "Sad", Resources.sadface));
+            _faceRecognitions.Add(new FaceRecognition(5, "Scared", Resources.scaredface));
+            _faceRecognitions.Add(new FaceRecognition(6, "Happy", Resources.happyface));
+            _faceRecognitions.Add(new FaceRecognition(7, "Happy", Resources.happyface2));
+        }
 
-            else if (_therandomvalue == 2)
-            {
-                 FaceBox.Image = Resources.angryface2;
-                 _correctAnswer = "Angry";
-            }
 
-            else if (_therandomvalue == 3)
-            {
-                FaceBox.Image = Resources.confusedlook;
-                _correctAnswer = "Confused";
-            }
-            else if (_therandomvalue == 4)
-            {
-                FaceBox.Image = Resources.sadface;
-                _correctAnswer = "Sad";
-            }
 
-            else if (_therandomvalue == 5)
+        public void Picturechecker()
+        {
+            FaceRecognition faceResult = _faceRecognitions.FirstOrDefault(item => item.Id == _therandomvalue);
+            if(faceResult != null)
             {
-                FaceBox.Image = Resources.scaredface;
-                _correctAnswer = "Scared";
+                FaceBox.Image = faceResult.ImageAssociated;
+                _correctAnswer = faceResult.Emotion;
             }
-            else if (_therandomvalue == 6)
+            else
             {
-                FaceBox.Image = Resources.happyface;
-                _correctAnswer = "Happy";
+                MessageBox.Show(Resources.GeneratorFault);
+                Logger.Debug(string.Format("Random Generator Faulted: {0}", _therandomvalue));
             }
-
-            else if (_therandomvalue == 7)
-            {
-                FaceBox.Image = Resources.happyface2;
-                _correctAnswer = "Happy";
-            }
-
-                    return _correctAnswer;    
-    }
+        }
 
         public void FirstTimeInitialiser()
         {

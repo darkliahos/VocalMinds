@@ -121,6 +121,15 @@ namespace Project.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Random Generator Faulted Unable To Continue!.
+        /// </summary>
+        internal static string GeneratorFault {
+            get {
+                return ResourceManager.GetString("GeneratorFault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap goldiefallsoff {

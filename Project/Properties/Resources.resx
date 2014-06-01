@@ -304,4 +304,7 @@
   <data name="speechreconotrunning">
     <value xml:space="preserve">Windows Speech Recogntion is currently not running</value>
   </data>
+  <data name="GeneratorFault">
+    <value xml:space="preserve">Random Generator Faulted Unable To Continue!</value>
+  </data>
 </root>
