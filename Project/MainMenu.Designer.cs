@@ -1,6 +1,6 @@
 ﻿namespace Project
 {
-    partial class Form1
+    partial class MainMenu
     {
         /// <summary>
         /// Required designer variable.
@@ -64,7 +64,7 @@
             this.btnvoicetones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnvoicetones.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnvoicetones.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnvoicetones.Location = new System.Drawing.Point(651, 99);
+            this.btnvoicetones.Location = new System.Drawing.Point(621, 96);
             this.btnvoicetones.Name = "btnvoicetones";
             this.btnvoicetones.Size = new System.Drawing.Size(509, 40);
             this.btnvoicetones.TabIndex = 3;
@@ -72,16 +72,16 @@
             this.btnvoicetones.UseVisualStyleBackColor = false;
             this.btnvoicetones.Click += new System.EventHandler(this.btnvoicetones_Click);
             // 
-            // Form1
+            // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1205, 589);
             this.Controls.Add(this.btnvoicetones);
             this.Controls.Add(this.btnstartface);
             this.Controls.Add(this.btnscrg);
-            this.Name = "Form1";
+            this.Name = "MainMenu";
             this.Text = "Vocal Mind V0.1A";
             this.ResumeLayout(false);
 

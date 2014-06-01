@@ -292,4 +292,16 @@
   <data name="scaredface" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\scaredface.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="WellDone">
+    <value xml:space="preserve">Well done</value>
+  </data>
+  <data name="Wrong">
+    <value xml:space="preserve">Wrong, try again</value>
+  </data>
+  <data name="NonComprehension">
+    <value xml:space="preserve">Unable to Comprehend Speech</value>
+  </data>
+  <data name="speechreconotrunning">
+    <value xml:space="preserve">Windows Speech Recogntion is currently not running</value>
+  </data>
 </root>

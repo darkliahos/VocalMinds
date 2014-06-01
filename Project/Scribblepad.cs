@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Drawing;//imports drawing library
 using System.Drawing.Drawing2D;//imports drawing library (for the 2D drawing stuff)
 using System.Windows.Forms;
 
@@ -13,72 +7,68 @@ namespace Project
 {
     public partial class Scribblepad : Form
     {
-        private bool mouseButtonDown = false;//boolean to check if the mouse button is down
-        private Point paintpoint = Point.Empty;//Records where the mouse was last clicked
-        private Graphics g;
-        private Pen p;
+        private bool _mouseButtonDown; //boolean to check if the mouse button is down
+        private Point _paintpoint = Point.Empty;//Records where the mouse was last clicked
+        private readonly Graphics _graphic;
+        private Pen _pen;
 
         public Scribblepad()
         {
             InitializeComponent();
-        }
-
-        private void Scribblepad_Load(object sender, EventArgs e)
-        {
-            g = CreateGraphics();
-            g.SmoothingMode = SmoothingMode.AntiAlias;
-            p = new Pen(Color.Black);
+            _graphic = CreateGraphics();
+            _graphic.SmoothingMode = SmoothingMode.AntiAlias;
+            _pen = new Pen(Color.Black);
         }
 
         protected override void OnMouseDown(MouseEventArgs e)
         {
-            mouseButtonDown = true;
+            _mouseButtonDown = true;
         }
 
         protected override void OnMouseUp(MouseEventArgs e)
         {
-            mouseButtonDown = false;
+            _mouseButtonDown = false;
         }
 
         protected override void OnMouseMove(MouseEventArgs e)
         {
-            if (paintpoint.Equals(Point.Empty)) paintpoint = new Point(e.X, e.Y);
-            if (mouseButtonDown)
+            if (_paintpoint.Equals(Point.Empty)) _paintpoint = new Point(e.X, e.Y);
+            if (_mouseButtonDown)
             {
                 Point pMousePos = new Point(e.X, e.Y);
-                g.DrawLine(p, pMousePos, paintpoint);
+                _graphic.DrawLine(_pen, pMousePos, _paintpoint);
             }
-            paintpoint = new Point(e.X, e.Y);
+            _paintpoint = new Point(e.X, e.Y);
         }
 
-        private void btnred_Click(object sender, EventArgs e)
+        private void BtnredClick(object sender, EventArgs e)
         {
-            p = new Pen(Color.Red);
+            _pen = new Pen(Color.Red);
         }
 
-        private void btnblue_Click(object sender, EventArgs e)
+        private void BtnblueClick(object sender, EventArgs e)
         {
-            p = new Pen(Color.Blue);
+            _pen = new Pen(Color.Blue);
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Button3Click(object sender, EventArgs e)
         {
-            p = new Pen(Color.Black);
+            _pen = new Pen(Color.Black);
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2Click(object sender, EventArgs e)
         {
-            p = new Pen(Color.White);
+            _pen = new Pen(Color.White);
         }
 
-        private void btngreen_Click(object sender, EventArgs e)
+        private void BtngreenClick(object sender, EventArgs e)
         {
-            p = new Pen(Color.Green);
+            _pen = new Pen(Color.Green);
         }
 
-        private void btnyellow_Click(object sender, EventArgs e)
+        private void BtnyellowClick(object sender, EventArgs e)
         {
-            p = new Pen(Color.Yellow);
+            _pen = new Pen(Color.Yellow);
         }
     }
 }

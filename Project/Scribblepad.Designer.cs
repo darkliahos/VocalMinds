@@ -48,7 +48,7 @@
             this.btnred.TabIndex = 0;
             this.btnred.Text = "Red";
             this.btnred.UseVisualStyleBackColor = false;
-            this.btnred.Click += new System.EventHandler(this.btnred_Click);
+            this.btnred.Click += new System.EventHandler(this.BtnredClick);
             // 
             // btnblue
             // 
@@ -62,7 +62,7 @@
             this.btnblue.TabIndex = 1;
             this.btnblue.Text = "Blue";
             this.btnblue.UseVisualStyleBackColor = false;
-            this.btnblue.Click += new System.EventHandler(this.btnblue_Click);
+            this.btnblue.Click += new System.EventHandler(this.BtnblueClick);
             // 
             // btngreen
             // 
@@ -75,7 +75,7 @@
             this.btngreen.TabIndex = 2;
             this.btngreen.Text = "Green";
             this.btngreen.UseVisualStyleBackColor = false;
-            this.btngreen.Click += new System.EventHandler(this.btngreen_Click);
+            this.btngreen.Click += new System.EventHandler(this.BtngreenClick);
             // 
             // btnyellow
             // 
@@ -88,7 +88,7 @@
             this.btnyellow.TabIndex = 3;
             this.btnyellow.Text = "Yellow";
             this.btnyellow.UseVisualStyleBackColor = false;
-            this.btnyellow.Click += new System.EventHandler(this.btnyellow_Click);
+            this.btnyellow.Click += new System.EventHandler(this.BtnyellowClick);
             // 
             // button2
             // 
@@ -101,7 +101,7 @@
             this.button2.TabIndex = 4;
             this.button2.Text = "Eraser";
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.Button2Click);
             // 
             // button3
             // 
@@ -115,7 +115,7 @@
             this.button3.TabIndex = 5;
             this.button3.Text = "Black";
             this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.Button3Click);
             // 
             // button1
             // 
@@ -144,7 +144,6 @@
             this.Controls.Add(this.btnred);
             this.Name = "Scribblepad";
             this.Text = "Scribblepad";
-            this.Load += new System.EventHandler(this.Scribblepad_Load);
             this.ResumeLayout(false);
 
         }

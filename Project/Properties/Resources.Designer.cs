@@ -191,6 +191,15 @@ namespace Project.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to Comprehend Speech.
+        /// </summary>
+        internal static string NonComprehension {
+            get {
+                return ResourceManager.GetString("NonComprehension", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap p1 {
@@ -611,6 +620,15 @@ namespace Project.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Windows Speech Recogntion is currently not running.
+        /// </summary>
+        internal static string speechreconotrunning {
+            get {
+                return ResourceManager.GetString("speechreconotrunning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap thealienscamehome {
@@ -637,6 +655,24 @@ namespace Project.Properties {
             get {
                 object obj = ResourceManager.GetObject("title", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Well done.
+        /// </summary>
+        internal static string WellDone {
+            get {
+                return ResourceManager.GetString("WellDone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wrong, try again.
+        /// </summary>
+        internal static string Wrong {
+            get {
+                return ResourceManager.GetString("Wrong", resourceCulture);
             }
         }
     }

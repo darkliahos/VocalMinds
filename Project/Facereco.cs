@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+using NLog;
+using Project.Properties;
 using SpeechLib;
 using System.Windows.Forms;
 
@@ -12,32 +8,31 @@ namespace Project
 {
     public partial class Facerecognition : Form
     {
-        private SpeechLib.SpSharedRecoContext objRecoContext = null;
-        private SpeechLib.ISpeechRecoGrammar grammar = null;
-        private SpeechLib.ISpeechGrammarRule command = null;
-        string whatdidhesay;
-        int questiondone;
-        int totattmpts;
-        int correctans;
-        int therandomvalue;
-        string correctword;
+        private SpSharedRecoContext _objRecoContext;
+        private ISpeechRecoGrammar _grammar;
+        private ISpeechGrammarRule _command;
+        string _userResponse;
+        int _therandomvalue;
+        string _correctAnswer;
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+        
 
         public Facerecognition()
         {
             InitializeComponent();
-            displayfirsttime();
+            FirstTimeInitialiser();
         }
 
-        private void Hypo_Event(int StreamNumber, object StreamPosition, ISpeechRecoResult Result)
+        private void HypoEvent(int streamNumber, object streamPosition, ISpeechRecoResult result)
         {
             try
             {
-                whatdidhesay = Result.PhraseInfo.GetText(0, -1, true);//gets what ever the user said and puts it in a variable
-                //txtaids.Text = whatdidhesay;//TESTING PURPOSES
+                _userResponse = result.PhraseInfo.GetText();//gets what ever the user said and puts it in a variable
             }
-            catch (Exception eh)
+            catch (Exception error)
             {
-                MessageBox.Show("Program did understand what you just said!" + "\n" + eh);
+                Logger.ErrorException("HypoEvent Failure ",error);
+                MessageBox.Show(Resources.NonComprehension);
             }
         }
 
@@ -45,30 +40,31 @@ namespace Project
         {
             try
             {
-                objRecoContext = new SpeechLib.SpSharedRecoContext();
+                _objRecoContext = new SpSharedRecoContext();
                 // Assign a eventhandler for the Hypothesis Event.
-                objRecoContext.Hypothesis += new _ISpeechRecoContextEvents_HypothesisEventHandler(Hypo_Event);
+                _objRecoContext.Hypothesis += new _ISpeechRecoContextEvents_HypothesisEventHandler(HypoEvent);
                 // Assign a eventhandler for the Recognition Event.
                 //Creating an instance of the grammer object.
-                grammar = objRecoContext.CreateGrammar(0);
+                _grammar = _objRecoContext.CreateGrammar(0);
 
-                command = grammar.Rules.Add("MenuCommands", SpeechRuleAttributes.SRATopLevel | SpeechRuleAttributes.SRADynamic, 1);
+                _command = _grammar.Rules.Add("MenuCommands", SpeechRuleAttributes.SRATopLevel | SpeechRuleAttributes.SRADynamic, 1);
                 object PropValue = "";
-                command.InitialState.AddWordTransition(null, "happy", " ", SpeechGrammarWordType.SGLexical, "Happy", 1, ref PropValue, 1.0F);
+                _command.InitialState.AddWordTransition(null, "happy", " ", SpeechGrammarWordType.SGLexical, "Happy", 1, ref PropValue, 1.0F);
 
-                command.InitialState.AddWordTransition(null, "grumpy", " ", SpeechGrammarWordType.SGLexical, "Grumpy", 2, ref PropValue, 1.0F);
-                command.InitialState.AddWordTransition(null, "angry", " ", SpeechGrammarWordType.SGLexical, "angry", 3, ref PropValue, 1.0F);
-                command.InitialState.AddWordTransition(null, "bossy", " ", SpeechGrammarWordType.SGLexical, "bossy", 4, ref PropValue, 1.0F);
-                command.InitialState.AddWordTransition(null, "crazy", " ", SpeechGrammarWordType.SGLexical, "crazy", 5, ref PropValue, 1.0F);
-                command.InitialState.AddWordTransition(null, "upset", " ", SpeechGrammarWordType.SGLexical, "upset", 6, ref PropValue, 1.0F);
-                command.InitialState.AddWordTransition(null, "sad", " ", SpeechGrammarWordType.SGLexical, "sad", 7, ref PropValue, 1.0F);
-                command.InitialState.AddWordTransition(null, "excitement", " ", SpeechGrammarWordType.SGLexical, "excitement", 8, ref PropValue, 1.0F);
-                grammar.Rules.Commit();
-                grammar.CmdSetRuleState("MenuCommandORHs", SpeechRuleState.SGDSActive);
+                _command.InitialState.AddWordTransition(null, "grumpy", " ", SpeechGrammarWordType.SGLexical, "Grumpy", 2, ref PropValue, 1.0F);
+                _command.InitialState.AddWordTransition(null, "angry", " ", SpeechGrammarWordType.SGLexical, "angry", 3, ref PropValue, 1.0F);
+                _command.InitialState.AddWordTransition(null, "bossy", " ", SpeechGrammarWordType.SGLexical, "bossy", 4, ref PropValue, 1.0F);
+                _command.InitialState.AddWordTransition(null, "crazy", " ", SpeechGrammarWordType.SGLexical, "crazy", 5, ref PropValue, 1.0F);
+                _command.InitialState.AddWordTransition(null, "upset", " ", SpeechGrammarWordType.SGLexical, "upset", 6, ref PropValue, 1.0F);
+                _command.InitialState.AddWordTransition(null, "sad", " ", SpeechGrammarWordType.SGLexical, "sad", 7, ref PropValue, 1.0F);
+                _command.InitialState.AddWordTransition(null, "excitement", " ", SpeechGrammarWordType.SGLexical, "excitement", 8, ref PropValue, 1.0F);
+                _grammar.Rules.Commit();
+                _grammar.CmdSetRuleState("MenuCommandORHs", SpeechRuleState.SGDSActive);
             }
-            catch (Exception ok)
+            catch (Exception error)
             {
-                MessageBox.Show("You have not got Windows Speech Recogntion running! " + "\n" + "\n" + ok);
+                MessageBox.Show(Resources.speechreconotrunning);
+                Logger.ErrorException("Answer Module", error);
             }
             textBox1.Focus();
         }
@@ -76,100 +72,102 @@ namespace Project
         private int RandomGenerator(int min, int max)
         {
             Random random = new Random();
-            therandomvalue = random.Next(min, max);
-            return therandomvalue;
+            _therandomvalue = random.Next(min, max);
+            return _therandomvalue;
         }
 
-        public string readtextfromtextboxvistaalternate()
+        /// <summary>
+        /// Reads Value from textbox if speech recognition is not supported
+        /// </summary>
+        /// <returns></returns>
+        public string ReadFromTextBox()
         {
-            whatdidhesay = textBox1.Text;
-            return whatdidhesay;
+            _userResponse = textBox1.Text;
+            return _userResponse;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {                
-            readtextfromtextboxvistaalternate();
-            if (whatdidhesay == correctword)
+            ReadFromTextBox();
+            if (_userResponse == _correctAnswer)
             {
 
-                MessageBox.Show(correctword);
-                MessageBox.Show("Well done");
-                displayfirsttime();
+                MessageBox.Show(_correctAnswer);
+                MessageBox.Show(Resources.WellDone);
+                FirstTimeInitialiser();
             }
             else
             {
-                MessageBox.Show(correctword);
-                MessageBox.Show("Wrong, try again");
+                MessageBox.Show(_correctAnswer);
+                MessageBox.Show(Resources.Wrong);
             }
         }
-        public string picturechecker()
-    {
-            if (therandomvalue == 1)
-            {
-                pictureBox1.Image = Project.Properties.Resources.angryface;
-                correctword = "Angry";
 
-            }
-
-            else if (therandomvalue == 2)
+        public string Picturechecker()
+        {
+            //TODO: Refactor into a dictionary
+            if (_therandomvalue == 1)
             {
-                 pictureBox1.Image = Project.Properties.Resources.angryface2;
-                 correctword = "Angry";
+                FaceBox.Image = Resources.angryface;
+                _correctAnswer = "Angry";
             }
 
-            else if (therandomvalue == 3)
+            else if (_therandomvalue == 2)
             {
-                pictureBox1.Image = Project.Properties.Resources.confusedlook;
-                correctword = "Confused";
-            }
-            else if (therandomvalue == 4)
-            {
-                pictureBox1.Image = Project.Properties.Resources.sadface;
-                correctword = "Sad";
+                 FaceBox.Image = Resources.angryface2;
+                 _correctAnswer = "Angry";
             }
 
-            else if (therandomvalue == 5)
+            else if (_therandomvalue == 3)
             {
-                pictureBox1.Image = Project.Properties.Resources.scaredface;
-                correctword = "Scared";
+                FaceBox.Image = Resources.confusedlook;
+                _correctAnswer = "Confused";
             }
-            else if (therandomvalue == 6)
+            else if (_therandomvalue == 4)
             {
-                pictureBox1.Image = Project.Properties.Resources.happyface;
-                correctword = "Happy";
-            }
-
-            else if (therandomvalue == 7)
-            {
-                pictureBox1.Image = Project.Properties.Resources.happyface2;
-                correctword = "Happy";
+                FaceBox.Image = Resources.sadface;
+                _correctAnswer = "Sad";
             }
 
-                    return correctword;    
+            else if (_therandomvalue == 5)
+            {
+                FaceBox.Image = Resources.scaredface;
+                _correctAnswer = "Scared";
+            }
+            else if (_therandomvalue == 6)
+            {
+                FaceBox.Image = Resources.happyface;
+                _correctAnswer = "Happy";
+            }
+
+            else if (_therandomvalue == 7)
+            {
+                FaceBox.Image = Resources.happyface2;
+                _correctAnswer = "Happy";
+            }
+
+                    return _correctAnswer;    
     }
 
-        public void displayfirsttime()
+        public void FirstTimeInitialiser()
         {
             RandomGenerator(1, 7);
-            picturechecker();
+            Picturechecker();
             
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void BtnExitClick(object sender, EventArgs e)
         {
-
+            Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void BtnHelpClick(object sender, EventArgs e)
         {
-            this.Close();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Help hlpfrm = new Help();
+            var hlpfrm = new Help();
             hlpfrm.Show();
         }
+
+
 
     }
 }
