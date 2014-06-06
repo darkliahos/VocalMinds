@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.btnAnswer = new System.Windows.Forms.Button();
             this.BtnConfirm = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.BtnExit = new System.Windows.Forms.Button();
@@ -50,25 +49,12 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Face Recognition Quiz";
             // 
-            // btnAnswer
-            // 
-            this.btnAnswer.BackColor = System.Drawing.Color.DodgerBlue;
-            this.btnAnswer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAnswer.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAnswer.Location = new System.Drawing.Point(492, 580);
-            this.btnAnswer.Name = "btnAnswer";
-            this.btnAnswer.Size = new System.Drawing.Size(137, 67);
-            this.btnAnswer.TabIndex = 7;
-            this.btnAnswer.Text = "&Answer";
-            this.btnAnswer.UseVisualStyleBackColor = false;
-            this.btnAnswer.Click += new System.EventHandler(this.btnAnswer_Click);
-            // 
             // BtnConfirm
             // 
             this.BtnConfirm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.BtnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnConfirm.Location = new System.Drawing.Point(654, 580);
+            this.BtnConfirm.Location = new System.Drawing.Point(486, 580);
             this.BtnConfirm.Name = "BtnConfirm";
             this.BtnConfirm.Size = new System.Drawing.Size(137, 67);
             this.BtnConfirm.TabIndex = 8;
@@ -141,7 +127,6 @@
             this.Controls.Add(this.BtnExit);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.BtnConfirm);
-            this.Controls.Add(this.btnAnswer);
             this.Controls.Add(this.FaceBox);
             this.Controls.Add(this.label1);
             this.Name = "Facerecognition";
@@ -157,7 +142,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox FaceBox;
-        private System.Windows.Forms.Button btnAnswer;
         private System.Windows.Forms.Button BtnConfirm;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button BtnExit;

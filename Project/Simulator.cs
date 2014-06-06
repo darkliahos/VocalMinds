@@ -24,33 +24,14 @@ namespace Project
  * Added voice recognition
  * Added an array that calls parts of the simulation
  */
-    public partial class sim : Form
+    public partial class Simulator : Form
     {
-        private SpeechLib.SpSharedRecoContext objRecoContext;
-        private SpeechLib.ISpeechRecoGrammar grammar;
-        string whatdidhesay = "Say Something";
         //counter for the events
-        string count = "1";
+        string _placeHolder = "1";
 
-        public sim()
+        public Simulator()
         {
             InitializeComponent();
-        }
-
-
-
-        public void RecoContext_Recognition(int StreamNumber, object StreamPosition, SpeechRecognitionType RecognitionType, ISpeechRecoResult Result)
-        {
-            whatdidhesay = Result.PhraseInfo.GetText(0, -1, true);
-            Debug.WriteLine("Recognition: " + whatdidhesay + ", " + StreamNumber + ", " + StreamPosition);
-            wordbox.Text = whatdidhesay; 
-
-        }
-
-        private void btnwhatdidyousay_Click(object sender, EventArgs e)//repeats the command
-        {
-            //plays video again
-            axWindowsMediaPlayer1.Ctlcontrols.play();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -63,33 +44,33 @@ namespace Project
             //string path = @"%PATH%\vidicontent\happy.avi";
             //string path = Environment.CurrentDirectory + "\\happy.avi";
 
-            if(count=="1")
+            if(_placeHolder=="1")
             {
                 //play good morning video
                 //axWindowsMediaPlayer1.URL = @""+path+"";
                 axWindowsMediaPlayer1.URL = @"C:\projectvideos\hello.avi";
             }
-            else if (count == "2")
+            else if (_placeHolder == "2")
             {
                 //play what is your name video
                 axWindowsMediaPlayer1.URL = @"C:\projectvideos\whatisyourname.avi";
             }
-            else if (count == "3")
+            else if (_placeHolder == "3")
             {
                 axWindowsMediaPlayer1.URL = @"C:\projectvideos\nicename.avi";
             }
-            else if (count == "4")
+            else if (_placeHolder == "4")
             {
                 axWindowsMediaPlayer1.URL = @"C:\projectvideos\howareyoufeeling.avi";
             }
-            else if (count == "happy")
+            else if (_placeHolder == "happy")
             {
                 //play happy reaction video
                 axWindowsMediaPlayer1.URL = @"C:\projectvideos\happyresponse.avi";
                 
 
             }
-            else if (count == "sad")
+            else if (_placeHolder == "sad")
             {
                 axWindowsMediaPlayer1.URL = @"C:\projectvideos\sadresponse.avi";
             }
@@ -100,36 +81,36 @@ namespace Project
         private string wasiright()
         {
             string correctword = wordbox.Text; 
-            if (count == "1")
+            if (_placeHolder == "1")
             {
                 if(correctword =="Hello")
                 {
                     MessageBox.Show("Correct");
-                    count = "2";
+                    _placeHolder = "2";
                     wordbox.Text = "";
                 }
                     else if(correctword=="Good morning")
                     {
                         MessageBox.Show("Correct");
-                        count = "2";
+                        _placeHolder = "2";
                         wordbox.Text = "";
                     }
                 else if (correctword == "Good afternoon")
                 {
                     MessageBox.Show("Correct");
-                    count = "2";
+                    _placeHolder = "2";
                     wordbox.Text = "";
                 }
                 else if (correctword == "Good evening")
                 {
                     MessageBox.Show("Correct");
-                    count = "2";
+                    _placeHolder = "2";
                     wordbox.Text = "";
                 }
                 else if (correctword == "Hi")
                 {
                     MessageBox.Show("Correct");
-                    count = "2";
+                    _placeHolder = "2";
                     wordbox.Text = "";
                 }
                 
@@ -140,40 +121,40 @@ namespace Project
                 }
             }
 
-            else if (count == "2")
+            else if (_placeHolder == "2")
             {
                 MessageBox.Show("That is a nice name");
-                count = "3";
+                _placeHolder = "3";
                 wordbox.Text = "";
             }
-            else if (count == "3")
+            else if (_placeHolder == "3")
             {
                 MessageBox.Show("Thank you");
-                count = "4";
+                _placeHolder = "4";
                 wordbox.Text = "";
             }
-            else if (count == "4")
+            else if (_placeHolder == "4")
             {
                 if (correctword == "I am happy")
                 {
                     MessageBox.Show("Hooray!");
-                    count = "happy";
+                    _placeHolder = "happy";
                     wordbox.Text = "";
                 }
                 else if (correctword == "I am sad")
                 {
                     MessageBox.Show("Oh dear");
-                    count = "sad";
+                    _placeHolder = "sad";
                     wordbox.Text = "";
                 }
                 else if (correctword == "I am grumpy")
                 {
-                    count = "sad";
+                    _placeHolder = "sad";
                     wordbox.Text = "";
                 }
                 else if (correctword == "I am angry")
                 {
-                    count = "sad";
+                    _placeHolder = "sad";
                     wordbox.Text = "";
                 }
                 else
@@ -183,7 +164,7 @@ namespace Project
                 }
 
             }
-            else if (count == "happy")
+            else if (_placeHolder == "happy")
             {
                 if (correctword == "Draw")
                 {
@@ -198,7 +179,7 @@ namespace Project
                     story.Show();
                 }
             }
-            else if (count == "sad")
+            else if (_placeHolder == "sad")
             {
                 if (correctword == "Draw")
                 {
@@ -214,43 +195,12 @@ namespace Project
 
                 }
             }
-            return count;
-        }
-
-        private void btnwasiright_Click(object sender, EventArgs e)
-        {
-            wasiright();
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            try
-            {
-                grammar.DictationSetState(SpeechRuleState.SGDSInactive);
-            }
-            catch (Exception)
-            {
-            }
+            return _placeHolder;
         }
 
         private void button2_Click_1(object sender, EventArgs e)
         {
             wasiright();
-        }
-
-        private void sim_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void axWindowsMediaPlayer1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void button1_Click_2(object sender, EventArgs e)
@@ -264,34 +214,5 @@ namespace Project
             hlpfrm.Show();
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            //NOTE: This code is only needed for Windows XP service pack 2 & 3 only, This code is irrelevent for
-            //systems using Windows Vista and above
-
-            //This will not work for Windows XP service pack 1 or below, please see final report for an explanation
-
-            //code modified from an example showed by Suhel Survindas from C# Corner
-
-
-
-            try
-            {
-                if (objRecoContext == null)
-                {
-                    objRecoContext = new SpeechLib.SpSharedRecoContext();
-                    objRecoContext.Recognition += new _ISpeechRecoContextEvents_RecognitionEventHandler(RecoContext_Recognition);
-                    grammar = objRecoContext.CreateGrammar(1);
-                    grammar.DictationLoad("", SpeechLoadOption.SLOStatic);
-                }
-                grammar.DictationSetState(SpeechRuleState.SGDSActive);
-            }
-            catch (Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show("Problem initializing SAPI." + " This application may not run correctly.\r\n\r\n" + ex.ToString(), "Error");
-            }
-
-            wordbox.Focus();
-        }
     }
 }

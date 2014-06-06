@@ -40,7 +40,7 @@ namespace Project
         private void btnscrg_Click(object sender, EventArgs e)
         {
             //social simulator
-            sim frmsos = new sim();
+            Simulator frmsos = new Simulator();
             frmsos.Show();
         }
 

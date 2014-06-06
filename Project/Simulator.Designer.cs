@@ -1,6 +1,6 @@
 ﻿namespace Project
 {
-    partial class sim
+    partial class Simulator
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(sim));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Simulator));
             this.label1 = new System.Windows.Forms.Label();
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             this.btnstart = new System.Windows.Forms.Button();
@@ -40,17 +40,16 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Pericles", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(350, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(380, 47);
+            this.label1.Size = new System.Drawing.Size(302, 42);
             this.label1.TabIndex = 0;
             this.label1.Text = "Social Simulator";
             // 
@@ -62,14 +61,13 @@
             this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
             this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(793, 458);
             this.axWindowsMediaPlayer1.TabIndex = 9;
-            this.axWindowsMediaPlayer1.Enter += new System.EventHandler(this.axWindowsMediaPlayer1_Enter);
             // 
             // btnstart
             // 
             this.btnstart.BackColor = System.Drawing.Color.DodgerBlue;
             this.btnstart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnstart.Font = new System.Drawing.Font("Pericles", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnstart.Location = new System.Drawing.Point(99, 647);
+            this.btnstart.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnstart.Location = new System.Drawing.Point(230, 642);
             this.btnstart.Name = "btnstart";
             this.btnstart.Size = new System.Drawing.Size(137, 72);
             this.btnstart.TabIndex = 11;
@@ -79,18 +77,18 @@
             // 
             // wordbox
             // 
-            this.wordbox.Font = new System.Drawing.Font("Pericles", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.wordbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.wordbox.Location = new System.Drawing.Point(386, 580);
             this.wordbox.Name = "wordbox";
-            this.wordbox.Size = new System.Drawing.Size(298, 45);
+            this.wordbox.Size = new System.Drawing.Size(298, 40);
             this.wordbox.TabIndex = 0;
             // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.PaleGreen;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Pericles", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(447, 644);
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(418, 642);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(130, 72);
             this.button2.TabIndex = 15;
@@ -132,7 +130,7 @@
             // 
             this.button1.BackColor = System.Drawing.Color.Tomato;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Pericles", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(784, 643);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(127, 71);
@@ -144,10 +142,10 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Pericles", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(266, 583);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(114, 38);
+            this.label3.Size = new System.Drawing.Size(87, 33);
             this.label3.TabIndex = 27;
             this.label3.Text = "Input:";
             // 
@@ -155,8 +153,8 @@
             // 
             this.button3.BackColor = System.Drawing.Color.Thistle;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Pericles", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(614, 644);
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(600, 641);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(130, 73);
             this.button3.TabIndex = 28;
@@ -164,26 +162,12 @@
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Pericles", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(273, 647);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(137, 72);
-            this.button4.TabIndex = 29;
-            this.button4.Text = "Answer";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // sim
+            // Simulator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SkyBlue;
             this.ClientSize = new System.Drawing.Size(1008, 762);
-            this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
@@ -196,9 +180,8 @@
             this.Controls.Add(this.axWindowsMediaPlayer1);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.Name = "sim";
+            this.Name = "Simulator";
             this.Text = "outinthepark";
-            this.Load += new System.EventHandler(this.sim_Load);
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -218,6 +201,5 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
     }
 }
