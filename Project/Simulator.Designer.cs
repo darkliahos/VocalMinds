@@ -1,4 +1,4 @@
-﻿namespace Project
+﻿namespace VC_Main
 {
     partial class Simulator
     {

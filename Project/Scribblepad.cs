@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Drawing;
-using System.Drawing.Drawing2D;//imports drawing library (for the 2D drawing stuff)
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+//imports drawing library (for the 2D drawing stuff)
 
-namespace Project
+namespace VC_Main
 {
     public partial class Scribblepad : Form
     {

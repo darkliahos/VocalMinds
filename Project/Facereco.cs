@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using NLog;
-using Project.Properties;
-using SpeechLib;
 using System.Windows.Forms;
+using VC_Main.Properties;
+using VM_Model;
 
-namespace Project
+namespace VC_Main
 {
     public partial class Facerecognition : Form
     {
@@ -14,14 +14,14 @@ namespace Project
         int _therandomvalue;
         string _correctAnswer;
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
-        private readonly List<FaceRecognition> _faceRecognitions;
-        
+        private readonly List<FaceRecognitionScenario> _faceRecognitions;
 
-        public Facerecognition()
+
+        public Facerecognition(List<FaceRecognitionScenario> recognition)
         {
+            _faceRecognitions = recognition;
             InitializeComponent();
             SharedSpeechDictionary.InitaliseSpeechObject();
-            _faceRecognitions = new List<FaceRecognition>();
             PopulateFaceRecognition();
             FirstTimeInitialiser();
         }
@@ -59,24 +59,24 @@ namespace Project
 
         private void PopulateFaceRecognition()
         {
-            _faceRecognitions.Add(new FaceRecognition(1, "Angry", Resources.angryface));
-            _faceRecognitions.Add(new FaceRecognition(2, "Angry", Resources.angryface2));
-            _faceRecognitions.Add(new FaceRecognition(3, "Confused", Resources.confusedlook));
-            _faceRecognitions.Add(new FaceRecognition(4, "Sad", Resources.sadface));
-            _faceRecognitions.Add(new FaceRecognition(5, "Scared", Resources.scaredface));
-            _faceRecognitions.Add(new FaceRecognition(6, "Happy", Resources.happyface));
-            _faceRecognitions.Add(new FaceRecognition(7, "Happy", Resources.happyface2));
+            _faceRecognitions.Add(new FaceRecognitionScenario(Guid.Parse("53f0fad0-46ed-417d-b0ae-f45adf29fd15"), "Angry", Resources.angryface));
+            _faceRecognitions.Add(new FaceRecognitionScenario(Guid.Parse("05c9d8df-6e1b-4db0-998e-b4122566eda5"), "Angry", Resources.angryface2));
+            _faceRecognitions.Add(new FaceRecognitionScenario(Guid.Parse("0e148757-d925-4235-9047-46dd6f1b0e65"), "Confused", Resources.confusedlook));
+            _faceRecognitions.Add(new FaceRecognitionScenario(Guid.Parse("f061eede-b1d2-46ff-b42a-210c393cfa4f"), "Sad", Resources.sadface));
+            _faceRecognitions.Add(new FaceRecognitionScenario(Guid.Parse("65abb15c-9c45-40bd-9183-4aafbaf55463"), "Scared", Resources.scaredface));
+            _faceRecognitions.Add(new FaceRecognitionScenario(Guid.Parse("dba59b88-c6b4-4a74-b81d-e2812c81200f"), "Happy", Resources.happyface));
+            _faceRecognitions.Add(new FaceRecognitionScenario(Guid.Parse("b7825e94-7149-42fb-870e-4e26292756fa"), "Happy", Resources.happyface2));
         }
 
 
-
+        //TODO Rewrite this logic to match new types
         public void Picturechecker()
         {
-            FaceRecognition faceResult = _faceRecognitions.FirstOrDefault(item => item.Id == _therandomvalue);
+            FaceRecognitionScenario faceResult = _faceRecognitions.FirstOrDefault(item => item.Answer == "");
             if(faceResult != null)
             {
-                FaceBox.Image = faceResult.ImageAssociated;
-                _correctAnswer = faceResult.Emotion;
+                FaceBox.Image = faceResult.Image;
+                _correctAnswer = faceResult.Answer;
             }
             else
             {

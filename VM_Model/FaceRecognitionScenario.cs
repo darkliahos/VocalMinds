@@ -10,6 +10,13 @@ namespace VM_Model
 {
     public class FaceRecognitionScenario
     {
+        public FaceRecognitionScenario(Guid id, string answer, Image image)
+        {
+            Image = image;
+            Answer = answer;
+            Id = id;
+        }
+
         public Guid Id { get; set; }
 
         public Image Image { get; set; }

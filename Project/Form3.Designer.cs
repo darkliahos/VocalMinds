@@ -1,4 +1,4 @@
-﻿namespace Project
+﻿namespace VC_Main
 {
     partial class StoryForm
     {
@@ -104,8 +104,8 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.ErrorImage = global::Project.Properties.Resources.title;
-            this.pictureBox2.Image = global::Project.Properties.Resources.title;
+            this.pictureBox2.ErrorImage = global::VC_Main.Properties.Resources.title;
+            this.pictureBox2.Image = global::VC_Main.Properties.Resources.title;
             this.pictureBox2.Location = new System.Drawing.Point(652, 49);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(600, 600);
@@ -114,7 +114,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Project.Properties.Resources.title;
+            this.pictureBox1.Image = global::VC_Main.Properties.Resources.title;
             this.pictureBox1.Location = new System.Drawing.Point(16, 49);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(600, 600);

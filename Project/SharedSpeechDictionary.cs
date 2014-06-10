@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using NLog;
-using NLog.Conditions;
 using SpeechLib;
 
-namespace Project
+namespace VC_Main
 {
     public static class SharedSpeechDictionary
     {

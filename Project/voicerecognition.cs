@@ -1,19 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using SpeechLib;
+
 /*
  * THINGS TO DO Code needs to be optomised a tad, some entities are irrelevent 
  * Add more expressions
  * Add some voices
  * Add Array System
  */ 
-namespace Project
+namespace VC_Main
 {
 
     public partial class voicerecognition : Form
