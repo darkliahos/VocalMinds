@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using NLog;
 using System.Windows.Forms;
-using VC_Main.Properties;
+using VM_Main.Properties;
 using VM_Model;
 
-namespace VC_Main
+namespace VM_Main
 {
     public partial class Facerecognition : Form
     {

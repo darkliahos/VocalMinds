@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Speech.Synthesis;
 
-namespace VC_Main
+namespace VM_Main
 {
     /*
      * TODO: Find a way of adding more stories
@@ -43,13 +43,13 @@ namespace VC_Main
             }
             if (pageopen == 2)
             {
-                SetupPages("They one day decided to go out for a walk in the park.", VC_Main.Properties.Resources.p3, true);
-                SetupPages("They left their house unlocked by accident", VC_Main.Properties.Resources.p4, false);
+                SetupPages("They one day decided to go out for a walk in the park.", Properties.Resources.p3, true);
+                SetupPages("They left their house unlocked by accident", Properties.Resources.p4, false);
             }
             if (pageopen ==3)
             {
-                SetupPages("There was a little girl called Goldie who came from the " + "\n" + "planet Earth.", VC_Main.Properties.Resources.p5, true);
-                SetupPages("She had just arrived to the moon and was" + "\n" + "really tired and hungry.", VC_Main.Properties.Resources.p6, false);
+                SetupPages("There was a little girl called Goldie who came from the " + "\n" + "planet Earth.", Properties.Resources.p5, true);
+                SetupPages("She had just arrived to the moon and was" + "\n" + "really tired and hungry.", Properties.Resources.p6, false);
             }
             if (pageopen == 4)
             {

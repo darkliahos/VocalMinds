@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 using NLog;
 using SpeechLib;
 
-namespace VC_Main
+namespace VM_Main
 {
     public static class SharedSpeechDictionary
     {

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project", "Project\Project.csproj", "{3466077E-F00F-4C9B-A0E8-D326A92C2DF2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VM_Main", "Project\VM_Main.csproj", "{3466077E-F00F-4C9B-A0E8-D326A92C2DF2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VM_Model", "VM_Model\VM_Model.csproj", "{B951F2D6-AD67-4485-87DF-33E25AF7CBFB}"
 EndProject

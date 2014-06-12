@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace VC_Main
+namespace VM_Main
 {
     /*TODO
      * Find out where the hell did the HTML Help go?

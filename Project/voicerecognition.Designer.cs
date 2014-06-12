@@ -1,4 +1,4 @@
-﻿namespace VC_Main
+﻿namespace VM_Main
 {
     partial class voicerecognition
     {

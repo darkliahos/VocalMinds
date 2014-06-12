@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
+using VM_Model;
 
-namespace VC_Main
+namespace VM_Main
 {
     /* TODO
      * Complete Redo here, the main menu looks ugly
@@ -16,8 +18,9 @@ namespace VC_Main
 
         private void btnstartface_Click(object sender, EventArgs e)
         {
-            Facerecognition frmone = new Facerecognition();
-            frmone.Show();
+            List<FaceRecognitionScenario> fce = new List<FaceRecognitionScenario>();
+            Facerecognition faceReco = new Facerecognition(fce);
+            faceReco.Show();
         }
 
         private void btnvoicetones_Click(object sender, EventArgs e)

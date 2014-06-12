@@ -1,4 +1,4 @@
-﻿namespace VC_Main
+﻿namespace VM_Main
 {
     partial class Facerecognition
     {
@@ -109,7 +109,7 @@
             // 
             // FaceBox
             // 
-            this.FaceBox.Image = global::VC_Main.Properties.Resources.scaredface;
+            this.FaceBox.Image = global::VM_Main.Properties.Resources.scaredface;
             this.FaceBox.Location = new System.Drawing.Point(109, 82);
             this.FaceBox.Name = "FaceBox";
             this.FaceBox.Size = new System.Drawing.Size(602, 483);

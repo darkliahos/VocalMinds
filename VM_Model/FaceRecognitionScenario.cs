@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 using System.Linq;
 using System.Net.Mime;
@@ -17,14 +18,22 @@ namespace VM_Model
             Id = id;
         }
 
+        public FaceRecognitionScenario()
+        {
+            
+        }
+
         public Guid Id { get; set; }
 
+        [Required]
         public Image Image { get; set; }
 
+        [Required, MaxLength(20)]
         public string Answer { get; set; }
 
         public string CopyrightDisclaimer { get; set; }
 
+        [Required]
         public string Author { get; set; }
 
 

@@ -8,7 +8,7 @@ using SpeechLib;
  * Add some voices
  * Add Array System
  */ 
-namespace VC_Main
+namespace VM_Main
 {
 
     public partial class voicerecognition : Form
