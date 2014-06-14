@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using System.Speech.Recognition;
 using NLog;
 using SpeechLib;
 
@@ -35,7 +36,15 @@ namespace VM_Main
                         XPSpeechMode();
                         break;
                     case 6:
-                        VistaSpeechMode();
+                        if (osInfo.Version.Minor == 0)
+                        {
+                            VistaSpeechMode();
+                        }
+                        else
+                        {
+                            SevenPlusMode();
+                        }
+
                         break;
                     default:
                         throw new NotSupportedException("Currently Supported for Windows XP, Vista & 7 Only");
@@ -45,6 +54,31 @@ namespace VM_Main
             {
                 throw new NotSupportedException("Speech is not supported on running OS");
             }
+        }
+
+        private static void SevenPlusMode()
+        {
+            using (var recognizer = new SpeechRecognitionEngine(new System.Globalization.CultureInfo("en-US")))
+            {
+
+                // Create and load a dictation grammar.
+                recognizer.LoadGrammar(new DictationGrammar());
+
+                // Add a handler for the speech recognized event.
+                recognizer.SpeechRecognized +=
+                    new EventHandler<SpeechRecognizedEventArgs>(recognizer_SpeechRecognized);
+
+                // Configure input to the speech recognizer.
+                recognizer.SetInputToDefaultAudioDevice();
+
+                // Start asynchronous, continuous speech recognition.
+                recognizer.RecognizeAsync(RecognizeMode.Multiple);
+            }
+        }
+
+        private static void recognizer_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
+        {
+            Translated = e.Result.Text;
         }
 
         /// <summary>
