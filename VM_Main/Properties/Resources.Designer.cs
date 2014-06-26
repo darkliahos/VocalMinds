@@ -182,6 +182,26 @@ namespace VM_Main.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap guessexpressiongamebutton {
+            get {
+                object obj = ResourceManager.GetObject("guessexpressiongamebutton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap guessthatvoice {
+            get {
+                object obj = ResourceManager.GetObject("guessthatvoice", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap happyface {
             get {
                 object obj = ResourceManager.GetObject("happyface", resourceCulture);
@@ -624,6 +644,16 @@ namespace VM_Main.Properties {
         internal static System.Drawing.Bitmap scaredface {
             get {
                 object obj = ResourceManager.GetObject("scaredface", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap socialgamebutton {
+            get {
+                object obj = ResourceManager.GetObject("socialgamebutton", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
