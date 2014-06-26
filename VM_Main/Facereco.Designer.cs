@@ -43,7 +43,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Yellow;
-            this.label1.Location = new System.Drawing.Point(12, 26);
+            this.label1.Location = new System.Drawing.Point(213, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(388, 39);
             this.label1.TabIndex = 5;
@@ -54,18 +54,18 @@
             this.BtnConfirm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.BtnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnConfirm.Location = new System.Drawing.Point(486, 580);
+            this.BtnConfirm.Location = new System.Drawing.Point(489, 580);
             this.BtnConfirm.Name = "BtnConfirm";
             this.BtnConfirm.Size = new System.Drawing.Size(137, 67);
             this.BtnConfirm.TabIndex = 8;
-            this.BtnConfirm.Text = "&Confirm";
+            this.BtnConfirm.Text = "&Answer";
             this.BtnConfirm.UseVisualStyleBackColor = false;
             this.BtnConfirm.Click += new System.EventHandler(this.BtnConfirmClick);
             // 
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(179, 593);
+            this.textBox1.Location = new System.Drawing.Point(165, 588);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(258, 44);
             this.textBox1.TabIndex = 0;
@@ -110,9 +110,9 @@
             // FaceBox
             // 
             this.FaceBox.Image = global::VM_Main.Properties.Resources.scaredface;
-            this.FaceBox.Location = new System.Drawing.Point(109, 82);
+            this.FaceBox.Location = new System.Drawing.Point(105, 68);
             this.FaceBox.Name = "FaceBox";
-            this.FaceBox.Size = new System.Drawing.Size(602, 483);
+            this.FaceBox.Size = new System.Drawing.Size(606, 497);
             this.FaceBox.TabIndex = 6;
             this.FaceBox.TabStop = false;
             // 

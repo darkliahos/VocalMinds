@@ -107,7 +107,6 @@
     <Compile Include="Scribblepad.Designer.cs">
       <DependentUpon>Scribblepad.cs</DependentUpon>
     </Compile>
-    <Compile Include="SharedSpeechDictionary.cs" />
     <Compile Include="story.cs">
       <SubType>Form</SubType>
     </Compile>
