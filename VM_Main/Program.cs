@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using VMUtils;
 
 namespace VM_Main
 {
@@ -13,7 +14,7 @@ namespace VM_Main
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainMenu());
+            Application.Run(new MainMenu(new Importer()));
         }
     }
 }

@@ -125,6 +125,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="scenarios.js" />
     <None Include="Resources\guessthatvoice.png" />
     <None Include="Resources\socialgamebutton.png" />
     <None Include="Resources\guessexpressiongamebutton.png" />

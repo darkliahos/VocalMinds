@@ -14,29 +14,50 @@ namespace VM_Main
     public partial class MainMenu : Form
     {
         private readonly FileProcessor _fileProcessor;
-        private readonly Importer _importer;
+        private readonly IImporter _importer;
+        private List<FaceRecognitionScenario> frs;
 
-        public MainMenu()
+        public MainMenu(IImporter importer)
         {
             InitializeComponent();
-            _fileProcessor = new FileProcessor(_importer, "");
-            Task<bool> sucessfulLoading = LoadTasks();
+            _importer = importer;
+            if (Convert.ToBoolean(System.Configuration.ConfigurationSettings.AppSettings["LoadScenarios"]))
+            {
+                string path = System.Configuration.ConfigurationSettings.AppSettings["PathOutput"].ToString();
+                _fileProcessor = new FileProcessor(_importer, path);
+                Task<bool> sucessfulLoading = LoadTasks();
 
-
-
+                if (!sucessfulLoading.Result)
+                {
+                    MessageBox.Show("File Load failed");
+                }
+            }
         }
 
         private async Task<bool> LoadTasks()
         {
-            List<FaceRecognitionScenario> frs = await Task.FromResult<List<FaceRecognitionScenario>>(_fileProcessor.GetImportedFRScenariosFromFile());
-            Task.WaitAll();
-            return true;
+            try
+            {
+                frs =
+                    await
+                    Task.FromResult<List<FaceRecognitionScenario>>(_fileProcessor.GetImportedFRScenariosFromFile());
+                Task.WaitAll();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         private void btnstartface_Click(object sender, EventArgs e)
         {
-            List<FaceRecognitionScenario> fce = new List<FaceRecognitionScenario>();
-            Facerecognition faceReco = new Facerecognition(fce);
+            if(frs == null)
+            {
+                frs = new List<FaceRecognitionScenario>();
+            }
+            
+            Facerecognition faceReco = new Facerecognition(frs);
             faceReco.Show();
         }
 
@@ -44,11 +65,6 @@ namespace VM_Main
         {
             voicerecognition frmvce = new voicerecognition();
             frmvce.Show();
-        }
-
-        private void btnexit_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void btnscrg_Click(object sender, EventArgs e)
