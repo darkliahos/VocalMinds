@@ -1,6 +1,6 @@
 ﻿namespace VM_Main
 {
-    partial class voicerecognition
+    partial class Voicerecognition
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(voicerecognition));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Voicerecognition));
             this.btntalk = new System.Windows.Forms.Button();
             this.txtsaid = new System.Windows.Forms.TextBox();
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
@@ -94,7 +94,6 @@
             this.label1.Size = new System.Drawing.Size(454, 41);
             this.label1.TabIndex = 11;
             this.label1.Text = "Voice Recogntion Quiz";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // button2
             // 
@@ -160,7 +159,7 @@
             this.Controls.Add(this.axWindowsMediaPlayer1);
             this.Controls.Add(this.txtsaid);
             this.Controls.Add(this.btntalk);
-            this.Name = "voicerecognition";
+            this.Name = "Voicerecognition";
             this.Text = "voicerecognition";
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
             this.ResumeLayout(false);

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 using VM_Model;
 
 namespace VMUtils
@@ -22,16 +17,26 @@ namespace VMUtils
             return _jsonSerialiser.Serialise(importedScenarios);
         }
 
+        /// <summary>
+        /// Load File Based On Path Given
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public ImportedScenarios LoadFile(string path)
         {
-            string readOutput = "";
-            using (StreamReader streamReader = new StreamReader(path))
+            string readOutput;
+            using (var streamReader = new StreamReader(path))
             {
                 readOutput = streamReader.ReadToEnd();
             }
             return StringToImportedScenarios(readOutput);
         }
 
+        /// <summary>
+        /// Designed to Load a JSON string into an imported Scenarios object
+        /// </summary>
+        /// <param name="jsonString"></param>
+        /// <returns></returns>
         public ImportedScenarios StringToImportedScenarios(string jsonString)
         {
             return _jsonSerialiser.DeSerialise(jsonString);

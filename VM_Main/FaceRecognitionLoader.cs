@@ -20,7 +20,7 @@ namespace VM_Main
         /// </summary>
         /// <param name="importedScenarios">A list of imported Scenarios</param>
         /// <returns></returns>
-        public Dictionary<int, FaceRecognitionScenario> PopulateFaceRecognition(List<FaceRecognitionScenario> importedScenarios)
+        public Dictionary<int, FaceRecognitionScenario> PopulateFaceRecognitionScenarios(List<FaceRecognitionScenario> importedScenarios)
         {
             var faceRecognitions = new Dictionary<int, FaceRecognitionScenario>();
             try
@@ -49,12 +49,6 @@ namespace VM_Main
             }
 
             return faceRecognitions;
-        }
-
-        public int RandomGenerator(int min, int max)
-        {
-            var random = new Random();
-            return random.Next(min, max);
         }
     }
 }

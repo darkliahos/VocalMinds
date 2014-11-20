@@ -18,22 +18,22 @@ namespace VM_Main
         public Facerecognition(List<FaceRecognitionScenario> recognition)
         {
             InitializeComponent();
-            _faceRecognitions = _frc.PopulateFaceRecognition(recognition);
-            LoadScenario(_frc.RandomGenerator(1, _faceRecognitions.Count));
+            _faceRecognitions = _frc.PopulateFaceRecognitionScenarios(recognition);
+            LoadScenario(LoaderTools.RandomGenerator(1, _faceRecognitions.Count));
         }
 
         private void Talk()
         {
             var recognizer = new SpeechRecognitionEngine();
             Grammar dictationGrammar = new DictationGrammar();
-            BtnConfirm.Text = "Speak Now";
+            BtnConfirm.Text = Resources.Facerecognition_Talk_Speak_Now;
             recognizer.LoadGrammar(dictationGrammar);
             try
             {
                 recognizer.SetInputToDefaultAudioDevice();
-                for(int i = 0; i <1;)
+                for(var i = 0; i <1;)
                 {
-                    RecognitionResult result = recognizer.Recognize();
+                    var result = recognizer.Recognize();
                     if (result.Text != "")
                     {
                         SucessfulRecognition(result.Text);
@@ -54,12 +54,12 @@ namespace VM_Main
 
         private void SucessfulRecognition(string speechResult)
         {
-            BtnConfirm.Text = "Answer";
+            BtnConfirm.Text = Resources.Facerecognition_SucessfulRecognition_Answer;
             textBox1.Text = speechResult;
             if (speechResult == _correctAnswer)
             {
                 MessageBox.Show(Resources.WellDone);
-                LoadScenario(_frc.RandomGenerator(1, _faceRecognitions.Count));
+                LoadScenario(LoaderTools.RandomGenerator(1, _faceRecognitions.Count));
                 textBox1.Text = "";
             }
             else
@@ -85,8 +85,8 @@ namespace VM_Main
             }
             else
             {
-                MessageBox.Show(Resources.GeneratorFault);
-                Logger.Debug(string.Format("Random Generator Faulted: {0}", index));
+                MessageBox.Show(Resources.Facerecognition_LoadScenario_Scenario_Load_Failed);
+                Logger.Debug(string.Format("Scenario Loader Faulted on {0}", index));
             }
         }
 

@@ -15,7 +15,8 @@ namespace VM_Main
     {
         private readonly FileProcessor _fileProcessor;
         private readonly IImporter _importer;
-        private List<FaceRecognitionScenario> frs;
+        private List<FaceRecognitionScenario> _frs;
+        private List<VoiceRecognitionScenario> _vrs;
 
         public MainMenu(IImporter importer)
         {
@@ -38,7 +39,7 @@ namespace VM_Main
         {
             try
             {
-                frs =
+                _frs =
                     await
                     Task.FromResult<List<FaceRecognitionScenario>>(_fileProcessor.GetImportedFRScenariosFromFile());
                 Task.WaitAll();
@@ -52,18 +53,22 @@ namespace VM_Main
 
         private void btnstartface_Click(object sender, EventArgs e)
         {
-            if(frs == null)
+            if(_frs == null)
             {
-                frs = new List<FaceRecognitionScenario>();
+                _frs = new List<FaceRecognitionScenario>();
             }
             
-            Facerecognition faceReco = new Facerecognition(frs);
+            Facerecognition faceReco = new Facerecognition(_frs);
             faceReco.Show();
         }
 
         private void btnvoicetones_Click(object sender, EventArgs e)
         {
-            voicerecognition frmvce = new voicerecognition();
+            if (_vrs == null)
+            {
+                _vrs = new List<VoiceRecognitionScenario>();
+            }
+            Voicerecognition frmvce = new Voicerecognition(_vrs);
             frmvce.Show();
         }
 

@@ -1,30 +1,57 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
+using NLog;
 using SpeechLib;
-
 /*
  * THINGS TO DO Code needs to be optomised a tad, some entities are irrelevent 
  * Add more expressions
  * Add some voices
  * Add Array System
- */ 
+ */
+using VM_Main.Properties;
+using VM_Model;
+
 namespace VM_Main
 {
 
-    public partial class voicerecognition : Form
+    public partial class Voicerecognition : Form
     {
-        private SpeechLib.SpSharedRecoContext objRecoContext = null;
-        private SpeechLib.ISpeechRecoGrammar grammar = null;
-        private SpeechLib.ISpeechGrammarRule command = null;
-        string whatdidhesay;
-        string playsound;
-        string thecorrectword = "three";
+        string _correctAnswer;
+        string _playsound;
+
+        private SpSharedRecoContext objRecoContext = null;
+        private ISpeechRecoGrammar grammar = null;
+        private ISpeechGrammarRule command = null;
+        string _userAnswer;
+
+        
         int therandomvalue=4;
         int runcount = 1;
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+        private readonly Dictionary<int, VoiceRecognitionScenario> _voiceRecognitions = new Dictionary<int, VoiceRecognitionScenario>();
+        readonly VoiceRecognitionLoader _vrc = new VoiceRecognitionLoader(Logger);
 
-        public voicerecognition()
+        public Voicerecognition(List<VoiceRecognitionScenario> recognition)
         {
             InitializeComponent();
+            _voiceRecognitions = _vrc.PopulateVoiceRecognitionScenarios(recognition);
+            LoadScenario(LoaderTools.RandomGenerator(1, _voiceRecognitions.Count));
+        }
+
+        private void LoadScenario(int index)
+        {
+            VoiceRecognitionScenario voiceResult;
+            if (_voiceRecognitions.TryGetValue(index, out voiceResult))
+            {
+                _playsound = voiceResult.AudioPath;
+                _correctAnswer = voiceResult.Answer;
+            }
+            else
+            {
+                MessageBox.Show(Resources.Facerecognition_LoadScenario_Scenario_Load_Failed);
+                Logger.Debug(string.Format("Scenario Loader Faulted on {0}", index));
+            }
         }
 
         private void btntalk_Click(object sender, EventArgs e)
@@ -34,7 +61,7 @@ namespace VM_Main
             try
             {
                
-                objRecoContext = new SpeechLib.SpSharedRecoContext();
+                objRecoContext = new SpSharedRecoContext();
                 // Assign a eventhandler for the Hypothesis Event.
                 objRecoContext.Hypothesis += new _ISpeechRecoContextEvents_HypothesisEventHandler(Hypo_Event);
                 // Assign a eventhandler for the Recognition Event.
@@ -63,8 +90,8 @@ namespace VM_Main
         private void Hypo_Event(int StreamNumber, object StreamPosition, ISpeechRecoResult Result)
         {
             try{
-                whatdidhesay = Result.PhraseInfo.GetText(0, -1, true);//gets what ever the user said and puts it in a variable
-            txtsaid.Text = whatdidhesay;//TESTING PURPOSES
+                _userAnswer = Result.PhraseInfo.GetText(0, -1, true);//gets what ever the user said and puts it in a variable
+            txtsaid.Text = _userAnswer;//TESTING PURPOSES
             }
                 catch(Exception eh)
             {
@@ -74,205 +101,13 @@ namespace VM_Main
 
         private void btnstart_Click(object sender, EventArgs e)
         {
-            voicechecker();
-            axWindowsMediaPlayer1.URL = playsound;
+            axWindowsMediaPlayer1.URL = _playsound;
             axWindowsMediaPlayer1.Ctlcontrols.play();
-        }
-
-        public void isitright()
-        {
-            readtextfromtextboxvistaalternate();
-            if (whatdidhesay == thecorrectword)
-            {
-                MessageBox.Show("Correct");
-                RandomGenerator(1, 15);
-
-            }
-            else
-            {
-                MessageBox.Show("Wrong");
-            }
-        }
-
-
-        private int RandomGenerator(int min, int max)
-        {
-            Random random = new Random();
-            therandomvalue = random.Next(min, max);
-            return therandomvalue;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            answerchecker();
-            isitright();
-            txtsaid.Text = "";
 
-        }
-        private void runcountchecker()
-        {
-            if (runcount == 1)
-            {
-                RandomGenerator(1, 15);
-
-            }
-            else
-            {
-            }
-        }
-
-        public string readtextfromtextboxvistaalternate()
-        {
-            whatdidhesay = txtsaid.Text;
-            return whatdidhesay;
-        }
-
-        public string voicechecker()
-        {
-            if (therandomvalue == 1)
-            {
-                playsound = @"C:\projectaudio\Voicegame\1.wma";
-            }
-            else if (therandomvalue == 2)
-            {
-                playsound = @"C:\projectaudio\Voicegame\2.wma";
-            }
-            else if (therandomvalue == 3)
-            {
-                playsound = @"C:\projectaudio\Voicegame\3.wma";
-            }
-            else if (therandomvalue == 4)
-            {
-                playsound = @"C:\projectaudio\Voicegame\4.wma";
-            }
-            else if (therandomvalue == 5)
-            {
-                playsound = @"C:\projectaudio\Voicegame\5.wma";
-            }
-            else if (therandomvalue == 6)
-            {
-                playsound = @"C:\projectaudio\Voicegame\6.wma";
-
-            }
-            else if (therandomvalue == 7)
-            {
-                playsound = @"C:\projectaudio\Voicegame\7.wma";
-            }
-            else if (therandomvalue == 8)
-            {
-                playsound = @"C:\projectaudio\Voicegame\8.wma";
-            }
-            else if (therandomvalue == 9)
-            {
-                playsound = @"C:\projectaudio\Voicegame\9.wma";
-            }
-            else if (therandomvalue == 10)
-            {
-                playsound = @"C:\projectaudio\Voicegame\10.wma";
-
-            }
-            else if (therandomvalue == 11)
-            {
-                playsound = @"C:\projectaudio\Voicegame\11.wma";
-            }
-            else if (therandomvalue == 12)
-            {
-                playsound = @"C:\projectaudio\Voicegame\12.wma";
-            }
-            else if (therandomvalue == 13)
-            {
-                playsound = @"C:\projectaudio\Voicegame\13.wma";
-            }
-            else if (therandomvalue == 14)
-            {
-                playsound = @"C:\projectaudio\Voicegame\14.wma";
-
-
-            }
-            else if (therandomvalue == 15)
-            {
-                playsound = @"C:\projectaudio\Voicegame\15.wma";
-
-            }
-            return playsound;
-        }
-
-        public string answerchecker()
-        {
-            if (therandomvalue == 1)
-            {
-
-                thecorrectword = "Cross";
-            }
-            else if (therandomvalue == 2)
-            {
-
-                thecorrectword = "Mean";
-            }
-            else if (therandomvalue == 3)
-            {
-
-                thecorrectword = "Shocked";
-            }
-            else if (therandomvalue == 4)
-            {
-
-                thecorrectword = "Happy";
-            }
-            else if (therandomvalue == 5)
-            {
-
-                thecorrectword = "Sad";
-            }
-            else if (therandomvalue == 6)
-            {
-                thecorrectword = "Worried";
-
-            }
-            else if (therandomvalue == 7)
-            {
-
-                thecorrectword = "Upset";
-            }
-            else if (therandomvalue == 8)
-            {
-                thecorrectword = "Happy";
-            }
-            else if (therandomvalue == 9)
-            {
-                thecorrectword = "Sad";
-            }
-            else if (therandomvalue == 10)
-            {
-                thecorrectword = "Angry";
-
-            }
-            else if (therandomvalue == 11)
-            {
-                thecorrectword = "Worried";
-            }
-            else if (therandomvalue == 12)
-            {
-                thecorrectword = "Embarrassed";
-            }
-            else if (therandomvalue == 13)
-            {
-                thecorrectword = "Laughing";
-            }
-            else if (therandomvalue == 14)
-            {
-                thecorrectword = "Annoyed";
-
-            }
-            else if (therandomvalue == 15)
-            {
-                thecorrectword = "Cross";
-            }
-            return thecorrectword;
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
 
         }
 
@@ -284,7 +119,7 @@ namespace VM_Main
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
     }
