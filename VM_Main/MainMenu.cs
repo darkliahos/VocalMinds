@@ -21,7 +21,7 @@ namespace VM_Main
             InitializeComponent();
             _importer = importer;
             _configuration = configuration;
-            if (Convert.ToBoolean(_configuration.ReadSetting("LoadScenarios")))
+            if (_configuration.ReadBooleanSetting("LoadScenarios"))
             {
                 string path = _configuration.ReadSetting("PathOutput");
                 _fileProcessor = new FileProcessor(_importer, path);
@@ -57,7 +57,7 @@ namespace VM_Main
                 _frs = new List<FaceRecognitionScenario>();
             }
             
-            Facerecognition faceReco = new Facerecognition(_frs);
+            Facerecognition faceReco = new Facerecognition(_frs, _configuration);
             faceReco.Show();
         }
 

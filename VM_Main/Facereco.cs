@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Speech.Recognition;
 using NLog;
 using System.Windows.Forms;
@@ -11,15 +12,17 @@ namespace VM_Main
 {
     public partial class Facerecognition : Form
     {
+        private static IConfiguration _configuration;
         string _correctAnswer;
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
-        private readonly Dictionary<int, FaceRecognitionScenario>  _faceRecognitions = new Dictionary<int, FaceRecognitionScenario>();
-        readonly FaceRecognitionLoader _frc = new FaceRecognitionLoader(Logger);
+        private readonly Dictionary<int, FaceRecognitionScenario>  _faceRecognitions = new Dictionary<int, FaceRecognitionScenario>(); 
 
-        public Facerecognition(List<FaceRecognitionScenario> recognition)
+        public Facerecognition(List<FaceRecognitionScenario> recognition, IConfiguration configuration)
         {
+            _configuration = configuration;
             InitializeComponent();
-            _faceRecognitions = _frc.PopulateFaceRecognitionScenarios(recognition);
+            var frc = new FaceRecognitionLoader(Logger, _configuration);
+            _faceRecognitions = frc.PopulateFaceRecognitionScenarios(recognition);
             LoadScenario(Randomiser.NextRange(1, _faceRecognitions.Count));
         }
 
