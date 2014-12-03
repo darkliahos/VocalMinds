@@ -7,9 +7,6 @@ using VM_Model;
 
 namespace VM_Main
 {
-    /* TODO
-     * Complete Redo here, the main menu looks ugly
-     */
 
     public partial class MainMenu : Form
     {

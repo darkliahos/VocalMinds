@@ -31,6 +31,7 @@ namespace VM_Main
             try
             {
                 recognizer.SetInputToDefaultAudioDevice();
+                //Loop through until we have a sucessful response
                 for(var i = 0; i <1;)
                 {
                     var result = recognizer.Recognize();
@@ -94,14 +95,6 @@ namespace VM_Main
         {
             Close();
         }
-
-        private void BtnHelpClick(object sender, EventArgs e)
-        {
-            var hlpfrm = new Help();
-            hlpfrm.Show();
-        }
-
-
 
     }
 }

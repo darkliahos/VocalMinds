@@ -32,7 +32,6 @@
             this.BtnConfirm = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.BtnExit = new System.Windows.Forms.Button();
-            this.BtnHelp = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.FaceBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.FaceBox)).BeginInit();
@@ -83,19 +82,6 @@
             this.BtnExit.UseVisualStyleBackColor = false;
             this.BtnExit.Click += new System.EventHandler(this.BtnExitClick);
             // 
-            // BtnHelp
-            // 
-            this.BtnHelp.BackColor = System.Drawing.Color.Thistle;
-            this.BtnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnHelp.Location = new System.Drawing.Point(760, 113);
-            this.BtnHelp.Name = "BtnHelp";
-            this.BtnHelp.Size = new System.Drawing.Size(137, 72);
-            this.BtnHelp.TabIndex = 26;
-            this.BtnHelp.Text = "Help";
-            this.BtnHelp.UseVisualStyleBackColor = false;
-            this.BtnHelp.Click += new System.EventHandler(this.BtnHelpClick);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -123,7 +109,6 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(913, 762);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.BtnHelp);
             this.Controls.Add(this.BtnExit);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.BtnConfirm);
@@ -145,7 +130,6 @@
         private System.Windows.Forms.Button BtnConfirm;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button BtnExit;
-        private System.Windows.Forms.Button BtnHelp;
         private System.Windows.Forms.Label label2;
 
     }

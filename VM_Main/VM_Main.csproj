@@ -99,12 +99,6 @@
     <Compile Include="Facereco.Designer.cs">
       <DependentUpon>Facereco.cs</DependentUpon>
     </Compile>
-    <Compile Include="Help.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Help.Designer.cs">
-      <DependentUpon>Help.cs</DependentUpon>
-    </Compile>
     <Compile Include="Scribblepad.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,10 +130,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Facereco.resx">
       <DependentUpon>Facereco.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Help.resx">
-      <DependentUpon>Help.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Simulator.resx">
