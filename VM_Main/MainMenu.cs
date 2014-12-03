@@ -12,16 +12,18 @@ namespace VM_Main
     {
         private readonly FileProcessor _fileProcessor;
         private readonly IImporter _importer;
+        private readonly IConfiguration _configuration;
         private List<FaceRecognitionScenario> _frs;
         private List<VoiceRecognitionScenario> _vrs;
 
-        public MainMenu(IImporter importer)
+        public MainMenu(IImporter importer, IConfiguration configuration)
         {
             InitializeComponent();
             _importer = importer;
-            if (Convert.ToBoolean(System.Configuration.ConfigurationSettings.AppSettings["LoadScenarios"]))
+            _configuration = configuration;
+            if (Convert.ToBoolean(_configuration.ReadSetting("LoadScenarios")))
             {
-                string path = System.Configuration.ConfigurationSettings.AppSettings["PathOutput"].ToString();
+                string path = _configuration.ReadSetting("PathOutput");
                 _fileProcessor = new FileProcessor(_importer, path);
                 Task<bool> sucessfulLoading = LoadTasks();
 
@@ -75,5 +77,6 @@ namespace VM_Main
             Simulator frmsos = new Simulator();
             frmsos.Show();
         }
+
     }
 }
