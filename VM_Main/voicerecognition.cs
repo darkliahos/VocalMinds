@@ -9,6 +9,7 @@ using SpeechLib;
  * Add some voices
  * Add Array System
  */
+using VMUtils;
 using VM_Main.Properties;
 using VM_Model;
 
@@ -36,7 +37,7 @@ namespace VM_Main
         {
             InitializeComponent();
             _voiceRecognitions = _vrc.PopulateVoiceRecognitionScenarios(recognition);
-            LoadScenario(Randomiser.RandomGenerator(1, _voiceRecognitions.Count));
+            LoadScenario(Randomiser.NextRange(1, _voiceRecognitions.Count));
         }
 
         private void LoadScenario(int index)

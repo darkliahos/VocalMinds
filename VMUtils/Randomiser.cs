@@ -1,12 +1,12 @@
 using System;
 
-namespace VM_Main
+namespace VMUtils
 {
     public static class Randomiser
     {
 
-        private static readonly Random random = new Random();
-        private static readonly object syncLock = new object();
+        private static readonly Random Random = new Random();
+        private static readonly object SyncLock = new object();
 
         /// <summary>
         /// Generates a random number
@@ -14,11 +14,11 @@ namespace VM_Main
         /// <param name="min">minimum range</param>
         /// <param name="max">maximum range</param>
         /// <returns></returns>
-        public static int RandomGenerator(int min, int max)
+        public static int NextRange(int min, int max)
         {
-            lock (syncLock)
+            lock (SyncLock)
             { 
-                return random.Next(min, max);
+                return Random.Next(min, max);
             }
         }
 

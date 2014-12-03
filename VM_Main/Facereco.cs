@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Speech.Recognition;
 using NLog;
 using System.Windows.Forms;
+using VMUtils;
 using VM_Main.Properties;
 using VM_Model;
 
@@ -19,7 +20,7 @@ namespace VM_Main
         {
             InitializeComponent();
             _faceRecognitions = _frc.PopulateFaceRecognitionScenarios(recognition);
-            LoadScenario(Randomiser.RandomGenerator(1, _faceRecognitions.Count));
+            LoadScenario(Randomiser.NextRange(1, _faceRecognitions.Count));
         }
 
         private void Talk()
@@ -60,7 +61,7 @@ namespace VM_Main
             if (speechResult == _correctAnswer)
             {
                 MessageBox.Show(Resources.WellDone);
-                LoadScenario(Randomiser.RandomGenerator(1, _faceRecognitions.Count));
+                LoadScenario(Randomiser.NextRange(1, _faceRecognitions.Count));
                 textBox1.Text = "";
             }
             else
