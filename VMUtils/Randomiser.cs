@@ -2,8 +2,12 @@ using System;
 
 namespace VM_Main
 {
-    public static class LoaderTools
+    public static class Randomiser
     {
+
+        private static readonly Random random = new Random();
+        private static readonly object syncLock = new object();
+
         /// <summary>
         /// Generates a random number
         /// </summary>
@@ -12,9 +16,11 @@ namespace VM_Main
         /// <returns></returns>
         public static int RandomGenerator(int min, int max)
         {
-            //TODO INVESTIGATE if the .Net Random function apparantly is a bit broken
-            var random = new Random();
-            return random.Next(min, max);
+            lock (syncLock)
+            { 
+                return random.Next(min, max);
+            }
         }
+
     }
 }

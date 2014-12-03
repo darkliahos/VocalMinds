@@ -49,6 +49,7 @@
     <Compile Include="ISerialiser.cs" />
     <Compile Include="JsonSerialiser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Randomiser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

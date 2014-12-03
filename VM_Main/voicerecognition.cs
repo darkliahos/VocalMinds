@@ -26,7 +26,7 @@ namespace VM_Main
         string _userAnswer;
 
         
-        int therandomvalue=4;
+        int therandomvalue = 4;
         int runcount = 1;
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         private readonly Dictionary<int, VoiceRecognitionScenario> _voiceRecognitions = new Dictionary<int, VoiceRecognitionScenario>();
@@ -36,7 +36,7 @@ namespace VM_Main
         {
             InitializeComponent();
             _voiceRecognitions = _vrc.PopulateVoiceRecognitionScenarios(recognition);
-            LoadScenario(LoaderTools.RandomGenerator(1, _voiceRecognitions.Count));
+            LoadScenario(Randomiser.RandomGenerator(1, _voiceRecognitions.Count));
         }
 
         private void LoadScenario(int index)

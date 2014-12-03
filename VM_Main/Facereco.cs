@@ -19,7 +19,7 @@ namespace VM_Main
         {
             InitializeComponent();
             _faceRecognitions = _frc.PopulateFaceRecognitionScenarios(recognition);
-            LoadScenario(LoaderTools.RandomGenerator(1, _faceRecognitions.Count));
+            LoadScenario(Randomiser.RandomGenerator(1, _faceRecognitions.Count));
         }
 
         private void Talk()
@@ -59,7 +59,7 @@ namespace VM_Main
             if (speechResult == _correctAnswer)
             {
                 MessageBox.Show(Resources.WellDone);
-                LoadScenario(LoaderTools.RandomGenerator(1, _faceRecognitions.Count));
+                LoadScenario(Randomiser.RandomGenerator(1, _faceRecognitions.Count));
                 textBox1.Text = "";
             }
             else
