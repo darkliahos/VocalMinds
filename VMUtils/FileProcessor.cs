@@ -21,9 +21,9 @@ namespace VMUtils
             return _importedScenarios.FaceRecognitionScenarios;
         }
 
-        public Task<VoiceRecognitionScenario> GetVRScenariosFromFile()
+        public List<VoiceRecognitionScenario> GetVRScenariosFromFile()
         {
-            throw new NotImplementedException();
+            return _importedScenarios.VoiceRecognitionScenarios;
         }
 
         public Task<VideoScenario> GetVidWScenariosFromFile()
