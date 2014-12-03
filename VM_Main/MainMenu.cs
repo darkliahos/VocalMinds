@@ -15,12 +15,14 @@ namespace VM_Main
         private readonly IConfiguration _configuration;
         private List<FaceRecognitionScenario> _frs;
         private List<VoiceRecognitionScenario> _vrs;
+        private readonly bool _hardcodedScenarios;
 
         public MainMenu(IImporter importer, IConfiguration configuration)
         {
             InitializeComponent();
             _importer = importer;
             _configuration = configuration;
+            _hardcodedScenarios = _configuration.ReadBooleanSetting("UseHardcodedScenarios");
             if (_configuration.ReadBooleanSetting("LoadScenarios"))
             {
                 string path = _configuration.ReadSetting("PathOutput");
@@ -56,8 +58,8 @@ namespace VM_Main
             {
                 _frs = new List<FaceRecognitionScenario>();
             }
-            
-            Facerecognition faceReco = new Facerecognition(_frs, _configuration);
+
+            Facerecognition faceReco = new Facerecognition(_frs, _hardcodedScenarios);
             faceReco.Show();
         }
 
@@ -67,7 +69,7 @@ namespace VM_Main
             {
                 _vrs = new List<VoiceRecognitionScenario>();
             }
-            Voicerecognition frmvce = new Voicerecognition(_vrs);
+            Voicerecognition frmvce = new Voicerecognition(_vrs, _hardcodedScenarios);
             frmvce.Show();
         }
 

@@ -33,9 +33,10 @@ namespace VM_Main
         private readonly Dictionary<int, VoiceRecognitionScenario> _voiceRecognitions = new Dictionary<int, VoiceRecognitionScenario>();
         readonly VoiceRecognitionLoader _vrc = new VoiceRecognitionLoader(Logger);
 
-        public Voicerecognition(List<VoiceRecognitionScenario> recognition)
+        public Voicerecognition(List<VoiceRecognitionScenario> recognition, bool loadHardCodedScenarios)
         {
             InitializeComponent();
+            _vrc.LoadHardcodedScenarios = loadHardCodedScenarios;
             _voiceRecognitions = _vrc.PopulateVoiceRecognitionScenarios(recognition);
             LoadScenario(Randomiser.NextRange(1, _voiceRecognitions.Count));
         }
@@ -64,7 +65,7 @@ namespace VM_Main
                
                 objRecoContext = new SpSharedRecoContext();
                 // Assign a eventhandler for the Hypothesis Event.
-                objRecoContext.Hypothesis += new _ISpeechRecoContextEvents_HypothesisEventHandler(Hypo_Event);
+                //objRecoContext.Hypothesis += new _ISpeechRecoContextEvents_HypothesisEventHandler(Hypo_Event);
                 // Assign a eventhandler for the Recognition Event.
                 //Creating an instance of the grammer object.
                 grammar = objRecoContext.CreateGrammar(0);
@@ -86,18 +87,6 @@ namespace VM_Main
                 MessageBox.Show("You have not got Windows Speech Recogntion running! " + "\n" + "\n" + ok);
             }
             txtsaid.Focus();
-        }
-
-        private void Hypo_Event(int StreamNumber, object StreamPosition, ISpeechRecoResult Result)
-        {
-            try{
-                _userAnswer = Result.PhraseInfo.GetText(0, -1, true);//gets what ever the user said and puts it in a variable
-            txtsaid.Text = _userAnswer;//TESTING PURPOSES
-            }
-                catch(Exception eh)
-            {
-                MessageBox.Show("Program did understand what you just said!" +"\n"+ eh);
-                }
         }
 
         private void btnstart_Click(object sender, EventArgs e)

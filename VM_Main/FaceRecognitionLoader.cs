@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using NLog;
-using VMUtils;
 using VM_Main.Properties;
 using VM_Model;
 
@@ -9,13 +8,13 @@ namespace VM_Main
 {
     public class FaceRecognitionLoader
     {
-        private readonly Logger _logger;
-        private readonly IConfiguration _configuration;
+        public bool LoadHardcodedScenarios { get; set; }
 
-        public FaceRecognitionLoader(Logger logger, IConfiguration configuration)
+        private readonly Logger _logger;
+
+        public FaceRecognitionLoader(Logger logger)
         {
             _logger = logger;
-            _configuration = configuration;
         }
 
         /// <summary>
@@ -28,7 +27,8 @@ namespace VM_Main
             var faceRecognitions = new Dictionary<int, FaceRecognitionScenario>();
             try
             {
-                if (_configuration.ReadBooleanSetting("UseHardcodedScenarios"))
+                int index = 0;
+                if (LoadHardcodedScenarios)
                 {
                     faceRecognitions.Add(1,
                         new FaceRecognitionScenario(Guid.Parse("53f0fad0-46ed-417d-b0ae-f45adf29fd15"), "Angry",
@@ -51,11 +51,11 @@ namespace VM_Main
                     faceRecognitions.Add(7,
                         new FaceRecognitionScenario(Guid.Parse("b7825e94-7149-42fb-870e-4e26292756fa"), "Happy",
                             Resources.happyface2));
+                    index = 8;//Start the index at 8 to take into account of preloaded scenarios
                 }
                 if (importedScenarios != null)
                 {
-                    int index = 8;
-                    foreach (FaceRecognitionScenario frs in importedScenarios)
+                    foreach (var frs in importedScenarios)
                     {
                         faceRecognitions.Add(index, frs);
                         index++;

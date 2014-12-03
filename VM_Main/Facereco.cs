@@ -12,16 +12,14 @@ namespace VM_Main
 {
     public partial class Facerecognition : Form
     {
-        private static IConfiguration _configuration;
         string _correctAnswer;
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
-        private readonly Dictionary<int, FaceRecognitionScenario>  _faceRecognitions = new Dictionary<int, FaceRecognitionScenario>(); 
+        private readonly Dictionary<int, FaceRecognitionScenario>  _faceRecognitions = new Dictionary<int, FaceRecognitionScenario>();
 
-        public Facerecognition(List<FaceRecognitionScenario> recognition, IConfiguration configuration)
+        public Facerecognition(List<FaceRecognitionScenario> recognition, bool loadHardCodedScenarios)
         {
-            _configuration = configuration;
             InitializeComponent();
-            var frc = new FaceRecognitionLoader(Logger, _configuration);
+            var frc = new FaceRecognitionLoader(Logger) {LoadHardcodedScenarios = loadHardCodedScenarios};
             _faceRecognitions = frc.PopulateFaceRecognitionScenarios(recognition);
             LoadScenario(Randomiser.NextRange(1, _faceRecognitions.Count));
         }
