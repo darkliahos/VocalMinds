@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
 using NLog;
-using VM_Main.Properties;
+using VMUtils;
 using VM_Model;
 
 namespace VM_Main
@@ -37,7 +35,7 @@ namespace VM_Main
                     voiceRecognitions.Add(1, new VoiceRecognitionScenario
                     {
                         Answer = "Tired",
-                        AudioPath = PathCombiner(@"\Resources\yawning_1.mp3"),
+                        AudioPath = PathUtils.CombineResultingPathWithAssemblyPath(@"\Resources\yawning_1.mp3"),
                         Author = "https://www.voices.com/",
                         CopyrightDisclaimer = "Royalty free Credit goes to https://www.voices.com/",
                         Id = Guid.Parse("a987ec24-a966-45d2-b58d-db6a241c135d")
@@ -46,7 +44,7 @@ namespace VM_Main
                     voiceRecognitions.Add(2, new VoiceRecognitionScenario
                     {
                         Answer = "Sad",
-                        AudioPath = PathCombiner(@"\Resources\sobbing_male_1.mp3"),
+                        AudioPath = PathUtils.CombineResultingPathWithAssemblyPath(@"\Resources\sobbing_male_1.mp3"),
                         Author = "https://www.voices.com/",
                         CopyrightDisclaimer = "Royalty free Credit goes to https://www.voices.com/",
                         Id = Guid.Parse("013282a0-a859-4126-ae6b-c8f61032a458")
@@ -75,11 +73,6 @@ namespace VM_Main
 
         }
 
-        private string PathCombiner(string resultingpath)
-        {
-            string assPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
-            string combinePath = string.Concat(assPath, resultingpath);
-            return combinePath;
-        }
+
     }
 }

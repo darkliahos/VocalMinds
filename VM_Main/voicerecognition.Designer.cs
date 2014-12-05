@@ -45,7 +45,7 @@
             this.btntalk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btntalk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btntalk.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btntalk.Location = new System.Drawing.Point(312, 276);
+            this.btntalk.Location = new System.Drawing.Point(419, 276);
             this.btntalk.Name = "btntalk";
             this.btntalk.Size = new System.Drawing.Size(125, 57);
             this.btntalk.TabIndex = 0;
@@ -75,7 +75,7 @@
             this.btnstart.BackColor = System.Drawing.Color.DodgerBlue;
             this.btnstart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnstart.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnstart.Location = new System.Drawing.Point(144, 276);
+            this.btnstart.Location = new System.Drawing.Point(273, 274);
             this.btnstart.Name = "btnstart";
             this.btnstart.Size = new System.Drawing.Size(124, 57);
             this.btnstart.TabIndex = 10;
@@ -99,7 +99,7 @@
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(468, 276);
+            this.button2.Location = new System.Drawing.Point(550, 276);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(124, 57);
             this.button2.TabIndex = 16;
@@ -112,7 +112,7 @@
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(762, 274);
+            this.button1.Location = new System.Drawing.Point(680, 276);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(124, 59);
             this.button1.TabIndex = 17;
