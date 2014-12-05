@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Speech.Recognition;
 using System.Windows.Forms;
 using NLog;
 using SpeechLib;
@@ -21,14 +22,6 @@ namespace VM_Main
         string _correctAnswer;
         string _playsound;
 
-        private SpSharedRecoContext objRecoContext = null;
-        private ISpeechRecoGrammar grammar = null;
-        private ISpeechGrammarRule command = null;
-        string _userAnswer;
-
-        
-        int therandomvalue = 4;
-        int runcount = 1;
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         private readonly Dictionary<int, VoiceRecognitionScenario> _voiceRecognitions = new Dictionary<int, VoiceRecognitionScenario>();
         readonly VoiceRecognitionLoader _vrc = new VoiceRecognitionLoader(Logger);
@@ -56,37 +49,57 @@ namespace VM_Main
             }
         }
 
-        private void btntalk_Click(object sender, EventArgs e)
+        private void Talk()
         {
-            //code adapted from an example by Suhel Survindas
-            //original from here:
+            var recognizer = new SpeechRecognitionEngine();
+            Grammar dictationGrammar = new DictationGrammar();
+            btntalk.Text = Resources.Facerecognition_Talk_Speak_Now;
+            recognizer.LoadGrammar(dictationGrammar);
             try
             {
-               
-                objRecoContext = new SpSharedRecoContext();
-                // Assign a eventhandler for the Hypothesis Event.
-                //objRecoContext.Hypothesis += new _ISpeechRecoContextEvents_HypothesisEventHandler(Hypo_Event);
-                // Assign a eventhandler for the Recognition Event.
-                //Creating an instance of the grammer object.
-                grammar = objRecoContext.CreateGrammar(0);
+                recognizer.SetInputToDefaultAudioDevice();
+                //Loop through until we have a sucessful response
+                for (var i = 0; i < 1; )
+                {
+                    var result = recognizer.Recognize();
+                    if (result.Text != "")
+                    {
+                        SucessfulRecognition(result.Text);
+                        break;
+                    }
+                }
 
-                command = grammar.Rules.Add("MenuCommands", SpeechRuleAttributes.SRATopLevel | SpeechRuleAttributes.SRADynamic, 1);
-                object PropValue = "";
-                command.InitialState.AddWordTransition(null, "happy", " ", SpeechGrammarWordType.SGLexical, "Happy", 1, ref PropValue, 1.0F);
-
-                command.InitialState.AddWordTransition(null, "grumpy", " ", SpeechGrammarWordType.SGLexical, "Grumpy", 2, ref PropValue, 1.0F);
-                command.InitialState.AddWordTransition(null, "angry", " ", SpeechGrammarWordType.SGLexical, "angry", 3, ref PropValue, 1.0F);
-                command.InitialState.AddWordTransition(null, "bossy", " ", SpeechGrammarWordType.SGLexical, "bossy", 4, ref PropValue, 1.0F);
-                command.InitialState.AddWordTransition(null, "crazy", " ", SpeechGrammarWordType.SGLexical, "crazy", 5, ref PropValue, 1.0F);
-                grammar.Rules.Commit();
-                grammar.CmdSetRuleState("MenuCommandORHs", SpeechRuleState.SGDSActive);
-                
             }
-            catch (Exception ok)
+
+            catch (InvalidOperationException exception)
             {
-                MessageBox.Show("You have not got Windows Speech Recogntion running! " + "\n" + "\n" + ok);
+                MessageBox.Show(String.Format("Could not recognize input from default aduio device. Is a microphone or sound card available?\r\n{0} - {1}.", exception.Source, exception.Message));
             }
-            txtsaid.Focus();
+            finally
+            {
+                recognizer.UnloadAllGrammars();
+            }
+        }
+
+        private void SucessfulRecognition(string speechResult)
+        {
+            btntalk.Text = Resources.Facerecognition_SucessfulRecognition_Answer;
+            txtsaid.Text = speechResult;
+            if (speechResult == _correctAnswer)
+            {
+                MessageBox.Show(Resources.WellDone);
+                LoadScenario(Randomiser.NextRange(1, _voiceRecognitions.Count));
+                txtsaid.Text = "";
+            }
+            else
+            {
+                MessageBox.Show(Resources.Wrong);
+            }
+        }
+
+        private void btntalk_Click(object sender, EventArgs e)
+        {
+            Talk();
         }
 
         private void btnstart_Click(object sender, EventArgs e)
@@ -95,11 +108,6 @@ namespace VM_Main
             axWindowsMediaPlayer1.Ctlcontrols.play();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
