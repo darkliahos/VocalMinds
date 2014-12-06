@@ -1,6 +1,6 @@
 ﻿namespace VM_Main
 {
-    partial class StoryForm
+    partial class FrmStory
     {
         /// <summary>
         /// Required designer variable.

@@ -1,6 +1,6 @@
 ﻿namespace VM_Main
 {
-    partial class Simulator
+    partial class FrmSocialSimulator
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Simulator));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSocialSimulator));
             this.visualSocialInterface = new AxWMPLib.AxWindowsMediaPlayer();
             this.btnstart = new System.Windows.Forms.Button();
             this.wordbox = new System.Windows.Forms.TextBox();
@@ -158,7 +158,7 @@
             this.Controls.Add(this.btnstart);
             this.Controls.Add(this.visualSocialInterface);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.Name = "Simulator";
+            this.Name = "FrmSocialSimulator";
             this.Text = "outinthepark";
             ((System.ComponentModel.ISupportInitialize)(this.visualSocialInterface)).EndInit();
             this.ResumeLayout(false);

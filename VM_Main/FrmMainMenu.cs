@@ -8,7 +8,7 @@ using VM_Model;
 namespace VM_Main
 {
 
-    public partial class MainMenu : Form
+    public partial class FrmMainMenu : Form
     {
         private readonly FileProcessor _fileProcessor;
         private readonly IImporter _importer;
@@ -17,7 +17,7 @@ namespace VM_Main
         private List<VoiceRecognitionScenario> _vrs;
         private readonly bool _hardcodedScenarios;
 
-        public MainMenu(IImporter importer, IConfiguration configuration)
+        public FrmMainMenu(IImporter importer, IConfiguration configuration)
         {
             InitializeComponent();
             _importer = importer;
@@ -59,7 +59,7 @@ namespace VM_Main
                 _frs = new List<FaceRecognitionScenario>();
             }
 
-            Facerecognition faceReco = new Facerecognition(_frs, _hardcodedScenarios);
+            FrmFaceRecognition faceReco = new FrmFaceRecognition(_frs, _hardcodedScenarios);
             faceReco.Show();
         }
 
@@ -69,14 +69,14 @@ namespace VM_Main
             {
                 _vrs = new List<VoiceRecognitionScenario>();
             }
-            Voicerecognition frmvce = new Voicerecognition(_vrs, _hardcodedScenarios);
+            FrmVoiceRecognition frmvce = new FrmVoiceRecognition(_vrs, _hardcodedScenarios);
             frmvce.Show();
         }
 
         private void btnscrg_Click(object sender, EventArgs e)
         {
             //social simulator
-            Simulator frmsos = new Simulator();
+            FrmSocialSimulator frmsos = new FrmSocialSimulator();
             frmsos.Show();
         }
 

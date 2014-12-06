@@ -15,12 +15,12 @@ namespace VM_Main
  * Added voice recognition
  * Added an array that calls parts of the simulation
  */
-    public partial class Simulator : Form
+    public partial class FrmSocialSimulator : Form
     {
         //counter for the events
         string _placeHolder = "1";
 
-        public Simulator()
+        public FrmSocialSimulator()
         {
             InitializeComponent();
         }
@@ -160,14 +160,14 @@ namespace VM_Main
                 if (correctword == "Draw")
                 {
                     //This opens up the scribblepad
-                    Scribblepad scribley = new Scribblepad();
+                    FrmScribblePad scribley = new FrmScribblePad();
                     scribley.Show();
                 }
                 else if (correctword == "Story")
                 {
                     //THis opens up the story 
-                    StoryForm story = new StoryForm();
-                    story.Show();
+                    FrmStory frmStory = new FrmStory();
+                    frmStory.Show();
                 }
             }
             else if (_placeHolder == "sad")
@@ -175,14 +175,14 @@ namespace VM_Main
                 if (correctword == "Draw")
                 {
                     //This opens up the scribblepad
-                    Scribblepad scribley = new Scribblepad();
+                    FrmScribblePad scribley = new FrmScribblePad();
                     scribley.Show();
                 }
                 else if (correctword == "Story")
                 {
                     //THis opens up the story 
-                    StoryForm story = new StoryForm();
-                    story.Show();
+                    FrmStory frmStory = new FrmStory();
+                    frmStory.Show();
 
                 }
             }

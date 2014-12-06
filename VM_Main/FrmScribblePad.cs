@@ -7,14 +7,14 @@ using System.Windows.Forms;
 
 namespace VM_Main
 {
-    public partial class Scribblepad : Form
+    public partial class FrmScribblePad : Form
     {
         private bool _mouseButtonDown; //boolean to check if the mouse button is down
         private Point _paintpoint = Point.Empty;//Records where the mouse was last clicked
         private readonly Graphics _graphic;
         private Pen _pen;
 
-        public Scribblepad()
+        public FrmScribblePad()
         {
             InitializeComponent();
             _graphic = CreateGraphics();

@@ -1,6 +1,6 @@
 ﻿namespace VM_Main
 {
-    partial class MainMenu
+    partial class FrmMainMenu
     {
         /// <summary>
         /// Required designer variable.
@@ -81,7 +81,7 @@
             this.Controls.Add(this.btnvoicetones);
             this.Controls.Add(this.btnstartface);
             this.Controls.Add(this.btnscrg);
-            this.Name = "MainMenu";
+            this.Name = "FrmMainMenu";
             this.Text = "Vocal Mind V0.1A";
             this.ResumeLayout(false);
 

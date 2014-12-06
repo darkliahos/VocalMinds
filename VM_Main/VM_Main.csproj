@@ -89,35 +89,41 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FaceRecognitionLoader.cs" />
-    <Compile Include="MainMenu.cs">
+    <Compile Include="FrmSocialSimulatorChooser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainMenu.Designer.cs">
-      <DependentUpon>MainMenu.cs</DependentUpon>
+    <Compile Include="FrmSocialSimulatorChooser.Designer.cs">
+      <DependentUpon>FrmSocialSimulatorChooser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Facereco.cs">
+    <Compile Include="FrmMainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Facereco.Designer.cs">
-      <DependentUpon>Facereco.cs</DependentUpon>
+    <Compile Include="FrmMainMenu.Designer.cs">
+      <DependentUpon>FrmMainMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Scribblepad.cs">
+    <Compile Include="FrmFaceRecognition.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Scribblepad.Designer.cs">
-      <DependentUpon>Scribblepad.cs</DependentUpon>
+    <Compile Include="FrmFaceRecognition.Designer.cs">
+      <DependentUpon>FrmFaceRecognition.cs</DependentUpon>
     </Compile>
-    <Compile Include="story.cs">
+    <Compile Include="FrmScribblePad.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form3.Designer.cs">
-      <DependentUpon>story.cs</DependentUpon>
+    <Compile Include="FrmScribblePad.Designer.cs">
+      <DependentUpon>FrmScribblePad.cs</DependentUpon>
     </Compile>
-    <Compile Include="Simulator.cs">
+    <Compile Include="FrmStory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Simulator.Designer.cs">
-      <DependentUpon>Simulator.cs</DependentUpon>
+    <Compile Include="FrmStory.Designer.cs">
+      <DependentUpon>FrmStory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSocialSimulator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSocialSimulator.Designer.cs">
+      <DependentUpon>FrmSocialSimulator.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -132,16 +138,16 @@
     <None Include="Resources\guessthatvoice.png" />
     <None Include="Resources\socialgamebutton.png" />
     <None Include="Resources\guessexpressiongamebutton.png" />
-    <EmbeddedResource Include="MainMenu.resx">
-      <DependentUpon>MainMenu.cs</DependentUpon>
+    <EmbeddedResource Include="FrmMainMenu.resx">
+      <DependentUpon>FrmMainMenu.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Facereco.resx">
-      <DependentUpon>Facereco.cs</DependentUpon>
+    <EmbeddedResource Include="FrmFaceRecognition.resx">
+      <DependentUpon>FrmFaceRecognition.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Simulator.resx">
-      <DependentUpon>Simulator.cs</DependentUpon>
+    <EmbeddedResource Include="FrmSocialSimulator.resx">
+      <DependentUpon>FrmSocialSimulator.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -149,16 +155,16 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Scribblepad.resx">
-      <DependentUpon>Scribblepad.cs</DependentUpon>
+    <EmbeddedResource Include="FrmScribblePad.resx">
+      <DependentUpon>FrmScribblePad.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="story.resx">
-      <DependentUpon>story.cs</DependentUpon>
+    <EmbeddedResource Include="FrmStory.resx">
+      <DependentUpon>FrmStory.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="voicerecognition.resx">
-      <DependentUpon>voicerecognition.cs</DependentUpon>
+    <EmbeddedResource Include="FrmVoiceRecognition.resx">
+      <DependentUpon>FrmVoiceRecognition.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
@@ -183,11 +189,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="voicerecognition.cs">
+    <Compile Include="FrmVoiceRecognition.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="voicerecognition.Designer.cs">
-      <DependentUpon>voicerecognition.cs</DependentUpon>
+    <Compile Include="FrmVoiceRecognition.Designer.cs">
+      <DependentUpon>FrmVoiceRecognition.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,6 @@
 ﻿namespace VM_Main
 {
-    partial class Facerecognition
+    partial class FrmFaceRecognition
     {
         /// <summary>
         /// Required designer variable.
@@ -99,7 +99,7 @@
             this.Controls.Add(this.BtnConfirm);
             this.Controls.Add(this.FaceBox);
             this.Controls.Add(this.label1);
-            this.Name = "Facerecognition";
+            this.Name = "FrmFaceRecognition";
             this.ShowInTaskbar = false;
             this.Text = "Face Recognition";
             ((System.ComponentModel.ISupportInitialize)(this.FaceBox)).EndInit();

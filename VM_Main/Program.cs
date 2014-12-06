@@ -14,7 +14,7 @@ namespace VM_Main
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainMenu(new Importer(), new Configuration()));
+            Application.Run(new FrmMainMenu(new Importer(), new Configuration()));
         }
     }
 }

@@ -9,13 +9,13 @@ using VM_Model;
 
 namespace VM_Main
 {
-    public partial class Facerecognition : Form
+    public partial class FrmFaceRecognition : Form
     {
         string _correctAnswer;
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         private readonly Dictionary<int, FaceRecognitionScenario>  _faceRecognitions = new Dictionary<int, FaceRecognitionScenario>();
 
-        public Facerecognition(List<FaceRecognitionScenario> recognition, bool loadHardCodedScenarios)
+        public FrmFaceRecognition(List<FaceRecognitionScenario> recognition, bool loadHardCodedScenarios)
         {
             InitializeComponent();
             var frc = new FaceRecognitionLoader(Logger) {LoadHardcodedScenarios = loadHardCodedScenarios};

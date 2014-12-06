@@ -10,7 +10,7 @@ using VM_Model;
 namespace VM_Main
 {
 
-    public partial class Voicerecognition : Form
+    public partial class FrmVoiceRecognition : Form
     {
         string _correctAnswer;
         string _playsound;
@@ -19,7 +19,7 @@ namespace VM_Main
         private readonly Dictionary<int, VoiceRecognitionScenario> _voiceRecognitions = new Dictionary<int, VoiceRecognitionScenario>();
         readonly VoiceRecognitionLoader _vrc = new VoiceRecognitionLoader(Logger);
 
-        public Voicerecognition(List<VoiceRecognitionScenario> recognition, bool loadHardCodedScenarios)
+        public FrmVoiceRecognition(List<VoiceRecognitionScenario> recognition, bool loadHardCodedScenarios)
         {
             InitializeComponent();
             _vrc.LoadHardcodedScenarios = loadHardCodedScenarios;

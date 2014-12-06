@@ -1,6 +1,6 @@
 ﻿namespace VM_Main
 {
-    partial class Voicerecognition
+    partial class FrmVoiceRecognition
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Voicerecognition));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmVoiceRecognition));
             this.btntalk = new System.Windows.Forms.Button();
             this.txtsaid = new System.Windows.Forms.TextBox();
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
@@ -130,7 +130,7 @@
             this.Controls.Add(this.axWindowsMediaPlayer1);
             this.Controls.Add(this.txtsaid);
             this.Controls.Add(this.btntalk);
-            this.Name = "Voicerecognition";
+            this.Name = "FrmVoiceRecognition";
             this.Text = "voicerecognition";
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
             this.ResumeLayout(false);

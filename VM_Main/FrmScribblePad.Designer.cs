@@ -1,6 +1,6 @@
 ﻿namespace VM_Main
 {
-    partial class Scribblepad
+    partial class FrmScribblePad
     {
         /// <summary>
         /// Required designer variable.
@@ -142,7 +142,7 @@
             this.Controls.Add(this.btngreen);
             this.Controls.Add(this.btnblue);
             this.Controls.Add(this.btnred);
-            this.Name = "Scribblepad";
+            this.Name = "FrmScribblePad";
             this.Text = "Scribblepad";
             this.ResumeLayout(false);
 

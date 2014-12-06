@@ -11,12 +11,12 @@ namespace VM_Main
      * make the interface more generic
      * Perhaps have a standard format for stories*/
 
-    public partial class StoryForm : Form
+    public partial class FrmStory : Form
     {
         int pageopen = 0;
         private SpeechSynthesizer reader;
 
-        public StoryForm()
+        public FrmStory()
         {
             InitializeComponent();
             reader = new SpeechSynthesizer();
