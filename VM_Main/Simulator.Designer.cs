@@ -29,8 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Simulator));
-            this.label1 = new System.Windows.Forms.Label();
-            this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
+            this.visualSocialInterface = new AxWMPLib.AxWindowsMediaPlayer();
             this.btnstart = new System.Windows.Forms.Button();
             this.wordbox = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
@@ -39,36 +38,27 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.visualSocialInterface)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // visualSocialInterface
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(350, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(302, 42);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Social Simulator";
-            // 
-            // axWindowsMediaPlayer1
-            // 
-            this.axWindowsMediaPlayer1.Enabled = true;
-            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(118, 98);
-            this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
-            this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
-            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(793, 458);
-            this.axWindowsMediaPlayer1.TabIndex = 9;
+            this.visualSocialInterface.Enabled = true;
+            this.visualSocialInterface.Location = new System.Drawing.Point(0, 0);
+            this.visualSocialInterface.Name = "visualSocialInterface";
+            this.visualSocialInterface.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("visualSocialInterface.OcxState")));
+            this.visualSocialInterface.Size = new System.Drawing.Size(1010, 574);
+            this.visualSocialInterface.TabIndex = 9;
             // 
             // btnstart
             // 
-            this.btnstart.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnstart.BackColor = System.Drawing.Color.Black;
             this.btnstart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnstart.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnstart.Location = new System.Drawing.Point(230, 642);
+            this.btnstart.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnstart.Location = new System.Drawing.Point(580, 570);
             this.btnstart.Name = "btnstart";
-            this.btnstart.Size = new System.Drawing.Size(137, 72);
+            this.btnstart.Size = new System.Drawing.Size(91, 38);
             this.btnstart.TabIndex = 11;
             this.btnstart.Text = "&Play";
             this.btnstart.UseVisualStyleBackColor = false;
@@ -76,20 +66,23 @@
             // 
             // wordbox
             // 
+            this.wordbox.BackColor = System.Drawing.SystemColors.InfoText;
             this.wordbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.wordbox.Location = new System.Drawing.Point(386, 580);
+            this.wordbox.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.wordbox.Location = new System.Drawing.Point(235, 570);
             this.wordbox.Name = "wordbox";
             this.wordbox.Size = new System.Drawing.Size(298, 40);
             this.wordbox.TabIndex = 0;
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.PaleGreen;
+            this.button2.BackColor = System.Drawing.Color.Black;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(418, 642);
+            this.button2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.button2.Location = new System.Drawing.Point(697, 570);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(130, 72);
+            this.button2.Size = new System.Drawing.Size(91, 38);
             this.button2.TabIndex = 15;
             this.button2.Text = "Confirm";
             this.button2.UseVisualStyleBackColor = false;
@@ -130,9 +123,9 @@
             this.button1.BackColor = System.Drawing.Color.Tomato;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(596, 642);
+            this.button1.Location = new System.Drawing.Point(917, 12);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(127, 71);
+            this.button1.Size = new System.Drawing.Size(79, 37);
             this.button1.TabIndex = 26;
             this.button1.Text = "Exit";
             this.button1.UseVisualStyleBackColor = false;
@@ -142,7 +135,8 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(266, 583);
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label3.Location = new System.Drawing.Point(142, 573);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(87, 33);
             this.label3.TabIndex = 27;
@@ -152,8 +146,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.SkyBlue;
-            this.ClientSize = new System.Drawing.Size(1008, 762);
+            this.BackColor = System.Drawing.Color.Black;
+            this.ClientSize = new System.Drawing.Size(1008, 622);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
@@ -162,12 +156,11 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.wordbox);
             this.Controls.Add(this.btnstart);
-            this.Controls.Add(this.axWindowsMediaPlayer1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.visualSocialInterface);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.Name = "Simulator";
             this.Text = "outinthepark";
-            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.visualSocialInterface)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -175,8 +168,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
+        private AxWMPLib.AxWindowsMediaPlayer visualSocialInterface;
         private System.Windows.Forms.Button btnstart;
         private System.Windows.Forms.TextBox wordbox;
         private System.Windows.Forms.Button button2;

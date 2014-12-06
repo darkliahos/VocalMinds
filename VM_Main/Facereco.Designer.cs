@@ -31,7 +31,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.BtnConfirm = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.BtnExit = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.FaceBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.FaceBox)).BeginInit();
@@ -69,19 +68,6 @@
             this.textBox1.Size = new System.Drawing.Size(258, 44);
             this.textBox1.TabIndex = 0;
             // 
-            // BtnExit
-            // 
-            this.BtnExit.BackColor = System.Drawing.Color.Tomato;
-            this.BtnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnExit.Location = new System.Drawing.Point(619, 4);
-            this.BtnExit.Name = "BtnExit";
-            this.BtnExit.Size = new System.Drawing.Size(99, 44);
-            this.BtnExit.TabIndex = 10;
-            this.BtnExit.Text = "Exit";
-            this.BtnExit.UseVisualStyleBackColor = false;
-            this.BtnExit.Click += new System.EventHandler(this.BtnExitClick);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -109,7 +95,6 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(730, 631);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.BtnExit);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.BtnConfirm);
             this.Controls.Add(this.FaceBox);
@@ -129,7 +114,6 @@
         private System.Windows.Forms.PictureBox FaceBox;
         private System.Windows.Forms.Button BtnConfirm;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button BtnExit;
         private System.Windows.Forms.Label label2;
 
     }

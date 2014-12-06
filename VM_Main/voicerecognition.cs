@@ -3,13 +3,6 @@ using System.Collections.Generic;
 using System.Speech.Recognition;
 using System.Windows.Forms;
 using NLog;
-using SpeechLib;
-/*
- * THINGS TO DO Code needs to be optomised a tad, some entities are irrelevent 
- * Add more expressions
- * Add some voices
- * Add Array System
- */
 using VMUtils;
 using VM_Main.Properties;
 using VM_Model;
@@ -111,7 +104,7 @@ namespace VM_Main
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Close();
+            axWindowsMediaPlayer1.Ctlcontrols.stop();
         }
 
     }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Speech.Recognition;
 using NLog;
 using System.Windows.Forms;
@@ -92,11 +91,5 @@ namespace VM_Main
                 Logger.Debug(string.Format("Scenario Loader Faulted on {0}", index));
             }
         }
-
-        private void BtnExitClick(object sender, EventArgs e)
-        {
-            Close();
-        }
-
     }
 }

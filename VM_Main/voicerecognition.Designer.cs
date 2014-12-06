@@ -44,7 +44,7 @@
             this.btntalk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btntalk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btntalk.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btntalk.Location = new System.Drawing.Point(426, 78);
+            this.btntalk.Location = new System.Drawing.Point(436, 139);
             this.btntalk.Name = "btntalk";
             this.btntalk.Size = new System.Drawing.Size(125, 57);
             this.btntalk.TabIndex = 0;
@@ -55,7 +55,7 @@
             // txtsaid
             // 
             this.txtsaid.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtsaid.Location = new System.Drawing.Point(113, 146);
+            this.txtsaid.Location = new System.Drawing.Point(128, 144);
             this.txtsaid.Name = "txtsaid";
             this.txtsaid.Size = new System.Drawing.Size(282, 40);
             this.txtsaid.TabIndex = 0;
@@ -63,18 +63,19 @@
             // axWindowsMediaPlayer1
             // 
             this.axWindowsMediaPlayer1.Enabled = true;
-            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(39, 78);
+            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(54, 78);
             this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
             this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
             this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(356, 46);
             this.axWindowsMediaPlayer1.TabIndex = 9;
+            this.axWindowsMediaPlayer1.Visible = false;
             // 
             // btnstart
             // 
             this.btnstart.BackColor = System.Drawing.Color.DodgerBlue;
             this.btnstart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnstart.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnstart.Location = new System.Drawing.Point(427, 14);
+            this.btnstart.Location = new System.Drawing.Point(111, 67);
             this.btnstart.Name = "btnstart";
             this.btnstart.Size = new System.Drawing.Size(124, 57);
             this.btnstart.TabIndex = 10;
@@ -87,22 +88,22 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(32, 20);
+            this.label1.Location = new System.Drawing.Point(86, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(363, 37);
+            this.label1.Size = new System.Drawing.Size(410, 37);
             this.label1.TabIndex = 11;
-            this.label1.Text = "Voice Recogntion Quiz";
+            this.label1.Text = "Guess that Tone Of Voice";
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(427, 146);
+            this.button1.Location = new System.Drawing.Point(250, 67);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(124, 59);
+            this.button1.Size = new System.Drawing.Size(124, 57);
             this.button1.TabIndex = 17;
-            this.button1.Text = "Exit";
+            this.button1.Text = "Stop";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -110,11 +111,11 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(12, 146);
+            this.label6.Location = new System.Drawing.Point(5, 147);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(87, 33);
+            this.label6.Size = new System.Drawing.Size(120, 33);
             this.label6.TabIndex = 28;
-            this.label6.Text = "Input:";
+            this.label6.Text = "Answer:";
             // 
             // Voicerecognition
             // 

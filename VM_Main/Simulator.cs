@@ -39,31 +39,31 @@ namespace VM_Main
             {
                 //play good morning video
                 //axWindowsMediaPlayer1.URL = @""+path+"";
-                axWindowsMediaPlayer1.URL = @"C:\projectvideos\hello.avi";
+                visualSocialInterface.URL = @"C:\projectvideos\hello.avi";
             }
             else if (_placeHolder == "2")
             {
                 //play what is your name video
-                axWindowsMediaPlayer1.URL = @"C:\projectvideos\whatisyourname.avi";
+                visualSocialInterface.URL = @"C:\projectvideos\whatisyourname.avi";
             }
             else if (_placeHolder == "3")
             {
-                axWindowsMediaPlayer1.URL = @"C:\projectvideos\nicename.avi";
+                visualSocialInterface.URL = @"C:\projectvideos\nicename.avi";
             }
             else if (_placeHolder == "4")
             {
-                axWindowsMediaPlayer1.URL = @"C:\projectvideos\howareyoufeeling.avi";
+                visualSocialInterface.URL = @"C:\projectvideos\howareyoufeeling.avi";
             }
             else if (_placeHolder == "happy")
             {
                 //play happy reaction video
-                axWindowsMediaPlayer1.URL = @"C:\projectvideos\happyresponse.avi";
+                visualSocialInterface.URL = @"C:\projectvideos\happyresponse.avi";
                 
 
             }
             else if (_placeHolder == "sad")
             {
-                axWindowsMediaPlayer1.URL = @"C:\projectvideos\sadresponse.avi";
+                visualSocialInterface.URL = @"C:\projectvideos\sadresponse.avi";
             }
 
             //return edge
