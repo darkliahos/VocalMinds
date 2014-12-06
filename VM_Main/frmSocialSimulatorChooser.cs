@@ -34,7 +34,14 @@ namespace VM_Main
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            string selectedScenarios = lstScenarios.SelectedItem.ToString();
+            var loadedScenario =_videoScenarios.FirstOrDefault(i => i.FriendlyName == selectedScenarios);
+            if (loadedScenario == null)
+            {
+                throw new ArgumentNullException("Scenario does not exist");                
+            }
+            var socialSimulator = new FrmSocialSimulator(loadedScenario);
+            socialSimulator.Show();
         }
     }
 }

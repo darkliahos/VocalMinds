@@ -30,13 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSocialSimulator));
             this.visualSocialInterface = new AxWMPLib.AxWindowsMediaPlayer();
-            this.btnstart = new System.Windows.Forms.Button();
+            this.btnPlay = new System.Windows.Forms.Button();
             this.wordbox = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnAnswer = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.visualSocialInterface)).BeginInit();
             this.SuspendLayout();
@@ -50,19 +50,19 @@
             this.visualSocialInterface.Size = new System.Drawing.Size(1010, 574);
             this.visualSocialInterface.TabIndex = 9;
             // 
-            // btnstart
+            // btnPlay
             // 
-            this.btnstart.BackColor = System.Drawing.Color.Black;
-            this.btnstart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnstart.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnstart.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnstart.Location = new System.Drawing.Point(580, 570);
-            this.btnstart.Name = "btnstart";
-            this.btnstart.Size = new System.Drawing.Size(91, 38);
-            this.btnstart.TabIndex = 11;
-            this.btnstart.Text = "&Play";
-            this.btnstart.UseVisualStyleBackColor = false;
-            this.btnstart.Click += new System.EventHandler(this.button2_Click);
+            this.btnPlay.BackColor = System.Drawing.Color.Black;
+            this.btnPlay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPlay.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPlay.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnPlay.Location = new System.Drawing.Point(580, 570);
+            this.btnPlay.Name = "btnPlay";
+            this.btnPlay.Size = new System.Drawing.Size(91, 38);
+            this.btnPlay.TabIndex = 11;
+            this.btnPlay.Text = "&Play";
+            this.btnPlay.UseVisualStyleBackColor = false;
+            this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
             // 
             // wordbox
             // 
@@ -74,19 +74,19 @@
             this.wordbox.Size = new System.Drawing.Size(298, 40);
             this.wordbox.TabIndex = 0;
             // 
-            // button2
+            // btnAnswer
             // 
-            this.button2.BackColor = System.Drawing.Color.Black;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button2.Location = new System.Drawing.Point(697, 570);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(91, 38);
-            this.button2.TabIndex = 15;
-            this.button2.Text = "Confirm";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            this.btnAnswer.BackColor = System.Drawing.Color.Black;
+            this.btnAnswer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAnswer.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAnswer.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnAnswer.Location = new System.Drawing.Point(697, 570);
+            this.btnAnswer.Name = "btnAnswer";
+            this.btnAnswer.Size = new System.Drawing.Size(91, 38);
+            this.btnAnswer.TabIndex = 15;
+            this.btnAnswer.Text = "Answer";
+            this.btnAnswer.UseVisualStyleBackColor = false;
+            this.btnAnswer.Click += new System.EventHandler(this.btnAnswer_Click);
             // 
             // label4
             // 
@@ -118,18 +118,18 @@
             this.label2.Size = new System.Drawing.Size(0, 16);
             this.label2.TabIndex = 22;
             // 
-            // button1
+            // btnExit
             // 
-            this.button1.BackColor = System.Drawing.Color.Tomato;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(917, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(79, 37);
-            this.button1.TabIndex = 26;
-            this.button1.Text = "Exit";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_2);
+            this.btnExit.BackColor = System.Drawing.Color.Tomato;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.Location = new System.Drawing.Point(917, 12);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(79, 37);
+            this.btnExit.TabIndex = 26;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // label3
             // 
@@ -142,20 +142,20 @@
             this.label3.TabIndex = 27;
             this.label3.Text = "Input:";
             // 
-            // Simulator
+            // FrmSocialSimulator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1008, 622);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnAnswer);
             this.Controls.Add(this.wordbox);
-            this.Controls.Add(this.btnstart);
+            this.Controls.Add(this.btnPlay);
             this.Controls.Add(this.visualSocialInterface);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.Name = "FrmSocialSimulator";
@@ -169,13 +169,13 @@
         #endregion
 
         private AxWMPLib.AxWindowsMediaPlayer visualSocialInterface;
-        private System.Windows.Forms.Button btnstart;
+        private System.Windows.Forms.Button btnPlay;
         private System.Windows.Forms.TextBox wordbox;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnAnswer;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label label3;
     }
 }
