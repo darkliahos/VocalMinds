@@ -34,7 +34,7 @@ namespace VMTests.Utils
             var fp = new FileProcessor(importer, string.Empty);
             //Act
             //NOTE TO READER: This is an await because we intend to use threading when loading scenarios
-            List<FaceRecognitionScenario> frs = await Task.FromResult<List<FaceRecognitionScenario>>(fp.GetImportedFRScenariosFromFile());
+            List<FaceRecognitionScenario> frs = await Task.FromResult<List<FaceRecognitionScenario>>(fp.GetFRScenariosFromFile());
             //Assert
             Assert.Equal("Happy", frs[0].Answer);
             Assert.Equal("Dr Fart", frs[0].Author);
@@ -70,6 +70,34 @@ namespace VMTests.Utils
             Assert.Equal(@"C:\temp\audiofile.mp3", vrs[0].AudioPath);
             Assert.Equal("Pooman", vrs[0].Author);
             Assert.Equal("No Idea", vrs[0].CopyrightDisclaimer);
+            Assert.Equal(Guid.Parse("daa1f333-46ed-417d-b0ae-f45adf29fd15"), vrs[0].Id);
+        }
+
+        [Fact]
+        public async Task GetImportedVScenariosFromFile_WhenHit_LoadSocialSimulatorScenarios()
+        {
+            //Arrange
+            var importer = Substitute.For<IImporter>();
+            importer.LoadFile("").Returns(new ImportedScenarios
+            {
+                Creation = new DateTime(2014, 12, 03),
+                VideoScenarios = new List<VideoScenario>
+                {
+                    new VideoScenario
+                    {
+                        Author = "Pooman",
+                        FriendlyName = "Walk out",
+                        Id = Guid.Parse("daa1f333-46ed-417d-b0ae-f45adf29fd15"),
+                        Imported = new DateTime(2014,03,03),
+                    }
+                }
+            });
+            var fp = new FileProcessor(importer, string.Empty);
+            //Act
+            List<VideoScenario> vrs = await Task.FromResult<List<VideoScenario>>(fp.GetVidWScenariosFromFile());
+            //Assert
+            Assert.Equal("Walk out", vrs[0].FriendlyName);
+            Assert.Equal("Pooman", vrs[0].Author);
             Assert.Equal(Guid.Parse("daa1f333-46ed-417d-b0ae-f45adf29fd15"), vrs[0].Id);
         }
     }

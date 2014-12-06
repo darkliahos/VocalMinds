@@ -6,8 +6,8 @@ namespace VMUtils
 {
     public interface IFileProcessor
     {
-        List<FaceRecognitionScenario> GetImportedFRScenariosFromFile();
+        List<FaceRecognitionScenario> GetFRScenariosFromFile();
         List<VoiceRecognitionScenario> GetVRScenariosFromFile();
-        Task<VideoScenario> GetVidWScenariosFromFile();
+        List<VideoScenario> GetVidWScenariosFromFile();
     }
 }

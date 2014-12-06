@@ -15,6 +15,7 @@ namespace VM_Main
         private readonly IConfiguration _configuration;
         private List<FaceRecognitionScenario> _frs;
         private List<VoiceRecognitionScenario> _vrs;
+        private List<VideoScenario> _vs; 
         private readonly bool _hardcodedScenarios;
 
         public FrmMainMenu(IImporter importer, IConfiguration configuration)
@@ -40,9 +41,9 @@ namespace VM_Main
         {
             try
             {
-                _frs =
-                    await
-                    Task.FromResult<List<FaceRecognitionScenario>>(_fileProcessor.GetImportedFRScenariosFromFile());
+                _frs = await Task.FromResult<List<FaceRecognitionScenario>>(_fileProcessor.GetFRScenariosFromFile());
+                _vrs = await Task.FromResult<List<VoiceRecognitionScenario>>(_fileProcessor.GetVRScenariosFromFile());
+                _vs = await Task.FromResult<List<VideoScenario>>(_fileProcessor.GetVidWScenariosFromFile());
                 Task.WaitAll();
                 return true;
             }
@@ -75,9 +76,8 @@ namespace VM_Main
 
         private void btnscrg_Click(object sender, EventArgs e)
         {
-            //social simulator
-            FrmSocialSimulator frmsos = new FrmSocialSimulator();
-            frmsos.Show();
+            FrmSocialSimulatorChooser scenarioChooser = new FrmSocialSimulatorChooser(_vs, _hardcodedScenarios);
+            scenarioChooser.Show();
         }
 
     }
