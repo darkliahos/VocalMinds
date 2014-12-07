@@ -87,7 +87,7 @@ namespace VMTests
                                                                                                                    "Morning",
                                                                                                                ResponseType
                                                                                                                    =
-                                                                                                                   "Positive"
+                                                                                                                   ResponseType.Positive
                                                                                                            },
                                                                                                        new Response
                                                                                                            {
@@ -95,7 +95,7 @@ namespace VMTests
                                                                                                                    "Go Away",
                                                                                                                ResponseType
                                                                                                                    =
-                                                                                                                   "Negative"
+                                                                                                                   ResponseType.Negative
                                                                                                            }
                                                                                                    }
                                                                                        }

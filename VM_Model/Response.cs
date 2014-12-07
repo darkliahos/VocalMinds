@@ -8,7 +8,7 @@ namespace VM_Model
         public string Answer { get; set; }
 
         [Required]
-        public string ResponseType { get; set; }
+        public ResponseType ResponseType { get; set; }
 
         /// <summary>
         /// The Next video that will be played or action to be taken if this response is given

@@ -45,6 +45,7 @@
     <Compile Include="ImportedScenarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Response.cs" />
+    <Compile Include="ResponseType.cs" />
     <Compile Include="VideoScenario.cs" />
     <Compile Include="VideoSegment.cs" />
     <Compile Include="VoiceRecognitionScenario.cs" />

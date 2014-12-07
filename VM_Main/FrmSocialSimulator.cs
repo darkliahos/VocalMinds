@@ -21,6 +21,7 @@ namespace VM_Main
         private readonly VideoScenario _videoScenario;
         private int currentPlayOrder = 1;
         private string currentUri = "";
+        private VideoSegment _videoSegment;
 
         public FrmSocialSimulator(VideoScenario videoScenario)
         {
@@ -41,6 +42,7 @@ namespace VM_Main
                 if (videoSegment.PlayOrder == currentPlayOrder)
                 {
                     currentUri = videoSegment.VideoPath;
+                    _videoSegment = videoSegment;
                 }
             }
         }
@@ -53,8 +55,19 @@ namespace VM_Main
 
         private void btnAnswer_Click(object sender, EventArgs e)
         {
-            currentPlayOrder++;
-            throw new NotImplementedException();
+            AnswerHandler(txtWordbox.Text);
+        }
+
+        private void AnswerHandler(string response)
+        {
+            foreach (var res in _videoSegment.Responses)
+            {
+                if (response == res.Answer)
+                {
+                    currentPlayOrder = res.SocialSimulatorAction;
+                }
+                //TODO: Handle Story and Drawing responses
+            }
         }
 
 
