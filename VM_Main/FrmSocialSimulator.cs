@@ -19,11 +19,14 @@ namespace VM_Main
     public partial class FrmSocialSimulator : Form
     {
         private readonly VideoScenario _videoScenario;
+        private int currentPlayOrder = 1;
+        private string currentUri = "";
 
         public FrmSocialSimulator(VideoScenario videoScenario)
         {
             _videoScenario = videoScenario;
             InitializeComponent();
+            SetUpVideoSegment();
         }
 
         private void btnExit_Click(object sender, System.EventArgs e)
@@ -31,13 +34,26 @@ namespace VM_Main
             this.Close();
         }
 
+        private void SetUpVideoSegment()
+        {
+            foreach (var videoSegment in _videoScenario.VideoSegment)
+            {
+                if (videoSegment.PlayOrder == currentPlayOrder)
+                {
+                    currentUri = videoSegment.VideoPath;
+                }
+            }
+        }
+
         private void btnPlay_Click(object sender, System.EventArgs e)
         {
-            throw new NotImplementedException();
+            visualSocialInterface.URL = currentUri;
+            visualSocialInterface.Ctlcontrols.play();
         }
 
         private void btnAnswer_Click(object sender, EventArgs e)
         {
+            currentPlayOrder++;
             throw new NotImplementedException();
         }
 
