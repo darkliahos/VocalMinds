@@ -72,7 +72,7 @@
             this.btnvoicetones.UseVisualStyleBackColor = false;
             this.btnvoicetones.Click += new System.EventHandler(this.btnvoicetones_Click);
             // 
-            // MainMenu
+            // FrmMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -82,6 +82,7 @@
             this.Controls.Add(this.btnstartface);
             this.Controls.Add(this.btnscrg);
             this.Name = "FrmMainMenu";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Text = "Vocal Mind V0.1A";
             this.ResumeLayout(false);
 

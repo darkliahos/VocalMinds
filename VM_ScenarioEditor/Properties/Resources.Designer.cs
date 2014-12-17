@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace VMTests.Properties {
-    using System;
-    
-    
+namespace VM_ScenarioEditor.Properties
+{
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -22,50 +22,49 @@ namespace VMTests.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
-        
+    internal class Resources
+    {
+
         private static global::System.Resources.ResourceManager resourceMan;
-        
+
         private static global::System.Globalization.CultureInfo resourceCulture;
-        
+
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal Resources()
+        {
         }
-        
+
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
-            get {
-                if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("VMTests.Properties.Resources", typeof(Resources).Assembly);
+        internal static global::System.Resources.ResourceManager ResourceManager
+        {
+            get
+            {
+                if ((resourceMan == null))
+                {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("VM_ScenarioEditor.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-        
+
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
-            get {
+        internal static global::System.Globalization.CultureInfo Culture
+        {
+            get
+            {
                 return resourceCulture;
             }
-            set {
+            set
+            {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {&quot;Creation&quot;:&quot;2014-04-20T00:00:00&quot;,&quot;LastModified&quot;:&quot;2014-05-20T00:00:00&quot;,&quot;VideoScenarios&quot;:[{&quot;Id&quot;:&quot;d8f18d79-0c48-43cf-8b78-c456f5e8b010&quot;,&quot;FriendlyName&quot;:&quot;Day in Bedrock&quot;,&quot;VideoSegment&quot;:[{&quot;Description&quot;:null,&quot;PlayOrder&quot;:1,&quot;VideoPath&quot;:null,&quot;Responses&quot;:[{&quot;Answer&quot;:&quot;Morning&quot;,&quot;ResponseType&quot;:0,&quot;SocialSimulatorAction&quot;:0},{&quot;Answer&quot;:&quot;Go Away&quot;,&quot;ResponseType&quot;:1,&quot;SocialSimulatorAction&quot;:0}]}],&quot;Imported&quot;:&quot;2011-04-03T00:00:00&quot;,&quot;Author&quot;:&quot;Fred Flintstone&quot;}],&quot;FaceRecognitionScenarios&quot;:[{&quot;QuestionTitle&quot;:null,&quot;Id&quot;:&quot;4bfad142-c027-495 [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string JsonTest {
-            get {
-                return ResourceManager.GetString("JsonTest", resourceCulture);
             }
         }
     }

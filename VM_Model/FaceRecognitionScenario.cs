@@ -2,19 +2,16 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Drawing;
-using System.Linq;
-using System.Net.Mime;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace VM_Model
 {
     public class FaceRecognitionScenario
     {
-        public FaceRecognitionScenario(Guid id, string answer, Image image)
+        public FaceRecognitionScenario(Guid id, List<string> answers, Image image, string title)
         {
             Image = image;
-            Answer = answer;
+            Answers = answers;
+            QuestionTitle = title;
             Id = id;
         }
 
@@ -23,13 +20,21 @@ namespace VM_Model
             
         }
 
+        /// <summary>
+        /// A user Identifiable title
+        /// </summary>
+        [Required]
+        public string QuestionTitle { get; set; }
+
+        /// <summary>
+        /// System Identifier
+        /// </summary>
         public Guid Id { get; set; }
 
         [Required]
         public Image Image { get; set; }
 
-        [Required, MaxLength(20)]
-        public string Answer { get; set; }
+        public List<string> Answers { get; set; }
 
         public string CopyrightDisclaimer { get; set; }
 

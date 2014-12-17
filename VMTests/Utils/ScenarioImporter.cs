@@ -26,7 +26,7 @@ namespace VMTests
 
             Assert.Equal(expectedResult.Creation, actualObject.Creation);
             Assert.Equal(expectedResult.LastModified, actualObject.LastModified);
-            Assert.Equal(expectedResult.FaceRecognitionScenarios[0].Answer, actualObject.FaceRecognitionScenarios[0].Answer);
+            Assert.Equal(expectedResult.FaceRecognitionScenarios[0].Answers, actualObject.FaceRecognitionScenarios[0].Answers);
             Assert.Equal(expectedResult.FaceRecognitionScenarios[0].Author, actualObject.FaceRecognitionScenarios[0].Author);
             Assert.Equal(expectedResult.FaceRecognitionScenarios[0].CopyrightDisclaimer, actualObject.FaceRecognitionScenarios[0].CopyrightDisclaimer);
             Assert.Equal(expectedResult.FaceRecognitionScenarios[0].Id, actualObject.FaceRecognitionScenarios[0].Id);
@@ -56,7 +56,7 @@ namespace VMTests
                                                           {
                                                               new FaceRecognitionScenario
                                                                   {
-                                                                      Answer = "Angry",
+                                                                      Answers = new List<string>{"Angry", "Disgusted"},
                                                                       Author = "Lord Voldermort",
                                                                       CopyrightDisclaimer = "2014 Voldermort Creations",
                                                                       Id =

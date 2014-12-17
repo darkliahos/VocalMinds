@@ -24,7 +24,7 @@ namespace VMTests.Utils
                                                                                  {
                                                                                      new FaceRecognitionScenario
                                                                                          {
-                                                                                             Answer = "Happy",
+                                                                                             Answers = new List<string>{"Happy", "Eccstatic"},
                                                                                              Author = "Dr Fart",
                                                                                              CopyrightDisclaimer = "1999",
                                                                                              Id = Guid.Parse("53f0fad3-46ed-417d-b0ae-f45adf29fd15"),
@@ -36,7 +36,7 @@ namespace VMTests.Utils
             //NOTE TO READER: This is an await because we intend to use threading when loading scenarios
             List<FaceRecognitionScenario> frs = await Task.FromResult<List<FaceRecognitionScenario>>(fp.GetFRScenariosFromFile());
             //Assert
-            Assert.Equal("Happy", frs[0].Answer);
+            Assert.Equal("Happy", frs[0].Answers.First());
             Assert.Equal("Dr Fart", frs[0].Author);
             Assert.Equal("1999", frs[0].CopyrightDisclaimer);
             Assert.Equal(Guid.Parse("53f0fad3-46ed-417d-b0ae-f45adf29fd15"), frs[0].Id);

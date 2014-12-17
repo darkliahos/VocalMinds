@@ -11,7 +11,7 @@ namespace VM_Main
 {
     public partial class FrmFaceRecognition : Form
     {
-        string _correctAnswer;
+        List<string> _correctAnswers;
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         private readonly Dictionary<int, FaceRecognitionScenario>  _faceRecognitions = new Dictionary<int, FaceRecognitionScenario>();
 
@@ -58,7 +58,7 @@ namespace VM_Main
         {
             BtnConfirm.Text = Resources.Facerecognition_SucessfulRecognition_Answer;
             textBox1.Text = speechResult;
-            if (speechResult == _correctAnswer)
+            if (_correctAnswers.Contains(speechResult))
             {
                 MessageBox.Show(Resources.WellDone);
                 LoadScenario(Randomiser.NextRange(1, _faceRecognitions.Count));
@@ -83,7 +83,7 @@ namespace VM_Main
             if (_faceRecognitions.TryGetValue(index, out faceResult))
             {
                 FaceBox.Image = faceResult.Image;
-                _correctAnswer = faceResult.Answer;
+                _correctAnswers = faceResult.Answers;
             }
             else
             {
