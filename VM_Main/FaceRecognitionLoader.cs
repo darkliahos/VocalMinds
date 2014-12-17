@@ -30,6 +30,8 @@ namespace VM_Main
                 int index = 0;
                 if (LoadHardcodedScenarios)
                 {
+                    //TODO We want to remove the hardcoding of Scenarios see Github issue #17
+                    throw new  NotImplementedException("Preloaded Scenarios Cannot be loaded");
                     //faceRecognitions.Add(1,
                     //    new FaceRecognitionScenario(Guid.Parse("53f0fad0-46ed-417d-b0ae-f45adf29fd15"), "Angry",
                     //        Resources.angryface));
