@@ -31,7 +31,7 @@ namespace VM_Main
             VoiceRecognitionScenario voiceResult;
             if (_voiceRecognitions.TryGetValue(index, out voiceResult))
             {
-                _playsound = voiceResult.AudioPath;
+                _playsound = PathUtils.GetFullSoundPath(voiceResult.AudioPath);
                 _correctAnswer = voiceResult.Answer;
             }
             else

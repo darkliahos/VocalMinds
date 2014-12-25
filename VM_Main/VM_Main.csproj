@@ -128,10 +128,10 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VoiceRecognitionLoader.cs" />
-    <Content Include="Resources\sobbing_male_1.mp3">
+    <Content Include="Content\VoiceRecognitionSounds\sobbing_male_1.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\yawning_1.mp3">
+    <Content Include="Content\VoiceRecognitionSounds\yawning_1.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\scenarios.js">

@@ -597,16 +597,6 @@ namespace VM_Main.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] sobbing_male_1 {
-            get {
-                object obj = ResourceManager.GetObject("sobbing_male_1", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap socialgamebutton {
@@ -670,16 +660,6 @@ namespace VM_Main.Properties {
         internal static string Wrong {
             get {
                 return ResourceManager.GetString("Wrong", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] yawning_1 {
-            get {
-                object obj = ResourceManager.GetObject("yawning_1", resourceCulture);
-                return ((byte[])(obj));
             }
         }
     }

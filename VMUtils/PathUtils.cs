@@ -7,6 +7,7 @@ namespace VMUtils
     public static class PathUtils
     {
         private const string ImageContentPath = @"\Content\FaceRecognitionImages\";
+        private const string VRContentPath = @"\Content\#VoiceRecognitionSounds\";
         private const string contentPath = @"\Content\";
 
         /// <summary>
@@ -29,6 +30,17 @@ namespace VMUtils
         public static string GetFullImagePath(string image)
         {
             string facecontentPath = String.Concat(ImageContentPath, image);
+            return CombineResultingPathWithAssemblyPath(facecontentPath);
+        }
+
+        /// <summary>
+        /// Gets Full Sound Path
+        /// </summary>
+        /// <param name="sound"></param>
+        /// <returns></returns>
+        public static string GetFullSoundPath(string sound)
+        {
+            string facecontentPath = String.Concat(VRContentPath, sound);
             return CombineResultingPathWithAssemblyPath(facecontentPath);
         }
 
