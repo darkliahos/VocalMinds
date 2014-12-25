@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using VMUtils;
 using VM_Model;
 using Xunit;
@@ -62,7 +59,7 @@ namespace VMTests
                                                                       Id =
                                                                           Guid.Parse(
                                                                               "4bfad142-c027-495d-8f37-582471b03c70"),
-                                                                      Image = null
+                                                                      ImageName = "angryface.png"
                                                                   }
                                                           },
                 VideoScenarios = new List<VideoScenario>

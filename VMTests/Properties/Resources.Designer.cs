@@ -68,5 +68,15 @@ namespace VMTests.Properties {
                 return ResourceManager.GetString("JsonTest", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sadface {
+            get {
+                object obj = ResourceManager.GetObject("sadface", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

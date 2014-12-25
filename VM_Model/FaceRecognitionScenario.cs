@@ -7,9 +7,9 @@ namespace VM_Model
 {
     public class FaceRecognitionScenario
     {
-        public FaceRecognitionScenario(Guid id, List<string> answers, Image image, string title)
+        public FaceRecognitionScenario(Guid id, List<string> answers, string imageName, string title)
         {
-            Image = image;
+            ImageName = imageName;
             Answers = answers;
             QuestionTitle = title;
             Id = id;
@@ -32,7 +32,7 @@ namespace VM_Model
         public Guid Id { get; set; }
 
         [Required]
-        public Image Image { get; set; }
+        public string ImageName { get; set; }
 
         public List<string> Answers { get; set; }
 

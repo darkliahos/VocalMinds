@@ -81,14 +81,13 @@
             // 
             // FaceBox
             // 
-            this.FaceBox.Image = global::VM_Main.Properties.Resources.scaredface;
             this.FaceBox.Location = new System.Drawing.Point(43, 51);
             this.FaceBox.Name = "FaceBox";
             this.FaceBox.Size = new System.Drawing.Size(606, 497);
             this.FaceBox.TabIndex = 6;
             this.FaceBox.TabStop = false;
             // 
-            // Facerecognition
+            // FrmFaceRecognition
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

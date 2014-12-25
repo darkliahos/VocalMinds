@@ -26,7 +26,7 @@ namespace VM_Main
             _hardcodedScenarios = _configuration.ReadBooleanSetting("UseHardcodedScenarios");
             if (_configuration.ReadBooleanSetting("LoadScenarios"))
             {
-                string path = _configuration.ReadSetting("PathOutput");
+                string path = PathUtils.GetRootContentFolder("scenarios.js");
                 _fileProcessor = new FileProcessor(_importer, path);
                 Task<bool> sucessfulLoading = LoadTasks();
 
@@ -60,7 +60,7 @@ namespace VM_Main
                 _frs = new List<FaceRecognitionScenario>();
             }
 
-            FrmFaceRecognition faceReco = new FrmFaceRecognition(_frs, _hardcodedScenarios);
+            FrmFaceRecognition faceReco = new FrmFaceRecognition(_frs);
             faceReco.Show();
         }
 

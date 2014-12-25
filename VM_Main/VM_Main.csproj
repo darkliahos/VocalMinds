@@ -134,7 +134,9 @@
     <Content Include="Resources\yawning_1.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="scenarios.js" />
+    <Content Include="Content\scenarios.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\guessthatvoice.png" />
     <None Include="Resources\socialgamebutton.png" />
     <None Include="Resources\guessexpressiongamebutton.png" />
@@ -286,8 +288,12 @@
     <None Include="Resources\p20.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\scaredface.bmp" />
-    <None Include="Resources\sadface.bmp" />
+    <Content Include="Content\FaceRecognitionImages\scaredface.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\FaceRecognitionImages\sadface.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\p201.bmp" />
     <None Include="Resources\p191.bmp" />
     <None Include="Resources\p181.bmp" />
@@ -308,11 +314,21 @@
     <None Include="Resources\p31.bmp" />
     <None Include="Resources\p21.png" />
     <None Include="Resources\p11.png" />
-    <None Include="Resources\happyface2.bmp" />
-    <None Include="Resources\happyface.bmp" />
-    <None Include="Resources\confusedlook.bmp" />
-    <None Include="Resources\angryface2.bmp" />
-    <None Include="Resources\angryface.bmp" />
+    <Content Include="Content\FaceRecognitionImages\happyface2.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\FaceRecognitionImages\happyface.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\FaceRecognitionImages\confusedlook.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\FaceRecognitionImages\angryface2.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\FaceRecognitionImages\angryface.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\THEEND.bmp" />
     <None Include="Resources\thealienscamehome.bmp" />
     <None Include="Resources\title.png" />
@@ -320,7 +336,9 @@
     <None Include="Resources\goldiesitsonlastchar.png" />
     <None Include="Resources\goldiesitsfirstchair.png" />
     <None Include="Resources\goldierunsaway.png" />
-    <None Include="Resources\goldiefallsoff.png" />
+    <Content Include="Resources\goldiefallsoff.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\chairs found.png" />
     <None Include="Resources\aliensfindporidge.png" />
     <None Include="Resources\aliensfindbed.png" />

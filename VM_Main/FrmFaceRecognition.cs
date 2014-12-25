@@ -15,10 +15,10 @@ namespace VM_Main
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         private readonly Dictionary<int, FaceRecognitionScenario>  _faceRecognitions = new Dictionary<int, FaceRecognitionScenario>();
 
-        public FrmFaceRecognition(List<FaceRecognitionScenario> recognition, bool loadHardCodedScenarios)
+        public FrmFaceRecognition(List<FaceRecognitionScenario> recognition)
         {
             InitializeComponent();
-            var frc = new FaceRecognitionLoader(Logger) {LoadHardcodedScenarios = loadHardCodedScenarios};
+            var frc = new FaceRecognitionLoader(Logger);
             _faceRecognitions = frc.PopulateFaceRecognitionScenarios(recognition);
             LoadScenario(Randomiser.NextRange(1, _faceRecognitions.Count));
         }
@@ -82,7 +82,7 @@ namespace VM_Main
             FaceRecognitionScenario faceResult;
             if (_faceRecognitions.TryGetValue(index, out faceResult))
             {
-                FaceBox.Image = faceResult.Image;
+                FaceBox.ImageLocation = PathUtils.GetFullImagePath(faceResult.ImageName);
                 _correctAnswers = faceResult.Answers;
             }
             else

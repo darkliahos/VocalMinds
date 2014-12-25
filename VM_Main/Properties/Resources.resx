@@ -238,17 +238,11 @@
   <data name="aliensfindbed" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\aliensfindbed.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="angryface2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\angryface2.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="goldiesitsonlastchar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\goldiesitsonlastchar.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="chairs found" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\chairs found.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="confusedlook" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\confusedlook.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="goldierunsaway" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\goldierunsaway.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -256,14 +250,8 @@
   <data name="p21" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\p21.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="happyface" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\happyface.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="thealienscamehome" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\thealienscamehome.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="angryface" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\angryface.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="p31" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\p31.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -273,9 +261,6 @@
   </data>
   <data name="goldiesitssecondchair" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\goldiesitssecondchair.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="happyface2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\happyface2.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="p17" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\p17.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -298,17 +283,11 @@
   <data name="p6" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\p6.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="sadface" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sadface.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="WellDone" xml:space="preserve">
     <value>Well done</value>
   </data>
   <data name="p161" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\p161.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="scaredface" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\scaredface.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="guessthatvoice" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\guessthatvoice.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
