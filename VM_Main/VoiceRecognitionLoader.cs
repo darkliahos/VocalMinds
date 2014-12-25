@@ -1,18 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using NLog;
-using VMUtils;
 using VM_Model;
 
 namespace VM_Main
 {
     public class VoiceRecognitionLoader
     {
-        public bool LoadHardcodedScenarios { get; set; }
-
         private readonly Logger _logger;
-
-        public List<string> HardcodedList { get; set; }
 
         public VoiceRecognitionLoader(Logger logger)
         {
@@ -30,30 +25,6 @@ namespace VM_Main
             try
             {
                 var index = 1;
-                if (LoadHardcodedScenarios)
-                {
-                    voiceRecognitions.Add(1, new VoiceRecognitionScenario
-                    {
-                        Answer = "Tired",
-                        AudioPath = PathUtils.CombineResultingPathWithAssemblyPath(@"\Resources\yawning_1.mp3"),
-                        Author = "https://www.voices.com/",
-                        CopyrightDisclaimer = "Royalty free Credit goes to https://www.voices.com/",
-                        Id = Guid.Parse("a987ec24-a966-45d2-b58d-db6a241c135d")
-                    });
-
-                    voiceRecognitions.Add(2, new VoiceRecognitionScenario
-                    {
-                        Answer = "Sad",
-                        AudioPath = PathUtils.CombineResultingPathWithAssemblyPath(@"\Resources\sobbing_male_1.mp3"),
-                        Author = "https://www.voices.com/",
-                        CopyrightDisclaimer = "Royalty free Credit goes to https://www.voices.com/",
-                        Id = Guid.Parse("013282a0-a859-4126-ae6b-c8f61032a458")
-                    });
-
-                    HardcodedList.Add("sobbing_male_1");
-                    HardcodedList.Add("yawning_1");
-                    index = 3;
-                }
                 if (importedScenarios != null)
                 {
                     

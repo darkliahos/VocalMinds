@@ -16,14 +16,12 @@ namespace VM_Main
         private List<FaceRecognitionScenario> _frs;
         private List<VoiceRecognitionScenario> _vrs;
         private List<VideoScenario> _vs; 
-        private readonly bool _hardcodedScenarios;
 
         public FrmMainMenu(IImporter importer, IConfiguration configuration)
         {
             InitializeComponent();
             _importer = importer;
             _configuration = configuration;
-            _hardcodedScenarios = _configuration.ReadBooleanSetting("UseHardcodedScenarios");
             if (_configuration.ReadBooleanSetting("LoadScenarios"))
             {
                 string path = PathUtils.GetRootContentFolder("scenarios.js");
@@ -70,13 +68,13 @@ namespace VM_Main
             {
                 _vrs = new List<VoiceRecognitionScenario>();
             }
-            FrmVoiceRecognition frmvce = new FrmVoiceRecognition(_vrs, _hardcodedScenarios);
+            FrmVoiceRecognition frmvce = new FrmVoiceRecognition(_vrs);
             frmvce.Show();
         }
 
         private void btnscrg_Click(object sender, EventArgs e)
         {
-            FrmSocialSimulatorChooser scenarioChooser = new FrmSocialSimulatorChooser(_vs, _hardcodedScenarios);
+            FrmSocialSimulatorChooser scenarioChooser = new FrmSocialSimulatorChooser(_vs);
             scenarioChooser.Show();
         }
 

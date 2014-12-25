@@ -36,9 +36,9 @@
             this.txttitle = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.imgI = new System.Windows.Forms.PictureBox();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.lstAnswers = new System.Windows.Forms.ListBox();
+            this.imgI = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.imgI)).BeginInit();
             this.SuspendLayout();
             // 
@@ -116,14 +116,6 @@
             this.textBox2.Size = new System.Drawing.Size(193, 29);
             this.textBox2.TabIndex = 7;
             // 
-            // imgI
-            // 
-            this.imgI.Location = new System.Drawing.Point(206, 47);
-            this.imgI.Name = "imgI";
-            this.imgI.Size = new System.Drawing.Size(172, 141);
-            this.imgI.TabIndex = 8;
-            this.imgI.TabStop = false;
-            // 
             // btnBrowse
             // 
             this.btnBrowse.Location = new System.Drawing.Point(384, 165);
@@ -140,6 +132,14 @@
             this.lstAnswers.Name = "lstAnswers";
             this.lstAnswers.Size = new System.Drawing.Size(172, 121);
             this.lstAnswers.TabIndex = 10;
+            // 
+            // imgI
+            // 
+            this.imgI.Location = new System.Drawing.Point(206, 47);
+            this.imgI.Name = "imgI";
+            this.imgI.Size = new System.Drawing.Size(172, 141);
+            this.imgI.TabIndex = 8;
+            this.imgI.TabStop = false;
             // 
             // FaceRecognitionEditor
             // 
@@ -175,8 +175,8 @@
         private System.Windows.Forms.TextBox txttitle;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.PictureBox imgI;
         private System.Windows.Forms.Button btnBrowse;
         private System.Windows.Forms.ListBox lstAnswers;
+        private System.Windows.Forms.PictureBox imgI;
     }
 }

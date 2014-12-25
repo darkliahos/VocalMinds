@@ -14,12 +14,10 @@ namespace VM_Main
     public partial class FrmSocialSimulatorChooser : Form
     {
         private readonly List<VideoScenario> _videoScenarios;
-        private readonly bool _hardCodedScenarios;
 
-        public FrmSocialSimulatorChooser(List<VideoScenario> videoScenarios, bool hardCodedScenarios)
+        public FrmSocialSimulatorChooser(List<VideoScenario> videoScenarios)
         {
             _videoScenarios = videoScenarios;
-            _hardCodedScenarios = hardCodedScenarios;
             InitializeComponent();
             GetListOfScenarios();
         }

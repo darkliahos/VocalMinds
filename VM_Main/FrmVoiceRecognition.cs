@@ -19,10 +19,9 @@ namespace VM_Main
         private readonly Dictionary<int, VoiceRecognitionScenario> _voiceRecognitions = new Dictionary<int, VoiceRecognitionScenario>();
         readonly VoiceRecognitionLoader _vrc = new VoiceRecognitionLoader(Logger);
 
-        public FrmVoiceRecognition(List<VoiceRecognitionScenario> recognition, bool loadHardCodedScenarios)
+        public FrmVoiceRecognition(List<VoiceRecognitionScenario> recognition)
         {
             InitializeComponent();
-            _vrc.LoadHardcodedScenarios = loadHardCodedScenarios;
             _voiceRecognitions = _vrc.PopulateVoiceRecognitionScenarios(recognition);
             LoadScenario(Randomiser.NextRange(1, _voiceRecognitions.Count));
         }
