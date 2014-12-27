@@ -4,7 +4,7 @@ using VM_Model;
 
 namespace VMUtils
 {
-    public class Importer : IImporter
+    public class Importer : IImporter<ImportedScenarios>
     {
         private readonly JsonSerialiser<ImportedScenarios> _jsonSerialiser = new JsonSerialiser<ImportedScenarios>();
 

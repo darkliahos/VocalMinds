@@ -1,15 +1,13 @@
-using VM_Model;
-
 namespace VMUtils.Interfaces
 {
-    public interface IImporter
+    public interface IImporter<T>
     {
-        void WriteToFile(ImportedScenarios importedScenarios, string outputPath);
+        void WriteToFile(T importedScenarios, string outputPath);
 
-        string WriteToString(ImportedScenarios importedScenarios);
+        string WriteToString(T importedScenarios);
 
-        ImportedScenarios LoadFile(string path);
+        T LoadFile(string path);
 
-        ImportedScenarios StringToImportedScenarios(string jsonString);
+        T StringToImportedScenarios(string jsonString);
     }
 }

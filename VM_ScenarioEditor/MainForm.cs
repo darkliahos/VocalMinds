@@ -16,7 +16,7 @@ namespace VM_ScenarioEditor
 
         private void faceRecognitionScenariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var fr = new FaceRecongitionScenarioEditorList(Logger, new Importer());
+            var fr = new FaceRecongitionScenarioEditorList(Logger, new FaceRecognitionImporter());
             fr.OpenFormInMdi(this);
         }
     }

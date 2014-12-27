@@ -23,10 +23,6 @@ namespace VMTests
 
             Assert.Equal(expectedResult.Creation, actualObject.Creation);
             Assert.Equal(expectedResult.LastModified, actualObject.LastModified);
-            Assert.Equal(expectedResult.FaceRecognitionScenarios[0].Answers, actualObject.FaceRecognitionScenarios[0].Answers);
-            Assert.Equal(expectedResult.FaceRecognitionScenarios[0].Author, actualObject.FaceRecognitionScenarios[0].Author);
-            Assert.Equal(expectedResult.FaceRecognitionScenarios[0].CopyrightDisclaimer, actualObject.FaceRecognitionScenarios[0].CopyrightDisclaimer);
-            Assert.Equal(expectedResult.FaceRecognitionScenarios[0].Id, actualObject.FaceRecognitionScenarios[0].Id);
             Assert.Equal(expectedResult.VideoScenarios[0].Author, actualObject.VideoScenarios[0].Author);
             Assert.Equal(expectedResult.VideoScenarios[0].FriendlyName, actualObject.VideoScenarios[0].FriendlyName);
             Assert.Equal(expectedResult.VideoScenarios[0].Imported, actualObject.VideoScenarios[0].Imported);
@@ -43,26 +39,53 @@ namespace VMTests
 
         }
 
+
+        [Fact]
+        public void StringToImportedFaceRecoScenarios_ValidJSonString_ShouldReturnImportedObject()
+        {
+            var faceImporter = new FaceRecognitionImporter();
+            var expectedResult = FaceRecognitionScenarioScenarioHelper();
+            var actualObject = faceImporter.StringToImportedScenarios(Properties.Resources.FaceRecoJsonTest);
+
+            Assert.Equal(expectedResult.Creation, actualObject.Creation);
+            Assert.Equal(expectedResult.LastModified, actualObject.LastModified);
+            Assert.Equal(expectedResult.FaceRecognitionScenarios[0].Answers, actualObject.FaceRecognitionScenarios[0].Answers);
+            Assert.Equal(expectedResult.FaceRecognitionScenarios[0].Author, actualObject.FaceRecognitionScenarios[0].Author);
+            Assert.Equal(expectedResult.FaceRecognitionScenarios[0].CopyrightDisclaimer, actualObject.FaceRecognitionScenarios[0].CopyrightDisclaimer);
+            Assert.Equal(expectedResult.FaceRecognitionScenarios[0].Id, actualObject.FaceRecognitionScenarios[0].Id);
+
+
+        }
+
+        private ImportedFaceRecognitionScenario FaceRecognitionScenarioScenarioHelper()
+        {
+            return new ImportedFaceRecognitionScenario
+            {
+                FaceRecognitionScenarios = new List<FaceRecognitionScenario>
+                {
+                    new FaceRecognitionScenario
+                    {
+                        Answers = new List<string> {"Angry", "Disgusted"},
+                        Author = "Lord Voldermort",
+                        CopyrightDisclaimer = "2014 Voldermort Creations",
+                        Id =
+                            Guid.Parse(
+                                "4bfad142-c027-495d-8f37-582471b03c70"),
+                        ImageName = "angryface.png",
+                        QuestionTitle = "Angry Face",
+                    }
+                },
+                Creation = new DateTime(2014, 12, 27),
+                LastModified = new DateTime(2014, 12, 27)
+            };
+        } 
+
         private ImportedScenarios ImportedScenariosHelper()
         {
             return new ImportedScenarios
             {
                 Creation = new DateTime(2014, 4, 20),
                 LastModified = new DateTime(2014, 5, 20),
-                FaceRecognitionScenarios = new List<FaceRecognitionScenario>
-                                                          {
-                                                              new FaceRecognitionScenario
-                                                                  {
-                                                                      Answers = new List<string>{"Angry", "Disgusted"},
-                                                                      Author = "Lord Voldermort",
-                                                                      CopyrightDisclaimer = "2014 Voldermort Creations",
-                                                                      Id =
-                                                                          Guid.Parse(
-                                                                              "4bfad142-c027-495d-8f37-582471b03c70"),
-                                                                      ImageName = "angryface.png",
-                                                                      QuestionTitle = "Angry Face",
-                                                                  }
-                                                          },
                 VideoScenarios = new List<VideoScenario>
                                                 {
                                                     new VideoScenario

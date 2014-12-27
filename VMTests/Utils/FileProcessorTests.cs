@@ -16,10 +16,11 @@ namespace VMTests.Utils
         public async Task GetImportedFRScenariosFromFile_WhenHit_LoadsFaceRecognitionScenario()
         {
             //Arrange
-            var importer = Substitute.For<IImporter>();
-            importer.LoadFile("").Returns(new ImportedScenarios
+            var importer = Substitute.For<IImporter<ImportedFaceRecognitionScenario>>();
+            importer.LoadFile("").Returns(new ImportedFaceRecognitionScenario
                                               {
                                                   Creation = new DateTime(2000, 01, 02),
+                                                  LastModified = new DateTime(2014,12, 27),
                                                   FaceRecognitionScenarios = new List<FaceRecognitionScenario>
                                                                                  {
                                                                                      new FaceRecognitionScenario
@@ -33,10 +34,10 @@ namespace VMTests.Utils
                                                                                          }
                                                                                  }
                                               });
-            var fp = new FileProcessor(importer, string.Empty);
+            var fp = new FaceRecognitionProcessor(importer, string.Empty);
             //Act
             //NOTE TO READER: This is an await because we intend to use threading when loading scenarios
-            List<FaceRecognitionScenario> frs = await Task.FromResult<List<FaceRecognitionScenario>>(fp.GetFRScenariosFromFile());
+            List<FaceRecognitionScenario> frs = await Task.FromResult<List<FaceRecognitionScenario>>(fp.LoadScenarioFromFile());
             //Assert
             Assert.Equal("Angry", frs[0].Answers.First());
             Assert.Equal("Tester", frs[0].Author);
@@ -50,7 +51,7 @@ namespace VMTests.Utils
         public async Task GetImportedVRScenariosFromFile_WhenHit_LoadsVoiceRecognitionScenarios()
         {
             //Arrange
-            var importer = Substitute.For<IImporter>();
+            var importer = Substitute.For<IImporter<ImportedScenarios>>();
             importer.LoadFile("").Returns(new ImportedScenarios
             {
                 Creation = new DateTime(2014, 12, 03),
@@ -66,9 +67,9 @@ namespace VMTests.Utils
                     }
                 }
             });
-            var fp = new FileProcessor(importer, string.Empty);
+            var fp = new VoiceRecognitionFileProcessor(importer, string.Empty);
             //Act
-            List<VoiceRecognitionScenario> vrs = await Task.FromResult<List<VoiceRecognitionScenario>>(fp.GetVRScenariosFromFile());
+            List<VoiceRecognitionScenario> vrs = await Task.FromResult<List<VoiceRecognitionScenario>>(fp.LoadScenarioFromFile());
             //Assert
             Assert.Equal("Suicidal", vrs[0].Answer);
             Assert.Equal(@"C:\temp\audiofile.mp3", vrs[0].AudioPath);
@@ -81,7 +82,7 @@ namespace VMTests.Utils
         public async Task GetImportedVScenariosFromFile_WhenHit_LoadSocialSimulatorScenarios()
         {
             //Arrange
-            var importer = Substitute.For<IImporter>();
+            var importer = Substitute.For<IImporter<ImportedScenarios>>();
             importer.LoadFile("").Returns(new ImportedScenarios
             {
                 Creation = new DateTime(2014, 12, 03),
@@ -96,9 +97,9 @@ namespace VMTests.Utils
                     }
                 }
             });
-            var fp = new FileProcessor(importer, string.Empty);
+            var fp = new SocialSimulatorFileProcessor(importer, string.Empty);
             //Act
-            List<VideoScenario> vrs = await Task.FromResult<List<VideoScenario>>(fp.GetVidWScenariosFromFile());
+            List<VideoScenario> vrs = await Task.FromResult<List<VideoScenario>>(fp.LoadScenarioFromFile());
             //Assert
             Assert.Equal("Walk out", vrs[0].FriendlyName);
             Assert.Equal("Pooman", vrs[0].Author);

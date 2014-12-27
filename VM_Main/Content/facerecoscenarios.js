@@ -1,0 +1,1 @@
+﻿{"Creation":"2014-12-27T00:00:00","LastModified":"2014-12-27T00:00:00","FaceRecognitionScenarios":[{"QuestionTitle":"Angry Face","Id":"4bfad142-c027-495d-8f37-582471b03c70","ImageName":"angryface.bmp","Answers":["Angry","Disgusted"],"CopyrightDisclaimer":"2014 Voldermort Creations","Author":"Lord Voldermort"}]}

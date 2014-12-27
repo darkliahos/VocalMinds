@@ -11,22 +11,30 @@ namespace VM_Main
 
     public partial class FrmMainMenu : Form
     {
-        private readonly FileProcessor _fileProcessor;
-        private readonly IImporter _importer;
+        private readonly SocialSimulatorFileProcessor _socialSimulatorFileProcessor;
+        private readonly VoiceRecognitionFileProcessor _voiceRecognitionFileProcessor;
+        private readonly FaceRecognitionProcessor _faceRecognitionProcessor;
+        
+        private readonly IImporter<ImportedScenarios> _importer;
+        private readonly IImporter<ImportedFaceRecognitionScenario> _faceimporter;
         private readonly IConfiguration _configuration;
         private List<FaceRecognitionScenario> _frs;
         private List<VoiceRecognitionScenario> _vrs;
         private List<VideoScenario> _vs; 
 
-        public FrmMainMenu(IImporter importer, IConfiguration configuration)
+        public FrmMainMenu(IConfiguration configuration)
         {
             InitializeComponent();
-            _importer = importer;
+            _importer = new Importer();
+            _faceimporter = new FaceRecognitionImporter();
             _configuration = configuration;
             if (_configuration.ReadBooleanSetting("LoadScenarios"))
             {
                 string path = PathUtils.GetRootContentFolder("scenarios.js");
-                _fileProcessor = new FileProcessor(_importer, path);
+                string faceRecopath = PathUtils.GetRootContentFolder("facerecoscenarios.js");
+                _voiceRecognitionFileProcessor = new VoiceRecognitionFileProcessor(_importer, path);
+                _socialSimulatorFileProcessor = new SocialSimulatorFileProcessor(_importer, path);
+                _faceRecognitionProcessor = new FaceRecognitionProcessor(_faceimporter, faceRecopath);
                 Task<bool> sucessfulLoading = LoadTasks();
 
                 if (!sucessfulLoading.Result)
@@ -40,9 +48,9 @@ namespace VM_Main
         {
             try
             {
-                _frs = await Task.FromResult<List<FaceRecognitionScenario>>(_fileProcessor.GetFRScenariosFromFile());
-                _vrs = await Task.FromResult<List<VoiceRecognitionScenario>>(_fileProcessor.GetVRScenariosFromFile());
-                _vs = await Task.FromResult<List<VideoScenario>>(_fileProcessor.GetVidWScenariosFromFile());
+                _frs = await Task.FromResult<List<FaceRecognitionScenario>>(_faceRecognitionProcessor.LoadScenarioFromFile());
+                _vrs = await Task.FromResult<List<VoiceRecognitionScenario>>(_voiceRecognitionFileProcessor.LoadScenarioFromFile());
+                _vs = await Task.FromResult<List<VideoScenario>>(_socialSimulatorFileProcessor.LoadScenarioFromFile());
                 Task.WaitAll();
                 return true;
             }
