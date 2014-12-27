@@ -32,19 +32,22 @@
             this.btnSelect = new System.Windows.Forms.Button();
             this.btnNewScenario = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lstScenarios
             // 
+            this.lstScenarios.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lstScenarios.FormattingEnabled = true;
             this.lstScenarios.Location = new System.Drawing.Point(12, 46);
             this.lstScenarios.Name = "lstScenarios";
-            this.lstScenarios.Size = new System.Drawing.Size(259, 394);
+            this.lstScenarios.Size = new System.Drawing.Size(462, 394);
             this.lstScenarios.TabIndex = 0;
             // 
             // btnSelect
             // 
-            this.btnSelect.Location = new System.Drawing.Point(288, 46);
+            this.btnSelect.Location = new System.Drawing.Point(3, 0);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(75, 23);
             this.btnSelect.TabIndex = 1;
@@ -54,7 +57,7 @@
             // 
             // btnNewScenario
             // 
-            this.btnNewScenario.Location = new System.Drawing.Point(288, 417);
+            this.btnNewScenario.Location = new System.Drawing.Point(3, 356);
             this.btnNewScenario.Name = "btnNewScenario";
             this.btnNewScenario.Size = new System.Drawing.Size(75, 23);
             this.btnNewScenario.TabIndex = 2;
@@ -72,17 +75,27 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Face Recognition Scenarios";
             // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.btnNewScenario);
+            this.panel1.Controls.Add(this.btnSelect);
+            this.panel1.Location = new System.Drawing.Point(477, 46);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(81, 382);
+            this.panel1.TabIndex = 4;
+            // 
             // FaceRecongitionScenarioEditorList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(391, 465);
+            this.ClientSize = new System.Drawing.Size(564, 465);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnNewScenario);
-            this.Controls.Add(this.btnSelect);
             this.Controls.Add(this.lstScenarios);
             this.Name = "FaceRecongitionScenarioEditorList";
             this.Text = "FaceRecongitionScenarioEditorList";
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -94,5 +107,6 @@
         private System.Windows.Forms.Button btnSelect;
         private System.Windows.Forms.Button btnNewScenario;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel1;
     }
 }

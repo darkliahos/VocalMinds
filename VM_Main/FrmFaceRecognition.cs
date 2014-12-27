@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Speech.Recognition;
-using NLog;
 using System.Windows.Forms;
 using VMUtils;
+using VMUtils.Loaders;
 using VM_Main.Properties;
 using VM_Model;
 
@@ -12,13 +12,13 @@ namespace VM_Main
     public partial class FrmFaceRecognition : Form
     {
         List<string> _correctAnswers;
-        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+        readonly NLogger _nLogger = new NLogger();
         private readonly Dictionary<int, FaceRecognitionScenario>  _faceRecognitions = new Dictionary<int, FaceRecognitionScenario>();
 
         public FrmFaceRecognition(List<FaceRecognitionScenario> recognition)
         {
             InitializeComponent();
-            var frc = new FaceRecognitionLoader(Logger);
+            var frc = new FaceRecognitionLoader(_nLogger);
             _faceRecognitions = frc.PopulateFaceRecognitionScenarios(recognition);
             LoadScenario(Randomiser.NextRange(1, _faceRecognitions.Count));
         }
@@ -88,7 +88,7 @@ namespace VM_Main
             else
             {
                 MessageBox.Show(Resources.Facerecognition_LoadScenario_Scenario_Load_Failed);
-                Logger.Debug(string.Format("Scenario Loader Faulted on {0}", index));
+                _nLogger.LogDebug(string.Format("Scenario Loader Faulted on {0}", index));
             }
         }
     }

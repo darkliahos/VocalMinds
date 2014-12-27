@@ -34,6 +34,8 @@
             this.saveAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.scenariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contentImporterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.faceRecognitionScenariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -41,7 +43,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.scenariosToolStripMenuItem});
+            this.scenariosToolStripMenuItem,
+            this.contentImporterToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1326, 24);
@@ -78,9 +81,24 @@
             // 
             // scenariosToolStripMenuItem
             // 
+            this.scenariosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.faceRecognitionScenariosToolStripMenuItem});
             this.scenariosToolStripMenuItem.Name = "scenariosToolStripMenuItem";
             this.scenariosToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.scenariosToolStripMenuItem.Text = "Scenarios";
+            // 
+            // contentImporterToolStripMenuItem
+            // 
+            this.contentImporterToolStripMenuItem.Name = "contentImporterToolStripMenuItem";
+            this.contentImporterToolStripMenuItem.Size = new System.Drawing.Size(111, 20);
+            this.contentImporterToolStripMenuItem.Text = "Content Importer";
+            // 
+            // faceRecognitionScenariosToolStripMenuItem
+            // 
+            this.faceRecognitionScenariosToolStripMenuItem.Name = "faceRecognitionScenariosToolStripMenuItem";
+            this.faceRecognitionScenariosToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.faceRecognitionScenariosToolStripMenuItem.Text = "Face Recognition Scenarios";
+            this.faceRecognitionScenariosToolStripMenuItem.Click += new System.EventHandler(this.faceRecognitionScenariosToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -107,6 +125,8 @@
         private System.Windows.Forms.ToolStripMenuItem saveAllToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem scenariosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem contentImporterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem faceRecognitionScenariosToolStripMenuItem;
     }
 }
 

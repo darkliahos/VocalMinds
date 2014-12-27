@@ -1,9 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace VMUtils
+﻿namespace VMUtils.Interfaces
 {
     public interface IConfiguration
     {

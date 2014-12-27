@@ -1,6 +1,6 @@
 using VM_Model;
 
-namespace VMUtils
+namespace VMUtils.Interfaces
 {
     public interface IImporter
     {

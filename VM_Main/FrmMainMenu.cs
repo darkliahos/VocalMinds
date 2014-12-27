@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VMUtils;
+using VMUtils.Interfaces;
 using VM_Model;
 
 namespace VM_Main

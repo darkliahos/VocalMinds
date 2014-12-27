@@ -1,8 +1,7 @@
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using VM_Model;
 
-namespace VMUtils
+namespace VMUtils.Interfaces
 {
     public interface IFileProcessor
     {

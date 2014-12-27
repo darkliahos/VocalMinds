@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 using VMUtils;
+using VM_ScenarioEditor;
 
 namespace VM_Main
 {
@@ -10,11 +12,19 @@ namespace VM_Main
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmMainMenu(new Importer(), new Configuration()));
+            if (!args.Any())
+            {
+                Application.Run(new FrmMainMenu(new Importer(), new Configuration()));
+            }
+            else if (args[0] == "EDITOR")
+            {
+                Application.Run(new MainForm());
+            }
+
         }
     }
 }
