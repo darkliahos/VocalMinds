@@ -19,15 +19,17 @@ namespace VMTests.Utils
             var importer = Substitute.For<IImporter>();
             importer.LoadFile("").Returns(new ImportedScenarios
                                               {
-                                                  Creation = new DateTime(2000,01,02),
+                                                  Creation = new DateTime(2000, 01, 02),
                                                   FaceRecognitionScenarios = new List<FaceRecognitionScenario>
                                                                                  {
                                                                                      new FaceRecognitionScenario
                                                                                          {
-                                                                                             Answers = new List<string>{"Happy", "Eccstatic"},
-                                                                                             Author = "Dr Fart",
+                                                                                             Answers = new List<string>{"Angry", "Peeved"},
+                                                                                             Author = "Tester",
                                                                                              CopyrightDisclaimer = "1999",
                                                                                              Id = Guid.Parse("53f0fad3-46ed-417d-b0ae-f45adf29fd15"),
+                                                                                             ImageName = "angry.png",
+                                                                                             QuestionTitle = "Angry Face",
                                                                                          }
                                                                                  }
                                               });
@@ -36,8 +38,10 @@ namespace VMTests.Utils
             //NOTE TO READER: This is an await because we intend to use threading when loading scenarios
             List<FaceRecognitionScenario> frs = await Task.FromResult<List<FaceRecognitionScenario>>(fp.GetFRScenariosFromFile());
             //Assert
-            Assert.Equal("Happy", frs[0].Answers.First());
-            Assert.Equal("Dr Fart", frs[0].Author);
+            Assert.Equal("Angry", frs[0].Answers.First());
+            Assert.Equal("Tester", frs[0].Author);
+            Assert.Equal("angry.png", frs[0].ImageName);
+            Assert.Equal("Angry Face", frs[0].QuestionTitle);
             Assert.Equal("1999", frs[0].CopyrightDisclaimer);
             Assert.Equal(Guid.Parse("53f0fad3-46ed-417d-b0ae-f45adf29fd15"), frs[0].Id);
         }
@@ -46,10 +50,10 @@ namespace VMTests.Utils
         public async Task GetImportedVRScenariosFromFile_WhenHit_LoadsVoiceRecognitionScenarios()
         {
             //Arrange
-            var importer =  Substitute.For<IImporter>();
+            var importer = Substitute.For<IImporter>();
             importer.LoadFile("").Returns(new ImportedScenarios
             {
-                Creation = new DateTime(2014,12,03),
+                Creation = new DateTime(2014, 12, 03),
                 VoiceRecognitionScenarios = new List<VoiceRecognitionScenario>
                 {
                     new VoiceRecognitionScenario

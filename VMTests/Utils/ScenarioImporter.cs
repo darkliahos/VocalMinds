@@ -59,7 +59,8 @@ namespace VMTests
                                                                       Id =
                                                                           Guid.Parse(
                                                                               "4bfad142-c027-495d-8f37-582471b03c70"),
-                                                                      ImageName = "angryface.png"
+                                                                      ImageName = "angryface.png",
+                                                                      QuestionTitle = "Angry Face",
                                                                   }
                                                           },
                 VideoScenarios = new List<VideoScenario>
