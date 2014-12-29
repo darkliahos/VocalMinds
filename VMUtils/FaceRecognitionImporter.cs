@@ -6,16 +6,11 @@ namespace VMUtils
 {
     public class FaceRecognitionImporter : IImporter<ImportedFaceRecognitionScenario>
     {
-        private readonly JsonSerialiser<ImportedFaceRecognitionScenario> _jsonSerialiser = new JsonSerialiser<ImportedFaceRecognitionScenario>();
+        private readonly ISerialiser<ImportedFaceRecognitionScenario> _serialiser;
 
-        public void WriteToFile(ImportedFaceRecognitionScenario importedScenarios, string outputPath)
+        public FaceRecognitionImporter(ISerialiser<ImportedFaceRecognitionScenario> serialiser)
         {
-            File.WriteAllText(outputPath, WriteToString(importedScenarios));
-        }
-
-        public string WriteToString(ImportedFaceRecognitionScenario importedScenarios)
-        {
-            return _jsonSerialiser.Serialise(importedScenarios);
+            _serialiser = serialiser;
         }
 
         public ImportedFaceRecognitionScenario LoadFile(string path)
@@ -30,7 +25,7 @@ namespace VMUtils
 
         public ImportedFaceRecognitionScenario StringToImportedScenarios(string jsonString)
         {
-            return _jsonSerialiser.DeSerialise(jsonString);
+            return _serialiser.DeSerialise(jsonString);
         }
     }
 }

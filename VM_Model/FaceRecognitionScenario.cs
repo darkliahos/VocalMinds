@@ -41,6 +41,7 @@ namespace VM_Model
         [Required]
         public string Author { get; set; }
 
-
+        [Required]
+        public DateTime LastModified { get; set; }
     }
 }

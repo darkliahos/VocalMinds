@@ -12,6 +12,12 @@ namespace VM_Model
         [Required]
         public DateTime LastModified { get; set; }
 
+        /// <summary>
+        /// Lock Flag to stop writing to a locked out file
+        /// </summary>
+        [Required]
+        public bool IsCurrentlyLocked { get; set; }
+
         public List<FaceRecognitionScenario> FaceRecognitionScenarios { get; set; }
     }
 }

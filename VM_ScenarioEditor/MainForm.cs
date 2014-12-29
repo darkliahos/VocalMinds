@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using NLog;
 using VMUtils;
 using VMUtils.Extensions;
+using VM_Model;
 
 namespace VM_ScenarioEditor
 {
@@ -16,7 +17,7 @@ namespace VM_ScenarioEditor
 
         private void faceRecognitionScenariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var fr = new FaceRecongitionScenarioEditorList(Logger, new FaceRecognitionImporter());
+            var fr = new FaceRecongitionScenarioEditorList(Logger, new FaceRecognitionImporter(new JsonSerialiser<ImportedFaceRecognitionScenario>()));
             fr.OpenFormInMdi(this);
         }
     }

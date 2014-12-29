@@ -17,5 +17,14 @@ namespace VMUtils
         {
             return _importedScenarios.FaceRecognitionScenarios;
         }
+
+        /// <summary>
+        /// Overload to return just the imported Face Reco scenarios object
+        /// </summary>
+        /// <returns>A fully populated ImportedFaceRecognitionScenario from the file</returns>
+        public ImportedFaceRecognitionScenario LoadFrsObject()
+        {
+            return _importedScenarios;
+        }
     }
 }

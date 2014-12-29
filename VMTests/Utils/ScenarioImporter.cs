@@ -43,7 +43,7 @@ namespace VMTests
         [Fact]
         public void StringToImportedFaceRecoScenarios_ValidJSonString_ShouldReturnImportedObject()
         {
-            var faceImporter = new FaceRecognitionImporter();
+            var faceImporter = new FaceRecognitionImporter(new JsonSerialiser<ImportedFaceRecognitionScenario>());
             var expectedResult = FaceRecognitionScenarioScenarioHelper();
             var actualObject = faceImporter.StringToImportedScenarios(Properties.Resources.FaceRecoJsonTest);
 

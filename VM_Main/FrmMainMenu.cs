@@ -26,7 +26,7 @@ namespace VM_Main
         {
             InitializeComponent();
             _importer = new Importer();
-            _faceimporter = new FaceRecognitionImporter();
+            _faceimporter = new FaceRecognitionImporter(new JsonSerialiser<ImportedFaceRecognitionScenario>());
             _configuration = configuration;
             if (_configuration.ReadBooleanSetting("LoadScenarios"))
             {

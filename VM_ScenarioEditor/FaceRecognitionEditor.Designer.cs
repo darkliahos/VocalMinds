@@ -38,6 +38,11 @@
             this.txtCopyrightNotice = new System.Windows.Forms.TextBox();
             this.lstAnswers = new System.Windows.Forms.ListBox();
             this.txtImageName = new System.Windows.Forms.TextBox();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtAnswerSingle = new System.Windows.Forms.TextBox();
+            this.btnAddAnswers = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblQTitle
@@ -74,7 +79,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(23, 246);
+            this.label3.Location = new System.Drawing.Point(23, 290);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(81, 25);
             this.label3.TabIndex = 3;
@@ -84,7 +89,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(23, 281);
+            this.label4.Location = new System.Drawing.Point(23, 325);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(177, 25);
             this.label4.TabIndex = 4;
@@ -101,7 +106,7 @@
             // txtAuthor
             // 
             this.txtAuthor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAuthor.Location = new System.Drawing.Point(206, 246);
+            this.txtAuthor.Location = new System.Drawing.Point(206, 290);
             this.txtAuthor.Name = "txtAuthor";
             this.txtAuthor.Size = new System.Drawing.Size(193, 29);
             this.txtAuthor.TabIndex = 6;
@@ -109,7 +114,7 @@
             // txtCopyrightNotice
             // 
             this.txtCopyrightNotice.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCopyrightNotice.Location = new System.Drawing.Point(206, 281);
+            this.txtCopyrightNotice.Location = new System.Drawing.Point(206, 325);
             this.txtCopyrightNotice.Name = "txtCopyrightNotice";
             this.txtCopyrightNotice.Size = new System.Drawing.Size(193, 29);
             this.txtCopyrightNotice.TabIndex = 7;
@@ -130,11 +135,63 @@
             this.txtImageName.Size = new System.Drawing.Size(193, 29);
             this.txtImageName.TabIndex = 11;
             // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(324, 378);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 12;
+            this.btnSave.Text = "&Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(23, 235);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 25);
+            this.label2.TabIndex = 13;
+            // 
+            // txtAnswerSingle
+            // 
+            this.txtAnswerSingle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAnswerSingle.Location = new System.Drawing.Point(206, 224);
+            this.txtAnswerSingle.Name = "txtAnswerSingle";
+            this.txtAnswerSingle.Size = new System.Drawing.Size(172, 29);
+            this.txtAnswerSingle.TabIndex = 14;
+            // 
+            // btnAddAnswers
+            // 
+            this.btnAddAnswers.Location = new System.Drawing.Point(383, 226);
+            this.btnAddAnswers.Name = "btnAddAnswers";
+            this.btnAddAnswers.Size = new System.Drawing.Size(75, 23);
+            this.btnAddAnswers.TabIndex = 15;
+            this.btnAddAnswers.Text = "Add";
+            this.btnAddAnswers.UseVisualStyleBackColor = true;
+            this.btnAddAnswers.Click += new System.EventHandler(this.btnAddAnswers_Click);
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.Location = new System.Drawing.Point(385, 97);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(75, 23);
+            this.btnRemove.TabIndex = 16;
+            this.btnRemove.Text = "Remove";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
             // FaceRecognitionEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(498, 369);
+            this.ClientSize = new System.Drawing.Size(470, 431);
+            this.Controls.Add(this.btnRemove);
+            this.Controls.Add(this.btnAddAnswers);
+            this.Controls.Add(this.txtAnswerSingle);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtImageName);
             this.Controls.Add(this.lstAnswers);
             this.Controls.Add(this.txtCopyrightNotice);
@@ -164,5 +221,10 @@
         private System.Windows.Forms.TextBox txtCopyrightNotice;
         private System.Windows.Forms.ListBox lstAnswers;
         private System.Windows.Forms.TextBox txtImageName;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtAnswerSingle;
+        private System.Windows.Forms.Button btnAddAnswers;
+        private System.Windows.Forms.Button btnRemove;
     }
 }
