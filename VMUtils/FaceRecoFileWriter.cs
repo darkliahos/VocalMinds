@@ -8,23 +8,28 @@ using VM_Model;
 
 namespace VMUtils
 {
-    public class ImageFileWriter : IFileWriter<ImportedFaceRecognitionScenario>
+    public class FaceRecoFileWriter : IFileWriter<ImportedFaceRecognitionScenario>
     {
-        private static ISerialiser<ImportedFaceRecognitionScenario> _serialiser;
-        static readonly string FaceRecopath = PathUtils.GetRootContentFolder("facerecoscenarios.js");
-        private readonly FaceRecognitionProcessor _fpi;
-        private readonly FaceRecognitionExporter _fei;
 
-        public ImageFileWriter(ISerialiser<ImportedFaceRecognitionScenario> serialiser)
+
+        private static ISerialiser<ImportedFaceRecognitionScenario> _serialiser;
+        private readonly IExporter<ImportedFaceRecognitionScenario> _exporter;
+        private readonly IImporter<ImportedFaceRecognitionScenario> _importer;
+        private readonly IFileProcessor<FaceRecognitionScenario, ImportedFaceRecognitionScenario> _processor;
+        private static string _faceRecopath;
+
+        public FaceRecoFileWriter(ISerialiser<ImportedFaceRecognitionScenario> serialiser, IExporter<ImportedFaceRecognitionScenario> exporter, IImporter<ImportedFaceRecognitionScenario> importer, IFileProcessor<FaceRecognitionScenario,ImportedFaceRecognitionScenario> processor, string path)
         {
             _serialiser = serialiser;
-            _fpi = new FaceRecognitionProcessor(new FaceRecognitionImporter(_serialiser), FaceRecopath);
-            _fei = new FaceRecognitionExporter(_serialiser);
+            _exporter = exporter;
+            _importer = importer;
+            _processor = processor;
+            _faceRecopath = path;
         }
 
         public void Save(ImportedFaceRecognitionScenario inputObject)
         {
-            var loadScenarioFromFile = _fpi.RefreshFrsObject();
+            var loadScenarioFromFile = _processor.RefreshScenarioObject();
 
             if (loadScenarioFromFile != null)
             {
@@ -42,7 +47,7 @@ namespace VMUtils
                 inputObject.LastModified = DateTime.UtcNow;
                 inputObject.IsCurrentlyLocked = true;
                 inputObject.LastWrittenProcessId = Process.GetCurrentProcess().Id;
-                _fei.WriteToFile(inputObject, FaceRecopath);
+                _exporter.WriteToFile(inputObject, _faceRecopath);
                 UnlockFile();
             }
 
@@ -50,7 +55,7 @@ namespace VMUtils
 
         public void LockFile()
         {
-            var loadScenarioFromFile = _fpi.LoadFrsObject();
+            var loadScenarioFromFile = _processor.LoadScenarioObject();
             var processId = Process.GetCurrentProcess().Id;
 
             if (loadScenarioFromFile.IsCurrentlyLocked && loadScenarioFromFile.LastWrittenProcessId != processId)
@@ -59,18 +64,18 @@ namespace VMUtils
             }
             loadScenarioFromFile.IsCurrentlyLocked = true;
             loadScenarioFromFile.LastWrittenProcessId = processId;
-            _fei.WriteToFile(loadScenarioFromFile, FaceRecopath);
+            _exporter.WriteToFile(loadScenarioFromFile, _faceRecopath);
         }
 
         public void UnlockFile()
         {
-            var loadScenarioFromFile = _fpi.RefreshFrsObject();
+            var loadScenarioFromFile = _processor.RefreshScenarioObject();
             var processId = Process.GetCurrentProcess().Id;
 
             if (loadScenarioFromFile.IsCurrentlyLocked && loadScenarioFromFile.LastWrittenProcessId == processId)
             {
                 loadScenarioFromFile.IsCurrentlyLocked = false;
-                _fei.WriteToFile(loadScenarioFromFile, FaceRecopath);
+                _exporter.WriteToFile(loadScenarioFromFile, _faceRecopath);
             }
             else
             {

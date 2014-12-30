@@ -15,17 +15,16 @@ namespace VM_ScenarioEditor
         private readonly Logger _logger;
         private ImportedFaceRecognitionScenario _frs;
         private Dictionary<string, FaceRecognitionScenario> _frsdict;
-        private readonly FaceRecognitionProcessor _fileProcessor;
         private readonly IImporter<ImportedFaceRecognitionScenario> _importer;
+        private readonly IFileProcessor<FaceRecognitionScenario, ImportedFaceRecognitionScenario> _processor;
 
-        public FaceRecongitionScenarioEditorList(Logger logger, IImporter<ImportedFaceRecognitionScenario> importer)
+        public FaceRecongitionScenarioEditorList(Logger logger, IImporter<ImportedFaceRecognitionScenario> importer, IFileProcessor<FaceRecognitionScenario,ImportedFaceRecognitionScenario> processor)
         {
             InitializeComponent();
             _logger = logger;
             _importer = importer;
+            _processor = processor;
             _frsdict = new Dictionary<string, FaceRecognitionScenario>();
-            string path = PathUtils.GetRootContentFolder("facerecoscenarios.js");
-            _fileProcessor = new FaceRecognitionProcessor(_importer, path);
             Task<bool> sucessfulLoading = LoadTasks();
             LoadScenariosToForm();
 
@@ -44,7 +43,7 @@ namespace VM_ScenarioEditor
         {
             try
             {
-                _frs = await Task.FromResult<ImportedFaceRecognitionScenario>(_fileProcessor.LoadFrsObject());
+                _frs = await Task.FromResult<ImportedFaceRecognitionScenario>(_processor.LoadScenarioObject());
                 Task.WaitAll();
                 return true;
             }

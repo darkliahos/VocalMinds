@@ -4,7 +4,7 @@ using VM_Model;
 
 namespace VMUtils
 {
-    public class VoiceRecognitionFileProcessor : IFileProcessor<VoiceRecognitionScenario>
+    public class VoiceRecognitionFileProcessor : IFileProcessor<VoiceRecognitionScenario, ImportedScenarios>
     {
         private readonly ImportedScenarios _importedScenarios;
 
@@ -15,6 +15,16 @@ namespace VMUtils
         public List<VoiceRecognitionScenario> LoadScenarioFromFile()
         {
             return _importedScenarios.VoiceRecognitionScenarios;
+        }
+
+        public ImportedScenarios LoadScenarioObject()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public ImportedScenarios RefreshScenarioObject()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

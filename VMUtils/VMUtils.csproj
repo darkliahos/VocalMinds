@@ -54,7 +54,7 @@
     <Compile Include="FaceRecognitionExporter.cs" />
     <Compile Include="Interfaces\IExporter.cs" />
     <Compile Include="Interfaces\IFileWriter.cs" />
-    <Compile Include="ImageFileWriter.cs" />
+    <Compile Include="FaceRecoFileWriter.cs" />
     <Compile Include="SocialSimulatorFileProcessor.cs" />
     <Compile Include="Extensions\FormExtensions.cs" />
     <Compile Include="FaceRecognitionImporter.cs" />

@@ -4,7 +4,7 @@ using VM_Model;
 
 namespace VMUtils
 {
-    public class FaceRecognitionProcessor : IFileProcessor<FaceRecognitionScenario>
+    public class FaceRecognitionProcessor : IFileProcessor<FaceRecognitionScenario, ImportedFaceRecognitionScenario>
     {
         private readonly IImporter<ImportedFaceRecognitionScenario> _importer;
         private readonly string _path;
@@ -26,12 +26,16 @@ namespace VMUtils
         /// Overload to return just the imported Face Reco scenarios object
         /// </summary>
         /// <returns>A fully populated ImportedFaceRecognitionScenario from the file</returns>
-        public ImportedFaceRecognitionScenario LoadFrsObject()
+        public ImportedFaceRecognitionScenario LoadScenarioObject()
         {
             return _importedScenarios;
         }
 
-        public ImportedFaceRecognitionScenario RefreshFrsObject()
+        /// <summary>
+        /// Refreshing the full scenario object from the file
+        /// </summary>
+        /// <returns></returns>
+        public ImportedFaceRecognitionScenario RefreshScenarioObject()
         {
             _importedScenarios = _importer.LoadFile(_path);
             return _importedScenarios;

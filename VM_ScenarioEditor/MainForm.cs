@@ -10,6 +10,7 @@ namespace VM_ScenarioEditor
     public partial class MainForm : Form
     {
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+        string path = PathUtils.GetRootContentFolder("facerecoscenarios.js");
         public MainForm()
         {
             InitializeComponent();
@@ -17,7 +18,8 @@ namespace VM_ScenarioEditor
 
         private void faceRecognitionScenariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var fr = new FaceRecongitionScenarioEditorList(Logger, new FaceRecognitionImporter(new JsonSerialiser<ImportedFaceRecognitionScenario>()));
+            var _faceImporter = new FaceRecognitionImporter(new JsonSerialiser<ImportedFaceRecognitionScenario>());
+            var fr = new FaceRecongitionScenarioEditorList(Logger, _faceImporter, new FaceRecognitionProcessor(_faceImporter, path));
             fr.OpenFormInMdi(this);
         }
     }
