@@ -25,6 +25,7 @@ namespace VM_ScenarioEditor
             txtImageName.Text = fs.ImageName;
             txtAuthor.Text = fs.Author;
             txtCopyrightNotice.Text = fs.CopyrightDisclaimer;
+
             foreach (var answer in fs.Answers)
             {
                 lstAnswers.Items.Add(answer);

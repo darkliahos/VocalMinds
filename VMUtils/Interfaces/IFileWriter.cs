@@ -17,6 +17,6 @@
         /// Unlocks object
         /// </summary>
         /// <returns></returns>
-        bool UnlockFile();
+        void UnlockFile();
     }
 }

@@ -12,6 +12,9 @@ namespace VM_Model
         [Required]
         public DateTime LastModified { get; set; }
 
+        [Required]
+        public int LastWrittenProcessId { get; set; }
+
         /// <summary>
         /// Lock Flag to stop writing to a locked out file
         /// </summary>

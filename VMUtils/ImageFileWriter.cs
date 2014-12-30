@@ -1,5 +1,8 @@
 using System;
+using System.Data;
+using System.Diagnostics;
 using VMUtils.Exceptions;
+using VMUtils.Extensions;
 using VMUtils.Interfaces;
 using VM_Model;
 
@@ -21,7 +24,7 @@ namespace VMUtils
 
         public void Save(ImportedFaceRecognitionScenario inputObject)
         {
-            var loadScenarioFromFile = _fpi.LoadFrsObject();
+            var loadScenarioFromFile = _fpi.RefreshFrsObject();
 
             if (loadScenarioFromFile != null)
             {
@@ -29,22 +32,51 @@ namespace VMUtils
                 {
                     throw new FileLockedException("File is currently locked for editing");
                 }
-
-                //TODO: Need more checks such as File Modification
-
+                
+                if (loadScenarioFromFile.LastWrittenProcessId != Process.GetCurrentProcess().Id &&
+                    loadScenarioFromFile.LastModified.IsTimeWithinXSeconds(30))
+                {
+                    //TODO: What do we do in this situation? See Issue #23
+                }
+                LockFile();
+                inputObject.LastModified = DateTime.UtcNow;
+                inputObject.IsCurrentlyLocked = true;
+                inputObject.LastWrittenProcessId = Process.GetCurrentProcess().Id;
                 _fei.WriteToFile(inputObject, FaceRecopath);
+                UnlockFile();
             }
 
         }
 
         public void LockFile()
         {
-            throw new NotImplementedException();
+            var loadScenarioFromFile = _fpi.LoadFrsObject();
+            var processId = Process.GetCurrentProcess().Id;
+
+            if (loadScenarioFromFile.IsCurrentlyLocked && loadScenarioFromFile.LastWrittenProcessId != processId)
+            {
+                throw new FileLockedException("File has already be locked by" + loadScenarioFromFile.LastWrittenProcessId);
+            }
+            loadScenarioFromFile.IsCurrentlyLocked = true;
+            loadScenarioFromFile.LastWrittenProcessId = processId;
+            _fei.WriteToFile(loadScenarioFromFile, FaceRecopath);
         }
 
-        public bool UnlockFile()
+        public void UnlockFile()
         {
-            throw new NotImplementedException();
+            var loadScenarioFromFile = _fpi.RefreshFrsObject();
+            var processId = Process.GetCurrentProcess().Id;
+
+            if (loadScenarioFromFile.IsCurrentlyLocked && loadScenarioFromFile.LastWrittenProcessId == processId)
+            {
+                loadScenarioFromFile.IsCurrentlyLocked = false;
+                _fei.WriteToFile(loadScenarioFromFile, FaceRecopath);
+            }
+            else
+            {
+                throw new FileFailedToUnlockedException("Could not unlock file");
+            }
+
         }
     }
 }

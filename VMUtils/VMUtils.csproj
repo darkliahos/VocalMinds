@@ -47,7 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration.cs" />
+    <Compile Include="Exceptions\FileFailedToUnlockedException.cs" />
     <Compile Include="Exceptions\FileLockedException.cs" />
+    <Compile Include="Extensions\DateExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="FaceRecognitionExporter.cs" />
     <Compile Include="Interfaces\IExporter.cs" />

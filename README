@@ -1,16 +1,14 @@
-This application was orignally created for my final year project in 2010 however I have started to refactor it and am activly working on it to get it to what I intended it to be.
+This application was originally created for my final year project in 2010 however I have started to refactor it and am actively working on it to get it to what I intended it to be.
 
-The purpose of Vocal Minds was to help childern or adults with special needs to difficulties with communications understand the how communication can work.
-How to understand facial expressions and tones of voices. 
+The purpose of Vocal Minds was to help children or adults with special needs or difficulties with communication understand how to socialise in different environments and how to understand facial expressions and tones of voices. 
 
 Current features are:
 
-Voice Recognition - This is quite buggy and uses Windows SAPI library
+Voice Recognition - Uses Windows SAPI Library
 Facial expression quiz
 Tone Of voice Quiz
 Social simulator - This needs a lot of work to get it up to standards
-
-I have included a lot of my rendered images from the project, I have lost all the social simulator videos, If I find them I will include them
+Scenario Editor - 10% Complete
 
 If there is any developers or testers out there who are interested in contributing to this project, please feel free to contact me via the email posted on my Github profile.
 

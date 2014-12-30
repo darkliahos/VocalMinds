@@ -6,10 +6,14 @@ namespace VMUtils
 {
     public class FaceRecognitionProcessor : IFileProcessor<FaceRecognitionScenario>
     {
-        private readonly ImportedFaceRecognitionScenario _importedScenarios;
+        private readonly IImporter<ImportedFaceRecognitionScenario> _importer;
+        private readonly string _path;
+        private ImportedFaceRecognitionScenario _importedScenarios;
 
         public FaceRecognitionProcessor(IImporter<ImportedFaceRecognitionScenario> importer, string path)
         {
+            _importer = importer;
+            _path = path;
             _importedScenarios = importer.LoadFile(path);
         }
 
@@ -24,6 +28,12 @@ namespace VMUtils
         /// <returns>A fully populated ImportedFaceRecognitionScenario from the file</returns>
         public ImportedFaceRecognitionScenario LoadFrsObject()
         {
+            return _importedScenarios;
+        }
+
+        public ImportedFaceRecognitionScenario RefreshFrsObject()
+        {
+            _importedScenarios = _importer.LoadFile(_path);
             return _importedScenarios;
         }
     }
