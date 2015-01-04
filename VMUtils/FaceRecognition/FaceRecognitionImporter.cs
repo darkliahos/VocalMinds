@@ -2,7 +2,7 @@ using System.IO;
 using VMUtils.Interfaces;
 using VM_Model;
 
-namespace VMUtils
+namespace VMUtils.FaceRecognition
 {
     public class FaceRecognitionImporter : IImporter<ImportedFaceRecognitionScenario>
     {

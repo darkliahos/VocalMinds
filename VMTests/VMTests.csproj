@@ -65,8 +65,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Utils\DateExtensionsTests.cs" />
+    <Compile Include="Utils\FaceRecognitionMergeTests.cs" />
     <Compile Include="Utils\FileProcessorTests.cs" />
-    <Compile Include="Utils\FaceRecoFileWriterTests.cs" />
+    <Compile Include="Utils\FaceRecognitionFileWriterTests.cs" />
     <Compile Include="Utils\ScenarioImporter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

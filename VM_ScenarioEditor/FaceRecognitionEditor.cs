@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using VMUtils;
+using VMUtils.FaceRecognition;
 using VMUtils.Interfaces;
 using VM_Model;
 
@@ -13,10 +14,10 @@ namespace VM_ScenarioEditor
         private readonly Guid _freGuid;
 
         private static readonly ISerialiser<ImportedFaceRecognitionScenario> Serialiser = new JsonSerialiser<ImportedFaceRecognitionScenario>();
-
-        private static readonly IImporter<ImportedFaceRecognitionScenario> importer = new FaceRecognitionImporter(Serialiser);
+        private static readonly IMerge<ImportedFaceRecognitionScenario> Merge = new FaceRecognitionMerge(); 
+        private static readonly IImporter<ImportedFaceRecognitionScenario> Importer = new FaceRecognitionImporter(Serialiser);
         static readonly string FaceRecopath = PathUtils.GetRootContentFolder("facerecoscenarios.js");
-        private readonly FaceRecoFileWriter _fre = new FaceRecoFileWriter(Serialiser, new FaceRecognitionExporter(Serialiser), importer, new FaceRecognitionProcessor(importer, FaceRecopath),  PathUtils.GetRootContentFolder("facerecoscenarios.js"));
+        private readonly FaceRecognitionFileWriter _fre = new FaceRecognitionFileWriter(new FaceRecognitionExporter(Serialiser), new FaceRecognitionProcessor(Importer, FaceRecopath), PathUtils.GetRootContentFolder("facerecoscenarios.js"), Merge);
         public ImportedFaceRecognitionScenario FaceRecognitionScenariosState { get; set; }
         public FaceRecognitionEditor()
         {

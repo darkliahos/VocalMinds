@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using NSubstitute;
 using VMUtils;
+using VMUtils.FaceRecognition;
 using VMUtils.Interfaces;
 using VM_Model;
 using Xunit;

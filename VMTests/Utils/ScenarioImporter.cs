@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using VMUtils;
+using VMUtils.FaceRecognition;
 using VM_Model;
 using Xunit;
 

@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using NLog;
 using VMUtils;
 using VMUtils.Extensions;
+using VMUtils.FaceRecognition;
 using VM_Model;
 
 namespace VM_ScenarioEditor

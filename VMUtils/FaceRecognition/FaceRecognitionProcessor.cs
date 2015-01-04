@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using VMUtils.Interfaces;
 using VM_Model;
 
-namespace VMUtils
+namespace VMUtils.FaceRecognition
 {
     public class FaceRecognitionProcessor : IFileProcessor<FaceRecognitionScenario, ImportedFaceRecognitionScenario>
     {

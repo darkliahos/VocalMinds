@@ -1,30 +1,27 @@
 using System;
-using System.Data;
 using System.Diagnostics;
 using VMUtils.Exceptions;
 using VMUtils.Extensions;
 using VMUtils.Interfaces;
 using VM_Model;
 
-namespace VMUtils
+namespace VMUtils.FaceRecognition
 {
-    public class FaceRecoFileWriter : IFileWriter<ImportedFaceRecognitionScenario>
+    public class FaceRecognitionFileWriter : IFileWriter<ImportedFaceRecognitionScenario>
     {
 
 
-        private static ISerialiser<ImportedFaceRecognitionScenario> _serialiser;
         private readonly IExporter<ImportedFaceRecognitionScenario> _exporter;
-        private readonly IImporter<ImportedFaceRecognitionScenario> _importer;
         private readonly IFileProcessor<FaceRecognitionScenario, ImportedFaceRecognitionScenario> _processor;
         private static string _faceRecopath;
+        private readonly IMerge<ImportedFaceRecognitionScenario> _merge;
 
-        public FaceRecoFileWriter(ISerialiser<ImportedFaceRecognitionScenario> serialiser, IExporter<ImportedFaceRecognitionScenario> exporter, IImporter<ImportedFaceRecognitionScenario> importer, IFileProcessor<FaceRecognitionScenario,ImportedFaceRecognitionScenario> processor, string path)
+        public FaceRecognitionFileWriter(IExporter<ImportedFaceRecognitionScenario> exporter, IFileProcessor<FaceRecognitionScenario, ImportedFaceRecognitionScenario> processor, string path, IMerge<ImportedFaceRecognitionScenario> merge)
         {
-            _serialiser = serialiser;
             _exporter = exporter;
-            _importer = importer;
             _processor = processor;
             _faceRecopath = path;
+            _merge = merge;
         }
 
         public void Save(ImportedFaceRecognitionScenario inputObject)
@@ -36,7 +33,10 @@ namespace VMUtils
                 if (loadScenarioFromFile.LastWrittenProcessId != Process.GetCurrentProcess().Id &&
                     loadScenarioFromFile.LastModified.IsTimeWithinXSeconds(30))
                 {
-                    //TODO: What do we do in this situation? See Issue #23
+                    if (_merge.CompareSourceWithTarget(loadScenarioFromFile, inputObject))
+                    {
+                        //TODO: What do we do in this situation? See Issue #23
+                    }
                 }
                 LockFile();
                 inputObject.LastModified = DateTime.UtcNow;
