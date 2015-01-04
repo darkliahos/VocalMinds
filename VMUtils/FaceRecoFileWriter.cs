@@ -31,13 +31,8 @@ namespace VMUtils
         {
             var loadScenarioFromFile = _processor.RefreshScenarioObject();
 
-            if (loadScenarioFromFile != null)
+            if (inputObject != null && loadScenarioFromFile != null)
             {
-                if (loadScenarioFromFile.IsCurrentlyLocked)
-                {
-                    throw new FileLockedException("File is currently locked for editing");
-                }
-                
                 if (loadScenarioFromFile.LastWrittenProcessId != Process.GetCurrentProcess().Id &&
                     loadScenarioFromFile.LastModified.IsTimeWithinXSeconds(30))
                 {
@@ -49,6 +44,10 @@ namespace VMUtils
                 inputObject.LastWrittenProcessId = Process.GetCurrentProcess().Id;
                 _exporter.WriteToFile(inputObject, _faceRecopath);
                 UnlockFile();
+            }
+            else
+            {
+                throw new FileSaveException("File save exception");
             }
 
         }

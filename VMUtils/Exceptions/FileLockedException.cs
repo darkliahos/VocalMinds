@@ -8,11 +8,13 @@ namespace VMUtils.Exceptions
         {
         }
 
-        public FileLockedException(string message): base(message)
+        public FileLockedException(string message)
+            : base(message)
         {
         }
 
-        public FileLockedException(string message, Exception inner): base(message, inner)
+        public FileLockedException(string message, Exception inner)
+            : base(message, inner)
         {
         }
     }

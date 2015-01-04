@@ -49,6 +49,7 @@
     <Compile Include="Configuration.cs" />
     <Compile Include="Exceptions\FileFailedToUnlockedException.cs" />
     <Compile Include="Exceptions\FileLockedException.cs" />
+    <Compile Include="Exceptions\FileSaveException.cs" />
     <Compile Include="Extensions\DateExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="FaceRecognitionExporter.cs" />
