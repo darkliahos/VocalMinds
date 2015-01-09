@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Speech.Recognition;
 using System.Windows.Forms;
 using VMUtils;
-using VMUtils.Loaders;
+using VMUtils.FaceRecognition;
 using VM_Main.Properties;
 using VM_Model;
 

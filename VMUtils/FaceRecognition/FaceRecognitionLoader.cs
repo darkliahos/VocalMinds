@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using VMUtils.Interfaces;
 using VM_Model;
 
-namespace VMUtils.Loaders
+namespace VMUtils.FaceRecognition
 {
     public class FaceRecognitionLoader
     {
