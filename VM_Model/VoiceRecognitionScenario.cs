@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace VM_Model
 {
@@ -11,15 +8,25 @@ namespace VM_Model
     {
         public Guid Id { get; set; }
 
+        /// <summary>
+        /// A user Identifiable title
+        /// </summary>
+        [Required]
+        public string QuestionTitle { get; set; }
+
         [Required]
         public string AudioPath { get; set; }
 
-        [Required, MaxLength(20)]
-        public string Answer { get; set; }
+        public List<string> Answers { get; set; }
 
         [Required]
         public string Author { get; set; }
 
         public string CopyrightDisclaimer { get; set; }
+
+        [Required]
+        public DateTime LastModified { get; set; }
+
+
     }
 }

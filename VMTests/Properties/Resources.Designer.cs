@@ -77,5 +77,14 @@ namespace VMTests.Properties {
                 return ResourceManager.GetString("JsonTest", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {&quot;Creation&quot;:&quot;2015-01-09T00:00:00&quot;,&quot;LastModified&quot;:&quot;2015-01-09T00:00:00&quot;,&quot;LastWrittenProcessId&quot;:0,&quot;IsCurrentlyLocked&quot;:false,&quot;VoiceRecognitionScenarios&quot;:[{&quot;Id&quot;:&quot;20cc7f02-970e-4684-a143-112d75c39238&quot;,&quot;QuestionTitle&quot;:&quot;Hey Hey&quot;,&quot;AudioPath&quot;:&quot;C:\\Audio\\VRS\\&quot;,&quot;Answers&quot;:[&quot;Happy&quot;,&quot;Eccstatic&quot;],&quot;Author&quot;:&quot;Dave The Clown&quot;,&quot;CopyrightDisclaimer&quot;:&quot;2009 Micheal Jackson&quot;,&quot;LastModified&quot;:&quot;0001-01-01T00:00:00&quot;}]}.
+        /// </summary>
+        internal static string VoiceRecoTest {
+            get {
+                return ResourceManager.GetString("VoiceRecoTest", resourceCulture);
+            }
+        }
     }
 }

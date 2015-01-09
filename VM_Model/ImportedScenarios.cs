@@ -13,7 +13,5 @@ namespace VM_Model
         public DateTime LastModified { get; set; }
 
         public List<VideoScenario> VideoScenarios { get; set; }
-
-        public List<VoiceRecognitionScenario> VoiceRecognitionScenarios { get; set; }
     }
 }

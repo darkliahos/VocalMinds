@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using VMUtils;
 using VMUtils.FaceRecognition;
+using VMUtils.VoiceRecognition;
 using VM_Model;
 using Xunit;
 
-namespace VMTests
+namespace VMTests.Utils
 {
     public class ScenarioImporter
     {
@@ -31,13 +32,21 @@ namespace VMTests
             Assert.Equal(expectedResult.VideoScenarios[0].VideoSegment[0].VideoPath, actualObject.VideoScenarios[0].VideoSegment[0].VideoPath);
             Assert.Equal(expectedResult.VideoScenarios[0].VideoSegment[0].Responses[0].Answer, actualObject.VideoScenarios[0].VideoSegment[0].Responses[0].Answer);
             Assert.Equal(expectedResult.VideoScenarios[0].VideoSegment[0].Responses[0].ResponseType, actualObject.VideoScenarios[0].VideoSegment[0].Responses[0].ResponseType);
-            Assert.Equal(expectedResult.VoiceRecognitionScenarios[0].Answer, actualObject.VoiceRecognitionScenarios[0].Answer);
+
+        }
+
+        [Fact]
+        public void StringToImportedVoiceRecoScenarios_ValidJsonString_ShouldReturnImportedObject()
+        {
+            var voiceRecoImporter = new VideoRecognitionImporter(new JsonSerialiser<ImportedVoiceRecognitionScenario>());
+            var expectedResult = ImportedVideoScenariosHelper();
+            var actualObject = voiceRecoImporter.StringToImportedScenarios(Properties.Resources.VoiceRecoTest);
+
+            Assert.Equal(expectedResult.VoiceRecognitionScenarios[0].Answers, actualObject.VoiceRecognitionScenarios[0].Answers);
             Assert.Equal(expectedResult.VoiceRecognitionScenarios[0].AudioPath, actualObject.VoiceRecognitionScenarios[0].AudioPath);
             Assert.Equal(expectedResult.VoiceRecognitionScenarios[0].Author, actualObject.VoiceRecognitionScenarios[0].Author);
             Assert.Equal(expectedResult.VoiceRecognitionScenarios[0].CopyrightDisclaimer, actualObject.VoiceRecognitionScenarios[0].CopyrightDisclaimer);
             Assert.Equal(expectedResult.VoiceRecognitionScenarios[0].Id, actualObject.VoiceRecognitionScenarios[0].Id);
-
-
         }
 
 
@@ -79,7 +88,30 @@ namespace VMTests
                 Creation = new DateTime(2014, 12, 27),
                 LastModified = new DateTime(2014, 12, 27)
             };
-        } 
+        }
+
+        private ImportedVoiceRecognitionScenario ImportedVideoScenariosHelper()
+        {
+            return new ImportedVoiceRecognitionScenario
+            {
+                Creation = new DateTime(2015, 01, 09),
+                LastModified = new DateTime(2015,01,09),
+                VoiceRecognitionScenarios  = new List<VoiceRecognitionScenario>
+                                                           {
+                                                               new VoiceRecognitionScenario
+                                                                   {
+                                                                       Answers = new List<string> {"Happy", "Eccstatic"},
+                                                                       Author = "Dave The Clown",
+                                                                       AudioPath = @"C:\Audio\VRS\",
+                                                                       CopyrightDisclaimer = "2009 Micheal Jackson",
+                                                                       QuestionTitle = "Hey Hey",
+                                                                       Id =
+                                                                           Guid.Parse(
+                                                                               "20cc7f02-970e-4684-a143-112d75c39238")
+                                                                   },
+                                                           }
+            };
+        }
 
         private ImportedScenarios ImportedScenariosHelper()
         {
@@ -124,19 +156,6 @@ namespace VMTests
                                                                                }
                                                         }
                                                 },
-                VoiceRecognitionScenarios = new List<VoiceRecognitionScenario>
-                                                           {
-                                                               new VoiceRecognitionScenario
-                                                                   {
-                                                                       Answer = "Happy",
-                                                                       Author = "Dave The Clown",
-                                                                       AudioPath = @"C:\Audio\VRS\",
-                                                                       CopyrightDisclaimer = "2009 Micheal Jackson",
-                                                                       Id =
-                                                                           Guid.Parse(
-                                                                               "20cc7f02-970e-4684-a143-112d75c39238")
-                                                                   },
-                                                           }
             };
         }
     }

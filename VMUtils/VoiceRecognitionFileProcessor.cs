@@ -6,9 +6,9 @@ namespace VMUtils
 {
     public class VoiceRecognitionFileProcessor : IFileProcessor<VoiceRecognitionScenario, ImportedScenarios>
     {
-        private readonly ImportedScenarios _importedScenarios;
+        private readonly ImportedVoiceRecognitionScenario _importedScenarios;
 
-        public VoiceRecognitionFileProcessor(IImporter<ImportedScenarios> importer, string path)
+        public VoiceRecognitionFileProcessor(IImporter<ImportedVoiceRecognitionScenario> importer, string path)
         {
             _importedScenarios = importer.LoadFile(path);
         }

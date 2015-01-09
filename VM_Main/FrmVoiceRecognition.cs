@@ -12,7 +12,7 @@ namespace VM_Main
 
     public partial class FrmVoiceRecognition : Form
     {
-        string _correctAnswer;
+        List<string> _correctAnswers;
         string _playsound;
 
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
@@ -32,7 +32,7 @@ namespace VM_Main
             if (_voiceRecognitions.TryGetValue(index, out voiceResult))
             {
                 _playsound = PathUtils.GetFullSoundPath(voiceResult.AudioPath);
-                _correctAnswer = voiceResult.Answer;
+                _correctAnswers = voiceResult.Answers;
             }
             else
             {
@@ -77,7 +77,7 @@ namespace VM_Main
         {
             btntalk.Text = Resources.Facerecognition_SucessfulRecognition_Answer;
             txtsaid.Text = speechResult;
-            if (speechResult == _correctAnswer)
+            if (_correctAnswers.Contains(speechResult))
             {
                 MessageBox.Show(Resources.WellDone);
                 LoadScenario(Randomiser.NextRange(1, _voiceRecognitions.Count));

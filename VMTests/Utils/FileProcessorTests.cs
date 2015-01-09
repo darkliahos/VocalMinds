@@ -52,15 +52,15 @@ namespace VMTests.Utils
         public async Task GetImportedVRScenariosFromFile_WhenHit_LoadsVoiceRecognitionScenarios()
         {
             //Arrange
-            var importer = Substitute.For<IImporter<ImportedScenarios>>();
-            importer.LoadFile("").Returns(new ImportedScenarios
+            var importer = Substitute.For<IImporter<ImportedVoiceRecognitionScenario>>();
+            importer.LoadFile("").Returns(new ImportedVoiceRecognitionScenario
             {
                 Creation = new DateTime(2014, 12, 03),
                 VoiceRecognitionScenarios = new List<VoiceRecognitionScenario>
                 {
                     new VoiceRecognitionScenario
                     {
-                        Answer = "Suicidal",
+                        Answers = new List<string>{"Angry", "Peeved"},
                         AudioPath = @"C:\temp\audiofile.mp3",
                         Author = "Pooman",
                         CopyrightDisclaimer = "No Idea",
@@ -72,7 +72,7 @@ namespace VMTests.Utils
             //Act
             List<VoiceRecognitionScenario> vrs = await Task.FromResult<List<VoiceRecognitionScenario>>(fp.LoadScenarioFromFile());
             //Assert
-            Assert.Equal("Suicidal", vrs[0].Answer);
+            Assert.Equal("Angry", vrs[0].Answers.First());
             Assert.Equal(@"C:\temp\audiofile.mp3", vrs[0].AudioPath);
             Assert.Equal("Pooman", vrs[0].Author);
             Assert.Equal("No Idea", vrs[0].CopyrightDisclaimer);

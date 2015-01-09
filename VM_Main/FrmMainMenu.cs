@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using VMUtils;
 using VMUtils.FaceRecognition;
 using VMUtils.Interfaces;
+using VMUtils.VoiceRecognition;
 using VM_Model;
 
 namespace VM_Main
@@ -21,19 +22,22 @@ namespace VM_Main
         private readonly IConfiguration _configuration;
         private List<FaceRecognitionScenario> _frs;
         private List<VoiceRecognitionScenario> _vrs;
-        private List<VideoScenario> _vs; 
+        private List<VideoScenario> _vs;
+        private IImporter<ImportedVoiceRecognitionScenario> _videoimporter;
 
         public FrmMainMenu(IConfiguration configuration)
         {
             InitializeComponent();
             _importer = new Importer();
+            _videoimporter = new VideoRecognitionImporter(new JsonSerialiser<ImportedVoiceRecognitionScenario>());
             _faceimporter = new FaceRecognitionImporter(new JsonSerialiser<ImportedFaceRecognitionScenario>());
             _configuration = configuration;
             if (_configuration.ReadBooleanSetting("LoadScenarios"))
             {
                 string path = PathUtils.GetRootContentFolder("scenarios.js");
                 string faceRecopath = PathUtils.GetRootContentFolder("facerecoscenarios.js");
-                _voiceRecognitionFileProcessor = new VoiceRecognitionFileProcessor(_importer, path);
+                string voiceRecopath = PathUtils.GetRootContentFolder("voicerecoscenarios.js");
+                _voiceRecognitionFileProcessor = new VoiceRecognitionFileProcessor(_videoimporter, voiceRecopath);
                 _socialSimulatorFileProcessor = new SocialSimulatorFileProcessor(_importer, path);
                 _faceRecognitionProcessor = new FaceRecognitionProcessor(_faceimporter, faceRecopath);
                 Task<bool> sucessfulLoading = LoadTasks();
