@@ -33,6 +33,7 @@
             this.btnNewScenario = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,12 +79,23 @@
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.btnDelete);
             this.panel1.Controls.Add(this.btnNewScenario);
             this.panel1.Controls.Add(this.btnSelect);
             this.panel1.Location = new System.Drawing.Point(477, 46);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(81, 382);
             this.panel1.TabIndex = 4;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(4, 30);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 3;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // FaceRecongitionScenarioEditorList
             // 
@@ -108,5 +120,6 @@
         private System.Windows.Forms.Button btnNewScenario;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnDelete;
     }
 }

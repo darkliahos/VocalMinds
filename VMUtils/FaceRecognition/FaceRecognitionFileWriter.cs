@@ -35,7 +35,8 @@ namespace VMUtils.FaceRecognition
                 {
                     if (_merge.CompareSourceWithTarget(loadScenarioFromFile, inputObject))
                     {
-                        //TODO: What do we do in this situation? See Issue #23
+                        // #23 - Auto merge functionality
+                        _merge.MergeFiles(loadScenarioFromFile, inputObject);
                     }
                 }
                 LockFile();

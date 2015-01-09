@@ -20,7 +20,7 @@ namespace VM_ScenarioEditor
         private void faceRecognitionScenariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var _faceImporter = new FaceRecognitionImporter(new JsonSerialiser<ImportedFaceRecognitionScenario>());
-            var fr = new FaceRecongitionScenarioEditorList(Logger, _faceImporter, new FaceRecognitionProcessor(_faceImporter, path));
+            var fr = new FaceRecongitionScenarioEditorList(Logger, _faceImporter, new FaceRecognitionProcessor(_faceImporter, path), new FaceRecognitionExporter(new JsonSerialiser<ImportedFaceRecognitionScenario>()), new FaceRecognitionMerge());
             fr.OpenFormInMdi(this);
         }
     }

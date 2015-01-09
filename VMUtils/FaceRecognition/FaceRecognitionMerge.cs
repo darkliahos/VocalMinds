@@ -1,4 +1,7 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using VMUtils.Interfaces;
 using VM_Model;
 
@@ -55,7 +58,36 @@ namespace VMUtils.FaceRecognition
         public ImportedFaceRecognitionScenario MergeFiles(ImportedFaceRecognitionScenario source,
             ImportedFaceRecognitionScenario target)
         {
-            throw new System.NotImplementedException();
+            var mergedObject = new ImportedFaceRecognitionScenario
+            {
+                Creation = source.Creation,
+                LastModified = DateTime.Now,
+                IsCurrentlyLocked = true,
+                LastWrittenProcessId = Process.GetCurrentProcess().Id,
+                FaceRecognitionScenarios = new List<FaceRecognitionScenario>()
+            };
+
+            foreach (var scenario in target.FaceRecognitionScenarios)
+            {
+                if (!source.FaceRecognitionScenarios.Exists(x => x.Id == scenario.Id))
+                {
+                    mergedObject.FaceRecognitionScenarios.Add(scenario);
+                }
+                else
+                {
+                    var sourceObject = source.FaceRecognitionScenarios.First(x => x.Id == scenario.Id);
+                    mergedObject.FaceRecognitionScenarios.Add(scenario.LastModified > sourceObject.LastModified
+                        ? scenario
+                        : sourceObject);
+                }
+            }
+
+            foreach (var sourceScenario in source.FaceRecognitionScenarios.Where(sourceScenario => !mergedObject.FaceRecognitionScenarios.Exists(x => x.Id == sourceScenario.Id)))
+            {
+                mergedObject.FaceRecognitionScenarios.Add(sourceScenario);
+            }
+
+            return mergedObject;
         }
     }
 }
