@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NLog;
@@ -95,18 +96,10 @@ namespace VM_ScenarioEditor
         {
             writer.LockFile();
             var inputObject = _processor.RefreshScenarioObject();
-            FaceRecognitionScenario fs;
-            if (_frsdict.TryGetValue(lstScenarios.SelectedItem.ToString(), out fs))
-            {
-                inputObject.FaceRecognitionScenarios.Remove(fs);
-                writer.Save(inputObject);
-                LoadScenariosToForm();
-            }
-            else
-            {
-                _logger.Error("Failed to get Delete Scenario");
-                MessageBox.Show("Cannot Remove Scenario", Resources.ScenarioLoadHeader);
-            }
+            inputObject.FaceRecognitionScenarios.RemoveAll(x => x.Id == Guid.Parse(lstScenarios.SelectedItem.ToString().Remove(37)));
+            writer.Save(inputObject);
+            Task<bool> sucessfulLoading = LoadTasks();
+            LoadScenariosToForm();
 
         }
     }
