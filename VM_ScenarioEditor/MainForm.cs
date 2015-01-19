@@ -4,6 +4,8 @@ using NLog;
 using VMUtils;
 using VMUtils.Extensions;
 using VMUtils.FaceRecognition;
+using VMUtils.Interfaces;
+using VMUtils.VoiceRecognition;
 using VM_Model;
 
 namespace VM_ScenarioEditor
@@ -11,7 +13,9 @@ namespace VM_ScenarioEditor
     public partial class MainForm : Form
     {
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
-        string path = PathUtils.GetRootContentFolder("facerecoscenarios.js");
+        string faceRecopath = PathUtils.GetRootContentFolder("facerecoscenarios.js");
+        string voiceRecopath = PathUtils.GetRootContentFolder("voicerecoscenarios.js");
+
         public MainForm()
         {
             InitializeComponent();
@@ -20,8 +24,20 @@ namespace VM_ScenarioEditor
         private void faceRecognitionScenariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var _faceImporter = new FaceRecognitionImporter(new JsonSerialiser<ImportedFaceRecognitionScenario>());
-            var fr = new FaceRecongitionScenarioEditorList(Logger, _faceImporter, new FaceRecognitionProcessor(_faceImporter, path), new FaceRecognitionExporter(new JsonSerialiser<ImportedFaceRecognitionScenario>()), new FaceRecognitionMerge());
+            var fr = new FaceRecongitionScenarioEditorList(Logger, _faceImporter, new FaceRecognitionFileProcessor(_faceImporter, faceRecopath), new Exporter<ImportedFaceRecognitionScenario>(new JsonSerialiser<ImportedFaceRecognitionScenario>()), new FaceRecognitionMerge());
             fr.OpenFormInMdi(this);
+        }
+
+        private void socialSimulatorScenarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Functionality Not Yet Implemented");
+        }
+
+        private void voiceRecognitionScenariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            IImporter<ImportedVoiceRecognitionScenario> voiceImporter = new VoiceRecognitionImporter(new JsonSerialiser<ImportedVoiceRecognitionScenario>());
+            var vr = new VoiceRecognitionScenarioEditorList(Logger, voiceImporter, new VoiceRecognitionFileProcessor(voiceImporter, voiceRecopath), new Exporter<ImportedVoiceRecognitionScenario>(new JsonSerialiser<ImportedVoiceRecognitionScenario>()), new VoiceRecognitionMerge());
+            vr.OpenFormInMdi(this);
         }
     }
 }

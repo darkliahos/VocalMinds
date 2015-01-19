@@ -34,8 +34,10 @@
             this.saveAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.scenariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contentImporterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.faceRecognitionScenariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contentImporterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.voiceRecognitionScenariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.socialSimulatorScenarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,10 +84,19 @@
             // scenariosToolStripMenuItem
             // 
             this.scenariosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.faceRecognitionScenariosToolStripMenuItem});
+            this.faceRecognitionScenariosToolStripMenuItem,
+            this.socialSimulatorScenarioToolStripMenuItem,
+            this.voiceRecognitionScenariosToolStripMenuItem});
             this.scenariosToolStripMenuItem.Name = "scenariosToolStripMenuItem";
             this.scenariosToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.scenariosToolStripMenuItem.Text = "Scenarios";
+            // 
+            // faceRecognitionScenariosToolStripMenuItem
+            // 
+            this.faceRecognitionScenariosToolStripMenuItem.Name = "faceRecognitionScenariosToolStripMenuItem";
+            this.faceRecognitionScenariosToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
+            this.faceRecognitionScenariosToolStripMenuItem.Text = "Face Recognition Scenarios";
+            this.faceRecognitionScenariosToolStripMenuItem.Click += new System.EventHandler(this.faceRecognitionScenariosToolStripMenuItem_Click);
             // 
             // contentImporterToolStripMenuItem
             // 
@@ -93,12 +104,19 @@
             this.contentImporterToolStripMenuItem.Size = new System.Drawing.Size(111, 20);
             this.contentImporterToolStripMenuItem.Text = "Content Importer";
             // 
-            // faceRecognitionScenariosToolStripMenuItem
+            // voiceRecognitionScenariosToolStripMenuItem
             // 
-            this.faceRecognitionScenariosToolStripMenuItem.Name = "faceRecognitionScenariosToolStripMenuItem";
-            this.faceRecognitionScenariosToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
-            this.faceRecognitionScenariosToolStripMenuItem.Text = "Face Recognition Scenarios";
-            this.faceRecognitionScenariosToolStripMenuItem.Click += new System.EventHandler(this.faceRecognitionScenariosToolStripMenuItem_Click);
+            this.voiceRecognitionScenariosToolStripMenuItem.Name = "voiceRecognitionScenariosToolStripMenuItem";
+            this.voiceRecognitionScenariosToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
+            this.voiceRecognitionScenariosToolStripMenuItem.Text = "Voice Recognition Scenarios";
+            this.voiceRecognitionScenariosToolStripMenuItem.Click += new System.EventHandler(this.voiceRecognitionScenariosToolStripMenuItem_Click);
+            // 
+            // socialSimulatorScenarioToolStripMenuItem
+            // 
+            this.socialSimulatorScenarioToolStripMenuItem.Name = "socialSimulatorScenarioToolStripMenuItem";
+            this.socialSimulatorScenarioToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
+            this.socialSimulatorScenarioToolStripMenuItem.Text = "Social Simulator Scenario";
+            this.socialSimulatorScenarioToolStripMenuItem.Click += new System.EventHandler(this.socialSimulatorScenarioToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -127,6 +145,8 @@
         private System.Windows.Forms.ToolStripMenuItem scenariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem contentImporterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem faceRecognitionScenariosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem socialSimulatorScenarioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem voiceRecognitionScenariosToolStripMenuItem;
     }
 }
 

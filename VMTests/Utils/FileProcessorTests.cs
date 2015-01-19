@@ -35,7 +35,7 @@ namespace VMTests.Utils
                                                                                          }
                                                                                  }
                                               });
-            var fp = new FaceRecognitionProcessor(importer, string.Empty);
+            var fp = new FaceRecognitionFileProcessor(importer, string.Empty);
             //Act
             //NOTE TO READER: This is an await because we intend to use threading when loading scenarios
             List<FaceRecognitionScenario> frs = await Task.FromResult<List<FaceRecognitionScenario>>(fp.LoadScenarioFromFile());

@@ -52,17 +52,18 @@
     <Compile Include="Exceptions\FileSaveException.cs" />
     <Compile Include="Extensions\DateExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
-    <Compile Include="FaceRecognition\FaceRecognitionExporter.cs" />
+    <Compile Include="Exporter.cs" />
     <Compile Include="FaceRecognition\FaceRecognitionMerge.cs" />
     <Compile Include="Interfaces\IMerge.cs" />
     <Compile Include="Interfaces\IExporter.cs" />
     <Compile Include="Interfaces\IFileWriter.cs" />
     <Compile Include="FaceRecognition\FaceRecognitionFileWriter.cs" />
-    <Compile Include="VoiceRecognition\VideoRecognitionImporter.cs" />
+    <Compile Include="VoiceRecognition\VoiceRecognitionMerge.cs" />
+    <Compile Include="VoiceRecognition\VoiceRecognitionImporter.cs" />
     <Compile Include="SocialSimulatorFileProcessor.cs" />
     <Compile Include="Extensions\FormExtensions.cs" />
     <Compile Include="FaceRecognition\FaceRecognitionImporter.cs" />
-    <Compile Include="FaceRecognition\FaceRecognitionProcessor.cs" />
+    <Compile Include="FaceRecognition\FaceRecognitionFileProcessor.cs" />
     <Compile Include="Interfaces\IConfiguration.cs" />
     <Compile Include="Interfaces\IFileProcessor.cs" />
     <Compile Include="Interfaces\IImporter.cs" />
@@ -74,7 +75,8 @@
     <Compile Include="PathUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Randomiser.cs" />
-    <Compile Include="VoiceRecognitionFileProcessor.cs" />
+    <Compile Include="VoiceRecognition\VoiceRecognitionFileProcessor.cs" />
+    <Compile Include="VoiceRecognition\VoiceRecognitionFileWriter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

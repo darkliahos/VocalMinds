@@ -4,17 +4,18 @@ using VM_Model;
 
 namespace VMUtils
 {
-    public class VoiceRecognitionFileProcessor : IFileProcessor<VoiceRecognitionScenario, ImportedScenarios>
+    public class SocialSimulatorFileProcessor : IFileProcessor<VideoScenario, ImportedScenarios>
     {
-        private readonly ImportedVoiceRecognitionScenario _importedScenarios;
+        private readonly ImportedScenarios _importedScenarios;
 
-        public VoiceRecognitionFileProcessor(IImporter<ImportedVoiceRecognitionScenario> importer, string path)
+        public SocialSimulatorFileProcessor(IImporter<ImportedScenarios> importer, string path)
         {
             _importedScenarios = importer.LoadFile(path);
         }
-        public List<VoiceRecognitionScenario> LoadScenarioFromFile()
+
+        public List<VideoScenario> LoadScenarioFromFile()
         {
-            return _importedScenarios.VoiceRecognitionScenarios;
+            return _importedScenarios.VideoScenarios;
         }
 
         public ImportedScenarios LoadScenarioObject()

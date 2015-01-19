@@ -4,13 +4,13 @@ using VM_Model;
 
 namespace VMUtils.FaceRecognition
 {
-    public class FaceRecognitionProcessor : IFileProcessor<FaceRecognitionScenario, ImportedFaceRecognitionScenario>
+    public class FaceRecognitionFileProcessor : IFileProcessor<FaceRecognitionScenario, ImportedFaceRecognitionScenario>
     {
         private readonly IImporter<ImportedFaceRecognitionScenario> _importer;
         private readonly string _path;
         private ImportedFaceRecognitionScenario _importedScenarios;
 
-        public FaceRecognitionProcessor(IImporter<ImportedFaceRecognitionScenario> importer, string path)
+        public FaceRecognitionFileProcessor(IImporter<ImportedFaceRecognitionScenario> importer, string path)
         {
             _importer = importer;
             _path = path;
@@ -41,4 +41,4 @@ namespace VMUtils.FaceRecognition
             return _importedScenarios;
         }
     }
-}
+    }

@@ -106,7 +106,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lstScenarios);
             this.Name = "FaceRecongitionScenarioEditorList";
-            this.Text = "FaceRecongitionScenarioEditorList";
+            this.Text = "Face Recognition Scenarios";
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

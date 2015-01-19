@@ -38,7 +38,7 @@ namespace VMTests.Utils
         [Fact]
         public void StringToImportedVoiceRecoScenarios_ValidJsonString_ShouldReturnImportedObject()
         {
-            var voiceRecoImporter = new VideoRecognitionImporter(new JsonSerialiser<ImportedVoiceRecognitionScenario>());
+            var voiceRecoImporter = new VoiceRecognitionImporter(new JsonSerialiser<ImportedVoiceRecognitionScenario>());
             var expectedResult = ImportedVideoScenariosHelper();
             var actualObject = voiceRecoImporter.StringToImportedScenarios(Properties.Resources.VoiceRecoTest);
 

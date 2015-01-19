@@ -4,11 +4,11 @@ using VM_Model;
 
 namespace VMUtils.VoiceRecognition
 {
-    public class VideoRecognitionImporter : IImporter<ImportedVoiceRecognitionScenario>
+    public class VoiceRecognitionImporter : IImporter<ImportedVoiceRecognitionScenario>
     {
         private readonly ISerialiser<ImportedVoiceRecognitionScenario> _serialiser;
 
-        public VideoRecognitionImporter(ISerialiser<ImportedVoiceRecognitionScenario> serialiser)
+        public VoiceRecognitionImporter(ISerialiser<ImportedVoiceRecognitionScenario> serialiser)
         {
             _serialiser = serialiser;
         }

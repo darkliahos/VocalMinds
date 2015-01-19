@@ -53,16 +53,16 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FaceRecognitionEditor.cs">
+    <Compile Include="Face Recognition\FaceRecognitionEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FaceRecognitionEditor.Designer.cs">
+    <Compile Include="Face Recognition\FaceRecognitionEditor.Designer.cs">
       <DependentUpon>FaceRecognitionEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="FaceRecongitionScenarioEditorList.cs">
+    <Compile Include="Face Recognition\FaceRecongitionScenarioEditorList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FaceRecongitionScenarioEditorList.Designer.cs">
+    <Compile Include="Face Recognition\FaceRecongitionScenarioEditorList.Designer.cs">
       <DependentUpon>FaceRecongitionScenarioEditorList.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
@@ -73,10 +73,22 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FaceRecognitionEditor.resx">
+    <Compile Include="Voice Recognition\VoiceRecognitionEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Voice Recognition\VoiceRecognitionEditor.Designer.cs">
+      <DependentUpon>VoiceRecognitionEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Voice Recognition\VoiceRecognitionScenarioEditorList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Voice Recognition\VoiceRecognitionScenarioEditorList.Designer.cs">
+      <DependentUpon>VoiceRecognitionScenarioEditorList.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Face Recognition\FaceRecognitionEditor.resx">
       <DependentUpon>FaceRecognitionEditor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FaceRecongitionScenarioEditorList.resx">
+    <EmbeddedResource Include="Face Recognition\FaceRecongitionScenarioEditorList.resx">
       <DependentUpon>FaceRecongitionScenarioEditorList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
@@ -95,6 +107,12 @@
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="Voice Recognition\VoiceRecognitionEditor.resx">
+      <DependentUpon>VoiceRecognitionEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Voice Recognition\VoiceRecognitionScenarioEditorList.resx">
+      <DependentUpon>VoiceRecognitionScenarioEditorList.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
