@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using VMUtils;
-using VMUtils.FaceRecognition;
-using VMUtils.Interfaces;
 using VMUtils.VoiceRecognition;
 using VM_Model;
 

@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using VMUtils;
-using VMUtils.FaceRecognition;
-using VMUtils.VoiceRecognition;
 using VM_Model;
 using Xunit;
 
 namespace VMTests.Utils
 {
-    public class ScenarioImporter
+    public class ScenarioImporterTests
     {
         private readonly Importer<ImportedSocialScenarios> _socialimporter = new Importer<ImportedSocialScenarios>(new JsonSerialiser<ImportedSocialScenarios>());
         private readonly Importer<ImportedFaceRecognitionScenario> _faceimporter = new Importer<ImportedFaceRecognitionScenario>(new JsonSerialiser<ImportedFaceRecognitionScenario>());
