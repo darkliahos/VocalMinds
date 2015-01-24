@@ -34,9 +34,9 @@ namespace VM_Main
             _configuration = configuration;
             if (_configuration.ReadBooleanSetting("LoadScenarios"))
             {
-                string path = PathUtils.GetRootContentFolder("scenarios.js");
-                string faceRecopath = PathUtils.GetRootContentFolder("facerecoscenarios.js");
-                string voiceRecopath = PathUtils.GetRootContentFolder("voicerecoscenarios.js");
+                string path = PhysicalPathUtils.GetRootContentFolder("scenarios.js");
+                string faceRecopath = PhysicalPathUtils.GetRootContentFolder("facerecoscenarios.js");
+                string voiceRecopath = PhysicalPathUtils.GetRootContentFolder("voicerecoscenarios.js");
                 _voiceRecognitionFileProcessor = new VoiceRecognitionFileProcessor(_videoimporter, voiceRecopath);
                 _socialSimulatorFileProcessor = new SocialSimulatorFileProcessor(_importer, path);
                 _faceRecognitionFileProcessor = new FaceRecognitionFileProcessor(_faceimporter, faceRecopath);

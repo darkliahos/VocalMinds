@@ -35,9 +35,9 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.scenariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.faceRecognitionScenariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contentImporterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.voiceRecognitionScenariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.socialSimulatorScenarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.voiceRecognitionScenariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contentImporterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -98,11 +98,12 @@
             this.faceRecognitionScenariosToolStripMenuItem.Text = "Face Recognition Scenarios";
             this.faceRecognitionScenariosToolStripMenuItem.Click += new System.EventHandler(this.faceRecognitionScenariosToolStripMenuItem_Click);
             // 
-            // contentImporterToolStripMenuItem
+            // socialSimulatorScenarioToolStripMenuItem
             // 
-            this.contentImporterToolStripMenuItem.Name = "contentImporterToolStripMenuItem";
-            this.contentImporterToolStripMenuItem.Size = new System.Drawing.Size(111, 20);
-            this.contentImporterToolStripMenuItem.Text = "Content Importer";
+            this.socialSimulatorScenarioToolStripMenuItem.Name = "socialSimulatorScenarioToolStripMenuItem";
+            this.socialSimulatorScenarioToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
+            this.socialSimulatorScenarioToolStripMenuItem.Text = "Social Simulator Scenario";
+            this.socialSimulatorScenarioToolStripMenuItem.Click += new System.EventHandler(this.socialSimulatorScenarioToolStripMenuItem_Click);
             // 
             // voiceRecognitionScenariosToolStripMenuItem
             // 
@@ -111,12 +112,12 @@
             this.voiceRecognitionScenariosToolStripMenuItem.Text = "Voice Recognition Scenarios";
             this.voiceRecognitionScenariosToolStripMenuItem.Click += new System.EventHandler(this.voiceRecognitionScenariosToolStripMenuItem_Click);
             // 
-            // socialSimulatorScenarioToolStripMenuItem
+            // contentImporterToolStripMenuItem
             // 
-            this.socialSimulatorScenarioToolStripMenuItem.Name = "socialSimulatorScenarioToolStripMenuItem";
-            this.socialSimulatorScenarioToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
-            this.socialSimulatorScenarioToolStripMenuItem.Text = "Social Simulator Scenario";
-            this.socialSimulatorScenarioToolStripMenuItem.Click += new System.EventHandler(this.socialSimulatorScenarioToolStripMenuItem_Click);
+            this.contentImporterToolStripMenuItem.Name = "contentImporterToolStripMenuItem";
+            this.contentImporterToolStripMenuItem.Size = new System.Drawing.Size(111, 20);
+            this.contentImporterToolStripMenuItem.Text = "Content Importer";
+            this.contentImporterToolStripMenuItem.Click += new System.EventHandler(this.contentImporterToolStripMenuItem_Click);
             // 
             // MainForm
             // 

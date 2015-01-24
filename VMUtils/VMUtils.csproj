@@ -70,7 +70,7 @@
     <Compile Include="Interfaces\ISerialiser.cs" />
     <Compile Include="JsonSerialiser.cs" />
     <Compile Include="FaceRecognition\FaceRecognitionLoader.cs" />
-    <Compile Include="PathUtils.cs" />
+    <Compile Include="PhysicalPathUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Randomiser.cs" />
     <Compile Include="VoiceRecognition\VoiceRecognitionFileProcessor.cs" />

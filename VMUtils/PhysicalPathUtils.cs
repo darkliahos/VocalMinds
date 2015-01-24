@@ -1,14 +1,20 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 
 namespace VMUtils
 {
-    public static class PathUtils
+    /// <summary>
+    /// Vocal Minds Specific Path Handler
+    /// NOTE: Only for Windows Path currently
+    /// </summary>
+    public static class PhysicalPathUtils
     {
-        private const string ImageContentPath = @"\Content\FaceRecognitionImages\";
-        private const string VRContentPath = @"\Content\#VoiceRecognitionSounds\";
-        private const string contentPath = @"\Content\";
+        private const string ImageContentPath = @"\Content\Images\";
+        private const string SoundContentPath = @"\Content\Sounds\";
+        private const string VideoContentPath = @"\Content\Videos\";
+        public const string ContentPath = @"\Content\";
 
         /// <summary>
         /// Merges the passed in path with the assembly path
@@ -40,7 +46,18 @@ namespace VMUtils
         /// <returns></returns>
         public static string GetFullSoundPath(string sound)
         {
-            string facecontentPath = String.Concat(VRContentPath, sound);
+            string facecontentPath = String.Concat(SoundContentPath, sound);
+            return CombineResultingPathWithAssemblyPath(facecontentPath);
+        }
+
+        /// <summary>
+        /// Gets Full Video Path
+        /// </summary>
+        /// <param name="video"></param>
+        /// <returns></returns>
+        public static string GetFullVideoPath(string video)
+        {
+            string facecontentPath = String.Concat(VideoContentPath, video);
             return CombineResultingPathWithAssemblyPath(facecontentPath);
         }
 
@@ -51,8 +68,26 @@ namespace VMUtils
         /// <returns></returns>
         public static string GetRootContentFolder(string item)
         {
-            string facecontentPath = String.Concat(contentPath, item);
-            return CombineResultingPathWithAssemblyPath(facecontentPath);
+            try
+            {
+                string facecontentPath = String.Concat(ContentPath, item);
+                return CombineResultingPathWithAssemblyPath(facecontentPath);
+            }
+            catch (Exception)
+            {
+                //TODO Logging
+                throw;
+            }
+
+        }
+
+        public static List<string> GetSubDirectoryList(string path)
+        {
+            if (!Directory.Exists(path))
+            {
+                throw new ArgumentException("Your Content Folder has not been set up correctly");
+            }
+            return new List<string>(Directory.GetDirectories(path));
         }
     }
 }

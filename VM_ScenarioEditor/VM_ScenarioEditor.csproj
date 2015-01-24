@@ -53,6 +53,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContentWizard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ContentWizard.Designer.cs">
+      <DependentUpon>ContentWizard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Face Recognition\FaceRecognitionEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,9 @@
     <Compile Include="Voice Recognition\VoiceRecognitionScenarioEditorList.Designer.cs">
       <DependentUpon>VoiceRecognitionScenarioEditorList.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ContentWizard.resx">
+      <DependentUpon>ContentWizard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Face Recognition\FaceRecognitionEditor.resx">
       <DependentUpon>FaceRecognitionEditor.cs</DependentUpon>
     </EmbeddedResource>

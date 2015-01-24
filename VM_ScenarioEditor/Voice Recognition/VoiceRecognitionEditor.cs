@@ -12,7 +12,7 @@ namespace VM_ScenarioEditor
     {
         private Guid _vreGuid;
         private static readonly JsonSerialiser<ImportedVoiceRecognitionScenario> Serialiser = new JsonSerialiser<ImportedVoiceRecognitionScenario>(); 
-        private static readonly string VoiceRecoPath = PathUtils.GetRootContentFolder("voicerecoscenarios.js");
+        private static readonly string VoiceRecoPath = PhysicalPathUtils.GetRootContentFolder("voicerecoscenarios.js");
         public ImportedVoiceRecognitionScenario VoiceRecognitionScenariosState { get; set; }
         private readonly VoiceRecognitionFileWriter _vrfw = new VoiceRecognitionFileWriter(new Exporter<ImportedVoiceRecognitionScenario>(Serialiser), new VoiceRecognitionFileProcessor(new Importer<ImportedVoiceRecognitionScenario>(Serialiser), VoiceRecoPath), VoiceRecoPath, new VoiceRecognitionMerge());
 

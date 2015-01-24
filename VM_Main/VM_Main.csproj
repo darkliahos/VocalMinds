@@ -133,10 +133,10 @@
     <None Include="Content\facerecoscenarios.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <Content Include="Content\VoiceRecognitionSounds\sobbing_male_1.mp3">
+    <Content Include="Content\Sounds\sobbing_male_1.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\VoiceRecognitionSounds\yawning_1.mp3">
+    <Content Include="Content\Sounds\yawning_1.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Socialscenarios.js">
@@ -296,10 +296,10 @@
     <None Include="Resources\p20.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\FaceRecognitionImages\scaredface.bmp">
+    <Content Include="Content\Images\scaredface.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\FaceRecognitionImages\sadface.bmp">
+    <Content Include="Content\Images\sadface.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\p201.bmp" />
@@ -322,19 +322,19 @@
     <None Include="Resources\p31.bmp" />
     <None Include="Resources\p21.png" />
     <None Include="Resources\p11.png" />
-    <Content Include="Content\FaceRecognitionImages\happyface2.bmp">
+    <Content Include="Content\Images\happyface2.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\FaceRecognitionImages\happyface.bmp">
+    <Content Include="Content\Images\happyface.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\FaceRecognitionImages\confusedlook.bmp">
+    <Content Include="Content\Images\confusedlook.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\FaceRecognitionImages\angryface2.bmp">
+    <Content Include="Content\Images\angryface2.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\FaceRecognitionImages\angryface.bmp">
+    <Content Include="Content\Images\angryface.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\THEEND.bmp" />
@@ -364,6 +364,9 @@
       <Project>{99594f23-db41-4e8f-99af-c836981eaa88}</Project>
       <Name>VM_ScenarioEditor</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content\Videos\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

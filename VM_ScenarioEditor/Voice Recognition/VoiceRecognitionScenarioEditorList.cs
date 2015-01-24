@@ -33,7 +33,7 @@ namespace VM_ScenarioEditor
             _processor = processor;
             _exporter = exporter;
             _merge = merge;
-            string voiceRecoPath = PathUtils.GetRootContentFolder("voicerecoscenarios.js");
+            string voiceRecoPath = PhysicalPathUtils.GetRootContentFolder("voicerecoscenarios.js");
             writer = new VoiceRecognitionFileWriter(_exporter, _processor, voiceRecoPath, _merge);
             _vrsdict = new Dictionary<string, VoiceRecognitionScenario>();
             Task<bool> sucessfulLoading = LoadTasks();
