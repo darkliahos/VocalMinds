@@ -17,20 +17,20 @@ namespace VM_Main
         private readonly VoiceRecognitionFileProcessor _voiceRecognitionFileProcessor;
         private readonly FaceRecognitionFileProcessor _faceRecognitionFileProcessor;
         
-        private readonly IImporter<ImportedScenarios> _importer;
+        private readonly IImporter<ImportedSocialScenarios> _importer;
         private readonly IImporter<ImportedFaceRecognitionScenario> _faceimporter;
         private readonly IConfiguration _configuration;
         private List<FaceRecognitionScenario> _frs;
         private List<VoiceRecognitionScenario> _vrs;
-        private List<VideoScenario> _vs;
+        private List<SocialScenario> _vs;
         private IImporter<ImportedVoiceRecognitionScenario> _videoimporter;
 
         public FrmMainMenu(IConfiguration configuration)
         {
             InitializeComponent();
-            _importer = new Importer();
-            _videoimporter = new VoiceRecognitionImporter(new JsonSerialiser<ImportedVoiceRecognitionScenario>());
-            _faceimporter = new FaceRecognitionImporter(new JsonSerialiser<ImportedFaceRecognitionScenario>());
+            _importer = new Importer<ImportedSocialScenarios>(new JsonSerialiser<ImportedSocialScenarios>());
+            _videoimporter = new Importer<ImportedVoiceRecognitionScenario>(new JsonSerialiser<ImportedVoiceRecognitionScenario>());
+            _faceimporter = new Importer<ImportedFaceRecognitionScenario>(new JsonSerialiser<ImportedFaceRecognitionScenario>());
             _configuration = configuration;
             if (_configuration.ReadBooleanSetting("LoadScenarios"))
             {
@@ -55,7 +55,7 @@ namespace VM_Main
             {
                 _frs = await Task.FromResult<List<FaceRecognitionScenario>>(_faceRecognitionFileProcessor.LoadScenarioFromFile());
                 _vrs = await Task.FromResult<List<VoiceRecognitionScenario>>(_voiceRecognitionFileProcessor.LoadScenarioFromFile());
-                _vs = await Task.FromResult<List<VideoScenario>>(_socialSimulatorFileProcessor.LoadScenarioFromFile());
+                _vs = await Task.FromResult<List<SocialScenario>>(_socialSimulatorFileProcessor.LoadScenarioFromFile());
                 Task.WaitAll();
                 return true;
             }

@@ -15,7 +15,7 @@ namespace VM_ScenarioEditor
 
         private static readonly ISerialiser<ImportedFaceRecognitionScenario> Serialiser = new JsonSerialiser<ImportedFaceRecognitionScenario>();
         private static readonly IMerge<ImportedFaceRecognitionScenario> Merge = new FaceRecognitionMerge(); 
-        private static readonly IImporter<ImportedFaceRecognitionScenario> Importer = new FaceRecognitionImporter(Serialiser);
+        private static readonly IImporter<ImportedFaceRecognitionScenario> Importer = new Importer<ImportedFaceRecognitionScenario>(Serialiser);
         static readonly string FaceRecopath = PathUtils.GetRootContentFolder("facerecoscenarios.js");
         private readonly FaceRecognitionFileWriter _fre = new FaceRecognitionFileWriter(new Exporter<ImportedFaceRecognitionScenario>(Serialiser), new FaceRecognitionFileProcessor(Importer, FaceRecopath), PathUtils.GetRootContentFolder("facerecoscenarios.js"), Merge);
         public ImportedFaceRecognitionScenario FaceRecognitionScenariosState { get; set; }

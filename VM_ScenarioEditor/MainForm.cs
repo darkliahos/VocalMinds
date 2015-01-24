@@ -23,7 +23,7 @@ namespace VM_ScenarioEditor
 
         private void faceRecognitionScenariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var _faceImporter = new FaceRecognitionImporter(new JsonSerialiser<ImportedFaceRecognitionScenario>());
+            var _faceImporter = new Importer<ImportedFaceRecognitionScenario>(new JsonSerialiser<ImportedFaceRecognitionScenario>());
             var fr = new FaceRecongitionScenarioEditorList(Logger, _faceImporter, new FaceRecognitionFileProcessor(_faceImporter, faceRecopath), new Exporter<ImportedFaceRecognitionScenario>(new JsonSerialiser<ImportedFaceRecognitionScenario>()), new FaceRecognitionMerge());
             fr.OpenFormInMdi(this);
         }
@@ -35,8 +35,8 @@ namespace VM_ScenarioEditor
 
         private void voiceRecognitionScenariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            IImporter<ImportedVoiceRecognitionScenario> voiceImporter = new VoiceRecognitionImporter(new JsonSerialiser<ImportedVoiceRecognitionScenario>());
-            var vr = new VoiceRecognitionScenarioEditorList(Logger, voiceImporter, new VoiceRecognitionFileProcessor(voiceImporter, voiceRecopath), new Exporter<ImportedVoiceRecognitionScenario>(new JsonSerialiser<ImportedVoiceRecognitionScenario>()), new VoiceRecognitionMerge());
+            IImporter<ImportedVoiceRecognitionScenario> voiceImporter = new Importer<ImportedVoiceRecognitionScenario>(new JsonSerialiser<ImportedVoiceRecognitionScenario>());
+            var vr = new VoiceRecognitionScenarioEditorList(Logger, new VoiceRecognitionFileProcessor(voiceImporter, voiceRecopath), new Exporter<ImportedVoiceRecognitionScenario>(new JsonSerialiser<ImportedVoiceRecognitionScenario>()), new VoiceRecognitionMerge());
             vr.OpenFormInMdi(this);
         }
     }

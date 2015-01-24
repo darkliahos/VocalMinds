@@ -139,7 +139,7 @@
     <Content Include="Content\VoiceRecognitionSounds\yawning_1.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\scenarios.js">
+    <Content Include="Content\Socialscenarios.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\guessthatvoice.png" />

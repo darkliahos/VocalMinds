@@ -20,19 +20,16 @@ namespace VM_ScenarioEditor
     public partial class VoiceRecognitionScenarioEditorList : Form
     {
         private readonly Logger _logger;
-        private readonly IImporter<ImportedVoiceRecognitionScenario> _importer = new VoiceRecognitionImporter(serialiser);
         private readonly IFileProcessor<VoiceRecognitionScenario, ImportedVoiceRecognitionScenario> _processor;
         private readonly IExporter<ImportedVoiceRecognitionScenario> _exporter;
         private readonly IMerge<ImportedVoiceRecognitionScenario> _merge;
         private Dictionary<string, VoiceRecognitionScenario> _vrsdict;
         private readonly IFileWriter<ImportedVoiceRecognitionScenario> writer;
         private ImportedVoiceRecognitionScenario _vrs;
-        private static ISerialiser<ImportedVoiceRecognitionScenario> serialiser = new JsonSerialiser<ImportedVoiceRecognitionScenario>();
 
-        public VoiceRecognitionScenarioEditorList(Logger logger, IImporter<ImportedVoiceRecognitionScenario> importer, IFileProcessor<VoiceRecognitionScenario, ImportedVoiceRecognitionScenario> processor, IExporter<ImportedVoiceRecognitionScenario> exporter, IMerge<ImportedVoiceRecognitionScenario> merge)
+        public VoiceRecognitionScenarioEditorList(Logger logger, IFileProcessor<VoiceRecognitionScenario, ImportedVoiceRecognitionScenario> processor, IExporter<ImportedVoiceRecognitionScenario> exporter, IMerge<ImportedVoiceRecognitionScenario> merge)
         {
             _logger = logger;
-            _importer = importer;
             _processor = processor;
             _exporter = exporter;
             _merge = merge;

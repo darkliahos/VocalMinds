@@ -4,26 +4,26 @@ using VM_Model;
 
 namespace VMUtils
 {
-    public class SocialSimulatorFileProcessor : IFileProcessor<VideoScenario, ImportedScenarios>
+    public class SocialSimulatorFileProcessor : IFileProcessor<SocialScenario, ImportedSocialScenarios>
     {
-        private readonly ImportedScenarios _importedScenarios;
+        private readonly ImportedSocialScenarios _importedSocialScenarios;
 
-        public SocialSimulatorFileProcessor(IImporter<ImportedScenarios> importer, string path)
+        public SocialSimulatorFileProcessor(IImporter<ImportedSocialScenarios> importer, string path)
         {
-            _importedScenarios = importer.LoadFile(path);
+            _importedSocialScenarios = importer.LoadFile(path);
         }
 
-        public List<VideoScenario> LoadScenarioFromFile()
+        public List<SocialScenario> LoadScenarioFromFile()
         {
-            return _importedScenarios.VideoScenarios;
+            return _importedSocialScenarios.VideoScenarios;
         }
 
-        public ImportedScenarios LoadScenarioObject()
+        public ImportedSocialScenarios LoadScenarioObject()
         {
             throw new System.NotImplementedException();
         }
 
-        public ImportedScenarios RefreshScenarioObject()
+        public ImportedSocialScenarios RefreshScenarioObject()
         {
             throw new System.NotImplementedException();
         }

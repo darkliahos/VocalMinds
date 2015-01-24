@@ -6,14 +6,14 @@ namespace VM_Main
 {
     public partial class FrmSocialSimulator : Form
     {
-        private readonly VideoScenario _videoScenario;
+        private readonly SocialScenario _socialScenario;
         private int _currentPlayOrder = 1;
         private string _currentUri = "";
         private VideoSegment _videoSegment;
 
-        public FrmSocialSimulator(VideoScenario videoScenario)
+        public FrmSocialSimulator(SocialScenario socialScenario)
         {
-            _videoScenario = videoScenario;
+            _socialScenario = socialScenario;
             InitializeComponent();
             SetUpVideoSegment();
         }
@@ -25,7 +25,7 @@ namespace VM_Main
 
         private void SetUpVideoSegment()
         {
-            foreach (var videoSegment in _videoScenario.VideoSegment)
+            foreach (var videoSegment in _socialScenario.VideoSegment)
             {
                 if (videoSegment.PlayOrder == ModelConstants.PlayOrderStory)
                 {

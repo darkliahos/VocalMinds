@@ -4,18 +4,13 @@ using VM_Model;
 
 namespace VMUtils
 {
-    public class Importer : IImporter<ImportedScenarios>
+    public class Importer<TScenario> : IImporter<TScenario>
     {
-        private readonly JsonSerialiser<ImportedScenarios> _jsonSerialiser = new JsonSerialiser<ImportedScenarios>();
+        private readonly ISerialiser<TScenario> _serialiser;
 
-        public void WriteToFile(ImportedScenarios importedScenarios, string outputPath)
+        public Importer(ISerialiser<TScenario> serialiser)
         {
-            File.WriteAllText(outputPath, WriteToString(importedScenarios));
-        }
-
-        public string WriteToString(ImportedScenarios importedScenarios)
-        {
-            return _jsonSerialiser.Serialise(importedScenarios);
+            _serialiser = serialiser;
         }
 
         /// <summary>
@@ -23,7 +18,7 @@ namespace VMUtils
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public ImportedScenarios LoadFile(string path)
+        public TScenario LoadFile(string path)
         {
             string readOutput;
             using (var streamReader = new StreamReader(path))
@@ -38,9 +33,19 @@ namespace VMUtils
         /// </summary>
         /// <param name="jsonString"></param>
         /// <returns></returns>
-        public ImportedScenarios StringToImportedScenarios(string jsonString)
+        public TScenario StringToImportedScenarios(string jsonString)
         {
-            return _jsonSerialiser.DeSerialise(jsonString);
+            return _serialiser.DeSerialise(jsonString);
+        }
+
+        public void WriteToFile(TScenario importedScenarios, string outputPath)
+        {
+            File.WriteAllText(outputPath, WriteToString(importedScenarios));
+        }
+
+        public string WriteToString(TScenario importedScenarios)
+        {
+            return _serialiser.Serialise(importedScenarios);
         }
     }
 }

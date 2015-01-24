@@ -83,13 +83,13 @@ namespace VMTests.Utils
         public async Task GetImportedVScenariosFromFile_WhenHit_LoadSocialSimulatorScenarios()
         {
             //Arrange
-            var importer = Substitute.For<IImporter<ImportedScenarios>>();
-            importer.LoadFile("").Returns(new ImportedScenarios
+            var importer = Substitute.For<IImporter<ImportedSocialScenarios>>();
+            importer.LoadFile("").Returns(new ImportedSocialScenarios
             {
                 Creation = new DateTime(2014, 12, 03),
-                VideoScenarios = new List<VideoScenario>
+                VideoScenarios = new List<SocialScenario>
                 {
-                    new VideoScenario
+                    new SocialScenario
                     {
                         Author = "Pooman",
                         FriendlyName = "Walk out",
@@ -100,7 +100,7 @@ namespace VMTests.Utils
             });
             var fp = new SocialSimulatorFileProcessor(importer, string.Empty);
             //Act
-            List<VideoScenario> vrs = await Task.FromResult<List<VideoScenario>>(fp.LoadScenarioFromFile());
+            List<SocialScenario> vrs = await Task.FromResult<List<SocialScenario>>(fp.LoadScenarioFromFile());
             //Assert
             Assert.Equal("Walk out", vrs[0].FriendlyName);
             Assert.Equal("Pooman", vrs[0].Author);

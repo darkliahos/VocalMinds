@@ -13,9 +13,9 @@ namespace VM_Main
 {
     public partial class FrmSocialSimulatorChooser : Form
     {
-        private readonly List<VideoScenario> _videoScenarios;
+        private readonly List<SocialScenario> _videoScenarios;
 
-        public FrmSocialSimulatorChooser(List<VideoScenario> videoScenarios)
+        public FrmSocialSimulatorChooser(List<SocialScenario> videoScenarios)
         {
             _videoScenarios = videoScenarios;
             InitializeComponent();

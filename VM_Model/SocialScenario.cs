@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace VM_Model
 {
-    public class VideoScenario
+    public class SocialScenario
     {
         public Guid Id { get; set; }
         

@@ -10,18 +10,22 @@ namespace VMTests.Utils
 {
     public class ScenarioImporter
     {
-        private readonly Importer _importer = new Importer();
+        private readonly Importer<ImportedSocialScenarios> _socialimporter = new Importer<ImportedSocialScenarios>(new JsonSerialiser<ImportedSocialScenarios>());
+        private readonly Importer<ImportedFaceRecognitionScenario> _faceimporter = new Importer<ImportedFaceRecognitionScenario>(new JsonSerialiser<ImportedFaceRecognitionScenario>());
+        private readonly Importer<ImportedVoiceRecognitionScenario> _voiceimporter = new Importer<ImportedVoiceRecognitionScenario>(new JsonSerialiser<ImportedVoiceRecognitionScenario>());
+
+
         [Fact]
         public void WriteToString_ValidInput_ShouldNotReturnNull()
         {
-            Assert.NotNull(_importer.WriteToString(ImportedScenariosHelper()));
+            Assert.NotNull(_socialimporter.WriteToString(ImportedScenariosHelper()));
         }
 
         [Fact]
         public void StringToImportedScenarios_ValidJSonString_ShouldReturnImportedObject()
         {
             var expectedResult = ImportedScenariosHelper();
-            var actualObject = _importer.StringToImportedScenarios(Properties.Resources.JsonTest);
+            var actualObject = _socialimporter.StringToImportedScenarios(Properties.Resources.JsonTest);
 
             Assert.Equal(expectedResult.Creation, actualObject.Creation);
             Assert.Equal(expectedResult.LastModified, actualObject.LastModified);
@@ -38,9 +42,8 @@ namespace VMTests.Utils
         [Fact]
         public void StringToImportedVoiceRecoScenarios_ValidJsonString_ShouldReturnImportedObject()
         {
-            var voiceRecoImporter = new VoiceRecognitionImporter(new JsonSerialiser<ImportedVoiceRecognitionScenario>());
             var expectedResult = ImportedVideoScenariosHelper();
-            var actualObject = voiceRecoImporter.StringToImportedScenarios(Properties.Resources.VoiceRecoTest);
+            var actualObject = _voiceimporter.StringToImportedScenarios(Properties.Resources.VoiceRecoTest);
 
             Assert.Equal(expectedResult.VoiceRecognitionScenarios[0].Answers, actualObject.VoiceRecognitionScenarios[0].Answers);
             Assert.Equal(expectedResult.VoiceRecognitionScenarios[0].AudioPath, actualObject.VoiceRecognitionScenarios[0].AudioPath);
@@ -53,9 +56,8 @@ namespace VMTests.Utils
         [Fact]
         public void StringToImportedFaceRecoScenarios_ValidJSonString_ShouldReturnImportedObject()
         {
-            var faceImporter = new FaceRecognitionImporter(new JsonSerialiser<ImportedFaceRecognitionScenario>());
             var expectedResult = FaceRecognitionScenarioScenarioHelper();
-            var actualObject = faceImporter.StringToImportedScenarios(Properties.Resources.FaceRecoJsonTest);
+            var actualObject = _faceimporter.StringToImportedScenarios(Properties.Resources.FaceRecoJsonTest);
 
             Assert.Equal(expectedResult.Creation, actualObject.Creation);
             Assert.Equal(expectedResult.LastModified, actualObject.LastModified);
@@ -113,15 +115,15 @@ namespace VMTests.Utils
             };
         }
 
-        private ImportedScenarios ImportedScenariosHelper()
+        private ImportedSocialScenarios ImportedScenariosHelper()
         {
-            return new ImportedScenarios
+            return new ImportedSocialScenarios
             {
                 Creation = new DateTime(2014, 4, 20),
                 LastModified = new DateTime(2014, 5, 20),
-                VideoScenarios = new List<VideoScenario>
+                VideoScenarios = new List<SocialScenario>
                                                 {
-                                                    new VideoScenario
+                                                    new SocialScenario
                                                         {
                                                             Author = "Fred Flintstone",
                                                             FriendlyName = "Day in Bedrock",
