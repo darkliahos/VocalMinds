@@ -81,6 +81,11 @@ namespace VMUtils
 
         }
 
+        /// <summary>
+        /// Gets All sub directories in selected path
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns>A list of folders names if the folder specified exists</returns>
         public static List<string> GetSubDirectoryList(string path)
         {
             if (!Directory.Exists(path))
@@ -88,6 +93,20 @@ namespace VMUtils
                 throw new ArgumentException("Your Content Folder has not been set up correctly");
             }
             return new List<string>(Directory.GetDirectories(path));
+        }
+
+        /// <summary>
+        /// Gets all files in directory specified
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static List<string> GetFilesInDirectory(string path)
+        {
+            if (!Directory.Exists(path))
+            {
+                throw new ArgumentException("Your Content Folder has not been set up correctly");
+            }
+            return new List<string>(Directory.GetFiles(path));
         }
     }
 }

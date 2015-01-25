@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Windows.Forms;
 
-namespace VMUtils.Extensions
+namespace VM_FormUtils.Extensions
 {
     /// <summary>
     /// Extensions for opening forms and doing a check

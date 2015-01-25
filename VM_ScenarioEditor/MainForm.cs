@@ -2,10 +2,10 @@
 using System.Windows.Forms;
 using NLog;
 using VMUtils;
-using VMUtils.Extensions;
 using VMUtils.FaceRecognition;
 using VMUtils.Interfaces;
 using VMUtils.VoiceRecognition;
+using VM_FormUtils.Extensions;
 using VM_Model;
 
 namespace VM_ScenarioEditor
@@ -44,8 +44,7 @@ namespace VM_ScenarioEditor
         {
             try
             {
-                var cwiz = new ContentWizard();
-                cwiz.OpenFormInMdi(this);
+                new ContentWizard().OpenFormInMdi(this);
             }
             catch (Exception error)
             {

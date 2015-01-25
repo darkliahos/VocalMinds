@@ -8,24 +8,30 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VMUtils;
+using VMUtils.Extensions;
+using VM_FormUtils.Extensions;
 
 namespace VM_ScenarioEditor
 {
     public partial class ContentWizard : Form
     {
+        public string RootFolder = PhysicalPathUtils.GetRootContentFolder("");
         public ContentWizard()
         {
             InitializeComponent();
-            LoadFolders(PhysicalPathUtils.GetSubDirectoryList(PhysicalPathUtils.GetRootContentFolder("")));
+
+            lstContentTypes.PopulateFromEnumerable(PhysicalPathUtils.GetSubDirectoryList(RootFolder).ReplaceStringInList(RootFolder, ""));
         }
 
-        private void LoadFolders(IEnumerable<string> folderList)
+        private void lstContentTypes_SelectedValueChanged(object sender, EventArgs e)
         {
-            lstContentTypes.BackColor = Color.LemonChiffon;
-            foreach (var folder in folderList)
+            if (lstContent.Items.Count > 0)
             {
-                 lstContentTypes.Items.Add(folder.Replace(PhysicalPathUtils.GetRootContentFolder(""), ""));
+                lstContent.Items.Clear();
             }
+            lstContent.PopulateFromEnumerable(PhysicalPathUtils.GetFilesInDirectory(string.Concat(RootFolder, lstContentTypes.Text)).ReplaceStringInList(RootFolder, ""));
         }
+
+
     }
 }

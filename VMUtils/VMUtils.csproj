@@ -38,7 +38,6 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,6 +52,7 @@
     <Compile Include="Extensions\DateExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Exporter.cs" />
+    <Compile Include="Extensions\StringListExtensions.cs" />
     <Compile Include="FaceRecognition\FaceRecognitionMerge.cs" />
     <Compile Include="Interfaces\IMerge.cs" />
     <Compile Include="Interfaces\IExporter.cs" />
@@ -60,7 +60,6 @@
     <Compile Include="FaceRecognition\FaceRecognitionFileWriter.cs" />
     <Compile Include="VoiceRecognition\VoiceRecognitionMerge.cs" />
     <Compile Include="SocialSimulatorFileProcessor.cs" />
-    <Compile Include="Extensions\FormExtensions.cs" />
     <Compile Include="FaceRecognition\FaceRecognitionFileProcessor.cs" />
     <Compile Include="Interfaces\IConfiguration.cs" />
     <Compile Include="Interfaces\IFileProcessor.cs" />

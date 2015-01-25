@@ -49,6 +49,7 @@
             this.lstContentTypes.Name = "lstContentTypes";
             this.lstContentTypes.Size = new System.Drawing.Size(273, 407);
             this.lstContentTypes.TabIndex = 2;
+            this.lstContentTypes.SelectedValueChanged += new System.EventHandler(this.lstContentTypes_SelectedValueChanged);
             // 
             // label1
             // 
