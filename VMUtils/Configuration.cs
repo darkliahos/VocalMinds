@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
+using System.Linq;
 using VMUtils.Interfaces;
 
 namespace VMUtils
@@ -41,6 +43,12 @@ namespace VMUtils
             {
                 throw new FormatException(string.Format("Unable to Convert Boolean Value {0} for key {1}",result, key));
             }
+        }
+
+        public List<string> ReadStringListSettings(string key, char delimiter)
+        {
+            var splitString = ReadSetting(key).Split(delimiter);
+            return splitString.ToList();
         }
 
         public void AddUpdateAppSettings(string key, string value)

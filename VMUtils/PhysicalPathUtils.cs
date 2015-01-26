@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 
 namespace VMUtils
@@ -107,6 +108,33 @@ namespace VMUtils
                 throw new ArgumentException("Your Content Folder has not been set up correctly");
             }
             return new List<string>(Directory.GetFiles(path));
+        }
+
+        /// <summary>
+        /// Gets target folder based on file extension
+        /// </summary>
+        /// <param name="file">Source file</param>
+        /// <returns></returns>
+        public static string GetTargetFolder(string file)
+        {
+            if (DetermineFileType(file, "SupportedImgExt"))
+            {
+                return GetRootContentFolder("Images");
+            }
+
+            if (DetermineFileType(file, "SupportedAudExt"))
+            {
+                return GetRootContentFolder("Sounds");
+            }
+            throw new NotSupportedException("File Type Unsupported");
+        }
+
+        private static bool DetermineFileType(string file, string configName)
+        {
+            var configuration = new Configuration();
+            var imageList = configuration.ReadStringListSettings(configName, '|');
+
+            return imageList.Any(file.EndsWith);
         }
     }
 }

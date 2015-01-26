@@ -32,6 +32,8 @@
             this.lstContentTypes = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnImport = new System.Windows.Forms.Button();
+            this.ofdImport = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
             // lstContent
@@ -69,11 +71,26 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Contents";
             // 
+            // btnImport
+            // 
+            this.btnImport.Location = new System.Drawing.Point(582, 40);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(75, 23);
+            this.btnImport.TabIndex = 5;
+            this.btnImport.Text = "Import";
+            this.btnImport.UseVisualStyleBackColor = true;
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
+            // 
+            // ofdImport
+            // 
+            this.ofdImport.FileName = "openFileDialog1";
+            // 
             // ContentWizard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(570, 460);
+            this.ClientSize = new System.Drawing.Size(669, 460);
+            this.Controls.Add(this.btnImport);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lstContentTypes);
@@ -91,5 +108,7 @@
         private System.Windows.Forms.ListBox lstContentTypes;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnImport;
+        private System.Windows.Forms.OpenFileDialog ofdImport;
     }
 }
