@@ -33,7 +33,7 @@
             this.txtAnswerSingle = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
-            this.txtImageName = new System.Windows.Forms.TextBox();
+            this.txtAudioName = new System.Windows.Forms.TextBox();
             this.lstAnswers = new System.Windows.Forms.ListBox();
             this.txtCopyrightNotice = new System.Windows.Forms.TextBox();
             this.txtAuthor = new System.Windows.Forms.TextBox();
@@ -92,13 +92,13 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // txtImageName
+            // txtAudioName
             // 
-            this.txtImageName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtImageName.Location = new System.Drawing.Point(200, 57);
-            this.txtImageName.Name = "txtImageName";
-            this.txtImageName.Size = new System.Drawing.Size(193, 29);
-            this.txtImageName.TabIndex = 26;
+            this.txtAudioName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAudioName.Location = new System.Drawing.Point(200, 57);
+            this.txtAudioName.Name = "txtAudioName";
+            this.txtAudioName.Size = new System.Drawing.Size(193, 29);
+            this.txtAudioName.TabIndex = 26;
             // 
             // lstAnswers
             // 
@@ -170,7 +170,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(123, 25);
             this.label1.TabIndex = 18;
-            this.label1.Text = "VideoName";
+            this.label1.Text = "Audio Path:";
             // 
             // lblQTitle
             // 
@@ -192,7 +192,7 @@
             this.Controls.Add(this.txtAnswerSingle);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.txtImageName);
+            this.Controls.Add(this.txtAudioName);
             this.Controls.Add(this.lstAnswers);
             this.Controls.Add(this.txtCopyrightNotice);
             this.Controls.Add(this.txtAuthor);
@@ -216,7 +216,7 @@
         private System.Windows.Forms.TextBox txtAnswerSingle;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.TextBox txtImageName;
+        private System.Windows.Forms.TextBox txtAudioName;
         private System.Windows.Forms.ListBox lstAnswers;
         private System.Windows.Forms.TextBox txtCopyrightNotice;
         private System.Windows.Forms.TextBox txtAuthor;

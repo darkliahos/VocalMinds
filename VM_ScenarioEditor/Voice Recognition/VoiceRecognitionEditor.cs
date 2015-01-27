@@ -20,7 +20,7 @@ namespace VM_ScenarioEditor
         {
             InitializeComponent();
             txttitle.Text = vs.QuestionTitle;
-            txtImageName.Text = vs.AudioPath;
+            txtAudioName.Text = vs.AudioPath;
             txtAuthor.Text = vs.Author;
             txtCopyrightNotice.Text = vs.CopyrightDisclaimer;
             
@@ -29,7 +29,6 @@ namespace VM_ScenarioEditor
                 lstAnswers.Items.Add(answer);
             }
             _vreGuid = vs.Id;
-            InitializeComponent();
         }
 
         public VoiceRecognitionEditor()
@@ -40,28 +39,37 @@ namespace VM_ScenarioEditor
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (_vreGuid != Guid.Empty)
+            try
             {
-                var previousObject = VoiceRecognitionScenariosState.VoiceRecognitionScenarios.First(x => x.Id == _vreGuid);
-                VoiceRecognitionScenariosState.VoiceRecognitionScenarios.Remove(previousObject);
+                if (_vreGuid != Guid.Empty)
+                {
+                    var previousObject =
+                        VoiceRecognitionScenariosState.VoiceRecognitionScenarios.First(x => x.Id == _vreGuid);
+                    VoiceRecognitionScenariosState.VoiceRecognitionScenarios.Remove(previousObject);
+                }
+
+                VoiceRecognitionScenariosState.VoiceRecognitionScenarios.Add(CompileImportedVideoRecognitionScenario());
+
+                _vrfw.Save(VoiceRecognitionScenariosState);
+                MessageBox.Show("Saved Scenario");
+                this.Close();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error saving Scenario");
             }
 
-            VoiceRecognitionScenariosState.VoiceRecognitionScenarios.Add(CompileImportedVideoRecognitionScenario());
-
-            _vrfw.Save(VoiceRecognitionScenariosState);
-            MessageBox.Show("Saved Scenario");
         }
 
         private VoiceRecognitionScenario CompileImportedVideoRecognitionScenario()
         {
-
             var voiceRecoScenario = new VoiceRecognitionScenario
             {
                 Id = _vreGuid,
                 Answers = AnswerCompilation(),
                 Author = txtAuthor.Text,
                 CopyrightDisclaimer = txtCopyrightNotice.Text,
-                AudioPath = txtImageName.Text,
+                AudioPath = txtAudioName.Text,
                 LastModified = DateTime.UtcNow,
                 QuestionTitle = txttitle.Text,
             };

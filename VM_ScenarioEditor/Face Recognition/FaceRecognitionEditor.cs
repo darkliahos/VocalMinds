@@ -56,6 +56,7 @@ namespace VM_ScenarioEditor
 
             _fre.Save(FaceRecognitionScenariosState);
             MessageBox.Show("Saved Scenario");
+            this.Close();
         }
 
         private FaceRecognitionScenario CompileImportedFaceRecognitionScenario()
