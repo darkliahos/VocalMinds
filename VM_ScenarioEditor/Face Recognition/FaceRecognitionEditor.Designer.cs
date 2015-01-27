@@ -43,6 +43,7 @@
             this.txtAnswerSingle = new System.Windows.Forms.TextBox();
             this.btnAddAnswers = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
+            this.btnSelectContentWizard = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblQTitle
@@ -132,6 +133,7 @@
             this.txtImageName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtImageName.Location = new System.Drawing.Point(206, 47);
             this.txtImageName.Name = "txtImageName";
+            this.txtImageName.ReadOnly = true;
             this.txtImageName.Size = new System.Drawing.Size(193, 29);
             this.txtImageName.TabIndex = 11;
             // 
@@ -182,11 +184,22 @@
             this.btnRemove.UseVisualStyleBackColor = true;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
+            // btnSelectContentWizard
+            // 
+            this.btnSelectContentWizard.Location = new System.Drawing.Point(406, 48);
+            this.btnSelectContentWizard.Name = "btnSelectContentWizard";
+            this.btnSelectContentWizard.Size = new System.Drawing.Size(75, 23);
+            this.btnSelectContentWizard.TabIndex = 17;
+            this.btnSelectContentWizard.Text = "Select";
+            this.btnSelectContentWizard.UseVisualStyleBackColor = true;
+            this.btnSelectContentWizard.Click += new System.EventHandler(this.btnSelectContentWizard_Click);
+            // 
             // FaceRecognitionEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(470, 431);
+            this.ClientSize = new System.Drawing.Size(496, 431);
+            this.Controls.Add(this.btnSelectContentWizard);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnAddAnswers);
             this.Controls.Add(this.txtAnswerSingle);
@@ -226,5 +239,6 @@
         private System.Windows.Forms.TextBox txtAnswerSingle;
         private System.Windows.Forms.Button btnAddAnswers;
         private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.Button btnSelectContentWizard;
     }
 }

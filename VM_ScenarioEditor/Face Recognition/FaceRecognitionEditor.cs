@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Automation.Peers;
 using System.Windows.Forms;
 using VMUtils;
 using VMUtils.FaceRecognition;
 using VMUtils.Interfaces;
+using VM_FormUtils.Extensions;
 using VM_Model;
 
 namespace VM_ScenarioEditor
@@ -99,6 +101,22 @@ namespace VM_ScenarioEditor
             {
                 lstAnswers.Items.RemoveAt(lstAnswers.SelectedIndex);
             }
+        }
+
+        private void btnSelectContentWizard_Click(object sender, EventArgs e)
+        {
+            var contentWizard = new ContentWizard(true);
+            var dr = contentWizard.ShowDialog();
+            switch (dr)
+            {
+                case DialogResult.OK:
+                    txtImageName.Text = contentWizard.SelectedFile;
+                    break;
+                case DialogResult.Cancel:
+                    MessageBox.Show("User Cancelled out of dialog");
+                    break;
+            }
+
         }
     }
 }

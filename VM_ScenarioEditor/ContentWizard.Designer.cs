@@ -34,12 +34,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnImport = new System.Windows.Forms.Button();
             this.ofdImport = new System.Windows.Forms.OpenFileDialog();
+            this.btnSelected = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lstContent
             // 
             this.lstContent.FormattingEnabled = true;
-            this.lstContent.Location = new System.Drawing.Point(280, 40);
+            this.lstContent.Location = new System.Drawing.Point(298, 25);
             this.lstContent.Name = "lstContent";
             this.lstContent.Size = new System.Drawing.Size(278, 407);
             this.lstContent.TabIndex = 1;
@@ -47,7 +50,7 @@
             // lstContentTypes
             // 
             this.lstContentTypes.FormattingEnabled = true;
-            this.lstContentTypes.Location = new System.Drawing.Point(4, 41);
+            this.lstContentTypes.Location = new System.Drawing.Point(12, 25);
             this.lstContentTypes.Name = "lstContentTypes";
             this.lstContentTypes.Size = new System.Drawing.Size(273, 407);
             this.lstContentTypes.TabIndex = 2;
@@ -56,7 +59,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1, 22);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 13);
             this.label1.TabIndex = 3;
@@ -65,7 +68,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(280, 22);
+            this.label2.Location = new System.Drawing.Point(295, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 13);
             this.label2.TabIndex = 4;
@@ -73,7 +76,7 @@
             // 
             // btnImport
             // 
-            this.btnImport.Location = new System.Drawing.Point(582, 40);
+            this.btnImport.Location = new System.Drawing.Point(6, 19);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(75, 23);
             this.btnImport.TabIndex = 5;
@@ -85,18 +88,40 @@
             // 
             this.ofdImport.FileName = "openFileDialog1";
             // 
+            // btnSelected
+            // 
+            this.btnSelected.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnSelected.Location = new System.Drawing.Point(588, 402);
+            this.btnSelected.Name = "btnSelected";
+            this.btnSelected.Size = new System.Drawing.Size(75, 23);
+            this.btnSelected.TabIndex = 6;
+            this.btnSelected.Text = "Select";
+            this.btnSelected.UseVisualStyleBackColor = true;
+            this.btnSelected.Click += new System.EventHandler(this.btnSelected_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnImport);
+            this.groupBox1.Location = new System.Drawing.Point(582, 19);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(88, 100);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
+            // 
             // ContentWizard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(669, 460);
-            this.Controls.Add(this.btnImport);
+            this.ClientSize = new System.Drawing.Size(682, 460);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.btnSelected);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lstContentTypes);
             this.Controls.Add(this.lstContent);
             this.Name = "ContentWizard";
             this.Text = "ContentWizard";
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -110,5 +135,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnImport;
         private System.Windows.Forms.OpenFileDialog ofdImport;
+        private System.Windows.Forms.Button btnSelected;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
