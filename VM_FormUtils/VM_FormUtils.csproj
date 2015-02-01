@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Extensions\FormExtensions.cs" />
     <Compile Include="Extensions\ListBoxExtentsions.cs" />
+    <Compile Include="PhysicalPathUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

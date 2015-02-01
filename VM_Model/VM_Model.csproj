@@ -50,6 +50,7 @@
     <Compile Include="Response.cs" />
     <Compile Include="ResponseType.cs" />
     <Compile Include="SocialScenario.cs" />
+    <Compile Include="ValidationObject.cs" />
     <Compile Include="VideoSegment.cs" />
     <Compile Include="VoiceRecognitionScenario.cs" />
   </ItemGroup>

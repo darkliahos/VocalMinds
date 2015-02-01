@@ -1,15 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NLog;
 using VMUtils;
-using VMUtils.FaceRecognition;
 using VMUtils.Interfaces;
 using VMUtils.VoiceRecognition;
 using VM_Model;

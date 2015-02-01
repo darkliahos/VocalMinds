@@ -166,7 +166,7 @@
             // 
             // btnAddAnswers
             // 
-            this.btnAddAnswers.Location = new System.Drawing.Point(383, 226);
+            this.btnAddAnswers.Location = new System.Drawing.Point(406, 230);
             this.btnAddAnswers.Name = "btnAddAnswers";
             this.btnAddAnswers.Size = new System.Drawing.Size(75, 23);
             this.btnAddAnswers.TabIndex = 15;
@@ -176,7 +176,7 @@
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(385, 97);
+            this.btnRemove.Location = new System.Drawing.Point(406, 195);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(75, 23);
             this.btnRemove.TabIndex = 16;

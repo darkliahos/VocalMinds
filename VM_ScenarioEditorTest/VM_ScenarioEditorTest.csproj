@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5D33933D-0695-4593-BF94-A2983B7CC132}</ProjectGuid>
+    <ProjectGuid>{066BF8F4-B6D2-4650-993A-71511446E822}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>VMUtils</RootNamespace>
-    <AssemblyName>VMUtils</AssemblyName>
+    <RootNamespace>VM_ScenarioEditorTest</RootNamespace>
+    <AssemblyName>VM_ScenarioEditorTest</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
@@ -32,55 +32,33 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="xunit">
+      <HintPath>..\packages\xunit.1.9.2\lib\net20\xunit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration.cs" />
-    <Compile Include="Exceptions\FileFailedToUnlockedException.cs" />
-    <Compile Include="Exceptions\FileLockedException.cs" />
-    <Compile Include="Exceptions\FileSaveException.cs" />
-    <Compile Include="Extensions\DateExtensions.cs" />
-    <Compile Include="Extensions\StringExtensions.cs" />
-    <Compile Include="Exporter.cs" />
-    <Compile Include="Extensions\StringListExtensions.cs" />
-    <Compile Include="FaceRecognition\FaceRecognitionMerge.cs" />
-    <Compile Include="Interfaces\IMerge.cs" />
-    <Compile Include="Interfaces\IExporter.cs" />
-    <Compile Include="Interfaces\IFileWriter.cs" />
-    <Compile Include="FaceRecognition\FaceRecognitionFileWriter.cs" />
-    <Compile Include="VoiceRecognition\VoiceRecognitionMerge.cs" />
-    <Compile Include="SocialSimulatorFileProcessor.cs" />
-    <Compile Include="FaceRecognition\FaceRecognitionFileProcessor.cs" />
-    <Compile Include="Interfaces\IConfiguration.cs" />
-    <Compile Include="Interfaces\IFileProcessor.cs" />
-    <Compile Include="Interfaces\IImporter.cs" />
-    <Compile Include="Importer.cs" />
-    <Compile Include="Interfaces\ILogger.cs" />
-    <Compile Include="Interfaces\ISerialiser.cs" />
-    <Compile Include="JsonSerialiser.cs" />
-    <Compile Include="FaceRecognition\FaceRecognitionLoader.cs" />
+    <Compile Include="FaceScenarioValidationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Randomiser.cs" />
-    <Compile Include="VoiceRecognition\VoiceRecognitionFileProcessor.cs" />
-    <Compile Include="VoiceRecognition\VoiceRecognitionFileWriter.cs" />
+    <Compile Include="VoiceScenarioValidationTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VM_Model\VM_Model.csproj">
-      <Project>{B951F2D6-AD67-4485-87DF-33E25AF7CBFB}</Project>
+      <Project>{b951f2d6-ad67-4485-87df-33e25af7cbfb}</Project>
       <Name>VM_Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VM_ScenarioEditor\VM_ScenarioEditor.csproj">
+      <Project>{99594f23-db41-4e8f-99af-c836981eaa88}</Project>
+      <Name>VM_ScenarioEditor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

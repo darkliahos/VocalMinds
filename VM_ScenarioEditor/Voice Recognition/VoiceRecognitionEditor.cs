@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 using VMUtils;
 using VMUtils.VoiceRecognition;
@@ -41,18 +42,35 @@ namespace VM_ScenarioEditor
         {
             try
             {
-                if (_vreGuid != Guid.Empty)
+                var validationObject = CompileImportedVideoRecognitionScenario().Validation();
+                if(validationObject.HasErrors)
                 {
-                    var previousObject =
-                        VoiceRecognitionScenariosState.VoiceRecognitionScenarios.First(x => x.Id == _vreGuid);
-                    VoiceRecognitionScenariosState.VoiceRecognitionScenarios.Remove(previousObject);
+
+                    var sb = new StringBuilder();
+
+                    foreach (var em in validationObject.ErrorMessages)
+                    {
+                        sb.Append(em);
+                        sb.Append("\n");
+                    }
+
+                    MessageBox.Show(string.Format("There were Validation errors: \n {0}", sb), "Validation Errors");
                 }
+                else
+                {
+                    if (_vreGuid != Guid.Empty)
+                    {
+                        var previousObject =
+                            VoiceRecognitionScenariosState.VoiceRecognitionScenarios.First(x => x.Id == _vreGuid);
+                        VoiceRecognitionScenariosState.VoiceRecognitionScenarios.Remove(previousObject);
+                    }
 
-                VoiceRecognitionScenariosState.VoiceRecognitionScenarios.Add(CompileImportedVideoRecognitionScenario());
+                    VoiceRecognitionScenariosState.VoiceRecognitionScenarios.Add(CompileImportedVideoRecognitionScenario());
 
-                _vrfw.Save(VoiceRecognitionScenariosState);
-                MessageBox.Show("Saved Scenario");
-                this.Close();
+                    _vrfw.Save(VoiceRecognitionScenariosState);
+                    MessageBox.Show("Saved Scenario");
+                    this.Close();
+                }
             }
             catch (Exception)
             {
@@ -102,6 +120,21 @@ namespace VM_ScenarioEditor
             {
                 lstAnswers.Items.Add(txtAnswerSingle.Text);
                 txtAnswerSingle.Text = "";
+            }
+        }
+
+        private void btnSelectContentWizard_Click(object sender, EventArgs e)
+        {
+            var contentWizard = new ContentWizard(true);
+            var dr = contentWizard.ShowDialog();
+            switch (dr)
+            {
+                case DialogResult.OK:
+                    txtAudioName.Text = contentWizard.SelectedFile;
+                    break;
+                case DialogResult.Cancel:
+                    MessageBox.Show("User Cancelled out of dialog");
+                    break;
             }
         }
 

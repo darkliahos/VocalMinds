@@ -43,11 +43,12 @@
             this.lblanswers = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblQTitle = new System.Windows.Forms.Label();
+            this.btnSelectContentWizard = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(379, 107);
+            this.btnRemove.Location = new System.Drawing.Point(402, 205);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(75, 23);
             this.btnRemove.TabIndex = 31;
@@ -57,7 +58,7 @@
             // 
             // btnAddAnswers
             // 
-            this.btnAddAnswers.Location = new System.Drawing.Point(377, 236);
+            this.btnAddAnswers.Location = new System.Drawing.Point(402, 234);
             this.btnAddAnswers.Name = "btnAddAnswers";
             this.btnAddAnswers.Size = new System.Drawing.Size(75, 23);
             this.btnAddAnswers.TabIndex = 30;
@@ -97,7 +98,8 @@
             this.txtAudioName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAudioName.Location = new System.Drawing.Point(200, 57);
             this.txtAudioName.Name = "txtAudioName";
-            this.txtAudioName.Size = new System.Drawing.Size(193, 29);
+            this.txtAudioName.ReadOnly = true;
+            this.txtAudioName.Size = new System.Drawing.Size(196, 29);
             this.txtAudioName.TabIndex = 26;
             // 
             // lstAnswers
@@ -129,7 +131,7 @@
             this.txttitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txttitle.Location = new System.Drawing.Point(200, 22);
             this.txttitle.Name = "txttitle";
-            this.txttitle.Size = new System.Drawing.Size(193, 29);
+            this.txttitle.Size = new System.Drawing.Size(196, 29);
             this.txttitle.TabIndex = 22;
             // 
             // label4
@@ -182,11 +184,22 @@
             this.lblQTitle.TabIndex = 17;
             this.lblQTitle.Text = "Title:";
             // 
+            // btnSelectContentWizard
+            // 
+            this.btnSelectContentWizard.Location = new System.Drawing.Point(402, 61);
+            this.btnSelectContentWizard.Name = "btnSelectContentWizard";
+            this.btnSelectContentWizard.Size = new System.Drawing.Size(75, 23);
+            this.btnSelectContentWizard.TabIndex = 32;
+            this.btnSelectContentWizard.Text = "Select";
+            this.btnSelectContentWizard.UseVisualStyleBackColor = true;
+            this.btnSelectContentWizard.Click += new System.EventHandler(this.btnSelectContentWizard_Click);
+            // 
             // VoiceRecognitionEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(470, 431);
+            this.ClientSize = new System.Drawing.Size(498, 431);
+            this.Controls.Add(this.btnSelectContentWizard);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnAddAnswers);
             this.Controls.Add(this.txtAnswerSingle);
@@ -226,5 +239,6 @@
         private System.Windows.Forms.Label lblanswers;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblQTitle;
+        private System.Windows.Forms.Button btnSelectContentWizard;
     }
 }

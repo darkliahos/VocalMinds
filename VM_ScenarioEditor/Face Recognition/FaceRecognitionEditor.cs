@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Windows.Automation.Peers;
 using System.Windows.Forms;
 using VMUtils;
@@ -46,17 +47,35 @@ namespace VM_ScenarioEditor
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (_freGuid != Guid.Empty)
+            var validationObject = CompileImportedFaceRecognitionScenario().Validation();
+            if (validationObject.HasErrors)
             {
-                var previousObject = FaceRecognitionScenariosState.FaceRecognitionScenarios.First(x => x.Id == _freGuid);
-                FaceRecognitionScenariosState.FaceRecognitionScenarios.Remove(previousObject);
+
+                var sb = new StringBuilder();
+
+                foreach (var em in validationObject.ErrorMessages)
+                {
+                    sb.Append(em);
+                    sb.Append("\n");
+                }
+
+                MessageBox.Show(string.Format("There were Validation errors: \n {0}", sb), "Validation Errors");
             }
+            else
+            {
+                if (_freGuid != Guid.Empty)
+                {
+                    var previousObject = FaceRecognitionScenariosState.FaceRecognitionScenarios.First(x => x.Id == _freGuid);
+                    FaceRecognitionScenariosState.FaceRecognitionScenarios.Remove(previousObject);
+                }
 
                 FaceRecognitionScenariosState.FaceRecognitionScenarios.Add(CompileImportedFaceRecognitionScenario());
 
-            _fre.Save(FaceRecognitionScenariosState);
-            MessageBox.Show("Saved Scenario");
-            this.Close();
+                _fre.Save(FaceRecognitionScenariosState);
+                MessageBox.Show("Saved Scenario");
+                this.Close();
+            }
+
         }
 
         private FaceRecognitionScenario CompileImportedFaceRecognitionScenario()
