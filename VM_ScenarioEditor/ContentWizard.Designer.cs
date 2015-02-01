@@ -36,6 +36,7 @@
             this.ofdImport = new System.Windows.Forms.OpenFileDialog();
             this.btnSelected = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -101,12 +102,23 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnDelete);
             this.groupBox1.Controls.Add(this.btnImport);
             this.groupBox1.Location = new System.Drawing.Point(582, 19);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(88, 100);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(6, 71);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 6;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // ContentWizard
             // 
@@ -137,5 +149,6 @@
         private System.Windows.Forms.OpenFileDialog ofdImport;
         private System.Windows.Forms.Button btnSelected;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnDelete;
     }
 }

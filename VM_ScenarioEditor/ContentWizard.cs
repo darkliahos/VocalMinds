@@ -24,12 +24,19 @@ namespace VM_ScenarioEditor
 
         private void lstContentTypes_SelectedValueChanged(object sender, EventArgs e)
         {
+            ReloadContentTypeList();
+        }
+
+        private void ReloadContentTypeList()
+        {
             if (lstContent.Items.Count > 0)
             {
                 lstContent.Items.Clear();
             }
             string replacementFolderName = RootFolder + lstContentTypes.Text + @"\";
-            lstContent.PopulateFromEnumerable(PhysicalPathUtils.GetFilesInDirectory(string.Concat(RootFolder, lstContentTypes.Text)).ReplaceStringInList(replacementFolderName, ""));
+            lstContent.PopulateFromEnumerable(
+                PhysicalPathUtils.GetFilesInDirectory(string.Concat(RootFolder, lstContentTypes.Text))
+                    .ReplaceStringInList(replacementFolderName, ""));
         }
 
         private void btnImport_Click(object sender, EventArgs e)
@@ -41,7 +48,8 @@ namespace VM_ScenarioEditor
 
                 try
                 {
-                    File.Copy(file, PhysicalPathUtils.GetTargetFolder(file) + @"\" + ofdImport.SafeFileName, true);
+                    File.Copy(file, GetContentFileName(ofdImport.SafeFileName), true);
+                    ReloadContentTypeList();
                 }
                 catch (IOException)
                 {
@@ -58,6 +66,30 @@ namespace VM_ScenarioEditor
                 this.Close();
             }
 
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to Delete?", "Delete Content?", MessageBoxButtons.YesNo,
+                MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            {
+                try
+                {
+                    File.Delete(GetContentFileName(lstContent.Text));
+                    ReloadContentTypeList();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Delete Failed", "Failed to delete file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+
+        }
+
+        private string GetContentFileName(string fileName)
+        {
+            return PhysicalPathUtils.GetTargetFolder(fileName) + @"\" + fileName;
         }
 
 
