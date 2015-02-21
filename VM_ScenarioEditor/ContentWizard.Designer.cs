@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContentWizard));
             this.lstContent = new System.Windows.Forms.ListBox();
             this.lstContentTypes = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -37,7 +38,13 @@
             this.btnSelected = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.grpPreview = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             this.groupBox1.SuspendLayout();
+            this.grpPreview.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
             this.SuspendLayout();
             // 
             // lstContent
@@ -92,7 +99,7 @@
             // btnSelected
             // 
             this.btnSelected.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnSelected.Location = new System.Drawing.Point(588, 402);
+            this.btnSelected.Location = new System.Drawing.Point(6, 71);
             this.btnSelected.Name = "btnSelected";
             this.btnSelected.Size = new System.Drawing.Size(75, 23);
             this.btnSelected.TabIndex = 6;
@@ -103,16 +110,17 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnDelete);
+            this.groupBox1.Controls.Add(this.btnSelected);
             this.groupBox1.Controls.Add(this.btnImport);
             this.groupBox1.Location = new System.Drawing.Point(582, 19);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(88, 100);
+            this.groupBox1.Size = new System.Drawing.Size(239, 100);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(6, 71);
+            this.btnDelete.Location = new System.Drawing.Point(158, 19);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 6;
@@ -120,13 +128,41 @@
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // grpPreview
+            // 
+            this.grpPreview.Controls.Add(this.axWindowsMediaPlayer1);
+            this.grpPreview.Controls.Add(this.pictureBox1);
+            this.grpPreview.Location = new System.Drawing.Point(588, 141);
+            this.grpPreview.Name = "grpPreview";
+            this.grpPreview.Size = new System.Drawing.Size(233, 239);
+            this.grpPreview.TabIndex = 8;
+            this.grpPreview.TabStop = false;
+            this.grpPreview.Text = "Preview";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(7, 20);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(220, 168);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // axWindowsMediaPlayer1
+            // 
+            this.axWindowsMediaPlayer1.Enabled = true;
+            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(6, 191);
+            this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
+            this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
+            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(220, 48);
+            this.axWindowsMediaPlayer1.TabIndex = 1;
+            // 
             // ContentWizard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(682, 460);
+            this.ClientSize = new System.Drawing.Size(850, 460);
+            this.Controls.Add(this.grpPreview);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btnSelected);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lstContentTypes);
@@ -134,6 +170,9 @@
             this.Name = "ContentWizard";
             this.Text = "ContentWizard";
             this.groupBox1.ResumeLayout(false);
+            this.grpPreview.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -150,5 +189,8 @@
         private System.Windows.Forms.Button btnSelected;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.GroupBox grpPreview;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
     }
 }

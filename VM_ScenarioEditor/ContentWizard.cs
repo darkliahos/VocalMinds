@@ -83,8 +83,6 @@ namespace VM_ScenarioEditor
                     MessageBox.Show("Delete Failed", "Failed to delete file", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
-
         }
 
         private string GetContentFileName(string fileName)
