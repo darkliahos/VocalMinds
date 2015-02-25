@@ -16,7 +16,7 @@ namespace VM_Main
         private readonly SocialSimulatorFileProcessor _socialSimulatorFileProcessor;
         private readonly VoiceRecognitionFileProcessor _voiceRecognitionFileProcessor;
         private readonly FaceRecognitionFileProcessor _faceRecognitionFileProcessor;
-        
+
         private readonly IImporter<ImportedSocialScenarios> _importer;
         private readonly IImporter<ImportedFaceRecognitionScenario> _faceimporter;
         private readonly IConfiguration _configuration;
@@ -32,21 +32,19 @@ namespace VM_Main
             _videoimporter = new Importer<ImportedVoiceRecognitionScenario>(new JsonSerialiser<ImportedVoiceRecognitionScenario>());
             _faceimporter = new Importer<ImportedFaceRecognitionScenario>(new JsonSerialiser<ImportedFaceRecognitionScenario>());
             _configuration = configuration;
-            if (_configuration.ReadBooleanSetting("LoadScenarios"))
-            {
-                string path = PhysicalPathUtils.GetRootContentFolder("scenarios.js");
-                string faceRecopath = PhysicalPathUtils.GetRootContentFolder("facerecoscenarios.js");
-                string voiceRecopath = PhysicalPathUtils.GetRootContentFolder("voicerecoscenarios.js");
-                _voiceRecognitionFileProcessor = new VoiceRecognitionFileProcessor(_videoimporter, voiceRecopath);
-                _socialSimulatorFileProcessor = new SocialSimulatorFileProcessor(_importer, path);
-                _faceRecognitionFileProcessor = new FaceRecognitionFileProcessor(_faceimporter, faceRecopath);
-                Task<bool> sucessfulLoading = LoadTasks();
+            string path = PhysicalPathUtils.GetRootContentFolder("Socialscenarios.js");
+            string faceRecopath = PhysicalPathUtils.GetRootContentFolder("facerecoscenarios.js");
+            string voiceRecopath = PhysicalPathUtils.GetRootContentFolder("voicerecoscenarios.js");
+            _voiceRecognitionFileProcessor = new VoiceRecognitionFileProcessor(_videoimporter, voiceRecopath);
+            _socialSimulatorFileProcessor = new SocialSimulatorFileProcessor(_importer, path);
+            _faceRecognitionFileProcessor = new FaceRecognitionFileProcessor(_faceimporter, faceRecopath);
+            Task<bool> sucessfulLoading = LoadTasks();
 
-                if (!sucessfulLoading.Result)
-                {
-                    MessageBox.Show("File Load failed");
-                }
+            if (!sucessfulLoading.Result)
+            {
+                MessageBox.Show("File Load failed");
             }
+
         }
 
         private async Task<bool> LoadTasks()
@@ -67,7 +65,7 @@ namespace VM_Main
 
         private void btnstartface_Click(object sender, EventArgs e)
         {
-            if(_frs == null)
+            if (_frs == null)
             {
                 _frs = new List<FaceRecognitionScenario>();
             }

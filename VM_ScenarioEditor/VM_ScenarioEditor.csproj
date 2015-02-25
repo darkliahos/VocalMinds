@@ -80,6 +80,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Social Simulator\SocialSimulatorScenarioEditorList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Social Simulator\SocialSimulatorScenarioEditorList.Designer.cs">
+      <DependentUpon>SocialSimulatorScenarioEditorList.cs</DependentUpon>
+    </Compile>
     <Compile Include="VoiceScenarioValidation.cs" />
     <Compile Include="Voice Recognition\VoiceRecognitionEditor.cs">
       <SubType>Form</SubType>
@@ -118,6 +124,9 @@
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="Social Simulator\SocialSimulatorScenarioEditorList.resx">
+      <DependentUpon>SocialSimulatorScenarioEditorList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Voice Recognition\VoiceRecognitionEditor.resx">
       <DependentUpon>VoiceRecognitionEditor.cs</DependentUpon>
     </EmbeddedResource>

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NLog;
@@ -31,7 +30,9 @@ namespace VM_ScenarioEditor
             _processor = processor;
             _exporter = exporter;
             _merge = merge;
+            
             string faceRecopath = PhysicalPathUtils.GetRootContentFolder("facerecoscenarios.js");
+            _logger.Debug(string.Format("Face Recognition Scenarios will load from : {0}", faceRecopath));
             writer = new FaceRecognitionFileWriter(_exporter, _processor, faceRecopath, _merge);
             _frsdict = new Dictionary<string, FaceRecognitionScenario>();
             Task<bool> sucessfulLoading = LoadTasks();
@@ -58,8 +59,9 @@ namespace VM_ScenarioEditor
                 Task.WaitAll();
                 return true;
             }
-            catch (Exception)
+            catch (Exception error)
             {
+                _logger.Error(error.Message);
                 return false;
             }
         }

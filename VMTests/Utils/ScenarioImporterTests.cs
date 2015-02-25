@@ -23,17 +23,17 @@ namespace VMTests.Utils
         public void StringToImportedScenarios_ValidJSonString_ShouldReturnImportedObject()
         {
             var expectedResult = ImportedScenariosHelper();
-            var actualObject = _socialimporter.StringToImportedScenarios(Properties.Resources.JsonTest);
+            var actualObject = _socialimporter.StringToImportedScenarios(Properties.Resources.SocialScenarioRecoJsonTest);
 
             Assert.Equal(expectedResult.Creation, actualObject.Creation);
             Assert.Equal(expectedResult.LastModified, actualObject.LastModified);
-            Assert.Equal(expectedResult.VideoScenarios[0].Author, actualObject.VideoScenarios[0].Author);
-            Assert.Equal(expectedResult.VideoScenarios[0].FriendlyName, actualObject.VideoScenarios[0].FriendlyName);
-            Assert.Equal(expectedResult.VideoScenarios[0].Imported, actualObject.VideoScenarios[0].Imported);
-            Assert.Equal(expectedResult.VideoScenarios[0].VideoSegment[0].PlayOrder, actualObject.VideoScenarios[0].VideoSegment[0].PlayOrder);
-            Assert.Equal(expectedResult.VideoScenarios[0].VideoSegment[0].VideoPath, actualObject.VideoScenarios[0].VideoSegment[0].VideoPath);
-            Assert.Equal(expectedResult.VideoScenarios[0].VideoSegment[0].Responses[0].Answer, actualObject.VideoScenarios[0].VideoSegment[0].Responses[0].Answer);
-            Assert.Equal(expectedResult.VideoScenarios[0].VideoSegment[0].Responses[0].ResponseType, actualObject.VideoScenarios[0].VideoSegment[0].Responses[0].ResponseType);
+            Assert.Equal(expectedResult.SocialScenario[0].Author, actualObject.SocialScenario[0].Author);
+            Assert.Equal(expectedResult.SocialScenario[0].FriendlyName, actualObject.SocialScenario[0].FriendlyName);
+            Assert.Equal(expectedResult.SocialScenario[0].Imported, actualObject.SocialScenario[0].Imported);
+            Assert.Equal(expectedResult.SocialScenario[0].VideoSegment[0].PlayOrder, actualObject.SocialScenario[0].VideoSegment[0].PlayOrder);
+            Assert.Equal(expectedResult.SocialScenario[0].VideoSegment[0].VideoPath, actualObject.SocialScenario[0].VideoSegment[0].VideoPath);
+            Assert.Equal(expectedResult.SocialScenario[0].VideoSegment[0].Responses[0].Answer, actualObject.SocialScenario[0].VideoSegment[0].Responses[0].Answer);
+            Assert.Equal(expectedResult.SocialScenario[0].VideoSegment[0].Responses[0].ResponseType, actualObject.SocialScenario[0].VideoSegment[0].Responses[0].ResponseType);
 
         }
 
@@ -119,7 +119,7 @@ namespace VMTests.Utils
             {
                 Creation = new DateTime(2014, 4, 20),
                 LastModified = new DateTime(2014, 5, 20),
-                VideoScenarios = new List<SocialScenario>
+                SocialScenario = new List<SocialScenario>
                                                 {
                                                     new SocialScenario
                                                         {

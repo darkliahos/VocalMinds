@@ -4,7 +4,6 @@ namespace VMUtils
 {
     public class JsonSerialiser<TInputObject> : ISerialiser<TInputObject>
     {
-
         public string Serialise(TInputObject io)
         {
             return JsonConvert.SerializeObject(io);

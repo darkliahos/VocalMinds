@@ -22,6 +22,7 @@ namespace VMUtils.FaceRecognition
             _processor = processor;
             _faceRecopath = path;
             _merge = merge;
+
         }
 
         public void Save(ImportedFaceRecognitionScenario inputObject)

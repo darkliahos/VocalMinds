@@ -6,26 +6,31 @@ namespace VMUtils
 {
     public class SocialSimulatorFileProcessor : IFileProcessor<SocialScenario, ImportedSocialScenarios>
     {
-        private readonly ImportedSocialScenarios _importedSocialScenarios;
+        private readonly IImporter<ImportedSocialScenarios> _importer;
+        private readonly string _path;
+        private ImportedSocialScenarios _socialScenarios;
 
         public SocialSimulatorFileProcessor(IImporter<ImportedSocialScenarios> importer, string path)
         {
-            _importedSocialScenarios = importer.LoadFile(path);
+            _importer = importer;
+            _path = path;
+            _socialScenarios = importer.LoadFile(path);
         }
 
         public List<SocialScenario> LoadScenarioFromFile()
         {
-            return _importedSocialScenarios.VideoScenarios;
+            return _socialScenarios.SocialScenario;
         }
 
         public ImportedSocialScenarios LoadScenarioObject()
         {
-            throw new System.NotImplementedException();
+            return _socialScenarios;
         }
 
         public ImportedSocialScenarios RefreshScenarioObject()
         {
-            throw new System.NotImplementedException();
+            _socialScenarios = _importer.LoadFile(_path);
+            return _socialScenarios;
         }
     }
 }

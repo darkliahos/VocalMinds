@@ -102,7 +102,7 @@
             // 
             this.socialSimulatorScenarioToolStripMenuItem.Name = "socialSimulatorScenarioToolStripMenuItem";
             this.socialSimulatorScenarioToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
-            this.socialSimulatorScenarioToolStripMenuItem.Text = "Social Simulator Scenario";
+            this.socialSimulatorScenarioToolStripMenuItem.Text = "Social Simulator Scenarios";
             this.socialSimulatorScenarioToolStripMenuItem.Click += new System.EventHandler(this.socialSimulatorScenarioToolStripMenuItem_Click);
             // 
             // voiceRecognitionScenariosToolStripMenuItem

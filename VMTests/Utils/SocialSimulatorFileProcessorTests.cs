@@ -19,11 +19,11 @@ namespace VMTests.Utils
             importer.LoadFile("").Returns(new ImportedSocialScenarios
             {
                 Creation = new DateTime(2014, 12, 03),
-                VideoScenarios = new List<SocialScenario>
+                SocialScenario = new List<SocialScenario>
                 {
                     new SocialScenario
                     {
-                        Author = "Pooman",
+                        Author = "Fred",
                         FriendlyName = "Walk out",
                         Id = Guid.Parse("daa1f333-46ed-417d-b0ae-f45adf29fd15"),
                         Imported = new DateTime(2014,03,03),
@@ -35,7 +35,7 @@ namespace VMTests.Utils
             List<SocialScenario> vrs = await Task.FromResult<List<SocialScenario>>(fp.LoadScenarioFromFile());
             //Assert
             Assert.Equal("Walk out", vrs[0].FriendlyName);
-            Assert.Equal("Pooman", vrs[0].Author);
+            Assert.Equal("Fred", vrs[0].Author);
             Assert.Equal(Guid.Parse("daa1f333-46ed-417d-b0ae-f45adf29fd15"), vrs[0].Id);
         }
 
@@ -44,10 +44,10 @@ namespace VMTests.Utils
         {
             //Arrange
             var importer = Substitute.For<IImporter<ImportedSocialScenarios>>();
-            importer.LoadFile("").Returns(new ImportedSocialScenarios
+            importer.LoadFile("").Returns(new ImportedSocialScenarios()
             {
                 Creation = new DateTime(2014, 12, 03),
-                VideoScenarios = new List<SocialScenario>
+                SocialScenario = new List<SocialScenario>
                 {
                 }
             });

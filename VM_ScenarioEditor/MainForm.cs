@@ -15,6 +15,7 @@ namespace VM_ScenarioEditor
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         string faceRecopath = PhysicalPathUtils.GetRootContentFolder("facerecoscenarios.js");
         string voiceRecopath = PhysicalPathUtils.GetRootContentFolder("voicerecoscenarios.js");
+        string socialSimualtorpath = PhysicalPathUtils.GetRootContentFolder("Socialscenarios.js");
 
         public MainForm()
         {
@@ -30,7 +31,9 @@ namespace VM_ScenarioEditor
 
         private void socialSimulatorScenarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Functionality Not Yet Implemented");
+            var _socialImporter = new Importer<ImportedSocialScenarios>(new JsonSerialiser<ImportedSocialScenarios>());
+            var fr = new SocialSimulatorScenarioEditorList(Logger, _socialImporter, new SocialSimulatorFileProcessor(_socialImporter, socialSimualtorpath), new Exporter<ImportedSocialScenarios>(new JsonSerialiser<ImportedSocialScenarios>()), new SocialScenarioMerge());
+            fr.OpenFormInMdi(this);
         }
 
         private void voiceRecognitionScenariosToolStripMenuItem_Click(object sender, EventArgs e)
