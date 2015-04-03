@@ -71,7 +71,13 @@
     <Compile Include="Face Recognition\FaceRecongitionScenarioEditorList.Designer.cs">
       <DependentUpon>FaceRecongitionScenarioEditorList.cs</DependentUpon>
     </Compile>
-    <Compile Include="FaceScenarioValidation.cs" />
+    <Compile Include="Social Simulator\SocialSimulatorSegmentEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Social Simulator\SocialSimulatorSegmentEditor.Designer.cs">
+      <DependentUpon>SocialSimulatorSegmentEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Validators\FaceScenarioValidation.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,13 +86,19 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Social Simulator\SocialSimulatorEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Social Simulator\SocialSimulatorEditor.Designer.cs">
+      <DependentUpon>SocialSimulatorEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Social Simulator\SocialSimulatorScenarioEditorList.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Social Simulator\SocialSimulatorScenarioEditorList.Designer.cs">
       <DependentUpon>SocialSimulatorScenarioEditorList.cs</DependentUpon>
     </Compile>
-    <Compile Include="VoiceScenarioValidation.cs" />
+    <Compile Include="Validators\VoiceScenarioValidation.cs" />
     <Compile Include="Voice Recognition\VoiceRecognitionEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,8 +136,14 @@
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="Social Simulator\SocialSimulatorEditor.resx">
+      <DependentUpon>SocialSimulatorEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Social Simulator\SocialSimulatorScenarioEditorList.resx">
       <DependentUpon>SocialSimulatorScenarioEditorList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Social Simulator\SocialSimulatorSegmentEditor.resx">
+      <DependentUpon>SocialSimulatorSegmentEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Voice Recognition\VoiceRecognitionEditor.resx">
       <DependentUpon>VoiceRecognitionEditor.cs</DependentUpon>

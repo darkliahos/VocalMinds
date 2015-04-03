@@ -18,6 +18,7 @@ namespace VM_ScenarioEditor
         private readonly IMerge<ImportedSocialScenarios> _merge;
         private Dictionary<string, SocialScenario> _sendict;
         private ImportedSocialScenarios _srs;
+        private readonly IFileWriter<ImportedSocialScenarios> writer;
 
         public SocialSimulatorScenarioEditorList(Logger logger, IImporter<ImportedSocialScenarios> importer, IFileProcessor<SocialScenario, ImportedSocialScenarios> processor, IExporter<ImportedSocialScenarios> exporter, IMerge<ImportedSocialScenarios> merge)
         {
@@ -29,8 +30,7 @@ namespace VM_ScenarioEditor
             _merge = merge;
             _sendict = new Dictionary<string, SocialScenario>();
             string socialPath = PhysicalPathUtils.GetRootContentFolder("Socialscenarios.js");
-            //TODO #27 Social Simulator Writer
-            //writer = new SocialSimulatorWriter(_exporter, _processor, faceRecopath, _merge);
+            writer = new SocialSimulatorFileWriter(_exporter, _processor, socialPath, _merge);
             Task<bool> sucessfulLoading = LoadTasks();
             LoadScenariosToForm();
         }
@@ -58,6 +58,37 @@ namespace VM_ScenarioEditor
                 lstScenarios.Items.Add(string.Format("{0} - {1}", socialScenario.Id, socialScenario.FriendlyName));
                 _sendict.Add(string.Format("{0} - {1}", socialScenario.Id, socialScenario.FriendlyName), socialScenario);
             }
+        }
+
+        private void btnSelect_Click(object sender, EventArgs e)
+        {
+            SocialScenario ss;
+            if (_sendict.TryGetValue(lstScenarios.SelectedItem.ToString(), out ss))
+            {
+                var vre = new SocialSimulatorEditor(ss);
+                OpenForm(vre);
+            }
+            else
+            {
+                _logger.Error("Failed to get Dictionary Scenario");
+                MessageBox.Show("Scenario may corrupted or malformed", "Social Scenario Failed to load");
+            }
+        }
+
+        private void OpenForm(SocialSimulatorEditor freInstance)
+        {
+            freInstance.State = _srs;
+            freInstance.Show();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            writer.LockFile();
+            var inputObject = _processor.RefreshScenarioObject();
+            inputObject.SocialScenario.RemoveAll(x => x.Id == Guid.Parse(lstScenarios.SelectedItem.ToString().Remove(37)));
+            writer.Save(inputObject);
+            Task<bool> sucessfulLoading = LoadTasks();
+            LoadScenariosToForm();
         }
 
     }

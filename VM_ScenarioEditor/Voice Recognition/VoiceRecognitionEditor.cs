@@ -108,7 +108,7 @@ namespace VM_ScenarioEditor
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            if (lstAnswers.SelectedIndex != 0)
+            if (lstAnswers.SelectedIndex !=-1)
             {
                 lstAnswers.Items.RemoveAt(lstAnswers.SelectedIndex);
             }

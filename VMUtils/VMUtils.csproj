@@ -58,6 +58,7 @@
     <Compile Include="Interfaces\IExporter.cs" />
     <Compile Include="Interfaces\IFileWriter.cs" />
     <Compile Include="FaceRecognition\FaceRecognitionFileWriter.cs" />
+    <Compile Include="Social Simulator\SocialSimulatorFileWriter.cs" />
     <Compile Include="Social Simulator\SocialSimulatorMerge.cs" />
     <Compile Include="VoiceRecognition\VoiceRecognitionMerge.cs" />
     <Compile Include="Social Simulator\SocialSimulatorFileProcessor.cs" />
