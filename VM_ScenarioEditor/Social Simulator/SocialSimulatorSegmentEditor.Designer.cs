@@ -42,6 +42,14 @@
             this.lblQTitle = new System.Windows.Forms.Label();
             this.btnAddAnswers = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cboResponseType = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cboNextSegment = new System.Windows.Forms.ComboBox();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSelectContentWizard
@@ -57,23 +65,23 @@
             // txtAnswerSingle
             // 
             this.txtAnswerSingle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAnswerSingle.Location = new System.Drawing.Point(195, 241);
+            this.txtAnswerSingle.Location = new System.Drawing.Point(103, 19);
             this.txtAnswerSingle.Name = "txtAnswerSingle";
-            this.txtAnswerSingle.Size = new System.Drawing.Size(172, 29);
+            this.txtAnswerSingle.Size = new System.Drawing.Size(132, 29);
             this.txtAnswerSingle.TabIndex = 45;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 252);
+            this.label2.Location = new System.Drawing.Point(8, 28);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(0, 25);
             this.label2.TabIndex = 44;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(316, 354);
+            this.btnSave.Location = new System.Drawing.Point(316, 457);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 43;
@@ -101,7 +109,7 @@
             // txtPlayOrder
             // 
             this.txtPlayOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPlayOrder.Location = new System.Drawing.Point(195, 307);
+            this.txtPlayOrder.Location = new System.Drawing.Point(195, 410);
             this.txtPlayOrder.Name = "txtPlayOrder";
             this.txtPlayOrder.Size = new System.Drawing.Size(193, 29);
             this.txtPlayOrder.TabIndex = 39;
@@ -118,7 +126,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 307);
+            this.label3.Location = new System.Drawing.Point(12, 410);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(114, 25);
             this.label3.TabIndex = 36;
@@ -156,7 +164,7 @@
             // 
             // btnAddAnswers
             // 
-            this.btnAddAnswers.Location = new System.Drawing.Point(397, 241);
+            this.btnAddAnswers.Location = new System.Drawing.Point(338, 65);
             this.btnAddAnswers.Name = "btnAddAnswers";
             this.btnAddAnswers.Size = new System.Drawing.Size(75, 23);
             this.btnAddAnswers.TabIndex = 46;
@@ -174,16 +182,92 @@
             this.btnRemove.UseVisualStyleBackColor = true;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
-            // SocialSimulatorSegementEditor
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(8, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(89, 25);
+            this.label1.TabIndex = 49;
+            this.label1.Text = "Answer:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(254, 21);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(66, 25);
+            this.label4.TabIndex = 50;
+            this.label4.Text = "Type:";
+            // 
+            // cboResponseType
+            // 
+            this.cboResponseType.FormattingEnabled = true;
+            this.cboResponseType.Items.AddRange(new object[] {
+            "Positive",
+            "Negative"});
+            this.cboResponseType.Location = new System.Drawing.Point(315, 21);
+            this.cboResponseType.Name = "cboResponseType";
+            this.cboResponseType.Size = new System.Drawing.Size(107, 21);
+            this.cboResponseType.TabIndex = 51;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnClear);
+            this.groupBox1.Controls.Add(this.cboNextSegment);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.txtAnswerSingle);
+            this.groupBox1.Controls.Add(this.cboResponseType);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.btnAddAnswers);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(12, 241);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(524, 134);
+            this.groupBox1.TabIndex = 52;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Segment Editor";
+            this.groupBox1.UseCompatibleTextRendering = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(6, 66);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(147, 25);
+            this.label5.TabIndex = 52;
+            this.label5.Text = "NextSegment:";
+            // 
+            // cboNextSegment
+            // 
+            this.cboNextSegment.FormattingEnabled = true;
+            this.cboNextSegment.Location = new System.Drawing.Point(172, 67);
+            this.cboNextSegment.Name = "cboNextSegment";
+            this.cboNextSegment.Size = new System.Drawing.Size(121, 21);
+            this.cboNextSegment.TabIndex = 53;
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(433, 65);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.TabIndex = 54;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // SocialSimulatorSegmentEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(548, 406);
+            this.ClientSize = new System.Drawing.Size(548, 522);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnSelectContentWizard);
             this.Controls.Add(this.btnRemove);
-            this.Controls.Add(this.btnAddAnswers);
-            this.Controls.Add(this.txtAnswerSingle);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtVideoName);
             this.Controls.Add(this.lstAnswers);
@@ -193,8 +277,10 @@
             this.Controls.Add(this.lblanswers);
             this.Controls.Add(this.lblVideoPath);
             this.Controls.Add(this.lblQTitle);
-            this.Name = "SocialSimulatorSegementEditor";
+            this.Name = "SocialSimulatorSegmentEditor";
             this.Text = "SocialSimulatorSegementEditor";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -216,5 +302,12 @@
         private System.Windows.Forms.Label lblQTitle;
         private System.Windows.Forms.Button btnAddAnswers;
         private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cboResponseType;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.ComboBox cboNextSegment;
+        private System.Windows.Forms.Label label5;
     }
 }

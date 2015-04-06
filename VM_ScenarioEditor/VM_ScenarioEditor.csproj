@@ -71,6 +71,7 @@
     <Compile Include="Face Recognition\FaceRecongitionScenarioEditorList.Designer.cs">
       <DependentUpon>FaceRecongitionScenarioEditorList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Social Simulator\SocialSimulatorFormState.cs" />
     <Compile Include="Social Simulator\SocialSimulatorSegmentEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +99,7 @@
     <Compile Include="Social Simulator\SocialSimulatorScenarioEditorList.Designer.cs">
       <DependentUpon>SocialSimulatorScenarioEditorList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Validators\SocialScenarioValidation.cs" />
     <Compile Include="Validators\VoiceScenarioValidation.cs" />
     <Compile Include="Voice Recognition\VoiceRecognitionEditor.cs">
       <SubType>Form</SubType>

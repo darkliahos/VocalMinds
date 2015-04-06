@@ -65,8 +65,7 @@ namespace VM_ScenarioEditor
             SocialScenario ss;
             if (_sendict.TryGetValue(lstScenarios.SelectedItem.ToString(), out ss))
             {
-                var vre = new SocialSimulatorEditor(ss);
-                OpenForm(vre);
+                SocialScenarioFormLoad(ss, true);
             }
             else
             {
@@ -89,6 +88,19 @@ namespace VM_ScenarioEditor
             writer.Save(inputObject);
             Task<bool> sucessfulLoading = LoadTasks();
             LoadScenariosToForm();
+        }
+
+        private void btnNewScenario_Click(object sender, EventArgs e)
+        {
+            SocialScenarioFormLoad(new SocialScenario(), false);
+        }
+
+        private void SocialScenarioFormLoad(SocialScenario socialScenario, bool editingState)
+        {
+            SocialSimulatorFormState.SocialScenario = socialScenario;
+            SocialSimulatorFormState.EditingState = editingState;
+            var vre = new SocialSimulatorEditor();
+            OpenForm(vre);
         }
 
     }

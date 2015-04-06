@@ -54,6 +54,7 @@
             this.btnNewScenario.TabIndex = 2;
             this.btnNewScenario.Text = "&New";
             this.btnNewScenario.UseVisualStyleBackColor = true;
+            this.btnNewScenario.Click += new System.EventHandler(this.btnNewScenario_Click);
             // 
             // btnSelect
             // 

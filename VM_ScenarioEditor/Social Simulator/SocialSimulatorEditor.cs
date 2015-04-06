@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Security.RightsManagement;
+﻿using System.Linq;
 using System.Windows.Forms;
 using VM_Model;
 using VM_ScenarioEditor.Social_Simulator;
@@ -9,29 +7,26 @@ namespace VM_ScenarioEditor
 {
     public partial class SocialSimulatorEditor : Form
     {
-        private List<VideoSegment> segments;
-        public SocialSimulatorEditor(SocialScenario socialScenario)
-        {
-            InitializeComponent();
-            txttitle.Text = socialScenario.FriendlyName;
-            txtAuthor.Text = socialScenario.Author;
-            segments = socialScenario.VideoSegment;
-            foreach (var segment in socialScenario.VideoSegment)
-            {
-                lstSegments.Items.Add(segment.Description);
-            }
-        }
-
         public SocialSimulatorEditor()
         {
             InitializeComponent();
+
+            if (SocialSimulatorFormState.EditingState)
+            {
+                txttitle.Text = SocialSimulatorFormState.SocialScenario.FriendlyName;
+                txtAuthor.Text = SocialSimulatorFormState.SocialScenario.Author;
+                foreach (var segment in SocialSimulatorFormState.SocialScenario.VideoSegment)
+                {
+                    lstSegments.Items.Add(segment.Description);
+                }
+            }
         }
 
         public ImportedSocialScenarios State { get; set; }
 
         private void btnSave_Click(object sender, System.EventArgs e)
         {
-
+            //TODO: Final Save
         }
 
         private void btnAdd_Click(object sender, System.EventArgs e)
@@ -46,7 +41,7 @@ namespace VM_ScenarioEditor
 
             if (!string.IsNullOrEmpty(segementName))
             {
-                var segement = segments.FirstOrDefault(x => x.Description == segementName);
+                var segement = SocialSimulatorFormState.SocialScenario.VideoSegment.FirstOrDefault(x => x.Description == segementName);
                 var ssse = new SocialSimulatorSegmentEditor(segement);
                 ssse.Show();
             }

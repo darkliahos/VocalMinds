@@ -4,7 +4,7 @@ namespace VM_Model
 {
     public class Response
     {
-        [Required, MaxLength(20)]
+        [Required]
         public string Answer { get; set; }
 
         [Required]
