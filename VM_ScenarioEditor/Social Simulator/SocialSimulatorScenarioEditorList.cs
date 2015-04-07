@@ -99,7 +99,7 @@ namespace VM_ScenarioEditor
         {
             SocialSimulatorFormState.SocialScenario = socialScenario;
             SocialSimulatorFormState.EditingState = editingState;
-            var vre = new SocialSimulatorEditor();
+            var vre = new SocialSimulatorEditor(_importer, _processor, _exporter, _merge);
             OpenForm(vre);
         }
 

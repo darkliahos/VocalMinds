@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Windows.Automation.Peers;
 using System.Windows.Forms;
 using VMUtils;
 using VMUtils.FaceRecognition;
 using VMUtils.Interfaces;
-using VM_FormUtils.Extensions;
 using VM_Model;
 
 namespace VM_ScenarioEditor

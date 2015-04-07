@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using VMUtils.Exceptions;
 using VM_Model;
 using VM_ScenarioEditor.Validators;
 
-namespace VM_ScenarioEditor.Social_Simulator
+namespace VM_ScenarioEditor
 {
     public partial class SocialSimulatorSegmentEditor : Form
     {
@@ -19,6 +20,9 @@ namespace VM_ScenarioEditor.Social_Simulator
         public SocialSimulatorSegmentEditor()
         {
             InitializeComponent();
+            PopulateNextPlayOrder();
+            cboResponseType.SelectedIndex = 0;
+            SegmentResponseState = new List<Response>();
         }
 
         public SocialSimulatorSegmentEditor(VideoSegment scenario)
@@ -64,8 +68,7 @@ namespace VM_ScenarioEditor.Social_Simulator
                     ResponseType = (ResponseType)cboResponseType.SelectedIndex,
                     SocialSimulatorAction = GetNextSegment()
                 };
-                var scenarioValidation = new SocialScenarioValidation();
-                var scenarioValidationresponse = scenarioValidation.ValidateSegmentResponse(segmentResponse);
+                var scenarioValidationresponse = SocialScenarioValidation.ValidateSegmentResponse(segmentResponse);
                 if (scenarioValidationresponse.HasErrors)
                 {
                     throw new ValidationException(string.Format("Segment Invalid: {0}", string.Join(", ",scenarioValidationresponse.ErrorMessages.ToArray())));
@@ -87,8 +90,10 @@ namespace VM_ScenarioEditor.Social_Simulator
             int nextSegment = 0;
             if (cboNextSegment.Text != "")
             {
-                string comboText = cboNextSegment.Text.Substring(0, 5);
-                int.TryParse(comboText, out nextSegment);
+                var digitPattern =  new Regex(@"^\d+");
+                var mc = digitPattern.Matches(cboNextSegment.Text);
+                // We only need to get the first match group from the Regex as we assume others are junk
+                int.TryParse(mc[0].ToString(), out nextSegment);
             }
             return nextSegment;
         }
@@ -118,6 +123,8 @@ namespace VM_ScenarioEditor.Social_Simulator
             }
 
             SocialSimulatorFormState.SocialScenario.VideoSegment.Add(segment);
+            MessageBox.Show("Segment Saved");
+            this.Close();
         }
 
         private void btnClear_Click(object sender, EventArgs e)

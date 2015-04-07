@@ -1,15 +1,30 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using System.Text;
 using System.Windows.Forms;
+using VMUtils;
+using VMUtils.Interfaces;
 using VM_Model;
-using VM_ScenarioEditor.Social_Simulator;
+using VM_ScenarioEditor.Validators;
 
 namespace VM_ScenarioEditor
 {
     public partial class SocialSimulatorEditor : Form
     {
-        public SocialSimulatorEditor()
+        private readonly IImporter<ImportedSocialScenarios> _importer;
+        private readonly IFileProcessor<SocialScenario, ImportedSocialScenarios> _processor;
+        private readonly IExporter<ImportedSocialScenarios> _exporter;
+        private readonly IMerge<ImportedSocialScenarios> _merge;
+        private SocialSimulatorFileWriter writer;
+        public SocialSimulatorEditor(IImporter<ImportedSocialScenarios> importer, IFileProcessor<SocialScenario, ImportedSocialScenarios> processor, IExporter<ImportedSocialScenarios> exporter, IMerge<ImportedSocialScenarios> merge)
         {
+            _importer = importer;
+            _processor = processor;
+            _exporter = exporter;
+            _merge = merge;
             InitializeComponent();
+            string socialPath = PhysicalPathUtils.GetRootContentFolder("Socialscenarios.js");
+            writer = new SocialSimulatorFileWriter(_exporter, _processor, socialPath, _merge);
 
             if (SocialSimulatorFormState.EditingState)
             {
@@ -26,7 +41,38 @@ namespace VM_ScenarioEditor
 
         private void btnSave_Click(object sender, System.EventArgs e)
         {
-            //TODO: Final Save
+            SocialSimulatorFormState.SocialScenario.Author = txtAuthor.Text;
+            SocialSimulatorFormState.SocialScenario.FriendlyName = txttitle.Text;
+
+            var validationObject = SocialScenarioValidation.ValidateScenario();
+            if (validationObject.HasErrors)
+            {
+
+                var sb = new StringBuilder();
+
+                foreach (var em in validationObject.ErrorMessages)
+                {
+                    sb.Append(em);
+                    sb.Append("\n");
+                }
+
+                MessageBox.Show(string.Format("There were Validation errors: \n {0}", sb), "Validation Errors");
+            }
+            else
+            {
+                if (SocialSimulatorFormState.SocialScenario.Id != Guid.Empty)
+                {
+                    var previousObject = State.SocialScenario.First(x => x.Id == SocialSimulatorFormState.SocialScenario.Id);
+                    State.SocialScenario.Remove(previousObject);
+                }
+
+                State.SocialScenario.Add(SocialSimulatorFormState.SocialScenario);
+
+                writer.Save(State);
+                MessageBox.Show("Saved Scenario");
+                this.Close();
+            }
+
         }
 
         private void btnAdd_Click(object sender, System.EventArgs e)

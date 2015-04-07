@@ -1,4 +1,4 @@
-﻿namespace VM_ScenarioEditor.Social_Simulator
+﻿namespace VM_ScenarioEditor
 {
     partial class SocialSimulatorSegmentEditor
     {
