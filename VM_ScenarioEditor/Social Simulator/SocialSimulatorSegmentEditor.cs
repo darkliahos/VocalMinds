@@ -15,7 +15,7 @@ namespace VM_ScenarioEditor
 
         public List<Response> SegmentResponseState { get; set; }
 
-        public Guid Id { get; set; }
+        public Guid SegmentId { get; set; }
 
         public SocialSimulatorSegmentEditor()
         {
@@ -32,7 +32,7 @@ namespace VM_ScenarioEditor
             txtPlayOrder.Text = scenario.PlayOrder.ToString();
             txtDescription.Text = scenario.Description;
             SegmentResponseState = scenario.Responses;
-            Id = scenario.Id;
+            SegmentId = scenario.Id;
             foreach (var answer in scenario.Responses)
             {
                 lstAnswers.Items.Add(answer.Answer);
@@ -108,8 +108,14 @@ namespace VM_ScenarioEditor
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (SegmentId == Guid.Empty)
+            {
+                SegmentId = Guid.NewGuid();
+            }
+
             var segment = new VideoSegment
             {
+                Id = SegmentId,
                 Description = txtDescription.Text,
                 PlayOrder = Convert.ToInt32(txtPlayOrder.Text),
                 VideoPath = txtVideoName.Text,
@@ -118,7 +124,7 @@ namespace VM_ScenarioEditor
 
             if (Editing)
             {
-                var oldSegment = SocialSimulatorFormState.SocialScenario.VideoSegment.FirstOrDefault(x => x.Id == Id);
+                var oldSegment = SocialSimulatorFormState.SocialScenario.VideoSegment.FirstOrDefault(x => x.Id == SegmentId);
                 SocialSimulatorFormState.SocialScenario.VideoSegment.Remove(oldSegment);
             }
 

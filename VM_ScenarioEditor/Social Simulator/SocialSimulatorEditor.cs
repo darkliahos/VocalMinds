@@ -30,10 +30,19 @@ namespace VM_ScenarioEditor
             {
                 txttitle.Text = SocialSimulatorFormState.SocialScenario.FriendlyName;
                 txtAuthor.Text = SocialSimulatorFormState.SocialScenario.Author;
-                foreach (var segment in SocialSimulatorFormState.SocialScenario.VideoSegment)
-                {
-                    lstSegments.Items.Add(segment.Description);
-                }
+                LoadVideoSegments();
+            }
+        }
+
+        private void LoadVideoSegments()
+        {
+            if (lstSegments.Items.Count > 0)
+            {
+                lstSegments.Items.Clear();
+            }
+            foreach (var segment in SocialSimulatorFormState.SocialScenario.VideoSegment)
+            {
+                lstSegments.Items.Add(segment.Description);
             }
         }
 
@@ -62,8 +71,13 @@ namespace VM_ScenarioEditor
             {
                 if (SocialSimulatorFormState.SocialScenario.Id != Guid.Empty)
                 {
-                    var previousObject = State.SocialScenario.First(x => x.Id == SocialSimulatorFormState.SocialScenario.Id);
+                    var previousObject =
+                        State.SocialScenario.First(x => x.Id == SocialSimulatorFormState.SocialScenario.Id);
                     State.SocialScenario.Remove(previousObject);
+                }
+                else
+                {
+                    SocialSimulatorFormState.SocialScenario.Id = Guid.NewGuid();
                 }
 
                 State.SocialScenario.Add(SocialSimulatorFormState.SocialScenario);
@@ -77,8 +91,10 @@ namespace VM_ScenarioEditor
 
         private void btnAdd_Click(object sender, System.EventArgs e)
         {
-            var ssse = new SocialSimulatorSegmentEditor();
-            ssse.Show();
+            var ssse = new SocialSimulatorSegmentEditor {Editing = false};
+            var dr = ssse.ShowDialog();
+            if (dr == DialogResult.OK)
+                LoadVideoSegments();
         }
 
         private void btnEdit_Click(object sender, System.EventArgs e)
@@ -88,8 +104,10 @@ namespace VM_ScenarioEditor
             if (!string.IsNullOrEmpty(segementName))
             {
                 var segement = SocialSimulatorFormState.SocialScenario.VideoSegment.FirstOrDefault(x => x.Description == segementName);
-                var ssse = new SocialSimulatorSegmentEditor(segement);
-                ssse.Show();
+                var ssse = new SocialSimulatorSegmentEditor(segement) {Editing = true};
+                var dr = ssse.ShowDialog();
+                if (dr == DialogResult.OK)
+                    LoadVideoSegments();
             }
         }
     }

@@ -46,9 +46,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cboResponseType = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cboNextSegment = new System.Windows.Forms.ComboBox();
             this.btnClear = new System.Windows.Forms.Button();
+            this.cboNextSegment = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,6 +81,7 @@
             // 
             // btnSave
             // 
+            this.btnSave.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnSave.Location = new System.Drawing.Point(316, 457);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
@@ -229,26 +230,8 @@
             this.groupBox1.Size = new System.Drawing.Size(524, 134);
             this.groupBox1.TabIndex = 52;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Segment Editor";
+            this.groupBox1.Text = "Answer Editor";
             this.groupBox1.UseCompatibleTextRendering = true;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(6, 66);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(147, 25);
-            this.label5.TabIndex = 52;
-            this.label5.Text = "NextSegment:";
-            // 
-            // cboNextSegment
-            // 
-            this.cboNextSegment.FormattingEnabled = true;
-            this.cboNextSegment.Location = new System.Drawing.Point(172, 67);
-            this.cboNextSegment.Name = "cboNextSegment";
-            this.cboNextSegment.Size = new System.Drawing.Size(121, 21);
-            this.cboNextSegment.TabIndex = 53;
             // 
             // btnClear
             // 
@@ -259,6 +242,24 @@
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // cboNextSegment
+            // 
+            this.cboNextSegment.FormattingEnabled = true;
+            this.cboNextSegment.Location = new System.Drawing.Point(172, 67);
+            this.cboNextSegment.Name = "cboNextSegment";
+            this.cboNextSegment.Size = new System.Drawing.Size(121, 21);
+            this.cboNextSegment.TabIndex = 53;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(6, 66);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(147, 25);
+            this.label5.TabIndex = 52;
+            this.label5.Text = "NextSegment:";
             // 
             // SocialSimulatorSegmentEditor
             // 

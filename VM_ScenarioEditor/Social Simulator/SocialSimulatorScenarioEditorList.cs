@@ -92,7 +92,7 @@ namespace VM_ScenarioEditor
 
         private void btnNewScenario_Click(object sender, EventArgs e)
         {
-            SocialScenarioFormLoad(new SocialScenario(), false);
+            SocialScenarioFormLoad(new SocialScenario{VideoSegment = new List<VideoSegment>()}, false);
         }
 
         private void SocialScenarioFormLoad(SocialScenario socialScenario, bool editingState)
