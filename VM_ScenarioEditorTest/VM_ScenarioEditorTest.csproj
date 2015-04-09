@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="FaceScenarioValidationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SocialScenarioValidationTests.cs" />
     <Compile Include="VoiceScenarioValidationTest.cs" />
   </ItemGroup>
   <ItemGroup>

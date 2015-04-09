@@ -99,16 +99,20 @@ namespace VM_ScenarioEditor
 
         private void btnEdit_Click(object sender, System.EventArgs e)
         {
-            var segementName = lstSegments.SelectedItem.ToString();
-
-            if (!string.IsNullOrEmpty(segementName))
+            if (lstSegments.SelectedIndex != -1)
             {
-                var segement = SocialSimulatorFormState.SocialScenario.VideoSegment.FirstOrDefault(x => x.Description == segementName);
-                var ssse = new SocialSimulatorSegmentEditor(segement) {Editing = true};
-                var dr = ssse.ShowDialog();
-                if (dr == DialogResult.OK)
-                    LoadVideoSegments();
+                var segementName = lstSegments.SelectedItem.ToString();
+
+                if (!string.IsNullOrEmpty(segementName))
+                {
+                    var segement = SocialSimulatorFormState.SocialScenario.VideoSegment.FirstOrDefault(x => x.Description == segementName);
+                    var ssse = new SocialSimulatorSegmentEditor(segement) { Editing = true };
+                    var dr = ssse.ShowDialog();
+                    if (dr == DialogResult.OK)
+                        LoadVideoSegments();
+                }
             }
+
         }
 
         private void btnRemove_Click(object sender, EventArgs e)

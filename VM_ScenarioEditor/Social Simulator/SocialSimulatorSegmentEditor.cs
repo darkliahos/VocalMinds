@@ -122,15 +122,25 @@ namespace VM_ScenarioEditor
                 Responses = SegmentResponseState
             };
 
-            if (Editing)
+            var validate = SocialScenarioValidation.ValidateSegment(segment);
+            if (!validate.HasErrors)
             {
-                var oldSegment = SocialSimulatorFormState.SocialScenario.VideoSegment.FirstOrDefault(x => x.Id == SegmentId);
-                SocialSimulatorFormState.SocialScenario.VideoSegment.Remove(oldSegment);
-            }
+                if (Editing)
+                {
+                    var oldSegment = SocialSimulatorFormState.SocialScenario.VideoSegment.FirstOrDefault(x => x.Id == SegmentId);
+                    SocialSimulatorFormState.SocialScenario.VideoSegment.Remove(oldSegment);
+                }
 
-            SocialSimulatorFormState.SocialScenario.VideoSegment.Add(segment);
-            MessageBox.Show("Segment Saved");
-            this.Close();
+                SocialSimulatorFormState.SocialScenario.VideoSegment.Add(segment);
+                MessageBox.Show("Segment Saved");
+                this.DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                //this.DialogResult = DialogResult.Cancel;;
+                MessageBox.Show(string.Format("Segment Invalid: {0}",
+                    string.Join(", ", validate.ErrorMessages.ToArray())));
+            }
         }
 
         private void btnClear_Click(object sender, EventArgs e)
