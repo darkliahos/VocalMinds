@@ -126,6 +126,12 @@ namespace VMUtils
             {
                 return GetRootContentFolder("Sounds");
             }
+
+            if (DetermineFileType(file, "SupportedVidExt"))
+            {
+                return GetRootContentFolder("Videos");
+            }
+
             throw new NotSupportedException("File Type Unsupported");
         }
 
