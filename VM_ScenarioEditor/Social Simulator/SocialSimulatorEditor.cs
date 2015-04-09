@@ -110,5 +110,15 @@ namespace VM_ScenarioEditor
                     LoadVideoSegments();
             }
         }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            if (lstSegments.SelectedIndex != -1)
+            {
+                var segement = SocialSimulatorFormState.SocialScenario.VideoSegment.FirstOrDefault(x => x.Description == (string)lstSegments.SelectedItem);
+                SocialSimulatorFormState.SocialScenario.VideoSegment.Remove(segement);
+                lstSegments.Items.RemoveAt(lstSegments.SelectedIndex);
+            }
+        }
     }
 }
