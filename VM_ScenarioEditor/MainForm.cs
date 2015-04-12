@@ -47,7 +47,7 @@ namespace VM_ScenarioEditor
         {
             try
             {
-                new ContentWizard(false).OpenFormInMdi(this);
+                new ContentWizard(false, ContentType.Other).OpenFormInMdi(this);
             }
             catch (Exception error)
             {

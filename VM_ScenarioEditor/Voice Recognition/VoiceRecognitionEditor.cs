@@ -125,7 +125,7 @@ namespace VM_ScenarioEditor
 
         private void btnSelectContentWizard_Click(object sender, EventArgs e)
         {
-            var contentWizard = new ContentWizard(true);
+            var contentWizard = new ContentWizard(true, ContentType.Sound);
             var dr = contentWizard.ShowDialog();
             switch (dr)
             {

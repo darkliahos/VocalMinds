@@ -6,7 +6,7 @@ using VMUtils.Interfaces;
 
 namespace VMUtils
 {
-    public class Configuration : IConfiguration
+    public class AppConfiguration : IConfiguration
     {
         /// <summary>
         /// Gets an App setting from a configuration file from the calling assembly

@@ -45,7 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration.cs" />
+    <Compile Include="AppConfiguration.cs" />
+    <Compile Include="Enumerations\ContentType.cs" />
     <Compile Include="Exceptions\FileFailedToUnlockedException.cs" />
     <Compile Include="Exceptions\FileLockedException.cs" />
     <Compile Include="Exceptions\FileSaveException.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="FaceRecognition\FaceRecognitionFileWriter.cs" />
     <Compile Include="Social Simulator\SocialSimulatorFileWriter.cs" />
     <Compile Include="Social Simulator\SocialSimulatorMerge.cs" />
+    <Compile Include="Validators\ContentWizardValidator.cs" />
     <Compile Include="VoiceRecognition\VoiceRecognitionMerge.cs" />
     <Compile Include="Social Simulator\SocialSimulatorFileProcessor.cs" />
     <Compile Include="FaceRecognition\FaceRecognitionFileProcessor.cs" />

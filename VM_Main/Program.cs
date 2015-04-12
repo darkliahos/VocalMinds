@@ -18,7 +18,7 @@ namespace VM_Main
             Application.SetCompatibleTextRenderingDefault(false);
             if (!args.Any())
             {
-                Application.Run(new FrmMainMenu(new Configuration()));
+                Application.Run(new FrmMainMenu(new AppConfiguration()));
             }
             else if (args[0] == "EDITOR")
             {

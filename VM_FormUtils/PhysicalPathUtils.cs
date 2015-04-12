@@ -137,7 +137,7 @@ namespace VMUtils
 
         private static bool DetermineFileType(string file, string configName)
         {
-            var configuration = new Configuration();
+            var configuration = new AppConfiguration();
             var imageList = configuration.ReadStringListSettings(configName, '|');
 
             return imageList.Any(file.EndsWith);

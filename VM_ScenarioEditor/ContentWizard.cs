@@ -3,22 +3,26 @@ using System.IO;
 using System.Windows.Forms;
 using VMUtils;
 using VMUtils.Extensions;
+using VMUtils.Validators;
 using VM_FormUtils.Extensions;
 
 namespace VM_ScenarioEditor
 {
     public partial class ContentWizard : Form
     {
+        private readonly ContentType _contentType;
         public string RootFolder = PhysicalPathUtils.GetRootContentFolder("");
+        private ContentWizardValidator validator;
 
         public string SelectedFile { get; set; }
 
-        public ContentWizard(bool showSelectedButton)
+        public ContentWizard(bool showSelectedButton, ContentType contentType)
         {
+            _contentType = contentType;
             InitializeComponent();
 
             btnSelected.Visible = showSelectedButton;
-
+            validator = new ContentWizardValidator(new AppConfiguration());
             lstContentTypes.PopulateFromEnumerable(PhysicalPathUtils.GetSubDirectoryList(RootFolder).ReplaceStringInList(RootFolder, ""));
         }
 
@@ -60,12 +64,19 @@ namespace VM_ScenarioEditor
 
         private void btnSelected_Click(object sender, EventArgs e)
         {
-            SelectedFile = lstContent.Text;
-            if (SelectedFile != null)
+            var validatorResult = validator.ValidateSelection(lstContent.Text, _contentType);
+            if (!validatorResult.HasErrors)
             {
-                this.Close();
+                SelectedFile = lstContent.Text;
+                if (SelectedFile != null)
+                {
+                    this.Close();
+                }
             }
-
+            else
+            {
+                MessageBox.Show(string.Format("Content Invalid: {0}", string.Join(", ", validatorResult.ErrorMessages.ToArray())));
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
