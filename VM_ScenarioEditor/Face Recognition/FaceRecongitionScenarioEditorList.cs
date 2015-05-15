@@ -31,7 +31,7 @@ namespace VM_ScenarioEditor
             _exporter = exporter;
             _merge = merge;
             
-            string faceRecopath = PhysicalPathUtils.GetRootContentFolder("facerecoscenarios.js");
+            string faceRecopath = ContentPhysicalPathUtils.GetRootContentFolder("facerecoscenarios.js");
             _logger.Debug(string.Format("Face Recognition Scenarios will load from : {0}", faceRecopath));
             writer = new FaceRecognitionFileWriter(_exporter, _processor, faceRecopath, _merge);
             _frsdict = new Dictionary<string, FaceRecognitionScenario>();

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using VMUtils;
@@ -11,8 +12,8 @@ namespace VM_ScenarioEditor
     public partial class ContentWizard : Form
     {
         private readonly ContentType _contentType;
-        public string RootFolder = PhysicalPathUtils.GetRootContentFolder("");
-        private ContentWizardValidator validator;
+        public string RootFolder = ContentPhysicalPathUtils.GetRootContentFolder("");
+        private readonly ContentWizardValidator _validator;
 
         public string SelectedFile { get; set; }
 
@@ -22,8 +23,8 @@ namespace VM_ScenarioEditor
             InitializeComponent();
 
             btnSelected.Visible = showSelectedButton;
-            validator = new ContentWizardValidator(new AppConfiguration());
-            lstContentTypes.PopulateFromEnumerable(PhysicalPathUtils.GetSubDirectoryList(RootFolder).ReplaceStringInList(RootFolder, ""));
+            _validator = new ContentWizardValidator(new AppConfiguration());
+            lstContentTypes.PopulateFromEnumerable(ContentPhysicalPathUtils.GetSubDirectoryList(RootFolder).ReplaceStringInList(RootFolder, ""));
         }
 
         private void lstContentTypes_SelectedValueChanged(object sender, EventArgs e)
@@ -39,7 +40,7 @@ namespace VM_ScenarioEditor
             }
             string replacementFolderName = RootFolder + lstContentTypes.Text + @"\";
             lstContent.PopulateFromEnumerable(
-                PhysicalPathUtils.GetFilesInDirectory(string.Concat(RootFolder, lstContentTypes.Text))
+                ContentPhysicalPathUtils.GetFilesInDirectory(string.Concat(RootFolder, lstContentTypes.Text))
                     .ReplaceStringInList(replacementFolderName, ""));
         }
 
@@ -64,7 +65,7 @@ namespace VM_ScenarioEditor
 
         private void btnSelected_Click(object sender, EventArgs e)
         {
-            var validatorResult = validator.ValidateSelection(lstContent.Text, _contentType);
+            var validatorResult = _validator.ValidateSelection(lstContent.Text, _contentType);
             if (!validatorResult.HasErrors)
             {
                 SelectedFile = lstContent.Text;
@@ -98,9 +99,50 @@ namespace VM_ScenarioEditor
 
         private string GetContentFileName(string fileName)
         {
-            return PhysicalPathUtils.GetTargetFolder(fileName) + @"\" + fileName;
+            return ContentPhysicalPathUtils.GetTargetFolder(fileName) + @"\" + fileName;
         }
 
+        private void lstContent_Click(object sender, EventArgs e)
+        {
+            string fileName = lstContent.Text;
+            ContentType type = (ContentPhysicalPathUtils.GetContentType(fileName));
 
+            if (type == ContentType.Image)
+            {
+                SetPreviewImage(fileName);
+            }
+            if (type == ContentType.Sound)
+            {
+                SetPreviewMedia(fileName, false);
+            }
+            if (type == ContentType.Video)
+            {
+                SetPreviewMedia(fileName, true);
+            }
+
+        }
+
+        private void SetPreviewImage(string imagePath)
+        {
+            pictureBox1.Image = Image.FromFile(GetContentFileName(imagePath));
+            axWindowsMediaPlayer1.URL = null;
+            axWindowsMediaPlayer1.Enabled = false;
+        }
+
+        private void SetPreviewMedia(string imagePath, bool showWindow)
+        {
+            pictureBox1.Image = null;
+            axWindowsMediaPlayer1.Enabled = true;
+            int height = 45;
+            int heightLoc = 194;
+            if (showWindow)
+            {
+                height = 220;
+                heightLoc = 0;
+            }
+            axWindowsMediaPlayer1.Size = new Size(220, height);
+            axWindowsMediaPlayer1.Location = new Point(6 , heightLoc);
+            axWindowsMediaPlayer1.URL = GetContentFileName(imagePath);
+        }
     }
 }

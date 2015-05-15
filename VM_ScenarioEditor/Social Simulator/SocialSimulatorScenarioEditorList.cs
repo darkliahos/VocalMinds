@@ -29,7 +29,7 @@ namespace VM_ScenarioEditor
             _exporter = exporter;
             _merge = merge;
             _sendict = new Dictionary<string, SocialScenario>();
-            string socialPath = PhysicalPathUtils.GetRootContentFolder("Socialscenarios.js");
+            string socialPath = ContentPhysicalPathUtils.GetRootContentFolder("Socialscenarios.js");
             writer = new SocialSimulatorFileWriter(_exporter, _processor, socialPath, _merge);
             Task<bool> sucessfulLoading = LoadTasks();
             LoadScenariosToForm();

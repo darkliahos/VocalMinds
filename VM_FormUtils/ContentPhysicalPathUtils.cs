@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using VM_ScenarioEditor;
 
 namespace VMUtils
 {
@@ -10,7 +11,7 @@ namespace VMUtils
     /// Vocal Minds Specific Path Handler
     /// NOTE: Only for Windows Path currently
     /// </summary>
-    public static class PhysicalPathUtils
+    public static class ContentPhysicalPathUtils
     {
         private const string ImageContentPath = @"\Content\Images\";
         private const string SoundContentPath = @"\Content\Sounds\";
@@ -117,22 +118,38 @@ namespace VMUtils
         /// <returns></returns>
         public static string GetTargetFolder(string file)
         {
+            ContentType contentType = GetContentType(file);
+
+            switch (contentType)
+            {
+                case ContentType.Image:
+                    return GetRootContentFolder("Images");
+                case ContentType.Sound:
+                    return GetRootContentFolder("Sounds");
+                case ContentType.Video:
+                    return GetRootContentFolder("Videos");
+                default:
+                    throw new NotSupportedException("File Type Unsupported");
+            }
+        }
+
+        public static ContentType GetContentType(string file)
+        {
             if (DetermineFileType(file, "SupportedImgExt"))
             {
-                return GetRootContentFolder("Images");
+                return ContentType.Image;
             }
 
             if (DetermineFileType(file, "SupportedAudExt"))
             {
-                return GetRootContentFolder("Sounds");
+                return ContentType.Sound;
             }
 
             if (DetermineFileType(file, "SupportedVidExt"))
             {
-                return GetRootContentFolder("Videos");
+                return ContentType.Video;
             }
-
-            throw new NotSupportedException("File Type Unsupported");
+                return ContentType.Other;
         }
 
         private static bool DetermineFileType(string file, string configName)

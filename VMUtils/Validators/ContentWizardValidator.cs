@@ -15,6 +15,12 @@ namespace VMUtils.Validators
             _configuration = configuration;
         }
 
+        /// <summary>
+        /// Validates Selected File to see whether or not it is suitable to be used for that entity
+        /// </summary>
+        /// <param name="selectedFile"></param>
+        /// <param name="contentType"></param>
+        /// <returns></returns>
         public ValidationObject ValidateSelection(string selectedFile, ContentType contentType)
         {
             var validationObject = new ValidationObject {ErrorMessages = new List<string>()};

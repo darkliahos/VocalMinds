@@ -13,9 +13,9 @@ namespace VM_ScenarioEditor
     public partial class MainForm : Form
     {
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
-        string faceRecopath = PhysicalPathUtils.GetRootContentFolder("facerecoscenarios.js");
-        string voiceRecopath = PhysicalPathUtils.GetRootContentFolder("voicerecoscenarios.js");
-        string socialSimualtorpath = PhysicalPathUtils.GetRootContentFolder("Socialscenarios.js");
+        string faceRecopath = ContentPhysicalPathUtils.GetRootContentFolder("facerecoscenarios.js");
+        string voiceRecopath = ContentPhysicalPathUtils.GetRootContentFolder("voicerecoscenarios.js");
+        string socialSimualtorpath = ContentPhysicalPathUtils.GetRootContentFolder("Socialscenarios.js");
 
         public MainForm()
         {

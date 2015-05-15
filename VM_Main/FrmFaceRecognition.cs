@@ -82,7 +82,7 @@ namespace VM_Main
             FaceRecognitionScenario faceResult;
             if (_faceRecognitions.TryGetValue(index, out faceResult))
             {
-                FaceBox.ImageLocation = PhysicalPathUtils.GetFullImagePath(faceResult.ImageName);
+                FaceBox.ImageLocation = ContentPhysicalPathUtils.GetFullImagePath(faceResult.ImageName);
                 _correctAnswers = faceResult.Answers;
             }
             else

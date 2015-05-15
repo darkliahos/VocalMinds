@@ -32,9 +32,9 @@ namespace VM_Main
             _videoimporter = new Importer<ImportedVoiceRecognitionScenario>(new JsonSerialiser<ImportedVoiceRecognitionScenario>());
             _faceimporter = new Importer<ImportedFaceRecognitionScenario>(new JsonSerialiser<ImportedFaceRecognitionScenario>());
             _configuration = configuration;
-            string path = PhysicalPathUtils.GetRootContentFolder("Socialscenarios.js");
-            string faceRecopath = PhysicalPathUtils.GetRootContentFolder("facerecoscenarios.js");
-            string voiceRecopath = PhysicalPathUtils.GetRootContentFolder("voicerecoscenarios.js");
+            string path = ContentPhysicalPathUtils.GetRootContentFolder("Socialscenarios.js");
+            string faceRecopath = ContentPhysicalPathUtils.GetRootContentFolder("facerecoscenarios.js");
+            string voiceRecopath = ContentPhysicalPathUtils.GetRootContentFolder("voicerecoscenarios.js");
             _voiceRecognitionFileProcessor = new VoiceRecognitionFileProcessor(_videoimporter, voiceRecopath);
             _socialSimulatorFileProcessor = new SocialSimulatorFileProcessor(_importer, path);
             _faceRecognitionFileProcessor = new FaceRecognitionFileProcessor(_faceimporter, faceRecopath);
