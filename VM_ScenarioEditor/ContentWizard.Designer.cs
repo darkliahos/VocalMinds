@@ -41,10 +41,13 @@
             this.grpPreview = new System.Windows.Forms.GroupBox();
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lstUsedBy = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.grpPreview.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // lstContent
@@ -61,7 +64,7 @@
             this.lstContentTypes.FormattingEnabled = true;
             this.lstContentTypes.Location = new System.Drawing.Point(12, 25);
             this.lstContentTypes.Name = "lstContentTypes";
-            this.lstContentTypes.Size = new System.Drawing.Size(273, 407);
+            this.lstContentTypes.Size = new System.Drawing.Size(273, 186);
             this.lstContentTypes.TabIndex = 2;
             this.lstContentTypes.SelectedValueChanged += new System.EventHandler(this.lstContentTypes_SelectedValueChanged);
             // 
@@ -158,11 +161,30 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.lstUsedBy);
+            this.groupBox2.Location = new System.Drawing.Point(12, 218);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(273, 214);
+            this.groupBox2.TabIndex = 9;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Used by:";
+            // 
+            // lstUsedBy
+            // 
+            this.lstUsedBy.FormattingEnabled = true;
+            this.lstUsedBy.Location = new System.Drawing.Point(7, 20);
+            this.lstUsedBy.Name = "lstUsedBy";
+            this.lstUsedBy.Size = new System.Drawing.Size(260, 173);
+            this.lstUsedBy.TabIndex = 0;
+            // 
             // ContentWizard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(850, 460);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.grpPreview);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label2);
@@ -175,6 +197,7 @@
             this.grpPreview.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -194,5 +217,7 @@
         private System.Windows.Forms.GroupBox grpPreview;
         private System.Windows.Forms.PictureBox pictureBox1;
         private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ListBox lstUsedBy;
     }
 }

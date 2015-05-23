@@ -3,11 +3,15 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using VMUtils;
+using VMUtils.ContentWizard;
 using VMUtils.Extensions;
+using VMUtils.FaceRecognition;
 using VMUtils.Interfaces;
 using VMUtils.Validators;
+using VMUtils.VoiceRecognition;
 using VM_FormUtils;
 using VM_FormUtils.Extensions;
+using VM_Model;
 
 namespace VM_ScenarioEditor
 {
@@ -17,6 +21,7 @@ namespace VM_ScenarioEditor
         private readonly IContentPathUtils _contentPathUtils;
         public string RootFolder;
         private readonly ContentWizardValidator _validator;
+        private readonly WizardContentFinder _wizardContentFinder;
 
         public string SelectedFile { get; set; }
 
@@ -30,6 +35,15 @@ namespace VM_ScenarioEditor
             _validator = new ContentWizardValidator(new AppConfiguration());
             RootFolder = _contentPathUtils.GetRootContentFolder("");
             lstContentTypes.PopulateFromEnumerable(_contentPathUtils.GetSubDirectoryList(RootFolder).ReplaceStringInList(RootFolder, ""));
+
+            string path = _contentPathUtils.GetRootContentFolder("Socialscenarios.js");
+            string faceRecopath = _contentPathUtils.GetRootContentFolder("facerecoscenarios.js");
+            string voiceRecopath = _contentPathUtils.GetRootContentFolder("voicerecoscenarios.js");
+            var faceProcessor = new FaceRecognitionFileProcessor(new Importer<ImportedFaceRecognitionScenario>(new JsonSerialiser<ImportedFaceRecognitionScenario>()), faceRecopath);
+            var voiceProcessor = new VoiceRecognitionFileProcessor(new Importer<ImportedVoiceRecognitionScenario>(new JsonSerialiser<ImportedVoiceRecognitionScenario>()), voiceRecopath);
+            var videoProcessor = new SocialSimulatorFileProcessor(new Importer<ImportedSocialScenarios>(new JsonSerialiser<ImportedSocialScenarios>()), path);
+            _wizardContentFinder = new WizardContentFinder(_contentPathUtils, faceProcessor, voiceProcessor, videoProcessor);
+
         }
 
         private void lstContentTypes_SelectedValueChanged(object sender, EventArgs e)
@@ -91,19 +105,27 @@ namespace VM_ScenarioEditor
             axWindowsMediaPlayer1.URL = null;
             pictureBox1.Image = null;
 
-            if (MessageBox.Show("Are you sure you want to Delete?", "Delete Content?", MessageBoxButtons.YesNo,
-                MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            ContentType type = (_contentPathUtils.GetContentType(lstContent.Text));
+            if (_wizardContentFinder.ContentIsBeingUsedBy(lstContent.Text, type).Count == 0)
             {
-                try
+                if (MessageBox.Show("Are you sure you want to Delete?", "Delete Content?", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
-                    File.Delete(GetContentFileName(lstContent.Text));
-                    ReloadContentTypeList();
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Delete Failed", "Failed to delete file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    try
+                    {
+                        File.Delete(GetContentFileName(lstContent.Text));
+                        ReloadContentTypeList();
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Delete Failed", "Failed to delete file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
+            else
+            {
+                MessageBox.Show("Unable to delete file because it is being using somewhere else", "Delete Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private string GetContentFileName(string fileName)
@@ -129,6 +151,15 @@ namespace VM_ScenarioEditor
                 SetPreviewMedia(fileName, true);
             }
 
+            var contentWizardList = _wizardContentFinder.ContentIsBeingUsedBy(lstContent.Text, type);
+            lstUsedBy.Items.Clear();
+            if (contentWizardList.Count > 0)
+            {
+                foreach (var content in contentWizardList)
+                {
+                    lstUsedBy.Items.Add(content);
+                }
+            }
         }
 
         private void SetPreviewImage(string imagePath)
@@ -150,7 +181,7 @@ namespace VM_ScenarioEditor
                 heightLoc = 0;
             }
             axWindowsMediaPlayer1.Size = new Size(220, height);
-            axWindowsMediaPlayer1.Location = new Point(6 , heightLoc);
+            axWindowsMediaPlayer1.Location = new Point(6, heightLoc);
             axWindowsMediaPlayer1.URL = GetContentFileName(imagePath);
         }
     }

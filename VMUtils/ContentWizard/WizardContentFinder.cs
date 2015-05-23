@@ -37,19 +37,22 @@ namespace VMUtils.ContentWizard
             if (type == ContentType.Image)
             {
                 var frs = Task.FromResult<List<FaceRecognitionScenario>>(_faceProcessor.LoadScenarioFromFile()).Result;
-                result.AddRange(frs.Select(fr => fr.ImageName));
+                var matchingFaceRecos = frs.Where(fr => fr.ImageName == fileName);
+                result.AddRange(matchingFaceRecos.Select(faceRecognitionScenario => faceRecognitionScenario.QuestionTitle));
             }
 
             if (type == ContentType.Sound)
             {
                 var vrs = Task.FromResult<List<VoiceRecognitionScenario>>(_voiceProcessor.LoadScenarioFromFile()).Result;
-                result.AddRange(vrs.Select(fr => fr.AudioPath));
+                var audioMatchingScenarios = vrs.Where(fr => fr.AudioPath == fileName);
+                result.AddRange(audioMatchingScenarios.Select(voiceRecognitionScenario => voiceRecognitionScenario.QuestionTitle));
             }
 
             if (type == ContentType.Video)
             {
                 var vs = Task.FromResult<List<SocialScenario>>(_videoProcessor.LoadScenarioFromFile()).Result;
-                result.AddRange(from vidScenario in vs from segment in vidScenario.VideoSegment select segment.VideoPath);
+                var matchingVidRecos = (from socialScenario in vs from segment in socialScenario.VideoSegment where segment.VideoPath == fileName select socialScenario).ToList();
+                result.AddRange(matchingVidRecos.Select(voiceRecognitionScenario => voiceRecognitionScenario.FriendlyName));
             }
 
             return result;
