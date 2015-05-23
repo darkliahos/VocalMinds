@@ -4,27 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using VMUtils;
+using VMUtils.Interfaces;
 using VMUtils.VoiceRecognition;
+using VM_FormUtils;
 using VM_Model;
 
 namespace VM_ScenarioEditor
 {
     public partial class VoiceRecognitionEditor : Form
     {
+        private readonly IContentPathUtils _contentPathUtils;
         private Guid _vreGuid;
-        private static readonly JsonSerialiser<ImportedVoiceRecognitionScenario> Serialiser = new JsonSerialiser<ImportedVoiceRecognitionScenario>(); 
-        private static readonly string VoiceRecoPath = ContentPhysicalPathUtils.GetRootContentFolder("voicerecoscenarios.js");
+        private static readonly JsonSerialiser<ImportedVoiceRecognitionScenario> Serialiser = new JsonSerialiser<ImportedVoiceRecognitionScenario>();
+        private static string VoiceRecoPath;
         public ImportedVoiceRecognitionScenario VoiceRecognitionScenariosState { get; set; }
         private readonly VoiceRecognitionFileWriter _vrfw = new VoiceRecognitionFileWriter(new Exporter<ImportedVoiceRecognitionScenario>(Serialiser), new VoiceRecognitionFileProcessor(new Importer<ImportedVoiceRecognitionScenario>(Serialiser), VoiceRecoPath), VoiceRecoPath, new VoiceRecognitionMerge());
 
-        public VoiceRecognitionEditor(VoiceRecognitionScenario vs)
+        public VoiceRecognitionEditor(VoiceRecognitionScenario vs, IContentPathUtils contentPathUtils)
         {
+            _contentPathUtils = contentPathUtils;
             InitializeComponent();
             txttitle.Text = vs.QuestionTitle;
             txtAudioName.Text = vs.AudioPath;
             txtAuthor.Text = vs.Author;
             txtCopyrightNotice.Text = vs.CopyrightDisclaimer;
-            
+            VoiceRecoPath = _contentPathUtils.GetRootContentFolder("voicerecoscenarios.js");
             foreach (var answer in vs.Answers)
             {
                 lstAnswers.Items.Add(answer);
@@ -35,6 +39,7 @@ namespace VM_ScenarioEditor
         public VoiceRecognitionEditor()
         {
             _vreGuid = Guid.Empty;
+            VoiceRecoPath = _contentPathUtils.GetRootContentFolder("voicerecoscenarios.js");
             InitializeComponent();
         }
 

@@ -3,27 +3,29 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using VMUtils;
+using VMUtils.Interfaces;
 using VM_ScenarioEditor;
 
-namespace VMUtils
+namespace VM_FormUtils
 {
     /// <summary>
     /// Vocal Minds Specific Path Handler
     /// NOTE: Only for Windows Path currently
     /// </summary>
-    public static class ContentPhysicalPathUtils
+    public class ContentPhysicalPathUtils : IContentPathUtils
     {
         private const string ImageContentPath = @"\Content\Images\";
         private const string SoundContentPath = @"\Content\Sounds\";
         private const string VideoContentPath = @"\Content\Videos\";
-        public const string ContentPath = @"\Content\";
+        private const string ContentPath = @"\Content\";
 
         /// <summary>
         /// Merges the passed in path with the assembly path
         /// </summary>
         /// <param name="endOfPath"></param>
         /// <returns></returns>
-        public static string CombineResultingPathWithAssemblyPath(string endOfPath)
+        public string CombineResultingPathWithAssemblyPath(string endOfPath)
         {
             string assemblyPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
             //Note: Path.Combine did not work here, so the path has been manually concatenated
@@ -35,7 +37,7 @@ namespace VMUtils
         /// </summary>
         /// <param name="image">the name of the image</param>
         /// <returns></returns>
-        public static string GetFullImagePath(string image)
+        public string GetFullImagePath(string image)
         {
             string facecontentPath = String.Concat(ImageContentPath, image);
             return CombineResultingPathWithAssemblyPath(facecontentPath);
@@ -46,7 +48,7 @@ namespace VMUtils
         /// </summary>
         /// <param name="sound"></param>
         /// <returns></returns>
-        public static string GetFullSoundPath(string sound)
+        public string GetFullSoundPath(string sound)
         {
             string facecontentPath = String.Concat(SoundContentPath, sound);
             return CombineResultingPathWithAssemblyPath(facecontentPath);
@@ -57,7 +59,7 @@ namespace VMUtils
         /// </summary>
         /// <param name="video"></param>
         /// <returns></returns>
-        public static string GetFullVideoPath(string video)
+        public string GetFullVideoPath(string video)
         {
             string facecontentPath = String.Concat(VideoContentPath, video);
             return CombineResultingPathWithAssemblyPath(facecontentPath);
@@ -68,7 +70,7 @@ namespace VMUtils
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
-        public static string GetRootContentFolder(string item)
+        public string GetRootContentFolder(string item)
         {
             try
             {
@@ -88,7 +90,7 @@ namespace VMUtils
         /// </summary>
         /// <param name="path"></param>
         /// <returns>A list of folders names if the folder specified exists</returns>
-        public static List<string> GetSubDirectoryList(string path)
+        public List<string> GetSubDirectoryList(string path)
         {
             if (!Directory.Exists(path))
             {
@@ -102,7 +104,7 @@ namespace VMUtils
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static List<string> GetFilesInDirectory(string path)
+        public List<string> GetFilesInDirectory(string path)
         {
             if (!Directory.Exists(path))
             {
@@ -116,7 +118,7 @@ namespace VMUtils
         /// </summary>
         /// <param name="file">Source file</param>
         /// <returns></returns>
-        public static string GetTargetFolder(string file)
+        public string GetTargetFolder(string file)
         {
             ContentType contentType = GetContentType(file);
 
@@ -133,7 +135,7 @@ namespace VMUtils
             }
         }
 
-        public static ContentType GetContentType(string file)
+        public ContentType GetContentType(string file)
         {
             if (DetermineFileType(file, "SupportedImgExt"))
             {
@@ -152,7 +154,7 @@ namespace VMUtils
                 return ContentType.Other;
         }
 
-        private static bool DetermineFileType(string file, string configName)
+        private bool DetermineFileType(string file, string configName)
         {
             var configuration = new AppConfiguration();
             var imageList = configuration.ReadStringListSettings(configName, '|');

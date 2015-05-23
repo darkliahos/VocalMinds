@@ -51,6 +51,10 @@
       <Project>{5D33933D-0695-4593-BF94-A2983B7CC132}</Project>
       <Name>VMUtils</Name>
     </ProjectReference>
+    <ProjectReference Include="..\VM_Model\VM_Model.csproj">
+      <Project>{B951F2D6-AD67-4485-87DF-33E25AF7CBFB}</Project>
+      <Name>VM_Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

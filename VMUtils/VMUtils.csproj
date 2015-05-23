@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppConfiguration.cs" />
+    <Compile Include="ContentWizard\WizardContentFinder.cs" />
     <Compile Include="Enumerations\ContentType.cs" />
     <Compile Include="Exceptions\FileFailedToUnlockedException.cs" />
     <Compile Include="Exceptions\FileLockedException.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="Exporter.cs" />
     <Compile Include="Extensions\StringListExtensions.cs" />
     <Compile Include="FaceRecognition\FaceRecognitionMerge.cs" />
+    <Compile Include="Interfaces\IContentPathUtils.cs" />
     <Compile Include="Interfaces\IMerge.cs" />
     <Compile Include="Interfaces\IExporter.cs" />
     <Compile Include="Interfaces\IFileWriter.cs" />

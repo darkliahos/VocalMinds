@@ -4,7 +4,9 @@ using System.IO;
 using System.Windows.Forms;
 using VMUtils;
 using VMUtils.Extensions;
+using VMUtils.Interfaces;
 using VMUtils.Validators;
+using VM_FormUtils;
 using VM_FormUtils.Extensions;
 
 namespace VM_ScenarioEditor
@@ -12,7 +14,8 @@ namespace VM_ScenarioEditor
     public partial class ContentWizard : Form
     {
         private readonly ContentType _contentType;
-        public string RootFolder = ContentPhysicalPathUtils.GetRootContentFolder("");
+        private readonly IContentPathUtils _contentPathUtils;
+        public string RootFolder;
         private readonly ContentWizardValidator _validator;
 
         public string SelectedFile { get; set; }
@@ -23,8 +26,10 @@ namespace VM_ScenarioEditor
             InitializeComponent();
 
             btnSelected.Visible = showSelectedButton;
+            _contentPathUtils = new ContentPhysicalPathUtils();
             _validator = new ContentWizardValidator(new AppConfiguration());
-            lstContentTypes.PopulateFromEnumerable(ContentPhysicalPathUtils.GetSubDirectoryList(RootFolder).ReplaceStringInList(RootFolder, ""));
+            RootFolder = _contentPathUtils.GetRootContentFolder("");
+            lstContentTypes.PopulateFromEnumerable(_contentPathUtils.GetSubDirectoryList(RootFolder).ReplaceStringInList(RootFolder, ""));
         }
 
         private void lstContentTypes_SelectedValueChanged(object sender, EventArgs e)
@@ -40,7 +45,7 @@ namespace VM_ScenarioEditor
             }
             string replacementFolderName = RootFolder + lstContentTypes.Text + @"\";
             lstContent.PopulateFromEnumerable(
-                ContentPhysicalPathUtils.GetFilesInDirectory(string.Concat(RootFolder, lstContentTypes.Text))
+                _contentPathUtils.GetFilesInDirectory(string.Concat(RootFolder, lstContentTypes.Text))
                     .ReplaceStringInList(replacementFolderName, ""));
         }
 
@@ -82,6 +87,10 @@ namespace VM_ScenarioEditor
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            axWindowsMediaPlayer1.Enabled = false;
+            axWindowsMediaPlayer1.URL = null;
+            pictureBox1.Image = null;
+
             if (MessageBox.Show("Are you sure you want to Delete?", "Delete Content?", MessageBoxButtons.YesNo,
                 MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
             {
@@ -99,13 +108,13 @@ namespace VM_ScenarioEditor
 
         private string GetContentFileName(string fileName)
         {
-            return ContentPhysicalPathUtils.GetTargetFolder(fileName) + @"\" + fileName;
+            return _contentPathUtils.GetTargetFolder(fileName) + @"\" + fileName;
         }
 
         private void lstContent_Click(object sender, EventArgs e)
         {
             string fileName = lstContent.Text;
-            ContentType type = (ContentPhysicalPathUtils.GetContentType(fileName));
+            ContentType type = (_contentPathUtils.GetContentType(fileName));
 
             if (type == ContentType.Image)
             {

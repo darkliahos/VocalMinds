@@ -4,6 +4,8 @@ using System.Speech.Recognition;
 using System.Windows.Forms;
 using NLog;
 using VMUtils;
+using VMUtils.Interfaces;
+using VM_FormUtils;
 using VM_Main.Properties;
 using VM_Model;
 
@@ -12,6 +14,7 @@ namespace VM_Main
 
     public partial class FrmVoiceRecognition : Form
     {
+        private readonly IContentPathUtils _contentPathUtils;
         List<string> _correctAnswers;
         string _playsound;
 
@@ -19,8 +22,9 @@ namespace VM_Main
         private readonly Dictionary<int, VoiceRecognitionScenario> _voiceRecognitions = new Dictionary<int, VoiceRecognitionScenario>();
         readonly VoiceRecognitionLoader _vrc = new VoiceRecognitionLoader(Logger);
 
-        public FrmVoiceRecognition(List<VoiceRecognitionScenario> recognition)
+        public FrmVoiceRecognition(List<VoiceRecognitionScenario> recognition, IContentPathUtils contentPathUtils)
         {
+            _contentPathUtils = contentPathUtils;
             InitializeComponent();
             _voiceRecognitions = _vrc.PopulateVoiceRecognitionScenarios(recognition);
             LoadScenario(Randomiser.NextRange(1, _voiceRecognitions.Count));
@@ -31,7 +35,7 @@ namespace VM_Main
             VoiceRecognitionScenario voiceResult;
             if (_voiceRecognitions.TryGetValue(index, out voiceResult))
             {
-                _playsound = ContentPhysicalPathUtils.GetFullSoundPath(voiceResult.AudioPath);
+                _playsound = _contentPathUtils.GetFullSoundPath(voiceResult.AudioPath);
                 _correctAnswers = voiceResult.Answers;
             }
             else

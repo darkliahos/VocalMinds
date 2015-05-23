@@ -16,11 +16,12 @@ namespace VM_ScenarioEditor
         private readonly IFileProcessor<SocialScenario, ImportedSocialScenarios> _processor;
         private readonly IExporter<ImportedSocialScenarios> _exporter;
         private readonly IMerge<ImportedSocialScenarios> _merge;
+        private readonly IContentPathUtils _contentPathUtils;
         private Dictionary<string, SocialScenario> _sendict;
         private ImportedSocialScenarios _srs;
         private readonly IFileWriter<ImportedSocialScenarios> writer;
 
-        public SocialSimulatorScenarioEditorList(Logger logger, IImporter<ImportedSocialScenarios> importer, IFileProcessor<SocialScenario, ImportedSocialScenarios> processor, IExporter<ImportedSocialScenarios> exporter, IMerge<ImportedSocialScenarios> merge)
+        public SocialSimulatorScenarioEditorList(Logger logger, IImporter<ImportedSocialScenarios> importer, IFileProcessor<SocialScenario, ImportedSocialScenarios> processor, IExporter<ImportedSocialScenarios> exporter, IMerge<ImportedSocialScenarios> merge, IContentPathUtils contentPathUtils)
         {
             InitializeComponent();
             _logger = logger;
@@ -28,8 +29,9 @@ namespace VM_ScenarioEditor
             _processor = processor;
             _exporter = exporter;
             _merge = merge;
+            _contentPathUtils = contentPathUtils;
             _sendict = new Dictionary<string, SocialScenario>();
-            string socialPath = ContentPhysicalPathUtils.GetRootContentFolder("Socialscenarios.js");
+            string socialPath = _contentPathUtils.GetRootContentFolder("Socialscenarios.js");
             writer = new SocialSimulatorFileWriter(_exporter, _processor, socialPath, _merge);
             Task<bool> sucessfulLoading = LoadTasks();
             LoadScenariosToForm();
@@ -99,7 +101,7 @@ namespace VM_ScenarioEditor
         {
             SocialSimulatorFormState.SocialScenario = socialScenario;
             SocialSimulatorFormState.EditingState = editingState;
-            var vre = new SocialSimulatorEditor(_importer, _processor, _exporter, _merge);
+            var vre = new SocialSimulatorEditor(_importer, _processor, _exporter, _merge, _contentPathUtils);
             OpenForm(vre);
         }
 

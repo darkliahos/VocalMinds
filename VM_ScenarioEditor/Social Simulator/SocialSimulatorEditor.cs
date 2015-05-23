@@ -4,6 +4,7 @@ using System.Text;
 using System.Windows.Forms;
 using VMUtils;
 using VMUtils.Interfaces;
+using VM_FormUtils;
 using VM_Model;
 using VM_ScenarioEditor.Validators;
 
@@ -16,14 +17,14 @@ namespace VM_ScenarioEditor
         private readonly IExporter<ImportedSocialScenarios> _exporter;
         private readonly IMerge<ImportedSocialScenarios> _merge;
         private SocialSimulatorFileWriter writer;
-        public SocialSimulatorEditor(IImporter<ImportedSocialScenarios> importer, IFileProcessor<SocialScenario, ImportedSocialScenarios> processor, IExporter<ImportedSocialScenarios> exporter, IMerge<ImportedSocialScenarios> merge)
+        public SocialSimulatorEditor(IImporter<ImportedSocialScenarios> importer, IFileProcessor<SocialScenario, ImportedSocialScenarios> processor, IExporter<ImportedSocialScenarios> exporter, IMerge<ImportedSocialScenarios> merge, IContentPathUtils contentPathUtils)
         {
             _importer = importer;
             _processor = processor;
             _exporter = exporter;
             _merge = merge;
             InitializeComponent();
-            string socialPath = ContentPhysicalPathUtils.GetRootContentFolder("Socialscenarios.js");
+            string socialPath = contentPathUtils.GetRootContentFolder("Socialscenarios.js");
             writer = new SocialSimulatorFileWriter(_exporter, _processor, socialPath, _merge);
 
             if (SocialSimulatorFormState.EditingState)

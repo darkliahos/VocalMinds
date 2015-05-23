@@ -6,6 +6,7 @@ using VMUtils;
 using VMUtils.FaceRecognition;
 using VMUtils.Interfaces;
 using VMUtils.VoiceRecognition;
+using VM_FormUtils;
 using VM_Model;
 
 namespace VM_Main
@@ -24,6 +25,7 @@ namespace VM_Main
         private List<VoiceRecognitionScenario> _vrs;
         private List<SocialScenario> _vs;
         private IImporter<ImportedVoiceRecognitionScenario> _videoimporter;
+        private IContentPathUtils _contentPathUtils;
 
         public FrmMainMenu(IConfiguration configuration)
         {
@@ -32,9 +34,10 @@ namespace VM_Main
             _videoimporter = new Importer<ImportedVoiceRecognitionScenario>(new JsonSerialiser<ImportedVoiceRecognitionScenario>());
             _faceimporter = new Importer<ImportedFaceRecognitionScenario>(new JsonSerialiser<ImportedFaceRecognitionScenario>());
             _configuration = configuration;
-            string path = ContentPhysicalPathUtils.GetRootContentFolder("Socialscenarios.js");
-            string faceRecopath = ContentPhysicalPathUtils.GetRootContentFolder("facerecoscenarios.js");
-            string voiceRecopath = ContentPhysicalPathUtils.GetRootContentFolder("voicerecoscenarios.js");
+            _contentPathUtils = new ContentPhysicalPathUtils();
+            string path = _contentPathUtils.GetRootContentFolder("Socialscenarios.js");
+            string faceRecopath = _contentPathUtils.GetRootContentFolder("facerecoscenarios.js");
+            string voiceRecopath = _contentPathUtils.GetRootContentFolder("voicerecoscenarios.js");
             _voiceRecognitionFileProcessor = new VoiceRecognitionFileProcessor(_videoimporter, voiceRecopath);
             _socialSimulatorFileProcessor = new SocialSimulatorFileProcessor(_importer, path);
             _faceRecognitionFileProcessor = new FaceRecognitionFileProcessor(_faceimporter, faceRecopath);
@@ -70,7 +73,7 @@ namespace VM_Main
                 _frs = new List<FaceRecognitionScenario>();
             }
 
-            FrmFaceRecognition faceReco = new FrmFaceRecognition(_frs);
+            FrmFaceRecognition faceReco = new FrmFaceRecognition(_frs, _contentPathUtils);
             faceReco.Show();
         }
 
@@ -80,7 +83,7 @@ namespace VM_Main
             {
                 _vrs = new List<VoiceRecognitionScenario>();
             }
-            FrmVoiceRecognition frmvce = new FrmVoiceRecognition(_vrs);
+            FrmVoiceRecognition frmvce = new FrmVoiceRecognition(_vrs, _contentPathUtils);
             frmvce.Show();
         }
 

@@ -6,6 +6,7 @@ using NLog;
 using VMUtils;
 using VMUtils.FaceRecognition;
 using VMUtils.Interfaces;
+using VM_FormUtils;
 using VM_Model;
 using VM_ScenarioEditor.Properties;
 
@@ -20,9 +21,10 @@ namespace VM_ScenarioEditor
         private readonly IFileProcessor<FaceRecognitionScenario, ImportedFaceRecognitionScenario> _processor;
         private readonly IExporter<ImportedFaceRecognitionScenario> _exporter;
         private readonly IMerge<ImportedFaceRecognitionScenario> _merge;
+        private readonly IContentPathUtils _contentPathUtils;
         private readonly IFileWriter<ImportedFaceRecognitionScenario> writer;
 
-        public FaceRecongitionScenarioEditorList(Logger logger, IImporter<ImportedFaceRecognitionScenario> importer, IFileProcessor<FaceRecognitionScenario, ImportedFaceRecognitionScenario> processor, IExporter<ImportedFaceRecognitionScenario> exporter, IMerge<ImportedFaceRecognitionScenario> merge)
+        public FaceRecongitionScenarioEditorList(Logger logger, IImporter<ImportedFaceRecognitionScenario> importer, IFileProcessor<FaceRecognitionScenario, ImportedFaceRecognitionScenario> processor, IExporter<ImportedFaceRecognitionScenario> exporter, IMerge<ImportedFaceRecognitionScenario> merge, IContentPathUtils contentPathUtils)
         {
             InitializeComponent();
             _logger = logger;
@@ -30,8 +32,9 @@ namespace VM_ScenarioEditor
             _processor = processor;
             _exporter = exporter;
             _merge = merge;
-            
-            string faceRecopath = ContentPhysicalPathUtils.GetRootContentFolder("facerecoscenarios.js");
+            _contentPathUtils = contentPathUtils;
+
+            string faceRecopath = _contentPathUtils.GetRootContentFolder("facerecoscenarios.js");
             _logger.Debug(string.Format("Face Recognition Scenarios will load from : {0}", faceRecopath));
             writer = new FaceRecognitionFileWriter(_exporter, _processor, faceRecopath, _merge);
             _frsdict = new Dictionary<string, FaceRecognitionScenario>();
@@ -77,7 +80,7 @@ namespace VM_ScenarioEditor
             FaceRecognitionScenario fs;
             if (_frsdict.TryGetValue(lstScenarios.SelectedItem.ToString(), out fs))
             {
-                var fre = new FaceRecognitionEditor(fs);
+                var fre = new FaceRecognitionEditor(fs, _contentPathUtils);
                 OpenForm(fre);
             }
             else

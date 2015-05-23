@@ -6,6 +6,7 @@ using NLog;
 using VMUtils;
 using VMUtils.Interfaces;
 using VMUtils.VoiceRecognition;
+using VM_FormUtils;
 using VM_Model;
 using VM_ScenarioEditor.Properties;
 
@@ -17,17 +18,19 @@ namespace VM_ScenarioEditor
         private readonly IFileProcessor<VoiceRecognitionScenario, ImportedVoiceRecognitionScenario> _processor;
         private readonly IExporter<ImportedVoiceRecognitionScenario> _exporter;
         private readonly IMerge<ImportedVoiceRecognitionScenario> _merge;
+        private readonly IContentPathUtils _contentPathUtils;
         private Dictionary<string, VoiceRecognitionScenario> _vrsdict;
         private readonly IFileWriter<ImportedVoiceRecognitionScenario> writer;
         private ImportedVoiceRecognitionScenario _vrs;
 
-        public VoiceRecognitionScenarioEditorList(Logger logger, IFileProcessor<VoiceRecognitionScenario, ImportedVoiceRecognitionScenario> processor, IExporter<ImportedVoiceRecognitionScenario> exporter, IMerge<ImportedVoiceRecognitionScenario> merge)
+        public VoiceRecognitionScenarioEditorList(Logger logger, IFileProcessor<VoiceRecognitionScenario, ImportedVoiceRecognitionScenario> processor, IExporter<ImportedVoiceRecognitionScenario> exporter, IMerge<ImportedVoiceRecognitionScenario> merge, IContentPathUtils contentPathUtils)
         {
             _logger = logger;
             _processor = processor;
             _exporter = exporter;
             _merge = merge;
-            string voiceRecoPath = ContentPhysicalPathUtils.GetRootContentFolder("voicerecoscenarios.js");
+            _contentPathUtils = contentPathUtils;
+            string voiceRecoPath = _contentPathUtils.GetRootContentFolder("voicerecoscenarios.js");
             writer = new VoiceRecognitionFileWriter(_exporter, _processor, voiceRecoPath, _merge);
             _vrsdict = new Dictionary<string, VoiceRecognitionScenario>();
             Task<bool> sucessfulLoading = LoadTasks();
@@ -66,7 +69,7 @@ namespace VM_ScenarioEditor
             VoiceRecognitionScenario vs;
             if (_vrsdict.TryGetValue(lstScenarios.SelectedItem.ToString(), out vs))
             {
-                var vre = new VoiceRecognitionEditor(vs);
+                var vre = new VoiceRecognitionEditor(vs, _contentPathUtils);
                 OpenForm(vre);
             }
             else

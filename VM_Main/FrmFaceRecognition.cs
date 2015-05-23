@@ -4,6 +4,8 @@ using System.Speech.Recognition;
 using System.Windows.Forms;
 using VMUtils;
 using VMUtils.FaceRecognition;
+using VMUtils.Interfaces;
+using VM_FormUtils;
 using VM_Main.Properties;
 using VM_Model;
 
@@ -11,12 +13,14 @@ namespace VM_Main
 {
     public partial class FrmFaceRecognition : Form
     {
+        private readonly IContentPathUtils _contentPathUtils;
         List<string> _correctAnswers;
         readonly NLogger _nLogger = new NLogger();
         private readonly Dictionary<int, FaceRecognitionScenario>  _faceRecognitions = new Dictionary<int, FaceRecognitionScenario>();
 
-        public FrmFaceRecognition(List<FaceRecognitionScenario> recognition)
+        public FrmFaceRecognition(List<FaceRecognitionScenario> recognition, IContentPathUtils contentPathUtils)
         {
+            _contentPathUtils = contentPathUtils;
             InitializeComponent();
             var frc = new FaceRecognitionLoader(_nLogger);
             _faceRecognitions = frc.PopulateFaceRecognitionScenarios(recognition);
@@ -82,7 +86,7 @@ namespace VM_Main
             FaceRecognitionScenario faceResult;
             if (_faceRecognitions.TryGetValue(index, out faceResult))
             {
-                FaceBox.ImageLocation = ContentPhysicalPathUtils.GetFullImagePath(faceResult.ImageName);
+                FaceBox.ImageLocation = _contentPathUtils.GetFullImagePath(faceResult.ImageName);
                 _correctAnswers = faceResult.Answers;
             }
             else

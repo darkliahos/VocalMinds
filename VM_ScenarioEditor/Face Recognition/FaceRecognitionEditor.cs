@@ -6,28 +6,38 @@ using System.Windows.Forms;
 using VMUtils;
 using VMUtils.FaceRecognition;
 using VMUtils.Interfaces;
+using VM_FormUtils;
 using VM_Model;
 
 namespace VM_ScenarioEditor
 {
     public partial class FaceRecognitionEditor : Form
     {
+        private readonly IContentPathUtils _contentPathUtils;
         private readonly Guid _freGuid;
 
         private static readonly ISerialiser<ImportedFaceRecognitionScenario> Serialiser = new JsonSerialiser<ImportedFaceRecognitionScenario>();
         private static readonly IMerge<ImportedFaceRecognitionScenario> Merge = new FaceRecognitionMerge(); 
         private static readonly IImporter<ImportedFaceRecognitionScenario> Importer = new Importer<ImportedFaceRecognitionScenario>(Serialiser);
-        static readonly string FaceRecopath = ContentPhysicalPathUtils.GetRootContentFolder("facerecoscenarios.js");
-        private readonly FaceRecognitionFileWriter _fre = new FaceRecognitionFileWriter(new Exporter<ImportedFaceRecognitionScenario>(Serialiser), new FaceRecognitionFileProcessor(Importer, FaceRecopath), ContentPhysicalPathUtils.GetRootContentFolder("facerecoscenarios.js"), Merge);
+        private static string _faceRecopath;
+        private readonly FaceRecognitionFileWriter _fre;
         public ImportedFaceRecognitionScenario FaceRecognitionScenariosState { get; set; }
         public FaceRecognitionEditor()
         {
+            _contentPathUtils = new ContentPhysicalPathUtils();
+            _faceRecopath = _contentPathUtils.GetRootContentFolder("facerecoscenarios.js");
+            _fre = new FaceRecognitionFileWriter(new Exporter<ImportedFaceRecognitionScenario>(Serialiser), new FaceRecognitionFileProcessor(Importer, _faceRecopath), _contentPathUtils.GetRootContentFolder("facerecoscenarios.js"), Merge);
+
             InitializeComponent();
             _freGuid = Guid.Empty;
         }
 
-        public FaceRecognitionEditor(FaceRecognitionScenario fs)
+        public FaceRecognitionEditor(FaceRecognitionScenario fs, IContentPathUtils contentPathUtils)
         {
+            _contentPathUtils = contentPathUtils;
+            _faceRecopath = _contentPathUtils.GetRootContentFolder("facerecoscenarios.js");
+            _fre = new FaceRecognitionFileWriter(new Exporter<ImportedFaceRecognitionScenario>(Serialiser), new FaceRecognitionFileProcessor(Importer, _faceRecopath), _contentPathUtils.GetRootContentFolder("facerecoscenarios.js"), Merge);
+
             InitializeComponent();
             txttitle.Text = fs.QuestionTitle;
             txtImageName.Text = fs.ImageName;
