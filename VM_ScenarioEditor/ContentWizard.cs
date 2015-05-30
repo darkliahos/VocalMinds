@@ -65,8 +65,8 @@ namespace VM_ScenarioEditor
 
         private void btnImport_Click(object sender, EventArgs e)
         {
-            DialogResult result = ofdImport.ShowDialog(); // Show the dialog.
-            if (result == DialogResult.OK) // Test result.
+            DialogResult result = ofdImport.ShowDialog(); 
+            if (result == DialogResult.OK) 
             {
                 string file = ofdImport.FileName;
 
@@ -183,6 +183,15 @@ namespace VM_ScenarioEditor
             axWindowsMediaPlayer1.Size = new Size(220, height);
             axWindowsMediaPlayer1.Location = new Point(6, heightLoc);
             axWindowsMediaPlayer1.URL = GetContentFileName(imagePath);
+        }
+
+        private void ContentWizard_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            /* Kills Controls when the content Wizard is closing 
+            //Fixes issue where the sound from a video or sound file can be heard when the form has since been closed*/
+            axWindowsMediaPlayer1.Enabled = false;
+            axWindowsMediaPlayer1.URL = null;
+            pictureBox1.Image = null;
         }
     }
 }

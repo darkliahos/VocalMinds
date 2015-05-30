@@ -193,6 +193,7 @@
             this.Controls.Add(this.lstContent);
             this.Name = "ContentWizard";
             this.Text = "ContentWizard";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ContentWizard_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.grpPreview.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
