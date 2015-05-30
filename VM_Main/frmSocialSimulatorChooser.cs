@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using VMUtils.Interfaces;
 using VM_Model;
 
 namespace VM_Main
@@ -14,10 +10,12 @@ namespace VM_Main
     public partial class FrmSocialSimulatorChooser : Form
     {
         private readonly List<SocialScenario> _videoScenarios;
+        private readonly IContentPathUtils _contentWizardUtils;
 
-        public FrmSocialSimulatorChooser(List<SocialScenario> videoScenarios)
+        public FrmSocialSimulatorChooser(List<SocialScenario> videoScenarios, IContentPathUtils contentWizardUtils)
         {
             _videoScenarios = videoScenarios;
+            _contentWizardUtils = contentWizardUtils;
             InitializeComponent();
             GetListOfScenarios();
         }
@@ -32,14 +30,16 @@ namespace VM_Main
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
+            this.Hide();
             string selectedScenarios = lstScenarios.SelectedItem.ToString();
             var loadedScenario =_videoScenarios.FirstOrDefault(i => i.FriendlyName == selectedScenarios);
             if (loadedScenario == null)
             {
                 throw new ArgumentNullException("Scenario does not exist");                
             }
-            var socialSimulator = new FrmSocialSimulator(loadedScenario);
+            var socialSimulator = new FrmSocialSimulator(loadedScenario, _contentWizardUtils);
             socialSimulator.Show();
+            this.Close();
         }
     }
 }

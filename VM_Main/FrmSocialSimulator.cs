@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using VMUtils.Interfaces;
 using VM_Model;
 
 namespace VM_Main
@@ -7,13 +8,15 @@ namespace VM_Main
     public partial class FrmSocialSimulator : Form
     {
         private readonly SocialScenario _socialScenario;
+        private readonly IContentPathUtils _contentWizardUtils;
         private int _currentPlayOrder = 1;
         private string _currentUri = "";
         private VideoSegment _videoSegment;
 
-        public FrmSocialSimulator(SocialScenario socialScenario)
+        public FrmSocialSimulator(SocialScenario socialScenario, IContentPathUtils contentWizardUtils)
         {
             _socialScenario = socialScenario;
+            _contentWizardUtils = contentWizardUtils;
             InitializeComponent();
             SetUpVideoSegment();
         }
@@ -43,7 +46,7 @@ namespace VM_Main
 
                 if (videoSegment.PlayOrder == _currentPlayOrder)
                 {
-                    _currentUri = videoSegment.VideoPath;
+                    _currentUri = _contentWizardUtils.GetTargetFolder(videoSegment.VideoPath) + @"\" + videoSegment.VideoPath;
                     _videoSegment = videoSegment;
                 }
             }
@@ -72,6 +75,11 @@ namespace VM_Main
                     break;
                 }
             }
+        }
+
+        private void FrmSocialSimulator_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            visualSocialInterface.URL = null;
         }
 
 

@@ -89,7 +89,7 @@ namespace VM_Main
 
         private void btnscrg_Click(object sender, EventArgs e)
         {
-            FrmSocialSimulatorChooser scenarioChooser = new FrmSocialSimulatorChooser(_vs);
+            FrmSocialSimulatorChooser scenarioChooser = new FrmSocialSimulatorChooser(_vs, _contentPathUtils);
             scenarioChooser.Show();
         }
 

@@ -160,6 +160,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.Name = "FrmSocialSimulator";
             this.Text = "outinthepark";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmSocialSimulator_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.visualSocialInterface)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
