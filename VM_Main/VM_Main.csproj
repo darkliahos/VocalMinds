@@ -347,6 +347,7 @@
     <None Include="Resources\goldiesitsonlastchar.png" />
     <None Include="Resources\goldiesitsfirstchair.png" />
     <None Include="Resources\goldierunsaway.png" />
+    <None Include="Resources\8iEjdppyT.png" />
     <Content Include="Resources\goldiefallsoff.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -49,6 +49,14 @@ namespace VM_Main
                     _currentUri = _contentWizardUtils.GetTargetFolder(videoSegment.VideoPath) + @"\" + videoSegment.VideoPath;
                     _videoSegment = videoSegment;
                 }
+
+                if (videoSegment.PlayOrder == 0)
+                {
+                    // Stops endless scenarios
+                    //TODO Really need a better way of finishing
+                    MessageBox.Show("Well done on completing this scenario");
+                    this.Close();
+                }
             }
         }
 

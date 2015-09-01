@@ -8,6 +8,7 @@ using VMUtils.Interfaces;
 using VMUtils.VoiceRecognition;
 using VM_FormUtils;
 using VM_Model;
+using VM_ScenarioEditor;
 
 namespace VM_Main
 {
@@ -91,6 +92,12 @@ namespace VM_Main
         {
             FrmSocialSimulatorChooser scenarioChooser = new FrmSocialSimulatorChooser(_vs, _contentPathUtils);
             scenarioChooser.Show();
+        }
+
+        private void btnScenarioEditor_Click(object sender, EventArgs e)
+        {
+            var mf = new MainForm();
+            mf.Show();
         }
 
     }

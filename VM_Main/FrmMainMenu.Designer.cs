@@ -31,6 +31,7 @@
             this.btnscrg = new System.Windows.Forms.Button();
             this.btnstartface = new System.Windows.Forms.Button();
             this.btnvoicetones = new System.Windows.Forms.Button();
+            this.btnScenarioEditor = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnscrg
@@ -52,7 +53,7 @@
             this.btnstartface.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnstartface.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnstartface.Image = global::VM_Main.Properties.Resources.guessexpressiongamebutton;
-            this.btnstartface.Location = new System.Drawing.Point(31, 351);
+            this.btnstartface.Location = new System.Drawing.Point(27, 331);
             this.btnstartface.Name = "btnstartface";
             this.btnstartface.Size = new System.Drawing.Size(636, 226);
             this.btnstartface.TabIndex = 2;
@@ -72,12 +73,26 @@
             this.btnvoicetones.UseVisualStyleBackColor = false;
             this.btnvoicetones.Click += new System.EventHandler(this.btnvoicetones_Click);
             // 
+            // btnScenarioEditor
+            // 
+            this.btnScenarioEditor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnScenarioEditor.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnScenarioEditor.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnScenarioEditor.Image = global::VM_Main.Properties.Resources._8iEjdppyT;
+            this.btnScenarioEditor.Location = new System.Drawing.Point(683, 331);
+            this.btnScenarioEditor.Name = "btnScenarioEditor";
+            this.btnScenarioEditor.Size = new System.Drawing.Size(636, 226);
+            this.btnScenarioEditor.TabIndex = 4;
+            this.btnScenarioEditor.UseVisualStyleBackColor = false;
+            this.btnScenarioEditor.Click += new System.EventHandler(this.btnScenarioEditor_Click);
+            // 
             // FrmMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1326, 593);
+            this.Controls.Add(this.btnScenarioEditor);
             this.Controls.Add(this.btnvoicetones);
             this.Controls.Add(this.btnstartface);
             this.Controls.Add(this.btnscrg);
@@ -93,6 +108,7 @@
         private System.Windows.Forms.Button btnscrg;
         private System.Windows.Forms.Button btnstartface;
         private System.Windows.Forms.Button btnvoicetones;
+        private System.Windows.Forms.Button btnScenarioEditor;
     }
 }
 
