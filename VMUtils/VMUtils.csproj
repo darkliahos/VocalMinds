@@ -64,6 +64,7 @@
     <Compile Include="FaceRecognition\FaceRecognitionFileWriter.cs" />
     <Compile Include="Social Simulator\SocialSimulatorFileWriter.cs" />
     <Compile Include="Social Simulator\SocialSimulatorMerge.cs" />
+    <Compile Include="StoryFileProcessor.cs" />
     <Compile Include="Validators\ContentWizardValidator.cs" />
     <Compile Include="VoiceRecognition\VoiceRecognitionMerge.cs" />
     <Compile Include="Social Simulator\SocialSimulatorFileProcessor.cs" />
