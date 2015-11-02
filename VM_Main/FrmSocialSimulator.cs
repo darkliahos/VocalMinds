@@ -9,14 +9,16 @@ namespace VM_Main
     {
         private readonly SocialScenario _socialScenario;
         private readonly IContentPathUtils _contentWizardUtils;
+        private readonly Story _selectedStory;
         private int _currentPlayOrder = 1;
         private string _currentUri = "";
         private VideoSegment _videoSegment;
 
-        public FrmSocialSimulator(SocialScenario socialScenario, IContentPathUtils contentWizardUtils)
+        public FrmSocialSimulator(SocialScenario socialScenario, IContentPathUtils contentWizardUtils, Story selectedStory)
         {
             _socialScenario = socialScenario;
             _contentWizardUtils = contentWizardUtils;
+            _selectedStory = selectedStory;
             InitializeComponent();
             SetUpVideoSegment();
         }
@@ -32,7 +34,7 @@ namespace VM_Main
             {
                 if (videoSegment.PlayOrder == ModelConstants.PlayOrderStory)
                 {
-                    var story = new FrmStory();
+                    var story = new FrmStory(_selectedStory);
                     story.Show();
                     break;
                 }

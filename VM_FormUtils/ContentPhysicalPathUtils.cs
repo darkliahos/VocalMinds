@@ -18,6 +18,7 @@ namespace VM_FormUtils
         private const string ImageContentPath = @"\Content\Images\";
         private const string SoundContentPath = @"\Content\Sounds\";
         private const string VideoContentPath = @"\Content\Videos\";
+        private const string StoryImageContentPath = @"\Content\StoryContent\Images\";
         private const string ContentPath = @"\Content\";
 
         /// <summary>
@@ -61,8 +62,19 @@ namespace VM_FormUtils
         /// <returns></returns>
         public string GetFullVideoPath(string video)
         {
-            string facecontentPath = String.Concat(VideoContentPath, video);
-            return CombineResultingPathWithAssemblyPath(facecontentPath);
+            string videoContentPath = String.Concat(VideoContentPath, video);
+            return CombineResultingPathWithAssemblyPath(videoContentPath);
+        }
+
+        /// <summary>
+        /// Gets Full Story Image Path
+        /// </summary>
+        /// <param name="storyImage"></param>
+        /// <returns></returns>
+        public string GetFullStoryImagesPath(string storyImage)
+        {
+            string storyImagePath = String.Concat(StoryImageContentPath, storyImage);
+            return CombineResultingPathWithAssemblyPath(storyImagePath);
         }
 
         /// <summary>
