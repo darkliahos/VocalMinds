@@ -35,7 +35,7 @@ namespace VMUtils
         public bool ReadBooleanSetting(string key)
         {
             bool result;
-            if (Boolean.TryParse(ReadSetting(key), out result))
+            if (bool.TryParse(ReadSetting(key), out result))
             {
                 return result;
             }
