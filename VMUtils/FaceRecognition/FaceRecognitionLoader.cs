@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using VMUtils.Interfaces;
 using VM_Model;
+using NLog;
 
 namespace VMUtils.FaceRecognition
 {
     public class FaceRecognitionLoader
     {
-        private readonly ILogger _logger;
+        private readonly Logger _logger;
 
-        public FaceRecognitionLoader(ILogger logger)
+        public FaceRecognitionLoader(Logger logger)
         {
             _logger = logger;
         }
@@ -36,7 +36,7 @@ namespace VMUtils.FaceRecognition
             }
             catch (Exception error)
             {
-                _logger.LogError(error);
+                _logger.Error(error);
             }
 
             return faceRecognitions;

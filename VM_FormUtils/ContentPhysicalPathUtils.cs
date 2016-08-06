@@ -40,7 +40,7 @@ namespace VM_FormUtils
         /// <returns></returns>
         public string GetFullImagePath(string image)
         {
-            string facecontentPath = String.Concat(ImageContentPath, image);
+            string facecontentPath = string.Concat(ImageContentPath, image);
             return CombineResultingPathWithAssemblyPath(facecontentPath);
         }
 
@@ -51,7 +51,7 @@ namespace VM_FormUtils
         /// <returns></returns>
         public string GetFullSoundPath(string sound)
         {
-            string facecontentPath = String.Concat(SoundContentPath, sound);
+            string facecontentPath = string.Concat(SoundContentPath, sound);
             return CombineResultingPathWithAssemblyPath(facecontentPath);
         }
 
@@ -62,7 +62,7 @@ namespace VM_FormUtils
         /// <returns></returns>
         public string GetFullVideoPath(string video)
         {
-            string videoContentPath = String.Concat(VideoContentPath, video);
+            string videoContentPath = string.Concat(VideoContentPath, video);
             return CombineResultingPathWithAssemblyPath(videoContentPath);
         }
 
@@ -73,7 +73,7 @@ namespace VM_FormUtils
         /// <returns></returns>
         public string GetFullStoryImagesPath(string storyImage)
         {
-            string storyImagePath = String.Concat(StoryImageContentPath, storyImage);
+            string storyImagePath = string.Concat(StoryImageContentPath, storyImage);
             return CombineResultingPathWithAssemblyPath(storyImagePath);
         }
 
@@ -86,7 +86,7 @@ namespace VM_FormUtils
         {
             try
             {
-                string facecontentPath = String.Concat(ContentPath, item);
+                string facecontentPath = string.Concat(ContentPath, item);
                 return CombineResultingPathWithAssemblyPath(facecontentPath);
             }
             catch (Exception)
@@ -149,6 +149,11 @@ namespace VM_FormUtils
 
         public ContentType GetContentType(string file)
         {
+            if(string.IsNullOrEmpty(file))
+            {
+                throw new NullReferenceException("File declared was blank therefore loading cannot continue");
+            }
+
             if (DetermineFileType(file, "SupportedImgExt"))
             {
                 return ContentType.Image;
@@ -169,9 +174,9 @@ namespace VM_FormUtils
         private bool DetermineFileType(string file, string configName)
         {
             var configuration = new AppConfiguration();
-            var imageList = configuration.ReadStringListSettings(configName, '|');
+            var fileList = configuration.ReadStringListSettings(configName, '|');
 
-            return imageList.Any(file.EndsWith);
+            return fileList.Any(file.EndsWith);
         }
     }
 }
