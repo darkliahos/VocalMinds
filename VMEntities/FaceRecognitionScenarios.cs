@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace VMEntities
 {
-    public class FaceRecognitionScenarios
+    public class FaceRecognitionScenario
     {
         /// <summary>
         /// A user Identifiable title
@@ -15,7 +15,7 @@ namespace VMEntities
         [Required]
         public byte[] Image { get; set; }
 
-        public List<FaceRecognitionScenariosAnswers> Answers { get; set; }
+        public List<FaceRecognitionScenariosAnswer> Answers { get; set; }
 
         public string CopyrightDisclaimer { get; set; }
 

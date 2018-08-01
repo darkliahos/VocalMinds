@@ -1,6 +1,6 @@
 ﻿namespace VMEntities
 {
-    public class FaceRecognitionScenariosAnswers : BaseEntity
+    public class FaceRecognitionScenariosAnswer : BaseEntity
     {
         public string Answer { get; set; }
 

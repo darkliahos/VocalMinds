@@ -5,7 +5,6 @@ using System.Drawing;
 
 namespace VM_Model
 {
-    [ObsoleteAttribute("This will be deprcated once we switch to EF to process data.", false)]
     public class FaceRecognitionScenario
     {
         /// <summary>

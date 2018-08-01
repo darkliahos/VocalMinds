@@ -105,27 +105,29 @@ namespace VM_ScenarioEditor
             axWindowsMediaPlayer1.URL = null;
             pictureBox1.Image = null;
 
-            ContentType type = (_contentPathUtils.GetContentType(lstContent.Text));
-            if (_wizardContentFinder.ContentIsBeingUsedBy(lstContent.Text, type).Count == 0)
+            var contentType = _contentPathUtils.GetContentType(lstContent.Text);
+            if(contentType.HasValue)
             {
-                if (MessageBox.Show("Are you sure you want to Delete?", "Delete Content?", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                if (_wizardContentFinder.ContentIsBeingUsedBy(lstContent.Text, contentType.Value).Count == 0)
                 {
-                    try
+                    if (MessageBox.Show("Are you sure you want to Delete?", "Delete Content?", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                     {
-                        File.Delete(GetContentFileName(lstContent.Text));
-                        ReloadContentTypeList();
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("Delete Failed", "Failed to delete file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        try
+                        {
+                            File.Delete(GetContentFileName(lstContent.Text));
+                            ReloadContentTypeList();
+                        }
+                        catch (Exception)
+                        {
+                            MessageBox.Show("Delete Failed", "Failed to delete file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Unable to delete file because it is being using somewhere else", "Delete Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
-            {
-                MessageBox.Show("Unable to delete file because it is being using somewhere else", "Delete Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
         }
 
         private string GetContentFileName(string fileName)
@@ -136,30 +138,34 @@ namespace VM_ScenarioEditor
         private void lstContent_Click(object sender, EventArgs e)
         {
             string fileName = lstContent.Text;
-            ContentType type = (_contentPathUtils.GetContentType(fileName));
+            var contentType = _contentPathUtils.GetContentType(fileName);
 
-            if (type == ContentType.Image)
+            if(contentType.HasValue)
             {
-                SetPreviewImage(fileName);
-            }
-            if (type == ContentType.Sound)
-            {
-                SetPreviewMedia(fileName, false);
-            }
-            if (type == ContentType.Video)
-            {
-                SetPreviewMedia(fileName, true);
-            }
-
-            var contentWizardList = _wizardContentFinder.ContentIsBeingUsedBy(lstContent.Text, type);
-            lstUsedBy.Items.Clear();
-            if (contentWizardList.Count > 0)
-            {
-                foreach (var content in contentWizardList)
+                if (contentType == ContentType.Image)
                 {
-                    lstUsedBy.Items.Add(content);
+                    SetPreviewImage(fileName);
+                }
+                if (contentType == ContentType.Sound)
+                {
+                    SetPreviewMedia(fileName, false);
+                }
+                if (contentType == ContentType.Video)
+                {
+                    SetPreviewMedia(fileName, true);
+                }
+
+                var contentWizardList = _wizardContentFinder.ContentIsBeingUsedBy(lstContent.Text, contentType.Value);
+                lstUsedBy.Items.Clear();
+                if (contentWizardList.Count > 0)
+                {
+                    foreach (var content in contentWizardList)
+                    {
+                        lstUsedBy.Items.Add(content);
+                    }
                 }
             }
+
         }
 
         private void SetPreviewImage(string imagePath)

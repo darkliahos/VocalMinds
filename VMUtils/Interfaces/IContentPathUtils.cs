@@ -61,6 +61,6 @@ namespace VMUtils.Interfaces
         /// <returns></returns>
         string GetTargetFolder(string file);
 
-        ContentType GetContentType(string file);
+        ContentType? GetContentType(string file);
     }
 }

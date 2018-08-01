@@ -132,43 +132,48 @@ namespace VM_FormUtils
         /// <returns></returns>
         public string GetTargetFolder(string file)
         {
-            ContentType contentType = GetContentType(file);
+            var contentType = GetContentType(file);
 
-            switch (contentType)
+            if(contentType.HasValue)
             {
-                case ContentType.Image:
-                    return GetRootContentFolder("Images");
-                case ContentType.Sound:
-                    return GetRootContentFolder("Sounds");
-                case ContentType.Video:
-                    return GetRootContentFolder("Videos");
-                default:
-                    throw new NotSupportedException("File Type Unsupported");
+                switch (contentType)
+                {
+                    case ContentType.Image:
+                        return GetRootContentFolder("Images");
+                    case ContentType.Sound:
+                        return GetRootContentFolder("Sounds");
+                    case ContentType.Video:
+                        return GetRootContentFolder("Videos");
+                    default:
+                        throw new NotSupportedException("File Type Unsupported");
+                }
             }
+
+            return string.Empty;
+
         }
 
-        public ContentType GetContentType(string file)
+        public ContentType? GetContentType(string file)
         {
-            if(string.IsNullOrEmpty(file))
+            if (string.IsNullOrEmpty(file))
             {
-                throw new NullReferenceException("File declared was blank therefore loading cannot continue");
-            }
+                if (DetermineFileType(file, "SupportedImgExt"))
+                {
+                    return ContentType.Image;
+                }
 
-            if (DetermineFileType(file, "SupportedImgExt"))
-            {
-                return ContentType.Image;
-            }
+                if (DetermineFileType(file, "SupportedAudExt"))
+                {
+                    return ContentType.Sound;
+                }
 
-            if (DetermineFileType(file, "SupportedAudExt"))
-            {
-                return ContentType.Sound;
-            }
+                if (DetermineFileType(file, "SupportedVidExt"))
+                {
+                    return ContentType.Video;
+                }
 
-            if (DetermineFileType(file, "SupportedVidExt"))
-            {
-                return ContentType.Video;
             }
-                return ContentType.Other;
+            return null;
         }
 
         private bool DetermineFileType(string file, string configName)

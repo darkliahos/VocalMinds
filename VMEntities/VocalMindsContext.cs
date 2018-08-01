@@ -5,7 +5,7 @@ namespace VMEntities
 {
     public class VocalMindsContext : DbContext
     {
-        public DbSet<FaceRecognitionScenarios> FaceRecognitionScenarios { get; set; }
+        public DbSet<FaceRecognitionScenario> FaceRecognitionScenarios { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
