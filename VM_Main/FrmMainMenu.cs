@@ -7,7 +7,7 @@ using VMUtils.FaceRecognition;
 using VMUtils.Interfaces;
 using VMUtils.VoiceRecognition;
 using VM_FormUtils;
-using VM_Model;
+using VM.Model;
 using VM_ScenarioEditor;
 
 namespace VM_Main

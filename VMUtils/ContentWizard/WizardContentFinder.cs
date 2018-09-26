@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using VMUtils.FaceRecognition;
 using VMUtils.Interfaces;
 using VMUtils.VoiceRecognition;
-using VM_Model;
+using VM.Model;
 using VM_ScenarioEditor;
 
 namespace VMUtils.ContentWizard
@@ -51,7 +51,7 @@ namespace VMUtils.ContentWizard
             if (type == ContentType.Video)
             {
                 var vs = Task.FromResult<List<SocialScenario>>(_videoProcessor.LoadScenarioFromFile()).Result;
-                var matchingVidRecos = (from socialScenario in vs from segment in socialScenario.VideoSegment where segment.VideoPath == fileName select socialScenario).ToList();
+                var matchingVidRecos = (from socialScenario in vs from segment in socialScenario.VideoSegment  select socialScenario).ToList();
                 result.AddRange(matchingVidRecos.Select(voiceRecognitionScenario => voiceRecognitionScenario.FriendlyName));
             }
 

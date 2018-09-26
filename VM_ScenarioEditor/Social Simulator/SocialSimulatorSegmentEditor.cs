@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using VMUtils.Exceptions;
-using VM_Model;
+using VM.Model;
 using VM_ScenarioEditor.Validators;
 
 namespace VM_ScenarioEditor
@@ -28,7 +28,6 @@ namespace VM_ScenarioEditor
         public SocialSimulatorSegmentEditor(VideoSegment scenario)
         {
             InitializeComponent();
-            txtVideoName.Text = scenario.VideoPath;
             txtPlayOrder.Text = scenario.PlayOrder.ToString();
             txtDescription.Text = scenario.Description;
             SegmentResponseState = scenario.Responses;
@@ -118,7 +117,6 @@ namespace VM_ScenarioEditor
                 Id = SegmentId,
                 Description = txtDescription.Text,
                 PlayOrder = Convert.ToInt32(txtPlayOrder.Text),
-                VideoPath = txtVideoName.Text,
                 Responses = SegmentResponseState
             };
 

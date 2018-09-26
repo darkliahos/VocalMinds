@@ -173,6 +173,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\VM.Model\VM.Model.csproj">
+      <Project>{d17f6cf0-3968-49fb-86a4-44aea74ef4be}</Project>
+      <Name>VM.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\VMUtils\VMUtils.csproj">
       <Project>{5d33933d-0695-4593-bf94-a2983b7cc132}</Project>
       <Name>VMUtils</Name>
@@ -180,10 +184,6 @@
     <ProjectReference Include="..\VM_FormUtils\VM_FormUtils.csproj">
       <Project>{0fda9128-304e-435e-8fa1-57a833df0594}</Project>
       <Name>VM_FormUtils</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\VM_Model\VM_Model.csproj">
-      <Project>{B951F2D6-AD67-4485-87DF-33E25AF7CBFB}</Project>
-      <Name>VM_Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

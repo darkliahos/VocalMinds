@@ -6,7 +6,7 @@ using VMUtils;
 using VMUtils.FaceRecognition;
 using VMUtils.Interfaces;
 using VM_Main.Properties;
-using VM_Model;
+using VM.Model;
 using NLog;
 
 namespace VM_Main

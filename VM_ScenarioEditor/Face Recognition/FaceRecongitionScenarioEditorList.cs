@@ -7,7 +7,7 @@ using VMUtils;
 using VMUtils.FaceRecognition;
 using VMUtils.Interfaces;
 using VM_FormUtils;
-using VM_Model;
+using VM.Model;
 using VM_ScenarioEditor.Properties;
 
 namespace VM_ScenarioEditor

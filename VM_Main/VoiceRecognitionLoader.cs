@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using NLog;
-using VM_Model;
+using VM.Model;
 
 namespace VM_Main
 {

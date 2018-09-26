@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using NSubstitute;
 using VMUtils.FaceRecognition;
 using VMUtils.Interfaces;
-using VM_Model;
+using VM.Model;
 using Xunit;
 
 namespace VMTests.Utils

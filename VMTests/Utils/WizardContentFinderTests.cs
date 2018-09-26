@@ -8,7 +8,7 @@ using VMUtils;
 using VMUtils.ContentWizard;
 using VMUtils.Interfaces;
 using VM_FormUtils;
-using VM_Model;
+using VM.Model;
 using VM_ScenarioEditor;
 using Xunit;
 
@@ -54,7 +54,7 @@ namespace VMTests.Utils
             // Arrange
             var pathUtil = Substitute.For<IContentPathUtils>();
             var faceProcessor = Substitute.For<IFileProcessor<FaceRecognitionScenario, ImportedFaceRecognitionScenario>>();
-            faceProcessor.LoadScenarioFromFile().Returns(new List<FaceRecognitionScenario> { new FaceRecognitionScenario() { ImageName = "FileOne" } });
+            faceProcessor.LoadScenarioFromFile().Returns(new List<FaceRecognitionScenario> { new FaceRecognitionScenario() {} });
             var voiceProcessor = Substitute.For<IFileProcessor<VoiceRecognitionScenario, ImportedVoiceRecognitionScenario>>();
             var videoProcessor = Substitute.For<IFileProcessor<SocialScenario, ImportedSocialScenarios>>();
             var contentWizardFinder = new WizardContentFinder(pathUtil, faceProcessor, voiceProcessor, videoProcessor);
@@ -72,7 +72,7 @@ namespace VMTests.Utils
             var faceProcessor = Substitute.For<IFileProcessor<FaceRecognitionScenario, ImportedFaceRecognitionScenario>>();
             var voiceProcessor = Substitute.For<IFileProcessor<VoiceRecognitionScenario, ImportedVoiceRecognitionScenario>>();
             var videoProcessor = Substitute.For<IFileProcessor<SocialScenario, ImportedSocialScenarios>>();
-            videoProcessor.LoadScenarioFromFile().Returns(new List<SocialScenario> { new SocialScenario { VideoSegment = new List<VideoSegment> { new VideoSegment { VideoPath = "FileOne" } } } });
+            videoProcessor.LoadScenarioFromFile().Returns(new List<SocialScenario> { new SocialScenario { VideoSegment = new List<VideoSegment> { new VideoSegment { } } } });
             var contentWizardFinder = new WizardContentFinder(pathUtil, faceProcessor, voiceProcessor, videoProcessor);
             // Act
             var list = contentWizardFinder.ContentIsBeingUsedBy("FileOne", ContentType.Video);
@@ -89,7 +89,7 @@ namespace VMTests.Utils
             faceProcessor.LoadScenarioFromFile().Returns(new List<FaceRecognitionScenario> { new FaceRecognitionScenario() { ImageName = "zz" } });
             var voiceProcessor = Substitute.For<IFileProcessor<VoiceRecognitionScenario, ImportedVoiceRecognitionScenario>>();
             var videoProcessor = Substitute.For<IFileProcessor<SocialScenario, ImportedSocialScenarios>>();
-            videoProcessor.LoadScenarioFromFile().Returns(new List<SocialScenario> { new SocialScenario { VideoSegment = new List<VideoSegment> { new VideoSegment { VideoPath = "FileOne" } } } });
+            videoProcessor.LoadScenarioFromFile().Returns(new List<SocialScenario> { new SocialScenario { VideoSegment = new List<VideoSegment> { new VideoSegment {  } } } });
             var contentWizardFinder = new WizardContentFinder(pathUtil, faceProcessor, voiceProcessor, videoProcessor);
             // Act
             var list = contentWizardFinder.ContentIsBeingUsedBy("FileOne", ContentType.Video);

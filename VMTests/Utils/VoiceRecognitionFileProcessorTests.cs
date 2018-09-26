@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using NSubstitute;
 using VMUtils.Interfaces;
 using VMUtils.VoiceRecognition;
-using VM_Model;
+using VM.Model;
 using Xunit;
 
 namespace VMTests.Utils

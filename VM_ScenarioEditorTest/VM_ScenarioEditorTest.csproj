@@ -54,9 +54,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\VM_Model\VM_Model.csproj">
-      <Project>{b951f2d6-ad67-4485-87df-33e25af7cbfb}</Project>
-      <Name>VM_Model</Name>
+    <ProjectReference Include="..\VM.Model\VM.Model.csproj">
+      <Project>{d17f6cf0-3968-49fb-86a4-44aea74ef4be}</Project>
+      <Name>VM.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\VM_ScenarioEditor\VM_ScenarioEditor.csproj">
       <Project>{99594f23-db41-4e8f-99af-c836981eaa88}</Project>

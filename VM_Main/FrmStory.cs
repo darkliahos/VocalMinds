@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Speech.Synthesis;
 using VM_FormUtils;
-using VM_Model;
+using VM.Model;
 
 namespace VM_Main
 {

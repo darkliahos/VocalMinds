@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using VM_Model;
+using VM.Model;
 using VM_ScenarioEditor;
 using Xunit;
 

@@ -58,7 +58,7 @@ namespace VM_FormUtils.Extensions
                 }
                 return openAlready;
             }
-            catch (Exception error)
+            catch (Exception)
             {
                 throw;
             }

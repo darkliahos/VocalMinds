@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using VMUtils.Interfaces;
-using VM_Model;
+using VM.Model;
 
 namespace VMUtils
 {

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using VM_Model;
+using VM.Model;
 using VM_ScenarioEditor;
 using VM_ScenarioEditor.Validators;
 using Xunit;
@@ -160,7 +160,7 @@ namespace VM_ScenarioEditorTest
         public void ValidateSegment_WhenValidObject_ReturnErrors()
         {
             // Arrange
-            var segment = new VideoSegment {Description = "D", Id = Guid.NewGuid(), PlayOrder = 3, VideoPath = "C"};
+            var segment = new VideoSegment {Description = "D", Id = Guid.NewGuid(), PlayOrder = 3 };
 
             // Act
             var result = SocialScenarioValidation.ValidateSegment(segment);
@@ -173,7 +173,7 @@ namespace VM_ScenarioEditorTest
         public void ValidateSegment_WhenMissingDescription_ReturnsNoErrors()
         {
             // Arrange
-            var segment = new VideoSegment { Description = "", Id = Guid.NewGuid(), PlayOrder = 3, VideoPath = "C" };
+            var segment = new VideoSegment { Description = "", Id = Guid.NewGuid(), PlayOrder = 3 };
 
             // Act
             var result = SocialScenarioValidation.ValidateSegment(segment);
@@ -186,7 +186,7 @@ namespace VM_ScenarioEditorTest
         public void ValidateSegment_WhenMissingId_ReturnErrors()
         {
             // Arrange
-            var segment = new VideoSegment { Description = "s", Id = Guid.Empty, PlayOrder = 3, VideoPath = "C" };
+            var segment = new VideoSegment { Description = "s", Id = Guid.Empty, PlayOrder = 3 };
 
             // Act
             var result = SocialScenarioValidation.ValidateSegment(segment);
@@ -199,7 +199,7 @@ namespace VM_ScenarioEditorTest
         public void ValidateSegment_WhenMissingPlayOrder_ReturnErrors()
         {
             // Arrange
-            var segment = new VideoSegment { Description = "s", Id = Guid.NewGuid(), PlayOrder = 0, VideoPath = "C" };
+            var segment = new VideoSegment { Description = "s", Id = Guid.NewGuid(), PlayOrder = 0 };
 
             // Act
             var result = SocialScenarioValidation.ValidateSegment(segment);
@@ -212,7 +212,7 @@ namespace VM_ScenarioEditorTest
         public void ValidateSegment_WhenPlayOrderIsNegativeNumber_ReturnErrors()
         {
             // Arrange
-            var segment = new VideoSegment { Description = "s", Id = Guid.NewGuid(), PlayOrder = -3, VideoPath = "C" };
+            var segment = new VideoSegment { Description = "s", Id = Guid.NewGuid(), PlayOrder = -3 };
 
             // Act
             var result = SocialScenarioValidation.ValidateSegment(segment);
@@ -225,7 +225,7 @@ namespace VM_ScenarioEditorTest
         public void ValidateSegment_WhenMissingVideoPath_ReturnErrors()
         {
             // Arrange
-            var segment = new VideoSegment { Description = "s", Id = Guid.NewGuid(), PlayOrder = 4, VideoPath = "" };
+            var segment = new VideoSegment { Description = "s", Id = Guid.NewGuid(), PlayOrder = 4 };
 
             // Act
             var result = SocialScenarioValidation.ValidateSegment(segment);
@@ -238,7 +238,7 @@ namespace VM_ScenarioEditorTest
         public void ValidateSegment_WhenAllAreBroken_ReturnErrors()
         {
             // Arrange
-            var segment = new VideoSegment { Description = "", Id = Guid.Empty, PlayOrder = 0, VideoPath = "" };
+            var segment = new VideoSegment { Description = "", Id = Guid.Empty, PlayOrder = 0 };
 
             // Act
             var result = SocialScenarioValidation.ValidateSegment(segment);

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using VM_Model;
+using VM.Model;
 
 namespace VM_ScenarioEditor.Validators
 {
@@ -71,11 +71,6 @@ namespace VM_ScenarioEditor.Validators
             if (segment.PlayOrder < 0)
             {
                 validationObject.ErrorMessages.Add("Play order cannot be a negative number");
-            }
-
-            if (segment.VideoPath == "")
-            {
-                validationObject.ErrorMessages.Add("Video path must be set");
             }
 
             if (validationObject.ErrorMessages.Count > 0)

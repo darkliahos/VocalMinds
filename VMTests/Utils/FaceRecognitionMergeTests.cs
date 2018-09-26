@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using VMUtils.FaceRecognition;
-using VM_Model;
+using VM.Model;
 using Xunit;
 
 namespace VMTests.Utils

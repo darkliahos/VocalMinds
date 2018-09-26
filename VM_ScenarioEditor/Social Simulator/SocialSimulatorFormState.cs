@@ -1,4 +1,4 @@
-﻿using VM_Model;
+﻿using VM.Model;
 
 namespace VM_ScenarioEditor
 {

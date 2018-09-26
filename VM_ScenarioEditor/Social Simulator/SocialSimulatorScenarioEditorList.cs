@@ -5,7 +5,7 @@ using System.Windows.Forms;
 using NLog;
 using VMUtils;
 using VMUtils.Interfaces;
-using VM_Model;
+using VM.Model;
 
 namespace VM_ScenarioEditor
 {

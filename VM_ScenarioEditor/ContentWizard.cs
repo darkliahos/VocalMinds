@@ -11,7 +11,7 @@ using VMUtils.Validators;
 using VMUtils.VoiceRecognition;
 using VM_FormUtils;
 using VM_FormUtils.Extensions;
-using VM_Model;
+using VM.Model;
 
 namespace VM_ScenarioEditor
 {

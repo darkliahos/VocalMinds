@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using VMUtils;
-using VM_Model;
+using VM.Model;
 using Xunit;
 
 namespace VMTests.Utils
@@ -31,7 +31,6 @@ namespace VMTests.Utils
             Assert.Equal(expectedResult.SocialScenario[0].FriendlyName, actualObject.SocialScenario[0].FriendlyName);
             Assert.Equal(expectedResult.SocialScenario[0].Imported, actualObject.SocialScenario[0].Imported);
             Assert.Equal(expectedResult.SocialScenario[0].VideoSegment[0].PlayOrder, actualObject.SocialScenario[0].VideoSegment[0].PlayOrder);
-            Assert.Equal(expectedResult.SocialScenario[0].VideoSegment[0].VideoPath, actualObject.SocialScenario[0].VideoSegment[0].VideoPath);
             Assert.Equal(expectedResult.SocialScenario[0].VideoSegment[0].Responses[0].Answer, actualObject.SocialScenario[0].VideoSegment[0].Responses[0].Answer);
             Assert.Equal(expectedResult.SocialScenario[0].VideoSegment[0].Responses[0].ResponseType, actualObject.SocialScenario[0].VideoSegment[0].Responses[0].ResponseType);
 

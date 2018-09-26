@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using VMUtils.Interfaces;
-using VM_Model;
+using VM.Model;
 
 namespace VM_Main
 {
@@ -48,7 +48,6 @@ namespace VM_Main
 
                 if (videoSegment.PlayOrder == _currentPlayOrder)
                 {
-                    _currentUri = _contentWizardUtils.GetTargetFolder(videoSegment.VideoPath) + @"\" + videoSegment.VideoPath;
                     _videoSegment = videoSegment;
                 }
 
@@ -62,16 +61,6 @@ namespace VM_Main
             }
         }
 
-        private void btnPlay_Click(object sender, System.EventArgs e)
-        {
-            visualSocialInterface.URL = _currentUri;
-            visualSocialInterface.Ctlcontrols.play();
-        }
-
-        private void btnAnswer_Click(object sender, EventArgs e)
-        {
-            AnswerHandler(txtWordbox.Text);
-        }
 
         private void AnswerHandler(string response)
         {
@@ -86,12 +75,6 @@ namespace VM_Main
                 }
             }
         }
-
-        private void FrmSocialSimulator_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            visualSocialInterface.URL = null;
-        }
-
 
     }
 }

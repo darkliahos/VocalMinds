@@ -3,7 +3,7 @@ using System.Diagnostics;
 using VMUtils.Exceptions;
 using VMUtils.Extensions;
 using VMUtils.Interfaces;
-using VM_Model;
+using VM.Model;
 
 namespace VMUtils.VoiceRecognition
 {

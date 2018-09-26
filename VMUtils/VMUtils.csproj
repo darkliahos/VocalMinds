@@ -90,9 +90,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\VM_Model\VM_Model.csproj">
-      <Project>{B951F2D6-AD67-4485-87DF-33E25AF7CBFB}</Project>
-      <Name>VM_Model</Name>
+    <ProjectReference Include="..\VM.Model\VM.Model.csproj">
+      <Project>{d17f6cf0-3968-49fb-86a4-44aea74ef4be}</Project>
+      <Name>VM.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
