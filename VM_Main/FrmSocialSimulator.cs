@@ -11,7 +11,6 @@ namespace VM_Main
         private readonly IContentPathUtils _contentWizardUtils;
         private readonly Story _selectedStory;
         private int _currentPlayOrder = 1;
-        private string _currentUri = "";
         private VideoSegment _videoSegment;
 
         public FrmSocialSimulator(SocialScenario socialScenario, IContentPathUtils contentWizardUtils, Story selectedStory)
